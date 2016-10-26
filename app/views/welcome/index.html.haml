@@ -1,0 +1,141 @@
+.ui.left.demo.vertical.inverted.pomegranate.sidebar.labeled.icon.menu
+  %a.item
+    %i.rocket.icon
+    Panel
+  %a.item
+    %i.hospital.icon
+    Clínicas
+  %a.item
+    %i.doctor.icon
+    Doctores
+
+.ui.top.fixed.menu.inverted.blue.hude.borderless.labeled.icon
+  %a.item#sidebar-toggle
+    %i.skyatlas.icon#logo_icon
+  %a.item
+    %i.calendar.large.icon.olive
+    Calendario
+  %a.item.right
+    %i.sign.out.large.icon
+    Salir
+
+.pusher
+  %div.main.ui.container
+    %form.ui.form
+      %h4.ui.dividing.header Shipping Information
+      .field
+        %label Name
+        .two.fields
+          .field
+            %input{:name => "shipping[first-name]", :placeholder => "First Name", :type => "text"}/
+          .field
+            %input{:name => "shipping[last-name]", :placeholder => "Last Name", :type => "text"}/
+      .field
+        %label Billing Address
+        .fields
+          .twelve.wide.field
+            %input{:name => "shipping[address]", :placeholder => "Street Address", :type => "text"}/
+          .four.wide.field
+            %input{:name => "shipping[address-2]", :placeholder => "Apt #", :type => "text"}/
+      .two.fields
+        .field
+          %label State
+          %select.ui.fluid.dropdown
+            %option{:value => ""} State
+            %option{:value => "AL"} Alabama
+            %option{:value => "AK"} Alaska
+            %option{:value => "AZ"} Arizona
+            %option{:value => "AR"} Arkansas
+            %option{:value => "CA"} California
+            %option{:value => "CO"} Colorado
+            %option{:value => "CT"} Connecticut
+            %option{:value => "DE"} Delaware
+            %option{:value => "DC"} District Of Columbia
+            %option{:value => "FL"} Florida
+            %option{:value => "GA"} Georgia
+            %option{:value => "HI"} Hawaii
+            %option{:value => "ID"} Idaho
+            %option{:value => "IL"} Illinois
+            %option{:value => "IN"} Indiana
+            %option{:value => "IA"} Iowa
+            %option{:value => "KS"} Kansas
+            %option{:value => "KY"} Kentucky
+            %option{:value => "LA"} Louisiana
+            %option{:value => "ME"} Maine
+            %option{:value => "MD"} Maryland
+            %option{:value => "MA"} Massachusetts
+            %option{:value => "MI"} Michigan
+            %option{:value => "MN"} Minnesota
+            %option{:value => "MS"} Mississippi
+            %option{:value => "MO"} Missouri
+            %option{:value => "MT"} Montana
+            %option{:value => "NE"} Nebraska
+            %option{:value => "NV"} Nevada
+            %option{:value => "NH"} New Hampshire
+            %option{:value => "NJ"} New Jersey
+            %option{:value => "NM"} New Mexico
+            %option{:value => "NY"} New York
+            %option{:value => "NC"} North Carolina
+            %option{:value => "ND"} North Dakota
+            %option{:value => "OH"} Ohio
+            %option{:value => "OK"} Oklahoma
+            %option{:value => "OR"} Oregon
+            %option{:value => "PA"} Pennsylvania
+            %option{:value => "RI"} Rhode Island
+            %option{:value => "SC"} South Carolina
+            %option{:value => "SD"} South Dakota
+            %option{:value => "TN"} Tennessee
+            %option{:value => "TX"} Texas
+            %option{:value => "UT"} Utah
+            %option{:value => "VT"} Vermont
+            %option{:value => "VA"} Virginia
+            %option{:value => "WA"} Washington
+            %option{:value => "WV"} West Virginia
+            %option{:value => "WI"} Wisconsin
+            %option{:value => "WY"} Wyoming
+      %h4.ui.dividing.header Billing Information
+      .field
+        %label Card Type
+        .ui.selection.dropdown
+          %input{:name => "card[type]", :type => "hidden"}/
+          .default.text Type
+          %i.dropdown.icon
+          .menu
+            .item{"data-value" => "visa"}
+              %i.visa.icon
+              Visa
+            .item{"data-value" => "amex"}
+              %i.amex.icon
+              American Express
+            .item{"data-value" => "discover"}
+              %i.discover.icon
+              Discover
+      .fields
+        .seven.wide.field
+          %label Card Number
+          %input{:maxlength => "16", :name => "card[number]", :placeholder => "Card #", :type => "text"}/
+        .three.wide.field
+          %label CVC
+          %input{:maxlength => "3", :name => "card[cvc]", :placeholder => "CVC", :type => "text"}/
+        .six.wide.field
+          %label Expiration
+          .two.fields
+            .field
+              %select.ui.fluid.search.dropdown{:name => "card[expire-month]"}
+                %option{:value => ""} Month
+                %option{:value => "1"} January
+                %option{:value => "2"} February
+                %option{:value => "3"} March
+                %option{:value => "4"} April
+                %option{:value => "5"} May
+                %option{:value => "6"} June
+                %option{:value => "7"} July
+                %option{:value => "8"} August
+                %option{:value => "9"} September
+                %option{:value => "10"} October
+                %option{:value => "11"} November
+                %option{:value => "12"} December
+            .field
+              %input{:maxlength => "4", :name => "card[expire-year]", :placeholder => "Year", :type => "text"}/
+
+      .ui.button{:tabindex => "0"} Submit Order
