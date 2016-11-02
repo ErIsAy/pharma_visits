@@ -7,4 +7,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+
+    %div.yield
+      - flash.each do |key, value|
+        %div{:class => "#{flash_class(key)} closable", :id => "notice_center"}
+          %i.close.icon
+          = value
+
+      = yield

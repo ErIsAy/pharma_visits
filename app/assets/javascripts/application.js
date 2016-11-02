@@ -14,18 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require semantic-ui
+//= require tablesort
 //= require_tree .
 
+/*fadeOut messages */
+$(function() {
+  return $(".message.closable .close.icon").on("click", function() {
+    $('.message.closable').fadeOut("slow");
+    return false;
+  });
+});
 
 
 // Initializers
-$( document ).ready(function() {
-  $('.ui.dropdown')
-    .dropdown();
-    
-  $( "#sidebar-toggle" ).click(function() {
-    $('.ui.labeled.icon.sidebar')
-    .sidebar('toggle');
-  });
-
-});
+// $( document ).ready(function() {
+//   $('.ui.dropdown')
+//     .dropdown();
+//
+//   $( "#sidebar-toggle" ).click(function() {
+//     $('.ui.labeled.icon.sidebar')
+//     .sidebar('toggle');
+//   });
+//
+// });

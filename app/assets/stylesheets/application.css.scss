@@ -17,8 +17,18 @@
 
 @import "semantic-ui";
 
+/*flash messages*/
+.message.closable {
+  margin-left: 20%;
+  margin-right: 20%;
+ }
+#notice_center {
+  text-align: center;
+}
+/*---------------*/
 
-.main {
+
+.yield {
   padding-top: 100px;
 }
 

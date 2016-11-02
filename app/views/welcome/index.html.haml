@@ -1,26 +1,9 @@
-.ui.left.demo.vertical.inverted.pomegranate.sidebar.labeled.icon.menu
-  %a.item
-    %i.rocket.icon
-    Panel
-  %a.item
-    %i.hospital.icon
-    Clínicas
-  %a.item
-    %i.doctor.icon
-    Doctores
 
-.ui.top.fixed.menu.inverted.blue.hude.borderless.labeled.icon
-  %a.item#sidebar-toggle
-    %i.skyatlas.icon#logo_icon
-  %a.item
-    %i.calendar.large.icon.olive
-    Calendario
-  %a.item.right
-    %i.sign.out.large.icon
-    Salir
+
+= render './layouts/shared/menu'
 
 .pusher
-  %div.main.ui.container
+  %div.ui.container
     -# Logo
     = image_tag("logo_big.jpg", class:'logo_welcome')
     -# %form.ui.form

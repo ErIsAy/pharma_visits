@@ -1,0 +1,17 @@
+= render './layouts/shared/menu'
+
+%p#notice= notice
+
+.pusher
+  %div.main.ui.container
+
+    %p
+      %b Firstname:
+      = @doctor.firstname
+    %p
+      %b Lastname:
+      = @doctor.lastname
+
+-# = link_to 'Edit', edit_doctor_path(@doctor)
+-# \|
+-# = link_to 'Back', doctors_path

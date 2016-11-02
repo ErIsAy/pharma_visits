@@ -1,0 +1,23 @@
+.ui.attached.message
+  .header
+    - if current_page?(new_doctor_path)
+      Nuevo Doctor
+    -elsif current_page?(edit_doctor_path)
+      Editar Doctor
+
+    -# - case current_page?
+    -#   = when new_doctor_path then p "Nuevo Doctor"
+    -#   = when edit_doctor_path then p "Editar Doctor"
+
+  %p Por favor llenar los siguientes datos
+
+= simple_form_for(@doctor, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+  -# = f.error_notification
+  .two.fields
+    .field
+      = f.input :firstname, label: "Nombres"
+    .field
+      = f.input :lastname, label: "Apellidos"
+
+  .form-actions
+    = f.button :submit, :value => "Registrar", :class => "ui blue fluid huge submit button"
