@@ -41,6 +41,20 @@
  background-color: #c0392b !important;
 }
 
+.icon-gradient{
+   background: -webkit-gradient(linear, left top, left bottom, from(#72c3aa), to(#77c9f2)) !important;
+   -webkit-background-clip: text !important;
+   -webkit-text-fill-color: transparent !important;
+ }
+
+ .icon-gradient-red{
+    background: -webkit-gradient(linear, left top, left bottom, from(#e74c3c), to(#c0392b)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color:#c0392b !important; 
+  }
+
+
 .bg_gradient {
   background: #605ea1 !important;
   background: radial-gradient(circle farthest-corner at right bottom, #ac9cd5 0%, #8e7ec2 28%, #6561af 57%, #1a2565 100%) !important;
