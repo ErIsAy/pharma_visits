@@ -25,23 +25,38 @@
 #notice_center {
   text-align: center;
 }
-/*---------------*/
 
 
+/*------------------------------------------*/
+
+/*yield content*/
 .yield {
   padding-top: 100px;
 }
+/*------------------------------------------*/
 
-#logo_icon {
-  //line-height: 2em !important;
-  font-size: 38px !important;
-}
 
 /*Colors*/
 .pomegranate{
  background-color: #c0392b !important;
 }
 
+.bg_gradient {
+  background: #605ea1 !important;
+  background: radial-gradient(circle farthest-corner at right bottom, #ac9cd5 0%, #8e7ec2 28%, #6561af 57%, #1a2565 100%) !important;
+}
+
+.bg_gradient_side {
+    background: linear-gradient(5deg, #556270, #C44D58) !important;
+}
+
+
+/*icons*/
+#logo_icon {
+  //line-height: 2em !important;
+  font-size: 38px !important;
+}
+/*------------------------------------------*/
 
 /*Mobile*/
 html.ios {
@@ -52,3 +67,4 @@ html.ios,
 html.ios body {
   height: initial !important;
 }
+/*------------------------------------------*/

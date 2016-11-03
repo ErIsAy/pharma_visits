@@ -5,13 +5,73 @@
 .pusher
   %div.main.ui.container
 
-    %p
-      %b Firstname:
-      = @doctor.firstname
-    %p
-      %b Lastname:
-      = @doctor.lastname
+  %h2.ui.center.aligned.icon.header
+    %i.circular.doctor.icon.blue
+    = @doctor.firstname
+    = @doctor.lastname
 
--# = link_to 'Edit', edit_doctor_path(@doctor)
--# \|
--# = link_to 'Back', doctors_path
+    %p
+      %b CIR
+    %p
+      %b Union Medica
+    -#
+    -# %p
+    -#   %b Apellidos:
+
+
+
+  .ui.comments.container{:style => "margin-top: 50px;"}
+    %h2.ui.dividing.header
+      %i.comments.outline.icon
+      Comentarios
+
+    .comment
+      .content
+        %a.author Matt
+        .metadata
+          %span.date Today at 5:42PM
+        .text
+          How artistic!
+        .actions
+          %a.reply Reply
+    .comment
+      .content
+        %a.author Elliot Fu
+        .metadata
+          %span.date Yesterday at 12:30AM
+        .text
+          %p This has been very useful for my research. Thanks as well!
+        .actions
+          %a.reply Reply
+      .comments
+        .comment
+          .content
+            %a.author Jenny Hess
+            .metadata
+              %span.date Just now
+            .text
+              Elliot you are always so right :)
+            .actions
+              %a.reply Reply
+    .comment
+      .content
+        %a.author Joe Henderson
+        .metadata
+          %span.date 5 days ago
+        .text
+          Dude, this is awesome. Thanks so much
+        .actions
+          %a.reply Reply
+    %form.ui.reply.form
+      .field
+        %textarea
+      .ui.blue.labeled.submit.icon.button
+        %i.icon.edit
+        Agregar Comentario
+
+
+
+
+        -# = link_to 'Edit', edit_doctor_path(@doctor)
+        -# \|
+        -# = link_to 'Back', doctors_path

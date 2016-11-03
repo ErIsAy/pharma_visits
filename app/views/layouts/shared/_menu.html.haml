@@ -1,7 +1,7 @@
-.ui.left.demo.vertical.inverted.pomegranate.sidebar.labeled.icon.menu
+.ui.left.demo.vertical.inverted.bg_gradient_side.sidebar.labeled.icon.menu
   %a.item{:href => root_path}
-    %i.rocket.icon
-    Panel
+    %i.home.icon
+    Inicio
   %a.item
     %i.hospital.icon
     Clínicas
@@ -9,7 +9,7 @@
     %i.doctor.icon
     Doctores
 
-.ui.top.fixed.menu.inverted.blue.hude.borderless.labeled.icon
+.ui.top.fixed.menu.inverted.bg_gradient.hude.borderless.labeled.icon
   %a.item#sidebar-toggle
     %i.skyatlas.icon#logo_icon
   %a.item
@@ -32,5 +32,6 @@
     });
 
     $('table').tablesort()
+    $("#notice_center" ).fadeOut(5000);
 
   });
