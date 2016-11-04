@@ -37,6 +37,16 @@
 
 
 /*Colors*/
+.asphalt{
+  color: #34495e;
+}
+
+.asphalt-gradient{
+  background: -webkit-gradient(linear, left top, left bottom, from(#34495e), to(#2980b9)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 .pomegranate{
  background-color: #c0392b !important;
 }
@@ -51,7 +61,7 @@
     background: -webkit-gradient(linear, left top, left bottom, from(#e74c3c), to(#c0392b)) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    color:#c0392b !important; 
+    color:#c0392b !important;
   }
 
 
@@ -64,6 +74,18 @@
     background: linear-gradient(5deg, #556270, #C44D58) !important;
 }
 
+/*top menu*/
+.ui.menu {
+  border: 0 !important;
+  box-shadow: 0px 0px 0px 0 rgba(34, 36, 38, 0.15) !important;
+}
+
+.top-menu-label {
+  font-size: 1.2em;
+  font-weight: bold !important;
+  margin: auto;
+}
+/*------------------------------------------*/
 
 /*icons*/
 #logo_icon {

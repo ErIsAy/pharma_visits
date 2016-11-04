@@ -25,15 +25,16 @@ $(function() {
   });
 });
 
-
 // Initializers
-// $( document ).ready(function() {
-//   $('.ui.dropdown')
-//     .dropdown();
-//
-//   $( "#sidebar-toggle" ).click(function() {
-//     $('.ui.labeled.icon.sidebar')
-//     .sidebar('toggle');
-//   });
-//
-// });
+$( document ).ready(function() {
+  $('.ui.dropdown').dropdown();
+
+  $( "#sidebar-toggle" ).click(function() {
+    $('.ui.labeled.icon.sidebar')
+    .sidebar('toggle');
+  });
+
+  $('table').tablesort()
+  $("#notice_center" ).fadeOut(5000);
+
+});

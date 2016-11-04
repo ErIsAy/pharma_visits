@@ -1,4 +1,4 @@
-.ui.left.demo.vertical.inverted.bg_gradient_side.sidebar.labeled.icon.menu
+.ui.left.demo.vertical.inverted.bg_gradient.sidebar.labeled.icon.menu
   %a.item{:href => root_path}
     %i.home.icon.icon-gradient
     Inicio
@@ -9,28 +9,13 @@
     %i.doctor.icon.icon-gradient
     Doctores
 
-.ui.top.fixed.menu.inverted.bg_gradient.hude.borderless.labeled.icon
+.ui.top.fixed.menu.white.hude.borderless.labeled.icon
   %a.item#sidebar-toggle
-    %i.content.icon.icon-gradient#logo_icon
+    %i.content.icon.asphalt-gradient#logo_icon
   %a.item
-    %i.calendar.large.icon.icon-gradient#logo_icon
-  %a.item.right
-    %i.power.large.icon.icon-gradient-red#logo_icon
-
-
-
-/*Initializers*/
-:javascript
-  $( document ).ready(function() {
-    $('.ui.dropdown')
-      .dropdown();
-
-    $( "#sidebar-toggle" ).click(function() {
-      $('.ui.labeled.icon.sidebar')
-      .sidebar('toggle');
-    });
-
-    $('table').tablesort()
-    $("#notice_center" ).fadeOut(5000);
-
-  });
+    %i.checked.calendar.large.icon.asphalt-gradient#logo_icon
+  %div.right.menu
+    .item.top-menu-label.asphalt-gradient
+      Mario Grullon
+    %a.item
+      %i.power.large.icon.icon-gradient-red#logo_icon
