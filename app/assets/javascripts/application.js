@@ -17,24 +17,26 @@
 //= require tablesort
 //= require_tree .
 
-/*fadeOut messages */
+/************fadeOut messages ***********/
 $(function() {
   return $(".message.closable .close.icon").on("click", function() {
     $('.message.closable').fadeOut("slow");
     return false;
   });
 });
+/****************************************/
 
-// Initializers
+/****************sidebar*****************/
+$( "#sidebar-toggle" ).click(function() {
+  $('.ui.labeled.icon.sidebar')
+  .sidebar('toggle');
+});
+/****************************************/
+
+/************ Initializers **************/
 $( document ).ready(function() {
   $('.ui.dropdown').dropdown();
-
-  $( "#sidebar-toggle" ).click(function() {
-    $('.ui.labeled.icon.sidebar')
-    .sidebar('toggle');
-  });
-
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
-
 });
+/****************************************/

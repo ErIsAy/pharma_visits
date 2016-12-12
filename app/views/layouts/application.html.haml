@@ -4,7 +4,6 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title PharmaVisit
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-
     = csrf_meta_tags
   %body
 
@@ -13,6 +12,9 @@
         %div{:class => "#{flash_class(key)} closable", :id => "notice_center"}
           %i.close.icon
           = value
+
+      -# if user_signed_in?
+      = render :partial => 'layouts/shared/menu'
 
       = yield
 

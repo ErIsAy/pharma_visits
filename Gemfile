@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 gem 'rails', '4.2.6'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
@@ -33,13 +32,13 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
-  #AwesomePrint.irb!
+  # AwesomePrint.irb!
   gem 'awesome_print'
 end
 
-# group :production do
-#    gem 'pg'
-#    gem 'rails_12factor'
-# end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
