@@ -1,0 +1,21 @@
+.pusher
+  %div.main.ui.container
+    = image_tag("logo_big.jpg", class:'logo_login')
+    .ui.attached.message
+      .header
+        Iniciar Sesión
+
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                                :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+      .field
+        -# = f.input :email, required: false, autofocus: true
+        .field.required
+          = f.input :login, label: 'Usuario'
+        .field.required
+          = f.input :password, label: 'Contraseña', required: false
+
+        -# = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, "Iniciar Sesión", :class => "ui blue fluid huge submit button"
+
+    = render "devise/shared/links"

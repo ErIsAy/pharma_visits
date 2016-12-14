@@ -12,10 +12,12 @@
 .ui.top.fixed.menu.white.hude.borderless.labeled.icon
   %a.item#sidebar-toggle
     %i.content.icon.asphalt-gradient#logo_icon
+  %a.item{:href => root_path}
+    %i.home.icon.large.icon.asphalt-gradient#logo_icon
   %a.item
     %i.checked.calendar.large.icon.asphalt-gradient#logo_icon
   %div.right.menu
     .item.top-menu-label.asphalt-gradient
-      Mario Grullon
-    %a.item
-      %i.power.large.icon.icon-gradient-red#logo_icon
+      = current_user.username
+      = link_to destroy_user_session_path, method: :delete do
+        %i.power.large.icon.icon-gradient-red#logo_icon

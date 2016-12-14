@@ -13,8 +13,8 @@
           %i.close.icon
           = value
 
-      -# if user_signed_in?
-      = render :partial => 'layouts/shared/menu'
+      - if user_signed_in?
+        = render :partial => 'layouts/shared/menu'
 
       = yield
 
