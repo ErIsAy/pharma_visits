@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :centers
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :doctors
   # The priority is based upon order of creation: first created -> highest priority.

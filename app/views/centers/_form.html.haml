@@ -1,0 +1,20 @@
+.ui.attached.message
+  .header
+    Registro
+
+
+  %p Por favor llenar los siguientes datos
+
+= simple_form_for(@center, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+  -# = f.error_notification
+  .field
+    .field.required
+      = f.input :name, label: 'Nombre'
+    .fields
+      .twelve.wide.field
+        = f.input :address, label: 'Dirección'
+      .four.wide.field
+        = f.input :city, label: 'Ciudad'
+
+  .form-actions
+    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

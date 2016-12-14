@@ -1,0 +1,18 @@
+%p#notice= notice
+
+.pusher
+  %div.main.ui.container
+
+    %p
+      %b Name:
+      = @center.name
+    %p
+      %b Address:
+      = @center.address
+    %p
+      %b City:
+      = @center.city
+
+    = link_to 'Editar', edit_center_path(@center)
+    \|
+    = link_to 'Volver', centers_path
