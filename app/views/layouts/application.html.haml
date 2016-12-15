@@ -17,6 +17,7 @@
         = render :partial => 'layouts/shared/menu'
 
       = yield
+      #remote_container
 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = yield :javascript

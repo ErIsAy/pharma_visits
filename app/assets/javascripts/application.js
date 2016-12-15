@@ -16,6 +16,7 @@
 //= require semantic-ui
 //= require lib/momentjs/moment
 //= require lib/fullcalendar/fullcalendar
+//= require lib/daterangepicker
 //= require tablesort
 //= require_tree .
 
@@ -40,5 +41,6 @@ $( document ).ready(function() {
   $('.ui.dropdown').dropdown();
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
+
 });
 /****************************************/

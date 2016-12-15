@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :events do
+    get 'scheduler', on: :collection
+  end
+
+
   resources :centers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users

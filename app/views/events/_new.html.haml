@@ -1,0 +1,15 @@
+-# #new_event.modal.fade
+-#   .modal-dialog
+-#     .modal-content
+-#       .modal-header
+-#         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+-#         %h4.modal-title Create New Event
+-#       .modal-body
+-#         = render 'form', event: @event
+
+#new_event.ui.modal
+  %i.close.icon
+  -# .header
+  -#   %h4.modal-title Nueva Ruta ó Evento
+  .content
+    = render 'form', event: @event
