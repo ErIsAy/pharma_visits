@@ -12,8 +12,9 @@
       = f.input :name, label: 'Nombre'
     .field
       = f.input :address, label: 'Dirección'
-    .four.wide.field
-      = f.input :city, label: 'Ciudad', collection: Center::CITIES
+    .eight.wide.field
+      = f.label 'Ciudad'
+      = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
