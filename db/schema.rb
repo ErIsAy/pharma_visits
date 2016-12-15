@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20161214042739) do
   create_table "doctors", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
+    t.string   "speciality"
+    t.string   "center"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,7 +11,7 @@
           %th Centro
           %th Dirección
           %th Ciudad
-          %th
+          -# %th
           %th
           %th
 
@@ -21,7 +21,7 @@
             %td= center.name
             %td= center.address
             %td= center.city
-            %td= link_to 'Ver', center, class: "ui brown basic submit button"
+            -# %td= link_to 'Ver', center, class: "ui brown basic submit button"
             %td= link_to 'Editar', edit_center_path(center), class: "ui blue basic submit button"
             %td= link_to 'Eliminar', center, :method => :delete,
                                             class: "ui red basic submit button",

@@ -10,11 +10,10 @@
   .field
     .field.required
       = f.input :name, label: 'Nombre'
-    .fields
-      .twelve.wide.field
-        = f.input :address, label: 'Dirección'
-      .four.wide.field
-        = f.input :city, label: 'Ciudad'
+    .field
+      = f.input :address, label: 'Dirección'
+    .four.wide.field
+      = f.input :city, label: 'Ciudad', collection: Center::CITIES
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
