@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require semantic-ui
+//= require lib/momentjs/moment
+//= require lib/fullcalendar/fullcalendar
 //= require tablesort
 //= require_tree .
 
