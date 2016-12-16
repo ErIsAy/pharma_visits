@@ -9,9 +9,11 @@
   -# = f.error_notification
   .field
     .field.required
-      = f.input :name, label: 'Nombre'
+      = f.label 'Nombre'
+      = f.input :name, label: false
     .field
-      = f.input :address, label: 'Dirección'
+      = f.label 'Dirección'
+      = f.input :address, label: false
     .eight.wide.field
       = f.label 'Ciudad'
       = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }

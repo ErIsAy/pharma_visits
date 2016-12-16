@@ -25,10 +25,12 @@ ActiveRecord::Schema.define(version: 20161215190752) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "speciality"
-    t.string   "center"
+    t.integer  "center_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "doctors", ["center_id"], name: "index_doctors_on_center_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "title"

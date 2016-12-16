@@ -15,6 +15,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/new
   def new
     @doctor = Doctor.new
+    @centers = Center.all
   end
 
   # GET /doctors/1/edit
@@ -71,6 +72,6 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:firstname, :lastname, :speciality, :center)
+      params.require(:doctor).permit(:firstname, :lastname, :speciality, :center_id)
     end
 end

@@ -1,6 +1,9 @@
 # No Doc
 class Center < ActiveRecord::Base
   validates :name, presence: true
+  has_many :doctors
+
+
 
   CITIES =
     [

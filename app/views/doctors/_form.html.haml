@@ -20,7 +20,8 @@
       = f.input :speciality, placeholder: "Especialidad", label: false
     .field
       = f.label "Centro Médico/Consultorio"
-      = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
+      -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
+      = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

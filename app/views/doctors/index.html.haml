@@ -11,8 +11,8 @@
           %th
           %th Nombres
           %th Apellidos
-          %th Acciones
           %th Centro
+          %th Acciones
 
       %tbody
         - @doctors.each do |doctor|
@@ -22,7 +22,7 @@
                 = doctor.speciality
             %td= doctor.firstname
             %td= doctor.lastname
-            %td= doctor.center
+            %td= doctor.center.name
             %td.collapsing.positive
               = link_to 'Ver', doctor, class: "ui brown basic submit button"
               = link_to 'Editar', edit_doctor_path(doctor), class: "ui blue basic submit button"
