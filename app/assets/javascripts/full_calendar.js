@@ -14,15 +14,15 @@ initialize_calendar = function() {
       editable: true,
       eventLimit: false,
       displayEventTime: true,
-      timeFormat: 'H(:mm)',
+      timeFormat: 'hh:mm a',
       events: '/events.json',
 
       select: function(start, end) {
         $.getScript('/events/new', function() {
-          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
+          $('#event_date_range').val(moment(start).format("MM/DD/YYYY hh:mm") + ' - ' + moment(end).format("MM/DD/YYYY hh:mm"))
           date_range_picker();
-          $('.start_hidden').val(moment(start).format('MM/DD/YYYY HH:mm'));
-          $('.end_hidden').val(moment(end).format('MM/DD/YYYY HH:mm'));
+          $('.start_hidden').val(moment(start).format('MM/DD/YYYY hh:mm'));
+          $('.end_hidden').val(moment(end).format('MM/DD/YYYY hh:mm'));
         });
 
         calendar.fullCalendar('unselect');
@@ -44,10 +44,10 @@ initialize_calendar = function() {
 //"MM/DD/YYYY h:mm A"
       eventClick: function(event, jsEvent, view) {
         $.getScript(event.edit_url, function() {
-          $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY HH:mm"))
+          $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY hh:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY hh:mm"))
           date_range_picker();
-          $('.start_hidden').val(moment(event.start).format('MM/DD/YYYY HH:mm'));
-          $('.end_hidden').val(moment(event.end).format('MM/DD/YYYY HH:mm'));
+          $('.start_hidden').val(moment(event.start).format('MM/DD/YYYY hh:mm'));
+          $('.end_hidden').val(moment(event.end).format('MM/DD/YYYY hh:mm'));
         });
        }
     });

@@ -13,8 +13,8 @@ date_range_picker = function() {
                 weekLabel: 'S',
                 customRangeLabel: 'Rango'}
     }, function(start, end, label) {
-      $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
-      $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));
+      $('.start_hidden').val(start.format('YYYY-MM-DD hh:mm'));
+      $('.end_hidden').val(end.format('YYYY-MM-DD hh:mm'));
     });
   })
 };
