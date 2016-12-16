@@ -17,6 +17,11 @@
     .four.wide.field
       = f.label 'Color'
       = f.input :color, label: false, collection: [['Negro','black'], ['Verde','green'], ['Rojo','red']]
+    - unless @event.new_record?
+      .ui.checkbox
+        = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline
+      .field
+        = f.input :note, as: :text, label: 'Notas'
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui green fluid huge submit button"
     %br
@@ -26,3 +31,5 @@
       class: 'ui red fluid huge button',
       data: { confirm: '¿Está seguro…?' },
       remote: true unless @event.new_record?
+
+:javascript

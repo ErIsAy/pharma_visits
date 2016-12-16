@@ -12,15 +12,17 @@ initialize_calendar = function() {
       selectable: true,
       selectHelper: true,
       editable: true,
-      eventLimit: true,
+      eventLimit: false,
+      displayEventTime: true,
+      timeFormat: 'H(:mm)',
       events: '/events.json',
 
       select: function(start, end) {
         $.getScript('/events/new', function() {
           $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end).format("MM/DD/YYYY HH:mm"))
           date_range_picker();
-          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
-          $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+          $('.start_hidden').val(moment(start).format('MM/DD/YYYY HH:mm'));
+          $('.end_hidden').val(moment(end).format('MM/DD/YYYY HH:mm'));
         });
 
         calendar.fullCalendar('unselect');
@@ -39,13 +41,13 @@ initialize_calendar = function() {
                type: 'PATCH'
            });
          },
-
+//"MM/DD/YYYY h:mm A"
       eventClick: function(event, jsEvent, view) {
         $.getScript(event.edit_url, function() {
           $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY HH:mm"))
           date_range_picker();
-          $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
-          $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
+          $('.start_hidden').val(moment(event.start).format('MM/DD/YYYY HH:mm'));
+          $('.end_hidden').val(moment(event.end).format('MM/DD/YYYY HH:mm'));
         });
        }
     });

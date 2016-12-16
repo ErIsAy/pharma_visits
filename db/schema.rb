@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20161215190752) do
     t.datetime "start"
     t.datetime "end"
     t.string   "color"
+    t.boolean  "visited"
+    t.text     "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

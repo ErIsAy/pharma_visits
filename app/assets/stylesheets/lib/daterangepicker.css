@@ -7,6 +7,10 @@
  * Built for http://www.improvely.com
  */
 
+ body > div.daterangepicker.dropdown-menu.show-calendar.opensright{
+   font-size: 20px !important;
+ }
+
 .daterangepicker.dropdown-menu {
     max-width: none;
     display: none;
@@ -67,7 +71,7 @@
 .daterangepicker .daterangepicker_end_input label {
     color: #333;
     display: block;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: normal;
     height: 20px;
     line-height: 20px;
@@ -78,7 +82,7 @@
 }
 
 .daterangepicker .ranges input {
-    font-size: 11px;
+    font-size: 15px;
 }
 
 .daterangepicker .ranges .input-mini {

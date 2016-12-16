@@ -20,6 +20,8 @@
 //= require tablesort
 //= require_tree .
 
+
+
 /************fadeOut messages ***********/
 $(function() {
   return $(".message.closable .close.icon").on("click", function() {

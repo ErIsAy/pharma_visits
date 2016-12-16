@@ -58,8 +58,8 @@
             '<label for="daterangepicker_end"></label>' +
             '<input class="input-mini" type="text" name="daterangepicker_end" value="" />' +
             '</div>' +
-            '<button class="applyBtn" disabled="disabled"></button>&nbsp;' +
-            '<button class="cancelBtn"></button>' +
+            '<button class="applyBtn fluid" disabled="disabled"></button>&nbsp;' +
+            '<button class="cancelBtn fluid"></button>' +
             '</div>' +
             '</div>' +
             '</div>';
@@ -164,7 +164,7 @@
             this.applyClass = 'primary';
             this.cancelClass = 'secondary';
 
-            this.format = 'MM/DD/YYYY';
+            this.format = '"MM/DD/YYYY"';
             this.separator = ' - ';
 
             this.locale = {

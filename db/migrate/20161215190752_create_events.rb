@@ -6,6 +6,9 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :end
       t.string :color
 
+      t.boolean :visited
+      t.text :note
+
       t.timestamps null: false
     end
   end
