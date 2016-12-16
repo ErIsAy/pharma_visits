@@ -11,17 +11,18 @@
       = f.input :title, label: false
     .field
       = f.label 'Fecha'
-      = f.input :date_range, label: false, input_html: { class: "form-control input-sm date-range-picker" }
+      = f.input :date_range, label: false, name:'daterange', input_html: { class: "form-control input-sm date-range-picker" }
       = f.input_field :start, label: false, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden'
       = f.input_field :end, label: false, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden'
     .four.wide.field
       = f.label 'Color'
-      = f.input :color, label: false, collection: [['Black','black'], ['Green','green'], ['Red','red']]
+      = f.input :color, label: false, collection: [['Negro','black'], ['Verde','green'], ['Rojo','red']]
   .form-actions
-    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
-    = link_to 'Delete',
+    = f.button :submit, :value => "Salvar", :class => "ui green fluid huge submit button"
+    %br
+    = link_to 'Eliminar',
       event,
       method: :delete,
       class: 'ui red fluid huge button',
-      data: { confirm: 'Are you sure?' },
+      data: { confirm: '¿Está seguro…?' },
       remote: true unless @event.new_record?
