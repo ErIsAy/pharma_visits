@@ -20,6 +20,7 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/1/edit
   def edit
+    @centers = Center.all
   end
 
   # POST /doctors
