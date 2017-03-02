@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require semantic-ui
 //= require lib/momentjs/moment
@@ -29,6 +30,7 @@ $(function() {
     $('.message.closable').fadeOut("slow");
     return false;
   });
+
 });
 /****************************************/
 
@@ -44,6 +46,7 @@ $( document ).ready(function() {
   $('.ui.dropdown').dropdown();
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
+  $('.datepicker').datepicker();
   $('.datetimepicker').datetimepicker();
   $.datetimepicker.setLocale('es');
 });

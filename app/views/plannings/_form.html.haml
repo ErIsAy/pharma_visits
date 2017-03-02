@@ -21,9 +21,11 @@
       = f.input :end, label: false, as: :string,
                                     start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
 
-  .field
-    = f.label "Visitado"
-    = f.input :visited, label: false
+  .ui.checkbox
+    = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline
+
+  .ui.divider
+
   .field
     = f.label "Nota"
     = f.input :note, label: false
