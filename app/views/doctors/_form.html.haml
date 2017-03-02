@@ -7,21 +7,22 @@
 
 = simple_form_for(@doctor, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
   -# = f.error_notification
-  .two.fields
-    .field.required
-      = f.label "Nombres"
-      = f.input :firstname, placeholder: "Digite los Nombres", label: false
-    .field.required
-      = f.label "Apellidos"
-      = f.input :lastname, placeholder: "Digite los Apellidos", label: false
-  .two.fields
-    .field.required
-      = f.label "Especialidad"
-      = f.input :speciality, placeholder: "Especialidad", label: false
-    .field
-      = f.label "Centro Médico/Consultorio"
-      -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
-      = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+  -# .fields
+  .field.required
+    = f.label "Nombres"
+    = f.input :firstname, placeholder: "Digite los Nombres", label: false
+  .field.required
+    = f.label "Apellidos"
+    = f.input :lastname, placeholder: "Digite los Apellidos", label: false
+  -# .field
+  .field.required
+    = f.label "Especialidad"
+    -# = f.input :speciality, placeholder: "Especialidad", label: false
+    = f.input :speciality, label: false, collection: Doctor::SPECIALTIES, input_html: { class: 'ui search dropdown' }
+  .field
+    = f.label "Centro Médico/Consultorio"
+    -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
+    = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

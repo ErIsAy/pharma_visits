@@ -2,6 +2,10 @@
 -# = render './layouts/shared/menu'
 
 .pusher
+  %h1.ui.header.blue.centered
+    Ruta de #{current_user.username}
+
+  %br
   %div.ui.container
     -# Logo
     -# = image_tag("logo_big.jpg", class:'logo_welcome')

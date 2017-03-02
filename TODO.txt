@@ -1,0 +1,11 @@
+
+Screens
+[ ] - Specialties
+[ ] - Drugstore
+[ ] - Planning
+
+Validation
+[X] - Centers => unique
+
+Fields
+[ ] - Doctors contact (Phone, Email)
