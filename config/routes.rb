@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :plannings
   resources :events do
     get 'scheduler', on: :collection
   end

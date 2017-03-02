@@ -1,0 +1,32 @@
+.ui.attached.message
+  .header
+    Registro de Evento
+
+
+  %p Por favor llenar los siguientes datos
+
+= simple_form_for(@planning, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+  -# = f.error_notification
+
+  .field.required
+    = f.label "Titulo"
+    = f.input :title, label: false
+  .two.fields
+    .field.required.datetimepicker
+      = f.label "Fecha de Visita"
+      = f.input :start, label: false, as: :string,
+                                    start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+    .field.required.datetimepicker
+      = f.label "Fecha de Salida"
+      = f.input :end, label: false, as: :string,
+                                    start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+
+  .field
+    = f.label "Visitado"
+    = f.input :visited, label: false
+  .field
+    = f.label "Nota"
+    = f.input :note, label: false
+
+  .form-actions
+    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

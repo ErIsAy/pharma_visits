@@ -1,0 +1,36 @@
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue Planeamiento
+
+    %table.ui.sortable.celled.table.striped.definition
+      %thead
+        %tr
+          %th Title
+          %th Start
+          %th End
+          %th Visited
+          %th Note
+          %th
+          %th
+          %th
+
+      %tbody
+        - @plannings.each do |planning|
+          %tr
+            %td= planning.title
+            %td= planning.start
+            %td= planning.end
+            %td= planning.visited
+            %td= planning.note
+            %td= link_to 'Show', planning
+            %td= link_to 'Edit', edit_planning_path(planning)
+            %td= link_to 'Destroy', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    %br
+
+    -# = link_to 'New Planning', new_planning_path
+    = link_to new_planning_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.first.aid.icon
+        %i.corner.add.icon.green
+      = 'Nuevo Evento'

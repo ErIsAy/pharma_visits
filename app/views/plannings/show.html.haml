@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @planning.title
+%p
+  %b Start:
+  = @planning.start
+%p
+  %b End:
+  = @planning.end
+%p
+  %b Visited:
+  = @planning.visited
+%p
+  %b Note:
+  = @planning.note
+
+= link_to 'Edit', edit_planning_path(@planning)
+\|
+= link_to 'Back', plannings_path

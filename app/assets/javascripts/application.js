@@ -18,6 +18,7 @@
 //= require lib/fullcalendar/fullcalendar
 //= require lib/daterangepicker
 //= require tablesort
+//= require datetimepicker
 //= require_tree .
 
 
@@ -43,6 +44,7 @@ $( document ).ready(function() {
   $('.ui.dropdown').dropdown();
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
-
+  $('.datetimepicker').datetimepicker();
+  $.datetimepicker.setLocale('es');
 });
 /****************************************/

@@ -1,6 +1,6 @@
 
 Screens
-[ ] - Specialties
+[?] - Specialties
 [ ] - Drugstore
 [ ] - Planning
 
@@ -9,3 +9,5 @@ Validation
 
 Fields
 [ ] - Doctors contact (Phone, Email)
+[ ] - Center contact (Phone)
+  
