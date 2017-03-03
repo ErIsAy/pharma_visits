@@ -1,30 +1,29 @@
 .pusher
   %div.main.ui.container
-    %h1.ui.header.blue Planeamiento
+    %h1.ui.header.blue.centered Plan Mensual
 
     %table.ui.sortable.celled.table.striped.definition
       %thead
         %tr
-          %th Title
-          %th Start
-          %th End
-          %th Visited
-          %th Note
           %th
-          %th
-          %th
+          %th Titulo
+          %th Fecha de Visita
+          %th Visitado?
+          %th Acciones
 
       %tbody
         - @plannings.each do |planning|
           %tr
+            %td.collapsing
+              %div.ui.fitted
+                = planning.shift
             %td= planning.title
-            %td= planning.start
-            %td= planning.end
-            %td= planning.visited
-            %td= planning.note
-            %td= link_to 'Show', planning
-            %td= link_to 'Edit', edit_planning_path(planning)
-            %td= link_to 'Destroy', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td= planning.date_visit
+            %td= planning.visited ? "Si" : "No"
+            %td.collapsing.positive
+              = link_to 'Ver', planning
+              = link_to 'Editar', edit_planning_path(planning)
+              = link_to 'Eliminar', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     %br
 

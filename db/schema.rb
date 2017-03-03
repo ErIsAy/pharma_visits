@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170302193454) do
 
   create_table "plannings", force: :cascade do |t|
     t.string   "title"
-    t.datetime "start"
-    t.datetime "end"
+    t.date     "date_visit"
+    t.string   "shift"
     t.boolean  "visited"
     t.text     "note"
     t.datetime "created_at", null: false

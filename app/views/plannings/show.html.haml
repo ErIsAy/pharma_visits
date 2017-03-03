@@ -1,19 +1,19 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b Titulo:
   = @planning.title
 %p
-  %b Start:
-  = @planning.start
+  %b Fecha de Visita:
+  = @planning.date_visit
 %p
-  %b End:
-  = @planning.end
+  %b Tanda:
+  = @planning.shift
 %p
-  %b Visited:
+  %b Visitado?:
   = @planning.visited
 %p
-  %b Note:
+  %b Nota:
   = @planning.note
 
 = link_to 'Edit', edit_planning_path(@planning)

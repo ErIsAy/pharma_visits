@@ -28,7 +28,8 @@ class PlanningsController < ApplicationController
 
     respond_to do |format|
       if @planning.save
-        format.html { redirect_to @planning, notice: 'Evento asignado a la Ruta correctamente' }
+        # format.html { redirect_to @planning, notice: 'Evento asignado a la Ruta correctamente' }
+        format.html { redirect_to plannings_path, notice: 'Evento asignado a la Ruta correctamente' }
         format.json { render :show, status: :created, location: @planning }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class PlanningsController < ApplicationController
   def update
     respond_to do |format|
       if @planning.update(planning_params)
-        format.html { redirect_to @planning, notice: 'Evento actualizado' }
+        format.html { redirect_to plannings_path, notice: 'Evento actualizado' }
         format.json { render :show, status: :ok, location: @planning }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class PlanningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planning_params
-      params.require(:planning).permit(:title, :start, :end, :visited, :note)
+      params.require(:planning).permit(:title, :date_visit, :shift, :visited, :note)
     end
 end

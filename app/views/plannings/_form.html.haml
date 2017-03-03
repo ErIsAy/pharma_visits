@@ -12,14 +12,20 @@
     = f.label "Titulo"
     = f.input :title, label: false
   .two.fields
-    .field.required.datetimepicker
+    .field.required#planning_date_visit
       = f.label "Fecha de Visita"
-      = f.input :start, label: false, as: :string,
-                                    start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
-    .field.required.datetimepicker
-      = f.label "Fecha de Salida"
-      = f.input :end, label: false, as: :string,
-                                    start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+      = f.input :date_visit, label: false, as: :string
+
+    .field.required
+      = f.label "Tanda"
+      -# = f.input :shift, label: false
+      = f.input :shift, label: false, collection: Planning::SHIFTS, input_html: { class: 'ui search dropdown' }
+
+
+    -# .field.required.datetimepicker
+    -#   = f.label "Fecha de Salida"
+    -#   = f.input :end, label: false, as: :string,
+    -#                                 start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
 
   .ui.checkbox
     = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline
