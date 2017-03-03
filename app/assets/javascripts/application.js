@@ -11,14 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
-//= require semantic-ui
-//= require lib/momentjs/moment
-//= require lib/fullcalendar/fullcalendar
-//= require lib/daterangepicker
-//= require lib/calendar
-//= require tablesort
-//= require_tree .
+
 
 
 /************fadeOut messages ***********/
