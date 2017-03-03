@@ -14,7 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml-rails', '~> 0.9.0'
 gem 'normalize-rails'
-gem 'semantic-ui-sass', '~> 2.1', '>= 2.1.8.0'
+gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'rails_admin', '~> 1.0'
