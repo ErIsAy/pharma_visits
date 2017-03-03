@@ -11,9 +11,9 @@
  * file per style scope.
  *
  *= require normalize-rails
+ *= require jquery-ui
  *= require lib/fullcalendar/fullcalendar
  *= require lib/daterangepicker
- *= require calendar.min
  *= require_tree .
  *= require_self
  */
