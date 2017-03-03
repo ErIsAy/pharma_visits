@@ -45,8 +45,8 @@ $( document ).ready(function() {
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
   $('.datepicker').datepicker();
-  $('.datetimepicker').datetimepicker();
-  $.datetimepicker.setLocale('es');
+  // $('.datetimepicker').datetimepicker();
+  // $.datetimepicker.setLocale('es');
   $('#planning_date_visit').calendar( {
     type: 'date',
     text: {
