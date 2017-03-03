@@ -19,8 +19,7 @@
 //= require lib/fullcalendar/fullcalendar
 //= require lib/daterangepicker
 //= require lib/calendar
-//= require tablesort
-
+//= require_tree .
 
 
 
