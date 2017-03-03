@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
+ruby '2.2.4'
+
 gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-# gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -17,12 +18,7 @@ gem 'semantic-ui-sass', '~> 2.1', '>= 2.1.8.0'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'rails_admin', '~> 1.0'
-
-# source 'https://rails-assets.org' do
-#   gem 'rails-assets-datetimepicker'
-# end
-
-
+ gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
