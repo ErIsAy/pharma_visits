@@ -19,7 +19,6 @@
 //= require lib/fullcalendar/fullcalendar
 //= require lib/daterangepicker
 //= require tablesort
-//= require datetimepicker
 //= require_tree .
 
 
