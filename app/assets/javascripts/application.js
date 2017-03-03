@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
-
+//= require semantic-ui
 
 
 /************fadeOut messages ***********/
