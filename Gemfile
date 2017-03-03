@@ -18,7 +18,7 @@ gem 'semantic-ui-sass', '~> 2.1', '>= 2.1.8.0'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'rails_admin', '~> 1.0'
- gem 'rails-assets-datetimepicker'
+# gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
