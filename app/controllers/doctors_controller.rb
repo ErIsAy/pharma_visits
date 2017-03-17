@@ -27,6 +27,7 @@ class DoctorsController < ApplicationController
   # POST /doctors.json
   def create
     @doctor = Doctor.new(doctor_params)
+    @centers = Center.all
 
     respond_to do |format|
       if @doctor.save
@@ -73,6 +74,14 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:firstname, :lastname, :speciality, :center_id)
+      params.require(:doctor).permit(:firstname,
+                                     :lastname,
+                                     :speciality,
+                                     :suite,
+                                     :phone,
+                                     :phone_ext,
+                                     :email,
+                                     :birthday,
+                                     :center_id)
     end
 end

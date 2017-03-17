@@ -21,8 +21,8 @@
             %td= planning.date_visit
             %td= planning.visited ? "Si" : "No"
             %td.collapsing.positive
-              = link_to 'Ver', planning
-              = link_to 'Editar', edit_planning_path(planning)
+              = link_to 'Ver |', planning
+              = link_to 'Editar |', edit_planning_path(planning)
               = link_to 'Eliminar', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     %br

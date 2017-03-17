@@ -1,6 +1,7 @@
 # No-Doc
 class Doctor < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
+  validates :center_id, presence: true
   belongs_to :center
 
   SPECIALTIES =
@@ -31,5 +32,5 @@ class Doctor < ActiveRecord::Base
       ['REUMA', 'REUMA'],
       ['URO', 'URO']
     ]
-    
+
 end

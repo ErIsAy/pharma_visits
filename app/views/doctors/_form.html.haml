@@ -7,22 +7,38 @@
 
 = simple_form_for(@doctor, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
   -# = f.error_notification
-  -# .fields
-  .field.required
-    = f.label "Nombres"
-    = f.input :firstname, placeholder: "Digite los Nombres", label: false
-  .field.required
-    = f.label "Apellidos"
-    = f.input :lastname, placeholder: "Digite los Apellidos", label: false
-  -# .field
+  .two.fields
+    .field.required
+      = f.label "Nombres"
+      = f.input :firstname, placeholder: "Digite los Nombres", label: false
+    .field.required
+      = f.label "Apellidos"
+      = f.input :lastname, placeholder: "Digite los Apellidos", label: false
   .field.required
     = f.label "Especialidad"
     -# = f.input :speciality, placeholder: "Especialidad", label: false
     = f.input :speciality, label: false, collection: Doctor::SPECIALTIES, input_html: { class: 'ui search dropdown' }
+  .three.fields
+    .field.required
+      = f.label "Centro Médico/Consultorio"
+      -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
+      = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+    .field
+      = f.label "Tel."
+      = f.input :phone, label: false, disabled: true
+    .field
+      = f.label "Ext."
+      = f.input :phone_ext, label: false, as: :integer
   .field
-    = f.label "Centro Médico/Consultorio"
-    -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
-    = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+    = f.label "Suite"
+    = f.input :suite, label: false
+  .two.fields
+    .field
+      = f.label "Email"
+      = f.input :email, label: false
+    .field#birthday_cal
+      = f.label "Cumpleaños"
+      = f.input :birthday, label: false, as: :string
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

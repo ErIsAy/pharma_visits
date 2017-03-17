@@ -1,2 +1,4 @@
-json.extract! doctor, :id, :firstname, :lastname, :speciality, :center_id, :created_at, :updated_at
+json.extract! doctor, :id, :firstname, :lastname, :speciality,
+              :suite, :phone, :phone_ext, :email, :birthday,
+              :center_id, :created_at, :updated_at
 json.url doctor_url(doctor, format: :json)

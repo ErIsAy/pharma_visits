@@ -1,13 +1,20 @@
 
 Screens
-[?] - Specialties
-[ ] - Drugstore
-[ ] - Planning
+[ ] - Drugstore (name, phone, address, city)
+[ ] - List of Products (Name, Image, description, inventory?) - Get images from http://www.gupharma.com/
+[X] - Planning
+      [ ] - Front End Design
+[ ] - Reports
+      [ ] - Planning Report
 
 Validation
 [X] - Centers => unique
 
 Fields
-[ ] - Doctors contact (Phone, Email)
-[ ] - Center contact (Phone)
-  
+[X] - Doctors contact (Suite, Phone, Phone ext, email, birthday)
+    [X] - Add to Front end Form
+[ ] - Center contact (Phone, Google Map)
+
+Search Filter
+[ ] - Doctors
+[ ] - Centers
