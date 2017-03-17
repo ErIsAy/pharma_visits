@@ -1,11 +1,11 @@
 
 Screens
-[ ] - Drugstore (name, phone, address, city)
-[ ] - List of Products (Name, Image, description, inventory?) - Get images from http://www.gupharma.com/
+[ ] - Drugstore (name, phone, address, city) - 30 min
+[ ] - List of Products (Name, Image, description, inventory?) - Get images from http://www.gupharma.com/ - 1 hours
 [X] - Planning
-      [ ] - Front End Design
+      [ ] - Front End Design - 2 hours
 [ ] - Reports
-      [ ] - Planning Report
+      [ ] - Planning Report - 2 hours
 
 Validation
 [X] - Centers => unique
@@ -13,8 +13,12 @@ Validation
 Fields
 [X] - Doctors contact (Suite, Phone, Phone ext, email, birthday)
     [X] - Add to Front end Form
-[ ] - Center contact (Phone, Google Map)
+[ ] - Center contact (Phone, Google Map) - 20 min
 
 Search Filter
-[ ] - Doctors
-[ ] - Centers
+[ ] - Doctors - 10 min
+[ ] - Centers - 10 min
+
+
+Note: Associate User with Planning
+______________________________________________________________________________
