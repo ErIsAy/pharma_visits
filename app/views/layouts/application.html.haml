@@ -23,6 +23,7 @@
       = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
 
       = yield :javascript
+      = render :partial => 'layouts/shared/map'
       = yield :gmap_show_js
       = yield :gmap_form_edit
       = yield :gmap_form_new
