@@ -4,6 +4,9 @@ class CreateCenters < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :city
+      t.string :phone
+      t.decimal :lat
+      t.decimal :lng
 
       t.timestamps null: false
     end

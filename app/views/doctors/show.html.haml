@@ -11,64 +11,80 @@
     = @doctor.lastname
 
     %p
-      %b CIR
+      %b
+        = @doctor.speciality
     %p
-      %b Union Medica
+      %b
+        = @doctor.center.name.upcase
+        %br
+        = @doctor.center.phone
+        = "Ext.: #{@doctor.phone_ext}"
+
     -#
     -# %p
     -#   %b Apellidos:
 
 
 
-  .ui.comments.container{:style => "margin-top: 50px;"}
-    %h2.ui.dividing.header
-      %i.comments.outline.icon
-      Comentarios
+  .ui.comments.container.center.aligned{:style => "margin-top: 50px;"}
+    %h3 Mapa
+    #map{:style => "width: 100%; height: 350px;"}
 
-    .comment
-      .content
-        %a.author Matt
-        .metadata
-          %span.date Today at 5:42PM
-        .text
-          How artistic!
-        .actions
-          %a.reply Reply
-    .comment
-      .content
-        %a.author Elliot Fu
-        .metadata
-          %span.date Yesterday at 12:30AM
-        .text
-          %p This has been very useful for my research. Thanks as well!
-        .actions
-          %a.reply Reply
-      .comments
-        .comment
-          .content
-            %a.author Jenny Hess
-            .metadata
-              %span.date Just now
-            .text
-              Elliot you are always so right :)
-            .actions
-              %a.reply Reply
-    .comment
-      .content
-        %a.author Joe Henderson
-        .metadata
-          %span.date 5 days ago
-        .text
-          Dude, this is awesome. Thanks so much
-        .actions
-          %a.reply Reply
-    %form.ui.reply.form
-      .field
-        %textarea
-      .ui.blue.labeled.submit.icon.button
-        %i.icon.edit
-        Agregar Comentario
+    - content_for :gmap_show_js do
+      :javascript
+        $(document).ready(function(){
+          var center = #{@doctor.center.to_json}    // pass ruby variable to javascript
+          gmap_show(center);    // init show map for center card (only print marker)
+        });
 
+    -# %h2.ui.dividing.header
+    -#   %i.comments.outline.icon
+    -#   Comentarios
+    -#
+    -# .comment
+    -#   .content
+    -#     %a.author Matt
+    -#     .metadata
+    -#       %span.date Today at 5:42PM
+    -#     .text
+    -#       How artistic!
+    -#     .actions
+    -#       %a.reply Reply
+    -# .comment
+    -#   .content
+    -#     %a.author Elliot Fu
+    -#     .metadata
+    -#       %span.date Yesterday at 12:30AM
+    -#     .text
+    -#       %p This has been very useful for my research. Thanks as well!
+    -#     .actions
+    -#       %a.reply Reply
+    -#   .comments
+    -#     .comment
+    -#       .content
+    -#         %a.author Jenny Hess
+    -#         .metadata
+    -#           %span.date Just now
+    -#         .text
+    -#           Elliot you are always so right :)
+    -#         .actions
+    -#           %a.reply Reply
+    -# .comment
+    -#   .content
+    -#     %a.author Joe Henderson
+    -#     .metadata
+    -#       %span.date 5 days ago
+    -#     .text
+    -#       Dude, this is awesome. Thanks so much
+    -#     .actions
+    -#       %a.reply Reply
+    -# %form.ui.reply.form
+    -#   .field
+    -#     %textarea
+    -#   .ui.blue.labeled.submit.icon.button
+    -#     %i.icon.edit
+    -#     Agregar Comentario
+    -#
 
 
 

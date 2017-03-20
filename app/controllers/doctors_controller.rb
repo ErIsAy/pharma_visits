@@ -78,7 +78,6 @@ class DoctorsController < ApplicationController
                                      :lastname,
                                      :speciality,
                                      :suite,
-                                     :phone,
                                      :phone_ext,
                                      :email,
                                      :birthday,

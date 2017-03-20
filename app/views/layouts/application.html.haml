@@ -4,20 +4,27 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Gupharma
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = render :partial => 'layouts/shared/gmap'
     = csrf_meta_tags
   %body
+    .pusher
+      %div.yield
+        - flash.each do |key, value|
+          %div{:class => "#{flash_class(key)} closable", :id => "notice_center"}
+            %i.close.icon
+            = value
 
-    %div.yield
-      - flash.each do |key, value|
-        %div{:class => "#{flash_class(key)} closable", :id => "notice_center"}
-          %i.close.icon
-          = value
+        - if user_signed_in?
+          = render :partial => 'layouts/shared/menu'
 
-      - if user_signed_in?
-        = render :partial => 'layouts/shared/menu'
+        = yield
+        #remote_container
 
-      = yield
-      #remote_container
+      = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
-    = yield :javascript
+      = yield :javascript
+      = yield :gmap_show_js
+      = yield :gmap_form_edit
+      = yield :gmap_form_new
+      = yield :center_new
+      = yield :plannings_new

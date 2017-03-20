@@ -5,6 +5,13 @@
   %div.main.ui.container
     = render 'form'
 
--# = link_to 'Show', @center
--# \|
--# = link_to 'Back', centers_path
+  -# = link_to 'Show', @center
+  -# \|
+  -# = link_to 'Back', centers_path
+
+  - content_for :gmap_form_edit do
+    :javascript
+      $(document).ready(function(){
+        var center = #{@center.to_json}
+        gmap_form(center);    // form map for edit view (print marker and possibility of put newer)
+      });

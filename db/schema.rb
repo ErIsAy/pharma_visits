@@ -17,6 +17,9 @@ ActiveRecord::Schema.define(version: 20170302193455) do
     t.string   "name"
     t.string   "address"
     t.string   "city"
+    t.string   "phone"
+    t.decimal  "lat"
+    t.decimal  "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170302193455) do
     t.string   "lastname"
     t.string   "speciality"
     t.string   "suite"
-    t.string   "phone"
     t.string   "phone_ext"
     t.string   "email"
     t.date     "birthday"

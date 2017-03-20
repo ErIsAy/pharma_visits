@@ -76,6 +76,7 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -223,6 +224,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 4.2)
+  gmaps4rails
   haml-rails (~> 0.9.0)
   jbuilder (~> 2.0)
   jquery-rails
@@ -243,7 +245,7 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.2.4p230
 
 BUNDLED WITH
    1.13.6

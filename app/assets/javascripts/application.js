@@ -13,12 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require lib/underscore-min
 //= require turbolinks
 //= require dist/semantic
 //= require lib/momentjs/moment
 //= require lib/fullcalendar/fullcalendar
 //= require lib/daterangepicker
 //= require lib/calendar
+//= require gmaps/google
+//= require lib/masked-input
+//= require lib/timepicki
 //= require tablesort
 //= require_tree .
 
@@ -41,6 +45,9 @@ $( "#sidebar-toggle" ).click(function() {
 
 /************ Initializers **************/
 $( document ).ready(function() {
+  // gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
+  // gmap_show(center);    // init show map for center card (only print marker)
+
   $('.ui.dropdown').dropdown();
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);

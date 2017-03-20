@@ -19,7 +19,12 @@
                 = planning.shift
             %td= planning.title
             %td= planning.date_visit
-            %td= planning.visited ? "Si" : "No"
+            %td
+              - if planning.visited
+                %i.checkmark.icon.green.huge
+              - else
+                %i.minus.icon.brown.huge
+
             %td.collapsing.positive
               = link_to 'Ver |', planning
               = link_to 'Editar |', edit_planning_path(planning)

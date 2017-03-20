@@ -11,13 +11,19 @@ Validation
 [X] - Centers => unique
 
 Fields
-[X] - Doctors contact (Suite, Phone, Phone ext, email, birthday)
+[X] - Doctors contact (Suite, Phone(from center), Phone ext, email, birthday)
     [X] - Add to Front end Form
-[ ] - Center contact (Phone, Google Map) - 20 min
+[X] - Center contact (Phone, Google Map) - 20 min
+[X] - Plannings visit hour - 10 min
+[ ] - Plannings belongs_to User
+[ ] - Plannings belongs_to Doctor
 
 Search Filter
 [ ] - Doctors - 10 min
 [ ] - Centers - 10 min
+
+Misc.
+[X] - Go to Admin link if Admin
 
 
 Note: Associate User with Planning

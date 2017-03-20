@@ -5,7 +5,8 @@ class CreateDoctors < ActiveRecord::Migration
       t.string :lastname
       t.string :speciality
       t.string :suite
-      t.string :phone
+      # takes the centers phone
+      # t.string :phone
       t.string :phone_ext
       t.string :email
       t.date :birthday

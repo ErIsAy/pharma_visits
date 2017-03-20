@@ -19,6 +19,7 @@ gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'rails_admin', '~> 1.0'
+gem 'gmaps4rails'
 # gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password

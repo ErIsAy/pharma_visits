@@ -17,9 +17,13 @@
       = f.input :date_visit, label: false, as: :string
 
     .field.required
-      = f.label "Tanda"
+      = f.label "Horario"
       -# = f.input :shift, label: false
-      = f.input :shift, label: false, collection: Planning::SHIFTS, input_html: { class: 'ui search dropdown' }
+      -# = f.input :shift, label: false, collection: Planning::SHIFTS, input_html: { class: 'ui search dropdown' }
+      = f.input :shift, label: false
+
+    -# .field
+    -#   %input{class: 'time_element'}
 
 
     -# .field.required.datetimepicker
@@ -27,8 +31,8 @@
     -#   = f.input :end, label: false, as: :string,
     -#                                 start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
 
-  .ui.checkbox
-    = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline
+  .ui.checkbox.toggle
+    = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline unless @planning.new_record?
 
   .ui.divider
 
@@ -38,3 +42,10 @@
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
+
+- content_for :plannings_new do
+  :javascript
+    $(document).ready(function(){
+      $(".time_element").timepicki();
+      $("#planning_shift").timepicki();
+    });

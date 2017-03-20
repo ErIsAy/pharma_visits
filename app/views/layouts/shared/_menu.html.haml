@@ -14,15 +14,23 @@
   %a.item{:href => '#'}
     %i.first.aid.icon.icon-gradient
     Farmacias
+  %a.item{:href => '#'}
+    %i.dropbox.icon.icon-gradient
+    Productos
+
 
 .ui.top.fixed.menu.white.hude.borderless.labeled.icon
   %a.item#sidebar-toggle
     %i.content.icon.asphalt-gradient#logo_icon
   %a.item{:href => root_path}
     %i.home.icon.large.icon.asphalt-gradient#logo_icon
-  %a.item{:href => scheduler_events_path}
+  %a.item{:href => plannings_path}
     %i.checked.calendar.large.icon.asphalt-gradient#logo_icon
   %div.right.menu
+    .item.top-menu-label
+      - if current_user.admin
+        %a.item{:href => '/admin'}
+          Go to Admin Panel
     .item.top-menu-label.asphalt-gradient
       = current_user.username
       = link_to destroy_user_session_path, method: :delete do
