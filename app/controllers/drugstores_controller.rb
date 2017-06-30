@@ -4,8 +4,21 @@ class DrugstoresController < ApplicationController
   # GET /drugstores
   # GET /drugstores.json
   def index
+    if params[:search]
+      @drugstores = Drugstore.where('name LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
+      # @doctors = Doctor.where(:firstname => params[:search]).paginate(:page => params[:page], :per_page => 20)
+    else
+      @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
+    end
     # @drugstores = Drugstore.all
-    @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
+    # @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportDrugstores.new(@drugstores)
+        send_data pdf.render, filename: 'Farmacias.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /drugstores/1

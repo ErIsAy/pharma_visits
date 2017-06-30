@@ -6,6 +6,14 @@ class PlanningsController < ApplicationController
   def index
     # @plannings = Planning.all
     @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
+    
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportPlannings.new(@plannings)
+        send_data pdf.render, filename: 'PlanMensual.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /plannings/1

@@ -16,7 +16,7 @@ class DoctorsController < ApplicationController
       format.html
       format.pdf do
         pdf = ReportDoctors.new(@doctors)
-        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+        send_data pdf.render, filename: 'Doctores.pdf', type: 'application/pdf'
       end
     end
   end

@@ -2,6 +2,11 @@
   %div.main.ui.container
     %h1.ui.header.blue Listado de Farmacias
 
+    .ui.icon.input
+      = form_tag drugstores_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Farmaica..."
+        = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+
     %table.ui.sortable.celled.table.striped
       %thead
         %tr
@@ -34,7 +39,11 @@
     %br
 
     -# = link_to 'New Drugstore', new_drugstore_path
-
+    - if params[:search]
+      = link_to drugstores_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
     = link_to new_drugstore_path, class: "ui blue basic submit button" do
       %i.big.icons
         %i.hospital.icon
