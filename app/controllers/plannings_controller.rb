@@ -5,7 +5,7 @@ class PlanningsController < ApplicationController
   # GET /plannings.json
   def index
     # @plannings = Planning.all
-    @plannings = Planning.paginate(:page => params[:page], :per_page => 15)
+    @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /plannings/1

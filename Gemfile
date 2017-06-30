@@ -22,7 +22,7 @@ gem 'rails_admin', '~> 1.0'
 gem 'gmaps4rails'
 gem 'nokogiri'
 gem 'will_paginate', '~> 3.1.0'
-gem "will_paginate_semantic_ui"
+gem 'will_paginate_semantic_ui', '~> 2.1.0'
 # gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password

@@ -30,8 +30,8 @@
     .item.top-menu-label
       - if current_user.admin
         %a.item{:href => '/admin'}
-          Go to Admin Panel
+          Admin Panel
     .item.top-menu-label.asphalt-gradient
-      = current_user.username
+      -# = current_user.username
       = link_to destroy_user_session_path, method: :delete do
         %i.power.large.icon.icon-gradient-red#logo_icon
