@@ -1,6 +1,10 @@
 .pusher
   %div.main.ui.container
     %h1.ui.header.blue.centered Plan Mensual
+    %br
+    %h1.ui.header.blue.centered
+      -# = Date::MONTHNAMES[Date.today.month]
+      = I18n.l(Time.now, format: "%B").capitalize
 
     %table.ui.sortable.celled.table.striped.definition
       %thead
