@@ -30,7 +30,12 @@
                                               :data => { :confirm => '¿Está seguro…?' }
           -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  %br
-  -#
-  -# = link_to 'New Drugstore', new_drugstore_path
-  -#
+    %br
+
+    -# = link_to 'New Drugstore', new_drugstore_path
+
+    = link_to new_drugstore_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.hospital.icon
+        %i.corner.add.icon
+      = 'Agregar Farmacia'

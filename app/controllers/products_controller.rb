@@ -19,8 +19,6 @@ class ProductsController < ApplicationController
     entries.each do |entry|
       title = entry.css('div.caption>h3').text
       link = entry.css('div.img-container>img')[0]['src']
-      # link = 'test'
-      # debugger/
       @entriesArray << Entry.new(title, link)
     end
 
@@ -31,28 +29,18 @@ class ProductsController < ApplicationController
     entries.each do |entry|
       title = entry.css('div.caption>h3').text
       link = entry.css('div.img-container>img')[0]['src']
-      # link = 'test'
-      # debugger/
       @gupharmaintra << Entry.new(title, link)
     end
 
     doc = Nokogiri::HTML(open("http://gupharma.com/producto/preventor"))
 
     entries = doc.css('.span4>.row')
-    # debugger
     @preventor = []
     entries.each do |entry|
       title = entry.css('.span6.text-left').text
       link = entry.css('.span6.text-right>img')[0]['src']
-      # link = "test"
-
-      # debugger/
       @preventor << Entry.new(title, link)
     end
-
-
-
-
 
   end
 

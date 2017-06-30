@@ -24,11 +24,14 @@
   -# = f.error_notification
   .field
     .field.required
-      = f.label 'Nombre'
+      = f.label 'Nombre de la Farmacia'
       = f.input :name, label: false
     .field
       = f.label 'Dirección'
       = f.input :address, label: false
+    .field
+      = f.label 'Personal de Despacho'
+      = f.input :service_person, label: false      
     .eight.wide.field
       = f.label 'Ciudad'
       = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }

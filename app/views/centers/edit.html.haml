@@ -8,9 +8,11 @@
   %div.main.ui.container
     = render 'form'
 
-  -# = link_to 'Show', @center
-  -# \|
-  -# = link_to 'Back', centers_path
+    %br
+    = link_to centers_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'
 
   - content_for :gmap_form_edit do
     :javascript

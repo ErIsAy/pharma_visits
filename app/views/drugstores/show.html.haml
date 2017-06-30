@@ -1,22 +1,7 @@
--# %p#notice= notice
--#
--# %p
--#   %b Name:
--#   = @drugstore.name
--# %p
--#   %b Phone:
--#   = @drugstore.phone
--# %p
--#   %b Address:
--#   = @drugstore.address
--# %p
--#   %b City:
--#   = @drugstore.city
--#
--# = link_to 'Edit', edit_drugstore_path(@drugstore)
--# \|
--# = link_to 'Back', drugstores_path
--#
+:css
+  p{
+    font-size: 1.5em;
+  }
 
 
 %p#notice= notice
@@ -30,7 +15,7 @@
 
 %div.main.ui.container.ui.center.aligned
   %p
-    %b Nombre del Centro:
+    %b Nombre del Centro
     = @drugstore.name
   %p
     %b Dirección:
@@ -42,6 +27,9 @@
     %b Tel.:
     = @drugstore.phone
 
-= link_to 'Edit', edit_drugstore_path(@drugstore)
-\|
-= link_to 'Back', drugstores_path
+
+
+  = link_to drugstores_path, class: "ui blue basic submit button" do
+    %i.big.icons
+      %i.reply.icon
+    = 'Volver'

@@ -1,4 +1,8 @@
 -# = render './layouts/shared/menu'
+:css
+  p{
+    font-size: 1.5em;
+  }
 
 %p#notice= notice
 
@@ -36,6 +40,11 @@
           var center = #{@doctor.center.to_json}    // pass ruby variable to javascript
           gmap_show(center);    // init show map for center card (only print marker)
         });
+    %br
+    = link_to doctors_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'
 
     -# %h2.ui.dividing.header
     -#   %i.comments.outline.icon

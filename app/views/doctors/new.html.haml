@@ -4,5 +4,9 @@
 .pusher
   %div.main.ui.container
     = render 'form'
-
+    %br
+    = link_to doctors_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'
 -# = link_to 'Back', doctors_path

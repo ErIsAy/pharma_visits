@@ -8,7 +8,8 @@
 .pusher
   %div.main.ui.container
     = render 'form'
-
-  = link_to 'Show', @drugstore
-  \|
-  = link_to 'Back', drugstores_path
+    %br
+    = link_to drugstores_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'

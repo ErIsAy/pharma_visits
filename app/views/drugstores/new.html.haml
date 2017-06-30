@@ -7,6 +7,11 @@
 .pusher
   %div.main.ui.container
     = render 'form'
+    %br
+    = link_to drugstores_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'
 
   -# = link_to 'Back', centers_path
   -# - content_for :gmap_form_new do

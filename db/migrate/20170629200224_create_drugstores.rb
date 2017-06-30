@@ -5,6 +5,7 @@ class CreateDrugstores < ActiveRecord::Migration
       t.string :phone
       t.string :address
       t.string :city
+      t.string :service_person
 
       t.timestamps null: false
     end
