@@ -4,7 +4,8 @@ class DrugstoresController < ApplicationController
   # GET /drugstores
   # GET /drugstores.json
   def index
-    @drugstores = Drugstore.all
+    # @drugstores = Drugstore.all
+    @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /drugstores/1
@@ -28,7 +29,7 @@ class DrugstoresController < ApplicationController
 
     respond_to do |format|
       if @drugstore.save
-        format.html { redirect_to @drugstore, notice: 'Drugstore was successfully created.' }
+        format.html { redirect_to @drugstore, notice: 'Farmacia creata exitosamente' }
         format.json { render :show, status: :created, location: @drugstore }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class DrugstoresController < ApplicationController
   def update
     respond_to do |format|
       if @drugstore.update(drugstore_params)
-        format.html { redirect_to @drugstore, notice: 'Drugstore was successfully updated.' }
+        format.html { redirect_to @drugstore, notice: 'Actualización existosa' }
         format.json { render :show, status: :ok, location: @drugstore }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class DrugstoresController < ApplicationController
   def destroy
     @drugstore.destroy
     respond_to do |format|
-      format.html { redirect_to drugstores_url, notice: 'Drugstore was successfully destroyed.' }
+      format.html { redirect_to drugstores_url, notice: 'Elimninado exitosamente' }
       format.json { head :no_content }
     end
   end

@@ -33,7 +33,9 @@
               -# .ui.fitted
               -#   %a{:href => doctor_path(doctor)}
               -#     Show
-
+      -# = will_paginate @doctors, previous_label: "Anterior", next_label: "Siguiente"
+      -# = will_paginate @doctors, renderer: WillPaginateSemanticUi::ActionView::Renderer
+      = will_paginate @doctors, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
 
 

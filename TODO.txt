@@ -23,9 +23,9 @@ Search Filter
 [ ] - Centers - 10 min
 
 pagination
-[ ] - Planning 
-[ ] - Doctors
-[ ] - Centers
+[x] - Planning
+[x] - Doctors
+[x] - Centers
 
 Misc.
 [X] - Go to Admin link if Admin

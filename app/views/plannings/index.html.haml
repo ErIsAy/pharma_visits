@@ -17,7 +17,7 @@
             %td.collapsing
               %div.ui.fitted
                 = planning.shift
-            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname 
+            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
             %td= planning.date_visit
             %td
               - if planning.visited
@@ -29,6 +29,9 @@
               = link_to 'Ver |', planning
               = link_to 'Editar |', edit_planning_path(planning)
               = link_to 'Eliminar', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
 
     %br
 

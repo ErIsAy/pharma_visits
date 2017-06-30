@@ -29,6 +29,7 @@
                                               class: "ui red basic submit button",
                                               :data => { :confirm => '¿Está seguro…?' }
           -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
     %br
 
