@@ -4,7 +4,8 @@ class CentersController < ApplicationController
   # GET /centers
   # GET /centers.json
   def index
-    @centers = Center.all
+    # @centers = Center.all
+    @centers = Center.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /centers/1

@@ -26,6 +26,8 @@
                                             class: "ui red basic submit button",
                                             :data => { :confirm => '¿Está seguro…?' }
 
+      = will_paginate @centers, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
     %br
 
     -# = link_to 'New Center', new_center_path
