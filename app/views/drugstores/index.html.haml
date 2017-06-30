@@ -1,0 +1,36 @@
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue Listado de Farmacias
+
+    %table.ui.sortable.celled.table.striped
+      %thead
+        %tr
+          %th Farmacia
+          %th Tel.
+          %th Dirección
+          %th Ciudad
+          %th
+
+      %tbody
+        - @drugstores.each do |drugstore|
+          %tr
+            -# %td.collapsing
+            -#   %div.ui.fitted
+            -#     = drugstore.speciality
+            %td= drugstore.name
+            %td= drugstore.phone
+            %td= drugstore.address
+            %td= drugstore.city
+            -# %td= drugstore.center.name if drugstore.center
+            %td.collapsing.positive
+              = link_to 'Ver', drugstore, class: "ui brown basic submit button"
+              = link_to 'Editar', edit_drugstore_path(drugstore), class: "ui blue basic submit button"
+              = link_to 'Eliminar', drugstore, :method => :delete,
+                                              class: "ui red basic submit button",
+                                              :data => { :confirm => '¿Está seguro…?' }
+          -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
+  -#
+  -# = link_to 'New Drugstore', new_drugstore_path
+  -#

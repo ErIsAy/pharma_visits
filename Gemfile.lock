@@ -229,6 +229,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  nokogiri
   normalize-rails
   pg
   rails (= 4.2.6)
@@ -245,7 +246,7 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 RUBY VERSION
-   ruby 2.2.4p230
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.6
+   1.15.0

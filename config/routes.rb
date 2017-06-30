@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'products/index'
+
+  get 'products/show'
+
+  resources :drugstores
   resources :plannings
   resources :events do
     get 'scheduler', on: :collection
@@ -14,6 +19,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  # get 'application#scrape_reddit'
+  #  root 'application#scrape_reddit'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

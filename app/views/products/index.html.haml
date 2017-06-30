@@ -1,0 +1,163 @@
+-# %h1 Products#index
+-# %p Find me in app/views/products/index.html.haml
+-#
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue Productos
+    -# %button.ui.blue.icon.button{:href => 'www.google.com'}
+    -#   Mas Información
+    -#   %i.cloud.icon
+    -# = link_to "Mas Informacion", "https://www.google.com", class: "ui blue basic submit button"
+      -# %i.big.icons
+      -#   %i.doctor.icon
+      -#   %i.corner.add.icon
+      -# = 'Nuevo Doctor'
+    .ui.top.attached.tabular.menu
+      %a.item.active{"data-tab" => "first"} Gupharma
+      %a.item{"data-tab" => "second"} Gupharma - Línea Intrahospitalaria
+      %a.item{"data-tab" => "third"} Biofreeze
+      %a.item{"data-tab" => "four"} Preventor
+    .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
+      = link_to 'Mas información', 'http://gupharma.com/productos/gupharma',
+        class: "ui blue basic submit button"
+      %br
+      %br
+      .ui.three.column.grid
+        - @entriesArray.each do |entry|
+          -# = entry.title
+          -# %img{:src=>entry.link}
+          .column
+            .ui.card
+              .image
+                %img{:src=>entry.link}
+              .content
+                .header
+                  = entry.title
+              -#   .meta
+              -#     %a info
+              -#   .description
+              -#     Matthew is an interior designer living in New York.
+              -# .extra.content
+              -#   %span.right.floated
+              -#     Joined in 2013
+              -#   %span
+              -#     %i.user.icon
+              -#     75 info
+    .ui.bottom.attached.tab.segment{"data-tab" => "second"}
+      = link_to 'Mas información', 'http://gupharma.com/productos/intrahospitalaria',
+        class: "ui blue basic submit button"
+      %br
+      %br
+      .ui.three.column.grid
+        - @gupharmaintra.each do |entry|
+          -# = entry.title
+          -# %img{:src=>entry.link}
+          .column
+            .ui.card
+              .image
+                %img{:src=>entry.link}
+              .content
+                .header
+                  = entry.title
+              -#   .meta
+              -#     %a info
+              -#   .description
+              -#     Matthew is an interior designer living in New York.
+              -# .extra.content
+              -#   %span.right.floated
+              -#     Joined in 2013
+              -#   %span
+              -#     %i.user.icon
+              -#     75 info
+    .ui.bottom.attached.tab.segment{"data-tab" => "third"}
+      = link_to 'Mas información', 'http://gupharma.com/producto/biofreeze',
+        class: "ui blue basic submit button"
+      %br
+      %br
+      .container
+        %img.ui.bordered.image{:src=>'http://gupharma.com/theme/front/images/biofreeze/biofreeze-todos.png'}
+        .ui.segment
+          %h1 ¿Qué es Biofreeze?
+          Es un analgésico que alivia el dolor muscular a través de un proceso llamado crioterapia (terapia del frio) que consiste en enfriar y volver a calentar los tejidos estimulando el retorno sanguíneo en las áreas afectadas. Puede ser usado por personas de todas las edades.
+          %br
+          %br
+          La forma más popular de crioterapia es el uso de hielo. Pero cuando se aplica a los músculos afectados, el hielo puede causar efectos secundarios negativos tales como la rigidez, la disminución de la amplitud de movimiento y la irritación de la piel.
+          %br
+          %br
+          Biofreeze produce la misma sensación de frío que acompaña a la formación de hielo, pero a diferencia del hielo, Biofreeze permite la actividad durante el tratamiento.
+          %br
+          %br
+          Alivia el malestar muscular, incrementa la movilidad y acelera el proceso de curación de las lesiones deportivas. Es un producto totalmente natural, no contiene ceras o aceites.
+          %br
+          %br
+          El dolor se puede controlar con tratamiento y terapia facilitando un mejor rendimiento físico, reduciendo la severidad de los síntomas, mejorando la calidad de vida, y permitiendo a su cuerpo llevar el más alto nivel posible.
+          %br
+          %br
+          Biofreeze proporciona alivio a las personas que sufren de artritis, pero también se utiliza para los dolores y esguinces musculares, dolor de espalda, el hombro y el cuello, la disminución del dolor en el tobillo, rodilla, cadera, codo y los efectos de los desgarres musculares.
+          %br
+          %br
+          El resultado es una acción rápida, penetración profunda y alivio prolongado del malestar.
+          %br
+          %br
+          El efecto dura aproximadamente 6 horas y se puede utilizar varias veces al día.
+        .ui.segment
+          %h1 Presentaciones
+          .ui.top.attached.tabular.menu
+            %a.active.item{"data-tab" => "gel"} Gel
+            %a.item{"data-tab" => "rollon"} Roll On
+            %a.item{"data-tab" => "spray"} Spray
+          .ui.bottom.attached.active.tab.segment{"data-tab" => "gel"}
+            %img.ui.medium.image{:src=>'http://gupharma.com/theme/front/images/biofreeze/biofreeze4.png'}
+            .ui.segment
+              El tubo está adaptado para las aplicaciones prácticas de masaje (especialmente en los músculos grandes y las articulaciones).
+              %b
+                Aplicaciones:
+                Abdominal, bíceps, pecho, caderas, shin, hombro, muslo, torso, terneros, glúteos, los isquiotibiales.
+
+          .ui.bottom.attached.tab.segment{"data-tab" => "rollon"}
+            %img.ui.medium.image{:src=>'http://gupharma.com/theme/front/images/biofreeze/biofreeze7.png'}
+            .ui.segment
+              El aplicador de roll on permite alcanzar músculos pequeños y articulaciones del cuerpo.
+
+              El masaje que te proporciona el roll on puede ser utilizado para estimular los puntos gatillos en el área afectada.
+
+              %b
+                Aplicaciones:
+                Abdominal, bíceps, antebrazos, pies, caderas, cuello, hombros, muslos, pantorrillas, antebrazo, glúteos, los isquiotibiales, lumbares y cuello.
+
+          .ui.bottom.attached.tab.segment{"data-tab" => "spray"}
+            %img.ui.medium.image{:src=>'http://gupharma.com/theme/front/images/biofreeze/biofreeze6.png'}
+            .ui.segment
+              A menudo es difícil para quienes sufren de dolor de espalda y pacientes artríticos para conseguir una aplicación uniforme donde más lo necesitan, esta presentación le ayudará a aplicar BIOFREEZE en la zona afectada y obtener una rápida recuperación.
+
+              %b
+                Aplicaciones:
+                Pies, pantorrillas, espalda, espalda baja, cuello.
+
+
+    .ui.bottom.attached.tab.segment{"data-tab" => "four"}
+      = link_to 'Mas información', 'http://gupharma.com/producto/preventor',
+        class: "ui blue basic submit button"
+      %br
+      %br
+      .ui.three.column.grid
+        - @preventor.each do |entry|
+          -# = entry.title
+          -# %img{:src=>entry.link}
+          .column
+            .ui.card
+              .image
+                %img{:src=>entry.link}
+              .content
+                .description
+                  = entry.title
+              -#   .meta
+              -#     %a info
+              -#   .description
+              -#     Matthew is an interior designer living in New York.
+              -# .extra.content
+              -#   %span.right.floated
+              -#     Joined in 2013
+              -#   %span
+              -#     %i.user.icon
+              -#     75 info

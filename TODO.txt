@@ -1,7 +1,7 @@
 
 Screens
-[ ] - Drugstore (name, phone, address, city) - 30 min
-[ ] - List of Products (Name, Image, description, inventory?) - Get images from http://www.gupharma.com/ - 1 hours
+[X] - Drugstore (name, phone, address, city) - 30 min
+[x] - List of Products (Name, Image, description, inventory?) - Get images from http://www.gupharma.com/ - 1 hours
 [X] - Planning
       [ ] - Front End Design - 2 hours
 [ ] - Reports

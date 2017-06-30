@@ -47,7 +47,7 @@ $( "#sidebar-toggle" ).click(function() {
 $( document ).ready(function() {
   // gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
   // gmap_show(center);    // init show map for center card (only print marker)
-
+  $('.menu .item').tab();
   $('.ui.dropdown').dropdown();
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);

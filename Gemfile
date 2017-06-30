@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.4'
+ruby '2.3.3'
 
 gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
@@ -20,6 +20,7 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'rails_admin', '~> 1.0'
 gem 'gmaps4rails'
+gem 'nokogiri'
 # gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password

@@ -1,0 +1,47 @@
+-# %p#notice= notice
+-#
+-# %p
+-#   %b Name:
+-#   = @drugstore.name
+-# %p
+-#   %b Phone:
+-#   = @drugstore.phone
+-# %p
+-#   %b Address:
+-#   = @drugstore.address
+-# %p
+-#   %b City:
+-#   = @drugstore.city
+-#
+-# = link_to 'Edit', edit_drugstore_path(@drugstore)
+-# \|
+-# = link_to 'Back', drugstores_path
+-#
+
+
+%p#notice= notice
+
+.pusher
+  %div.main.ui.container
+
+  %h2.ui.center.aligned.icon.header
+    %i.circular.first.aid.icon.blue
+    = @drugstore.name
+
+%div.main.ui.container.ui.center.aligned
+  %p
+    %b Nombre del Centro:
+    = @drugstore.name
+  %p
+    %b Dirección:
+    = @drugstore.address
+  %p
+    %b Ciudad:
+    = @drugstore.city
+  %p
+    %b Tel.:
+    = @drugstore.phone
+
+= link_to 'Edit', edit_drugstore_path(@drugstore)
+\|
+= link_to 'Back', drugstores_path
