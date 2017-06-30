@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629200224) do
+ActiveRecord::Schema.define(version: 20170630035104) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20170629200224) do
     t.string   "phone"
     t.decimal  "lat"
     t.decimal  "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "divisions", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,9 +72,14 @@ ActiveRecord::Schema.define(version: 20170629200224) do
     t.string   "shift"
     t.boolean  "visited"
     t.text     "note"
+    t.integer  "user_id"
+    t.integer  "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "plannings", ["doctor_id"], name: "index_plannings_on_doctor_id"
+  add_index "plannings", ["user_id"], name: "index_plannings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -83,10 +94,12 @@ ActiveRecord::Schema.define(version: 20170629200224) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "division_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "users", ["division_id"], name: "index_users_on_division_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

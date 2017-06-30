@@ -14,17 +14,21 @@ class PlanningsController < ApplicationController
 
   # GET /plannings/new
   def new
-    @planning = Planning.new
+    # @planning = Planning.new
+    @doctors = Doctor.all
+    @planning = current_user.plannings.build
   end
 
   # GET /plannings/1/edit
   def edit
+    @doctors = Doctor.all
   end
 
   # POST /plannings
   # POST /plannings.json
   def create
-    @planning = Planning.new(planning_params)
+    @doctors = Doctor.all
+    @planning = current_user.plannings.build(planning_params)
 
     respond_to do |format|
       if @planning.save
@@ -70,6 +74,6 @@ class PlanningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planning_params
-      params.require(:planning).permit(:title, :date_visit, :shift, :visited, :note)
+      params.require(:planning).permit(:title, :date_visit, :shift, :visited, :note, :doctor_id)
     end
 end

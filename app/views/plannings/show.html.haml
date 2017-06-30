@@ -1,21 +1,41 @@
+:css
+  p{
+    font-size: 1em;
+  }
+
 %p#notice= notice
 
-%p
-  %b Titulo:
-  = @planning.title
-%p
-  %b Fecha de Visita:
-  = @planning.date_visit
-%p
-  %b Tanda:
-  = @planning.shift
-%p
-  %b Visitado?:
-  = @planning.visited
-%p
-  %b Nota:
-  = @planning.note
+.pusher
+  %div.main.ui.container
 
-= link_to 'Edit', edit_planning_path(@planning)
-\|
-= link_to 'Back', plannings_path
+  %h2.ui.center.aligned.icon.header
+    %p
+      %b Titulo:
+      = @planning.title
+    %p
+      %b Fecha de Visita:
+      = @planning.date_visit
+    %p
+      %b Tanda:
+      = @planning.shift
+    %p
+      %b Visitado?:
+      = @planning.visited
+    %p
+      %b Nota:
+      = @planning.note
+    %p
+      %b Pertenece A:
+      = @planning.user.username
+
+  %div.main.ui.container.center.aligned
+    = link_to plannings_path, class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.reply.icon
+      = 'Volver'
+
+    = link_to edit_planning_path(@planning), class: "ui blue basic submit button" do
+      %i.big.icons
+        %i.pencil.icon
+      = 'Editar'
+-# = render './layouts/shared/menu'

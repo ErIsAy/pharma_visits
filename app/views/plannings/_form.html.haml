@@ -11,6 +11,11 @@
   .field.required
     = f.label "Titulo"
     = f.input :title, label: false
+  .field.required
+    = f.label "Doctor"
+    -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
+    = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+
   .two.fields
     .field.required#planning_date_visit
       = f.label "Fecha de Visita"

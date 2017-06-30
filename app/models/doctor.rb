@@ -3,6 +3,7 @@ class Doctor < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
   validates :center_id, presence: true
   belongs_to :center
+  has_many :plannings
 
   SPECIALTIES =
     [

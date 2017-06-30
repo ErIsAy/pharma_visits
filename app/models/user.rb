@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable,
          :rememberable, :trackable, :validatable, :timeoutable
-
+  has_many :plannings
+  belongs_to :division
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login

@@ -8,6 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## username
       t.string :username, unique: true
 
+
+
       ## Admin
       t.boolean :admin
 
@@ -36,7 +38,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
+      t.belongs_to :division, index: true, foreign_key: true
       t.timestamps null: false
     end
 

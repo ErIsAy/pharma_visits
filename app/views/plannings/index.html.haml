@@ -6,7 +6,7 @@
       %thead
         %tr
           %th
-          %th Titulo
+          %th Doctor
           %th Fecha de Visita
           %th Visitado?
           %th Acciones
@@ -17,7 +17,7 @@
             %td.collapsing
               %div.ui.fitted
                 = planning.shift
-            %td= planning.title
+            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname 
             %td= planning.date_visit
             %td
               - if planning.visited

@@ -8,6 +8,8 @@ class CreatePlannings < ActiveRecord::Migration
       t.boolean :visited
       t.text :note
 
+      t.belongs_to :user, index: true, foreign_key: true
+      t.belongs_to :doctor, index: true, foreign_key: true
       t.timestamps null: false
     end
   end

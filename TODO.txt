@@ -15,16 +15,21 @@ Fields
     [X] - Add to Front end Form
 [X] - Center contact (Phone, Google Map) - 20 min
 [X] - Plannings visit hour - 10 min
-[ ] - Plannings belongs_to User
-[ ] - Plannings belongs_to Doctor
+[X] - Plannings belongs_to User
+[X] - Plannings belongs_to Doctor
 
 Search Filter
 [ ] - Doctors - 10 min
 [ ] - Centers - 10 min
 
+pagination
+[ ] - Planning 
+[ ] - Doctors
+[ ] - Centers
+
 Misc.
 [X] - Go to Admin link if Admin
 
 
-Note: Associate User with Planning
+Note: Associate User with Planning - Done
 ______________________________________________________________________________
