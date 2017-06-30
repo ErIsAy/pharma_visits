@@ -4,10 +4,21 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
+    if params[:search]
+      @doctors = Doctor.where('firstname LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
+      # @doctors = Doctor.where(:firstname => params[:search]).paginate(:page => params[:page], :per_page => 20)
+    else
+      @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
+    end
     # @doctors = Doctor.all
-    # @doctors = Doctor.all
-    @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
-
+    # @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ReportDoctors.new(@doctors)
+        send_data pdf.render, filename: 'report.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   # GET /doctors/1

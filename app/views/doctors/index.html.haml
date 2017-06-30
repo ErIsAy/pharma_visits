@@ -5,6 +5,13 @@
   %div.main.ui.container
     %h1.ui.header.blue Listado de Doctores
 
+    .ui.icon.input
+      = form_tag doctors_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Nombre..."
+        = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+
+
+
     %table.ui.sortable.celled.table.striped.definition
       %thead
         %tr
@@ -47,7 +54,11 @@
       -#     %th
       -#     %th
     %br
-
+    - if params[:search]
+      = link_to doctors_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
     = link_to new_doctor_path, class: "ui blue basic submit button" do
       %i.big.icons
         %i.doctor.icon

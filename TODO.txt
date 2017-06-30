@@ -19,8 +19,8 @@ Fields
 [X] - Plannings belongs_to Doctor
 
 Search Filter
-[ ] - Doctors - 10 min
-[ ] - Centers - 10 min
+[X] - Doctors - 10 min
+[X] - Centers - 10 min
 
 pagination
 [x] - Planning
@@ -31,5 +31,4 @@ Misc.
 [X] - Go to Admin link if Admin
 
 
-Note: Associate User with Planning - Done
 ______________________________________________________________________________

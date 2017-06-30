@@ -4,6 +4,12 @@
   %div.main.ui.container
     %h1.ui.header.blue Listado de Centros
 
+    .ui.icon.input
+      = form_tag centers_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Nombre..."
+        = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+
+
     %table.ui.sortable.celled.table.striped
       %thead
         %tr
@@ -29,7 +35,11 @@
       = will_paginate @centers, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
     %br
-
+    - if params[:search]
+      = link_to centers_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
     -# = link_to 'New Center', new_center_path
     = link_to new_center_path, class: "ui blue basic submit button" do
       %i.big.icons
