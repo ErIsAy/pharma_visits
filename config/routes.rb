@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'report/index'
+
+  get 'report/center'
+
+  get 'report/doctor'
+
+  get 'report/doctor_center'
+
+  get 'report/drugstore'
+
+  get 'report/planning'
+
   resources :divisions
   get 'products/index'
 

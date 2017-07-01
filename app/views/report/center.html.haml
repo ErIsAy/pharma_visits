@@ -1,0 +1,46 @@
+
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered Centros
+
+    .ui.large.action.input
+      = form_tag report_center_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Centro..."
+        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+
+    %button.ui.large.olive.icon.button.right.floated
+      %i.print.icon
+
+    %table.ui.sortable.celled.table.striped
+      %thead
+        %tr
+          %th Centro
+          %th Dirección
+          %th Ciudad
+          %th Acciones
+
+
+      %tbody
+        - @centers.each do |center|
+          %tr
+            %td= center.name
+            %td= center.address
+            %td= center.city
+            %td.collapsing.positive
+              = link_to 'Ver', center, class: "ui brown basic submit button"
+
+
+
+      = will_paginate @centers, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+    %br
+    - if params[:search]
+      = link_to report_center_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
+    - else
+      = link_to report_index_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'

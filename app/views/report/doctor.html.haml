@@ -1,0 +1,50 @@
+
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered Doctores
+
+    .ui.large.action.input
+      = form_tag report_doctor_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Doctor..."
+        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+
+    %button.ui.large.olive.icon.button.right.floated
+      %i.print.icon
+
+
+    %table.ui.sortable.celled.table.striped.definition
+      %thead
+        %tr
+          %th
+          %th Nombres
+          %th Apellidos
+          %th Centro
+          %th Acciones
+
+      %tbody
+        - @doctors.each do |doctor|
+          %tr
+            %td.collapsing
+              %div.ui.fitted
+                = doctor.speciality
+            %td= doctor.firstname
+            %td= doctor.lastname
+            %td= doctor.center.name if doctor.center
+            %td.collapsing.positive
+              = link_to 'Ver', doctor, class: "ui brown basic submit button"
+
+
+      = will_paginate @doctors, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+
+    %br
+    - if params[:search]
+      = link_to report_doctor_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
+    - else
+      = link_to report_index_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'

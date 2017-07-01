@@ -1,0 +1,47 @@
+
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered Reportes
+
+    .ui.segment
+      .ui.three.column.grid
+        .column
+          .ui.link.card
+            %a.image{:href => report_center_path}
+              %img{:src => "https://ubiq.co/static/images/marketing/tour/business-report-icon.png"}
+            .content
+              Centros Médicos
+              -# .meta
+              -#   %a Last Seen 2 days ago
+        .column
+          .ui.link.card
+            %a.image{:href => report_doctor_path}
+              %img{:src => "https://ubiq.co/static/images/marketing/tour/business-report-icon.png"}
+            .content
+              Listado de Doctores
+              -# .meta
+              -#   %a Last Seen 2 days ago
+        .column
+          .ui.link.card
+            %a.image{:href => report_doctor_center_path}
+              %img{:src => "https://ubiq.co/static/images/marketing/tour/business-report-icon.png"}
+            .content
+              Doctores por Centro
+              -# .meta
+              -#   %a Last Seen 2 days ago
+        .column
+          .ui.link.card
+            %a.image{:href => report_drugstore_path}
+              %img{:src => "https://ubiq.co/static/images/marketing/tour/business-report-icon.png"}
+            .content
+              Listado de Farmacias
+              -# .meta
+              -#   %a Last Seen 2 days ago
+        .column
+          .ui.link.card
+            %a.image{:href => report_planning_path}
+              %img{:src => "https://ubiq.co/static/images/marketing/tour/business-report-icon.png"}
+            .content
+              Reporte de Plan Mensual
+              -# .meta
+              -#   %a Last Seen 2 days ago

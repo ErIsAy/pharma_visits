@@ -1,0 +1,57 @@
+
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered Plan Mensual - Reporte
+
+    .ui.large.action.input
+      = form_tag report_planning_path, :method => 'get' do
+        = text_field_tag :search, params[:search], :placeholder => "Doctor..."
+        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    %button.ui.large.olive.icon.button.right.floated
+      %i.print.icon
+    -# .ui.large.action.input
+    -#   = form_tag report_planning_path, :method => 'get' do
+    -#     .field.required#planning_date_visit
+    -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
+
+    %table.ui.sortable.celled.table.striped.definition
+      %thead
+        %tr
+          %th
+          %th Doctor
+          %th Fecha de Visita
+          %th Visitado?
+          %th Acciones
+
+      %tbody
+        - @plannings.each do |planning|
+          %tr
+            %td.collapsing
+              %div.ui.fitted
+                = planning.shift
+            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
+            %td= planning.date_visit
+            %td
+              - if planning.visited
+                %i.checkmark.icon.green.huge
+              - else
+                %i.minus.icon.brown.huge
+
+            %td.collapsing.positive
+              = link_to 'Ver', planning, class: "ui brown basic submit button"
+
+      = will_paginate @plannings, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+
+    %br
+    - if params[:search]
+      = link_to report_planning_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
+    - else
+      = link_to report_index_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
