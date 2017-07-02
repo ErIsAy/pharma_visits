@@ -3,12 +3,20 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Reporte de Doctores por Centro
 
-    .ui.large.action.input{:style => "margin-top: 0;"}
-      = form_tag report_doctor_center_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Doctor..."
-        = button_tag "Buscar", :name => nil, :class => "button large ui button"
-    %button.ui.large.olive.icon.button.right.floated
-      %i.print.icon
+    .ui.segment.form.input{:style => "margin-top: 0;"}
+      = search_form_for @q, url: report_doctor_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+        .field
+          = f.label :center_name_cont, 'Centro'
+          = f.search_field :center_name_cont
+
+        = f.submit "Imprimir Reporte", :class => "ui blue button"
+
+    -# .ui.large.action.input{:style => "margin-top: 0;"}
+    -#   = form_tag report_doctor_center_path, :method => 'get' do
+    -#     = text_field_tag :search, params[:search], :placeholder => "Doctor..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    -# %button.ui.large.olive.icon.button.right.floated
+    -#   %i.print.icon
 
     %br
     %br

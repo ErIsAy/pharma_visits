@@ -2,6 +2,7 @@ class Drugstore < ActiveRecord::Base
 
   CITIES =
     [
+      ['Todas', ''],
       ['Azua', 'Azua'],
       ['Baní', 'Baní'],
       ['Barahona', 'Barahona'],

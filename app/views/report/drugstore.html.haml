@@ -3,13 +3,20 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Farmacias
 
-    .ui.large.action.input{:style => "margin-top: 0;"}
-      = form_tag report_drugstore_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Farmacia..."
-        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    .ui.segment.form.input{:style => "margin-top: 0;"}
+      = search_form_for @q, url: report_drugstore_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+        .field
+          = f.label :city_cont, 'Ciudad'
+          = f.select(:city_cont, collection: Drugstore::CITIES)
 
-    %button.ui.large.olive.icon.button.right.floated
-      %i.print.icon
+        = f.submit "Imprimir Reporte", :class => "ui blue button"
+
+      -# = form_tag report_drugstore_path, :method => 'get' do
+      -#   = text_field_tag :search, params[:search], :placeholder => "Farmacia..."
+      -#   = button_tag "Buscar", :name => nil, :class => "button large ui button"
+
+    -# %button.ui.large.olive.icon.button.right.floated
+    -#   %i.print.icon
 
     %table.ui.sortable.celled.table.striped
       %thead
