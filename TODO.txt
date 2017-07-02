@@ -34,6 +34,6 @@ Misc.
 ______________________________________________________________________________
 
 
-Update Doctors by Center Reports
+Update Doctors by Center Reports - Done
 create pdf call for each report
-update some of the search methods maybe some other gem (ransack)
+update some of the search methods maybe some other gem (ransack) - Done

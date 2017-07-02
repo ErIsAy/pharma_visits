@@ -4,21 +4,25 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
-    if params[:search]
-      @doctors = Doctor.where('firstname LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
-      # @doctors = Doctor.where(:firstname => params[:search]).paginate(:page => params[:page], :per_page => 20)
-    else
-      @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
-    end
+    # if params[:search]
+    #   @doctors = Doctor.where('firstname LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
+    #   # @doctors = Doctor.where(:firstname => params[:search]).paginate(:page => params[:page], :per_page => 20)
+    # else
+    #   @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
+    # end
     # @doctors = Doctor.all
     # @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = ReportDoctors.new(@doctors)
-        send_data pdf.render, filename: 'Doctores.pdf', type: 'application/pdf'
-      end
-    end
+
+    # respond_to do |format|
+    #   format.html
+    #   format.pdf do
+    #     pdf = ReportDoctors.new(@doctors)
+    #     send_data pdf.render, filename: 'Doctores.pdf', type: 'application/pdf'
+    #   end
+    # end
+    @q = Doctor.ransack(params[:q])
+    @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+
   end
 
   # GET /doctors/1

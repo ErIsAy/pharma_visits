@@ -5,6 +5,10 @@ class Doctor < ActiveRecord::Base
   belongs_to :center
   has_many :plannings
 
+  def display_name
+          "#{self.firstname} #{self.lastname}"
+  end
+
   SPECIALTIES =
     [
       ['CIR', 'CIR'],

@@ -11,13 +11,13 @@ class CentersController < ApplicationController
     end
     # @centers = Center.all
     # @centers = Center.paginate(:page => params[:page], :per_page => 20)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = ReportCenters.new(@centers)
-        send_data pdf.render, filename: 'Centros.pdf', type: 'application/pdf'
-      end
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.pdf do
+    #     pdf = ReportCenters.new(@centers)
+    #     send_data pdf.render, filename: 'Centros.pdf', type: 'application/pdf'
+    #   end
+    # end
   end
 
   # GET /centers/1

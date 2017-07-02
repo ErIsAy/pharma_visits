@@ -3,13 +3,19 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Centros
 
-    .ui.large.action.input
-      = form_tag report_center_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Centro..."
-        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    -# .ui.large.action.input
+    -#   = form_tag report_center_path, :method => 'get' do
+    -#     = text_field_tag :search, params[:search], :placeholder => "Centro..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
 
-    %button.ui.large.olive.icon.button.right.floated
-      %i.print.icon
+    .ui.segment.form.input{:style => "margin-top: 0;"}
+      = search_form_for @q, url: report_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+        .field
+          = f.label :city_cont, 'Ciudad'
+          = f.select(:city_cont, collection: Center::CITIES)
+
+        = f.submit "Imprimir Reporte", :class => "ui blue button"
+
 
     %table.ui.sortable.celled.table.striped
       %thead
@@ -34,7 +40,7 @@
       = will_paginate @centers, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
     %br
-    - if params[:search]
+    - if params[:q]
       = link_to report_center_path, class: "ui blue basic submit button" do
         %i.big.icons
           %i.reply.icon

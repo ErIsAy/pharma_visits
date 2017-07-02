@@ -3,12 +3,27 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Plan Mensual - Reporte
 
-    .ui.large.action.input
-      = form_tag report_planning_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Doctor..."
-        = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    .ui.segment.form.input{:style => "margin-top: 0;"}
+      = search_form_for @q, :url => report_planning_path do |f|
+        .two.fields
+          .field#planning_date_visit
+            = f.label :date_visit, 'Fecha'
+            = f.search_field :date_visit_gteq
+          .field
+            = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
+            = f.search_field :doctor_firstname_or_doctor_lastname_cont
+
+        = f.submit "Buscar", :class => "ui blue submit button"
+
+
+
+    -# .ui.large.action.input
+    -#   = form_tag report_planning_path, :method => 'get' do
+    -#     = text_field_tag :search, params[:search], :placeholder => "Doctor..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
     %button.ui.large.olive.icon.button.right.floated
       %i.print.icon
+
     -# .ui.large.action.input
     -#   = form_tag report_planning_path, :method => 'get' do
     -#     .field.required#planning_date_visit
@@ -45,7 +60,7 @@
 
 
     %br
-    - if params[:search]
+    - if params[:q]
       = link_to report_planning_path, class: "ui blue basic submit button" do
         %i.big.icons
           %i.reply.icon

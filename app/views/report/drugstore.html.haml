@@ -3,7 +3,7 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Farmacias
 
-    .ui.large.action.input
+    .ui.large.action.input{:style => "margin-top: 0;"}
       = form_tag report_drugstore_path, :method => 'get' do
         = text_field_tag :search, params[:search], :placeholder => "Farmacia..."
         = button_tag "Buscar", :name => nil, :class => "button large ui button"

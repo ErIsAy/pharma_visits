@@ -4,7 +4,19 @@
     %br
     %h1.ui.header.blue.centered
       -# = Date::MONTHNAMES[Date.today.month]
-      = I18n.l(Time.now, format: "%B").capitalize
+      -# = I18n.l(Time.now, format: "%B").capitalize
+    .ui.segment.form.input
+      = search_form_for @q do |f|
+        .two.fields
+          .field#planning_date_visit
+            = f.label :date_visit, 'Fecha'
+            = f.search_field :date_visit_gteq
+          .field
+            = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
+            = f.search_field :doctor_firstname_or_doctor_lastname_cont
+
+        = f.submit "Buscar", :class => "ui blue submit button"
+
 
     %table.ui.sortable.celled.table.striped.definition
       %thead

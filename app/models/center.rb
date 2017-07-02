@@ -4,7 +4,7 @@ class Center < ActiveRecord::Base
   has_many :doctors
 
   CITIES =
-    [
+    [ ['Todas', ''], 
       ['Azua', 'Azua'],
       ['Baní', 'Baní'],
       ['Barahona', 'Barahona'],

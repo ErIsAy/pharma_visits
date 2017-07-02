@@ -5,12 +5,20 @@
   %div.main.ui.container
     %h1.ui.header.blue Listado de Doctores
 
-    .ui.icon.input
-      = form_tag doctors_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Nombre..."
-        = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+    .ui.form.input.segment
+      -# = form_tag doctors_path, :method => 'get' do
+      -#   = text_field_tag :search, params[:search], :placeholder => "Nombre..."
+      -#   = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+      = search_form_for @q do |f|
+        .three.fields
+          .field
+            = f.label :firstname_or_lastname_cont, 'Nombre'
+            = f.search_field :firstname_or_lastname_cont
+          .field
+            = f.label :center_name_cont, 'Centro'
+            = f.search_field :center_name_cont
 
-
+        = f.submit "Buscar", :class => "ui blue submit button"
 
     %table.ui.sortable.celled.table.striped.definition
       %thead

@@ -23,8 +23,13 @@ gem 'gmaps4rails'
 gem 'nokogiri'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate_semantic_ui', '~> 2.1.0'
-
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'prawn'
+gem 'prawn-table'
+# gem 'rearmed_rails'
+# gem "query_report", "~> 1.0.4"
+
+# gem "rails_admin_pdf", :git => "git://github.com/stephskardal/rails_admin_pdf.git"
 # gem 'rails-assets-datetimepicker'
 
 # Use ActiveModel has_secure_password

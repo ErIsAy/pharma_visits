@@ -4,7 +4,7 @@
 
     .ui.icon.input
       = form_tag drugstores_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Farmaica..."
+        = text_field_tag :search, params[:search], :placeholder => "Farmacia..."
         = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
 
     %table.ui.sortable.celled.table.striped
