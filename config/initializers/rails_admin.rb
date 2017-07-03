@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
     label "Usuario"
     label_plural "Usuarios"
 
-    include_fields :username, :email, :admin, :password, :division_id, :created_at
+    include_fields :username, :email, :admin, :password, :division_id
 
     field :username do
       label "Nombre de Usuario"
@@ -48,9 +48,9 @@ RailsAdmin.config do |config|
       label "Administrador"
     end
 
-    field :created_at do
-      label "Creado"
-    end
+    # field :created_at do
+    #   label "Creado"
+    # end
 
     field :password do
       label "Contraseña"
@@ -172,13 +172,13 @@ RailsAdmin.config do |config|
     label "División"
     label_plural "Divisiones"
 
-    include_fields :name, :created_at
+    include_fields :name
     field :name do
       label 'Nombre'
     end
-    field :created_at do
-      label 'Creada'
-    end
+    # field :created_at do
+    #   label 'Creada'
+    # end
   end
 
   config.actions do
