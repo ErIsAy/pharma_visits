@@ -2,6 +2,9 @@
 es:
   admin:
     actions:
+      import:
+        menu: Importar
+        breadcrumb: Importar
       bulk_delete:
         breadcrumb: Eliminación Múltiple
         bulk_link: Eliminar los %{model_label_plural} seleccionados

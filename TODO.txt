@@ -35,5 +35,10 @@ ______________________________________________________________________________
 
 
 Update Doctors by Center Reports - Done
-create pdf call for each report
+create pdf call for each report - Done
 update some of the search methods maybe some other gem (ransack) - Done
+
+add category to doctors - Done
+add region to centers - Done
+add ejes - Done
+add metrics -
