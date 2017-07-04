@@ -21,6 +21,7 @@
       %thead
         %tr
           %th Centro
+          %th Región
           %th Dirección
           %th Ciudad
           %th Acciones
@@ -30,6 +31,7 @@
         - @centers.each do |center|
           %tr
             %td= center.name
+            %td= center.region
             %td= center.address
             %td= center.city
             %td.collapsing.positive

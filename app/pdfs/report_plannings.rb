@@ -1,7 +1,7 @@
 class ReportPlannings < Prawn::Document
   def initialize(plannings, user)
     super()
-    image "public/logo_big.jpg", :scale => 0.1
+    image "public/logo_big.png", :scale => 0.4
     @plannings = plannings
     # @user = user
     if user == ""

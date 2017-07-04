@@ -1,7 +1,7 @@
 class ReportDbc < Prawn::Document
   def initialize(doctors, center)
     super()
-    image "public/logo_big.jpg", :scale => 0.1
+    image "public/logo_big.png", :scale => 0.4
     @doctors = doctors
     @center = center
     move_down 20
@@ -21,10 +21,10 @@ class ReportDbc < Prawn::Document
 
 
   def body
-    table([["Nombre","Apellido","Centro"]], :column_widths => [166,166,166], :row_colors => ["9FA8DA"])
+    table([["Esp.","Nombre","Apellido","Cat.","Centro"]], :column_widths => [50,110,110,50,200], :row_colors => ["9FA8DA"])
 
     @doctors.each do |doctor|
-      table([[doctor.firstname, doctor.lastname, doctor.center.name]], :column_widths => [166,166,166])
+      table([[doctor.speciality ,doctor.firstname, doctor.lastname, doctor.category ,doctor.center.name]], :column_widths => [50,110,110,50,200])
     end
 
   end

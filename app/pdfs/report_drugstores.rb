@@ -1,7 +1,7 @@
 class ReportDrugstores < Prawn::Document
   def initialize(drugstores, city)
     super()
-    image "public/logo_big.jpg", :scale => 0.1
+    image "public/logo_big.png", :scale => 0.4
     @drugstores = drugstores
     if city == ""
       @city = "Todas"

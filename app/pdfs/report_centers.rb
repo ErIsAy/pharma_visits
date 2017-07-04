@@ -1,7 +1,7 @@
 class ReportCenters < Prawn::Document
   def initialize(centers, city)
     super()
-    image "public/logo_big.jpg", :scale => 0.1
+    image "public/logo_big.png", :scale => 0.4
     @centers = centers
     if city == ""
       @city = "Todas"
@@ -25,10 +25,10 @@ class ReportCenters < Prawn::Document
 
 
   def body
-    table([["Centro","Dirección","Ciudad"]], :column_widths => [100,300,100], :row_colors => ["9FA8DA"])
+    table([["Centro","Región","Dirección","Ciudad"]], :column_widths => [100,80,220,100], :row_colors => ["9FA8DA"])
 
     @centers.each do |center|
-      table([[center.name, center.address, center.city]], :column_widths => [100,300,100])
+      table([[center.name, center.region, center.address, center.city]], :column_widths => [100,80,220,100])
     end
 
   end
