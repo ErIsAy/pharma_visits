@@ -30,6 +30,24 @@ RailsAdmin.config do |config|
 
   config.excluded_models = [Event]
 
+  config.model 'Eje' do
+    label 'Eje'
+    label_plural 'Ejes'
+
+    include_fields :name, :division_id
+
+    field :name do
+      label "Eje"
+    end
+
+    field :division_id, :enum do
+      enum do
+        Division.all.collect {|p| [p.name, p.id]}
+      end
+    end
+
+  end
+
   config.model 'User' do
     label "Usuario"
     label_plural "Usuarios"
@@ -74,7 +92,7 @@ RailsAdmin.config do |config|
     label "Centro"
     label_plural "Centros"
 
-    include_fields :name, :address, :city, :phone
+    include_fields :name, :address, :city, :phone, :region
 
     field :name do
       label 'Nombre'
@@ -92,13 +110,17 @@ RailsAdmin.config do |config|
       label 'Teléfono'
     end
 
+    field :region do
+      label 'Región'
+    end
+
   end
 
   config.model 'Doctor' do
     label "Doctor"
     label_plural "Doctores"
 
-    include_fields :firstname, :lastname, :speciality, :suite, :center_id
+    include_fields :firstname, :lastname, :speciality, :suite, :center_id, :category
     field :firstname do
       label 'Nombre'
     end
@@ -110,6 +132,9 @@ RailsAdmin.config do |config|
     end
     field :suite do
       label 'Suite'
+    end
+    field :category do
+      label 'Categoría'
     end
     field :center_id, :enum do
       enum do
@@ -176,6 +201,7 @@ RailsAdmin.config do |config|
     field :name do
       label 'Nombre'
     end
+
     # field :created_at do
     #   label 'Creada'
     # end

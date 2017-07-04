@@ -9,6 +9,13 @@ class Doctor < ActiveRecord::Base
           "#{self.firstname} #{self.lastname}"
   end
 
+  CATEGORIES = [
+    ['A','A'],
+    ['B','B'],
+    ['C','C'],
+    ['Otra','Otra']
+  ]
+
   SPECIALTIES =
     [
       ['CIR', 'CIR'],

@@ -1,0 +1,2 @@
+module EjesHelper
+end

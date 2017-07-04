@@ -23,6 +23,7 @@
         %tr
           %th
           %th Doctor
+          %th Categoría
           %th Fecha de Visita
           %th Visitado?
           %th Acciones
@@ -34,6 +35,7 @@
               %div.ui.fitted
                 = planning.shift
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
+            %td= planning.doctor.category
             %td= planning.date_visit
             %td
               - if planning.visited

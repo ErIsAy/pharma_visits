@@ -9,7 +9,7 @@
 .pusher
   %div.main.ui.container
 
-  %h2.ui.center.aligned.icon.header
+  %h2.ui.center.aligned.icon.header.segment
     %i.circular.doctor.icon.blue
     = @doctor.firstname
     = @doctor.lastname
@@ -20,6 +20,12 @@
     %p
       %b
         = @doctor.center.name.upcase
+
+    %p
+      %b
+        Categoria:
+        = @doctor.category
+
         %br
         = @doctor.center.phone
         = "Ext.: #{@doctor.phone_ext}"

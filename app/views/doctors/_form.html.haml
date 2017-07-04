@@ -25,7 +25,7 @@
       = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
     .field
       %label Tel.
-      %input{:name => "phone", :placeholder => "(000) 000 0000", :type => "text", :disabled => true, :id => "center_phone"} 
+      %input{:name => "phone", :placeholder => "(000) 000 0000", :type => "text", :disabled => true, :id => "center_phone"}
       -# = .label "Tel."
       -# = .input :phone, label: false, disabled: true
     .field
@@ -41,6 +41,10 @@
     .field#birthday_cal
       = f.label "Cumpleaños"
       = f.input :birthday, label: false, as: :string
+  .field
+    = f.label "Categoria"
+    = f.input :category, label: false, collection: Doctor::CATEGORIES, input_html: { class: 'ui search dropdown' }
+
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"

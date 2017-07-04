@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ejes
   get 'report/index'
 
   get 'report/center'

@@ -98,6 +98,7 @@ class DoctorsController < ApplicationController
                                      :suite,
                                      :phone_ext,
                                      :email,
+                                     :category,
                                      :birthday,
                                      :center_id)
     end

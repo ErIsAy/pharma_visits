@@ -18,6 +18,9 @@
       = f.label 'Ciudad'
       = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }
     .field
+      = f.label 'Region'
+      = f.input :region, label: false
+    .field
       = f.label "Tel."
       = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
     / map div
