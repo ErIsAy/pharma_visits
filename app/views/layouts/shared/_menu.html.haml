@@ -20,6 +20,12 @@
   %a.item{:href => report_index_path}
     %i.file.pdf.outline.icon.icon-gradient
     Reportes
+  - if current_user.admin
+    %a.item{:href => metric_index_path}
+      %i.file.line.chart.icon.icon-gradient
+      Métricas
+
+
 
 .ui.top.fixed.menu.white.hude.borderless.labeled.icon
   %a.item#sidebar-toggle

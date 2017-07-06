@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'metric/index'
+
   resources :ejes
   get 'report/index'
 

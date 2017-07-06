@@ -27,6 +27,7 @@ gem 'will_paginate_semantic_ui', '~> 2.1.0'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'prawn'
 gem 'prawn-table'
+
 # gem 'rearmed_rails'
 # gem "query_report", "~> 1.0.4"
 
