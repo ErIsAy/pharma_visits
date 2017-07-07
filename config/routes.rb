@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :cycles
   get 'metric/index'
+  get 'metric/print_report'
 
   resources :ejes
   get 'report/index'

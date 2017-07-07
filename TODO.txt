@@ -41,4 +41,8 @@ update some of the search methods maybe some other gem (ransack) - Done
 add category to doctors - Done
 add region to centers - Done
 add ejes - Done
-add metrics + ejes -
+add metrics + ejes - kind of done
+add metrics report - Done
+
+bugs:
+multiple metrics for multiple plannings fix the grouping thing for pg

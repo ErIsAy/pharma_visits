@@ -3,15 +3,43 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Métricas
 
+    -# .ui.segment.form.input{:style => "margin-top: 0;"}
+    -#   = search_form_for @q, :url => metric_index_path do |f|
+    -#     .fields
+    -#       .field
+    -#         = f.label :cycle_id_eq, 'Período'
+    -#         -# = f.search_field :cycle_name_cont
+    -#         = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
+    -#
+    -#     = f.submit "Buscar", :class => "ui blue submit button"
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, :url => metric_index_path do |f|
+        .three.fields
+          .field
+            = f.label :user_username_cont, 'Usuario'
+            = f.search_field :user_username_cont
+          .field
+            = f.label :user_division_name_cont, 'Divición'
+            = f.search_field :user_division_name_cont
+          .field
+            %label Eje
+            %input
+
+
+        = f.submit "Buscar", :class => "ui blue submit button"
+
+    .ui.segment.form.input.right.floated{:style => "margin-top: 0;"}
+      = search_form_for @q, url: metric_print_report_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
         .fields
           .field
             = f.label :cycle_id_eq, 'Período'
             -# = f.search_field :cycle_name_cont
             = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
 
-        = f.submit "Buscar", :class => "ui blue submit button"
+        = f.submit "Imprimir", :class => "ui blue submit button"
+
+
+
 
     -#
     -# .ui.segment.form.input{:style => "margin-top: 0;"}
@@ -26,8 +54,8 @@
     -#     .field#planning_date_visit
     -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
     -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
-    %button.ui.large.olive.icon.button.right.floated
-      %i.print.icon
+    -# %button.ui.large.olive.icon.button.right.floated
+    -#   %i.print.icon
 
     -# .ui.large.action.input
     -#   = form_tag report_planning_path, :method => 'get' do

@@ -1,4 +1,29 @@
 class MetricController < ApplicationController
+
+
+  def print_report
+
+    @q = Planning.ransack(params[:q])
+    @plannings = @q.result.includes(:cycle)
+    @plannings = @plannings.group(:user_id, :id)
+    @cycles = Cycle.all
+
+
+    respond_to do |format|
+      # format.html
+      format.pdf do
+        @q = Planning.ransack(params[:q])
+        # @q.sorts = 'date_visit desc'
+        @plannings = @q.result.includes(:doctor, :user)
+        # @user = params[:q][:user_username_cont]
+        pdf = ReportMetrics.new(@plannings, params[:q][:cycle_id_eq])
+        send_data pdf.render, filename: "Metricas_#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
+      end
+    end
+
+  end
+
+
   def index
     # @users = User.joins(:plannings)
     # @users = User.where(id: Planning.pluck(:user_id))
@@ -31,7 +56,7 @@ class MetricController < ApplicationController
     #   # @plans_no = Planning.all
     # else
       @q = Planning.ransack(params[:q])
-      @plannings = @q.result.includes(:cycle)
+      @plannings = @q.result.includes(:cycle, :user)
       @plannings = @plannings.group(:user_id, :id)
       @cycles = Cycle.all
 
