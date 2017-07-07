@@ -17,8 +17,30 @@ class MetricController < ApplicationController
     # end
 
 
-    @q = User.ransack(params[:q])
-    @users = @q.result.includes(:plannings).where.not(plannings: { id: nil })
+    # @q = User.ransack(params[:q])
+    # @users = @q.result.includes(:plannings).where.not(plannings: { id: nil })
+    #
+
+    #
+    #
+    # if params[:q] == ''
+    #   @q = Planning.ransack(params[:q])
+    #   @plannings = @q.result.includes(:cycle)
+    #   @plannings = @plannings.group(:user_id)
+    #   # @plans_no = Planning.joins(:cycle).count
+    #   # @plans_no = Planning.all
+    # else
+      @q = Planning.ransack(params[:q])
+      @plannings = @q.result.includes(:cycle)
+      @plannings = @plannings.group(:user_id)
+      @cycles = Cycle.all
+
+
+
+      # @plans_no = Planning.joins(:cycle).count
+      # @plans_no = Planning.joins(:cycle).where(cycles: {name: params[:q]}).count
+    # end
+
 
     # @q = User.ransack(params[:q])
     # @users = @q.result.includes(:plannings)

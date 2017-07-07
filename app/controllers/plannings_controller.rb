@@ -43,6 +43,7 @@ class PlanningsController < ApplicationController
   def create
     @doctors = Doctor.all
     @planning = current_user.plannings.build(planning_params)
+    @planning.cycle_id = Cycle.last.id
 
     respond_to do |format|
       if @planning.save
@@ -88,6 +89,7 @@ class PlanningsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planning_params
-      params.require(:planning).permit(:title, :date_visit, :shift, :visited, :note, :doctor_id)
+      params.require(:planning).permit(:title, :date_visit, :shift,
+                                        :visited, :note, :doctor_id)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704031452) do
+ActiveRecord::Schema.define(version: 20170707000309) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20170704031452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "region"
+  end
+
+  create_table "cycles", force: :cascade do |t|
+    t.string   "name"
+    t.date     "period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "divisions", force: :cascade do |t|
@@ -87,8 +94,10 @@ ActiveRecord::Schema.define(version: 20170704031452) do
     t.integer  "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "cycle_id"
   end
 
+  add_index "plannings", ["cycle_id"], name: "index_plannings_on_cycle_id"
   add_index "plannings", ["doctor_id"], name: "index_plannings_on_doctor_id"
   add_index "plannings", ["user_id"], name: "index_plannings_on_user_id"
 

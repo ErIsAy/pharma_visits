@@ -6,14 +6,19 @@
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, :url => metric_index_path do |f|
         .fields
-          .field#planning_date_visit
-            = f.label :plannings_created_at_gteq, 'Fecha'
-            = f.search_field :plannings_created_at_gteq
-
+          .field
+            = f.label :cycle_id_eq, 'Período'
+            -# = f.search_field :cycle_name_cont
+            = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
 
         = f.submit "Buscar", :class => "ui blue submit button"
+
+    -# 
     -# .ui.segment.form.input{:style => "margin-top: 0;"}
     -#   %h1 Gráficos
+
+      -# = @chart.draw
+
 
     -#
     -# .ui.large.action.input
@@ -21,8 +26,8 @@
     -#     .field#planning_date_visit
     -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
     -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
-    -# %button.ui.large.olive.icon.button.right.floated
-    -#   %i.print.icon
+    %button.ui.large.olive.icon.button.right.floated
+      %i.print.icon
 
     -# .ui.large.action.input
     -#   = form_tag report_planning_path, :method => 'get' do
@@ -38,22 +43,31 @@
           %th No. de Visitas Realizadas
           %th % de Métrica Cumplida
 
-      -# %tbody
-      -#   - @plannings.each do |planning|
-      -#     %tr
-      -#       %td= planning.user.username
-      -#       %td= planning.user.plannings.count
-      -#       %td= planning.user.plannings.where(:visited => true).count
-      -#       %td= number_to_percentage((planning.user.plannings.where(:visited => true).count.to_f / planning.user.plannings.count.to_f)*100, precision: 0)
-
-
       %tbody
-        - @users.each do |user|
+        - @plannings.each do |planning|
           %tr
-            %td= user.username
-            %td= user.plannings.count
-            %td= user.plannings.where(:visited => true).count
-            %td= number_to_percentage((user.plannings.where(:visited => true).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+            -# -debugger
+            %td= planning.user.username
+
+            - if  params[:q]
+              %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+              %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+            - else
+              %td= Planning.where(:user_id => planning.user.id).count
+              %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+              -# %td= planning.user.plannings.where(:visited => true).count
+
+            -# %td= planning.user.plannings.where(:visited => true).count
+            %td= number_to_percentage((planning.user.plannings.where(:visited => true).count.to_f / planning.user.plannings.count.to_f)*100, precision: 0)
+
+      -#
+      -# %tbody
+      -#   - @users.each do |user|
+      -#     %tr
+      -#       %td= user.username
+      -#       %td= user.plannings.count
+      -#       %td= user.plannings.where(:visited => true).count
+      -#       %td= number_to_percentage((user.plannings.where(:visited => true).count.to_f / user.plannings.count.to_f)*100, precision: 0)
 
 
 

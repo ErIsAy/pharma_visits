@@ -6,5 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: 'admin@gupharma.com', username: 'admin',
+User.first_or_create(email: 'admin@gupharma.com', username: 'admin',
           password: '123456789', admin: true)
+
+
+Cycle.first_or_create(name: 'No Asignado', period: Time.now )

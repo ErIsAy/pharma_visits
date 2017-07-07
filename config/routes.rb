@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cycles
   get 'metric/index'
 
   resources :ejes

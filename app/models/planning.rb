@@ -2,6 +2,7 @@ class Planning < ActiveRecord::Base
 
 belongs_to :user
 belongs_to :doctor
+belongs_to :cycle
 validates :title, presence: true
 validates :shift, presence: true
 
