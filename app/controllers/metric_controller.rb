@@ -32,7 +32,7 @@ class MetricController < ApplicationController
     # else
       @q = Planning.ransack(params[:q])
       @plannings = @q.result.includes(:cycle)
-      @plannings = @plannings.group(:user_id)
+      @plannings = @plannings.group(:user_id, :planning_id)
       @cycles = Cycle.all
 
 
