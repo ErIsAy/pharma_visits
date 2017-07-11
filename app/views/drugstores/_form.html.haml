@@ -31,7 +31,7 @@
       = f.input :address, label: false
     .field
       = f.label 'Personal de Despacho'
-      = f.input :service_person, label: false      
+      = f.input :service_person, label: false
     .eight.wide.field
       = f.label 'Ciudad'
       = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }
@@ -45,7 +45,7 @@
     -# = f.hidden_field :lng, id: 'map_lng'
 
   .form-actions
-    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
+    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
 
 - content_for :center_new do
   :javascript

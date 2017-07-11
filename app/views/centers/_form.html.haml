@@ -30,7 +30,7 @@
     = f.hidden_field :lng, id: 'map_lng'
 
   .form-actions
-    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
+    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
 
 - content_for :center_new do
   :javascript

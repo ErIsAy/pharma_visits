@@ -46,7 +46,7 @@
     = f.input :note, label: false
 
   .form-actions
-    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button"
+    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
 
 - content_for :plannings_new do
   :javascript
