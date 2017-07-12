@@ -14,6 +14,10 @@
           = f.label :city_cont, 'Ciudad'
           = f.select(:city_cont, collection: Center::CITIES)
 
+        .field
+          = f.label :region_cont, 'Región'
+          = f.search_field :region_cont
+
         = f.submit "Imprimir Reporte", :class => "ui blue button"
 
 

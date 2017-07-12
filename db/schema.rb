@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707000309) do
+ActiveRecord::Schema.define(version: 20170712181515) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -36,7 +36,10 @@ ActiveRecord::Schema.define(version: 20170707000309) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "eje_id"
   end
+
+  add_index "divisions", ["eje_id"], name: "index_divisions_on_eje_id"
 
   create_table "doctors", force: :cascade do |t|
     t.string   "firstname"
@@ -66,12 +69,9 @@ ActiveRecord::Schema.define(version: 20170707000309) do
 
   create_table "ejes", force: :cascade do |t|
     t.string   "name"
-    t.integer  "division_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "ejes", ["division_id"], name: "index_ejes_on_division_id"
 
   create_table "events", force: :cascade do |t|
     t.string   "title"

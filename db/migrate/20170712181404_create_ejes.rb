@@ -1,8 +1,8 @@
 class CreateEjes < ActiveRecord::Migration
   def change
+    drop_table :ejes
     create_table :ejes do |t|
       t.string :name
-      t.belongs_to :division, index: true, foreign_key: true
 
       t.timestamps null: false
     end

@@ -1,3 +1,3 @@
 class Eje < ActiveRecord::Base
-  belongs_to :division
+  has_many :divisions
 end

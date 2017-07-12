@@ -22,8 +22,12 @@
             = f.label :user_division_name_cont, 'Divición'
             = f.search_field :user_division_name_cont
           .field
-            %label Eje
-            %input
+            = f.label :user_division_eje_name_cont, 'Eje'
+            -# = f.search_field :user_division_eje_name_cont
+            = f.select(:user_division_eje_name_cont, @ejes.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Eje'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+
+
+
 
 
         = f.submit "Buscar", :class => "ui blue submit button"
@@ -67,6 +71,8 @@
       %thead
         %tr
           %th Usuario
+          %th Division
+          %th Eje
           %th No. de Visitas Planeadas
           %th No. de Visitas Realizadas
           %th % de Métrica Cumplida
@@ -76,6 +82,8 @@
           %tr
             -# -debugger
             %td= planning.user.username
+            %td= planning.user.division.name
+            %td= planning.user.division.eje.name
 
             - if  params[:q]
               %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count

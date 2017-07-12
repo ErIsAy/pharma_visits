@@ -69,6 +69,6 @@ class EjesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def eje_params
-      params.require(:eje).permit(:name, :division_id)
+      params.require(:eje).permit(:name)
     end
 end

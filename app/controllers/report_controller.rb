@@ -73,7 +73,7 @@ class ReportController < ApplicationController
 
     @q = Doctor.ransack(params[:q])
     @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
-
+    @centers = Center.all
 
     respond_to do |format|
       format.html

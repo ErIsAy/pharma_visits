@@ -29,24 +29,24 @@ RailsAdmin.config do |config|
   config.label_methods.unshift(:display_name)
 
   config.excluded_models = [Event]
-
-  config.model 'Eje' do
-    label 'Eje'
-    label_plural 'Ejes'
-
-    include_fields :name, :division_id
-
-    field :name do
-      label "Eje"
-    end
-
-    field :division_id, :enum do
-      enum do
-        Division.all.collect {|p| [p.name, p.id]}
-      end
-    end
-
-  end
+  #
+  # config.model 'Eje' do
+  #   label 'Eje'
+  #   label_plural 'Ejes'
+  #
+  #   # include_fields :name, :division_id
+  #
+  #   field :name do
+  #     label "Eje"
+  #   end
+  #
+  #   # field :division_id, :enum do
+  #   #   enum do
+  #   #     Division.all.collect {|p| [p.name, p.id]}
+  #   #   end
+  #   # end
+  #
+  # end
 
   config.model 'User' do
     label "Usuario"
@@ -200,6 +200,13 @@ RailsAdmin.config do |config|
     include_fields :name
     field :name do
       label 'Nombre'
+    end
+
+    field :eje_id, :enum do
+      label 'Eje'
+      enum do
+        Eje.all.collect {|p| [p.name, p.id]}
+      end
     end
 
     # field :created_at do

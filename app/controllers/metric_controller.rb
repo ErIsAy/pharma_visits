@@ -60,7 +60,7 @@ class MetricController < ApplicationController
       @plannings = @plannings.group(:user_id, :id)
       @cycles = Cycle.all
 
-
+      @ejes = Eje.all
 
       # @plans_no = Planning.joins(:cycle).count
       # @plans_no = Planning.joins(:cycle).where(cycles: {name: params[:q]}).count

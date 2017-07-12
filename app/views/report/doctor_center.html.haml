@@ -6,8 +6,9 @@
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_doctor_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
         .field
-          = f.label :center_name_cont, 'Centro'
-          = f.search_field :center_name_cont
+          = f.label :center_name_cont, 'Nombre del Centro'
+          -# = f.search_field :center_name_cont
+          = f.select(:center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
         = f.submit "Imprimir Reporte", :class => "ui blue button"
 
