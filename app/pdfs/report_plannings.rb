@@ -26,7 +26,7 @@ class ReportPlannings < Prawn::Document
 
 
   def body
-    table([["Usuario","Doctor","Fecha","Tanda","Visitado(Si/No)"]], :column_widths => [100,100,100,100,100], :row_colors => ["9FA8DA"])
+    table([["Usuario","Doctor","Fecha","Tanda","Visitado"]], :column_widths => [100,100,100,100,100], :row_colors => ["9FA8DA"])
 
     @plannings.each do |planning|
       # text "#{planning.doctor.firstname}"
