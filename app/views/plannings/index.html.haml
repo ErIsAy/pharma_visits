@@ -23,6 +23,7 @@
         %tr
           %th
           %th Doctor
+          %th Centro
           %th Categoría
           %th Fecha de Visita
           %th Visitado?
@@ -35,6 +36,7 @@
               %div.ui.fitted
                 = planning.shift
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
+            %td= planning.doctor.center.name
             %td= planning.doctor.category
             %td= planning.date_visit
             %td
