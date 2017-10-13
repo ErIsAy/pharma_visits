@@ -141,7 +141,12 @@ RailsAdmin.config do |config|
         Center.all.collect {|p| [p.name, p.id]}
       end
     end
-
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
   end
 
   config.model 'Drugstore' do
