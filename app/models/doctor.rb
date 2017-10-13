@@ -3,6 +3,7 @@ class Doctor < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
   validates :center_id, presence: true
   belongs_to :center
+  belongs_to :user
   has_many :plannings
 
   def display_name

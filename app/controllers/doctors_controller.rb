@@ -20,8 +20,10 @@ class DoctorsController < ApplicationController
     #     send_data pdf.render, filename: 'Doctores.pdf', type: 'application/pdf'
     #   end
     # end
-    @q = Doctor.ransack(params[:q])
+    # @q = Doctor.ransack(params[:q])
+    @q = current_user.doctors.ransack(params[:q])
     @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+
 
   end
 
@@ -32,8 +34,9 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/new
   def new
-    @doctor = Doctor.new
+    # @doctor = Doctor.new
     @centers = Center.all
+    @doctor = current_user.doctors.build
   end
 
   # GET /doctors/1/edit
@@ -44,8 +47,9 @@ class DoctorsController < ApplicationController
   # POST /doctors
   # POST /doctors.json
   def create
-    @doctor = Doctor.new(doctor_params)
+    # @doctor = Doctor.new(doctor_params)
     @centers = Center.all
+    @doctor = current_user.doctors.build(doctor_params)
 
     respond_to do |format|
       if @doctor.save
