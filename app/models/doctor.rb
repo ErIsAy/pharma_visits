@@ -4,7 +4,7 @@ class Doctor < ActiveRecord::Base
   validates :center_id, presence: true
   belongs_to :center
   belongs_to :user
-  has_many :plannings
+  has_many :plannings, :dependent => :destroy
 
   def display_name
           "#{self.firstname} #{self.lastname}"
