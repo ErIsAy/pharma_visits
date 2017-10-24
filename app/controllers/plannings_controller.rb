@@ -29,19 +29,22 @@ class PlanningsController < ApplicationController
   # GET /plannings/new
   def new
     # @planning = Planning.new
-    @doctors = Doctor.all
+    # @doctors = Doctor.all
+    @doctors = current_user.doctors
     @planning = current_user.plannings.build
   end
 
   # GET /plannings/1/edit
   def edit
-    @doctors = Doctor.all
+    # @doctors = Doctor.all
+    @doctors = current_user.doctors
   end
 
   # POST /plannings
   # POST /plannings.json
   def create
-    @doctors = Doctor.all
+    # @doctors = Doctor.all
+    @doctors = current_user.doctors
     @planning = current_user.plannings.build(planning_params)
     @planning.cycle_id = Cycle.last.id
 
