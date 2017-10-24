@@ -24,9 +24,9 @@
     %a.item{:href => metric_index_path}
       %i.file.line.chart.icon.icon-gradient
       Métricas
-  %a.item{:href => '#'}
-    %i.bar.chart.icon.icon-gradient
-    Registros
+  -# %a.item{:href => '#'}
+  -#   %i.bar.chart.icon.icon-gradient
+  -#   Registros
 
 
 .ui.top.fixed.menu.white.hude.borderless.labeled.icon
@@ -40,7 +40,7 @@
     .item.top-menu-label
       - if current_user.admin
         %a.item{:href => '/admin'}
-          Admin Panel
+          Administración
     .item.top-menu-label.asphalt-gradient
       -# = current_user.username
       = link_to destroy_user_session_path, method: :delete do
