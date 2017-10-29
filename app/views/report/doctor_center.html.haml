@@ -45,6 +45,10 @@
             %td.collapsing.positive
               = link_to 'Ver', doctor, class: "ui brown basic submit button"
 
+      = will_paginate @doctors, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+
+
     %br
     - if params[:search]
       = link_to report_doctor_center_path, class: "ui blue basic submit button" do
