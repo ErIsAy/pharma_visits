@@ -1,6 +1,13 @@
 class MetricController < ApplicationController
 
 
+  def registers
+    @doctors = current_user.doctors
+    @centers = Center.all
+    @drugstores = Drugstore.all
+    @plannings = current_user.plannings
+  end
+
   def print_report
 
     @q = Planning.ransack(params[:q])

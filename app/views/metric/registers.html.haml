@@ -1,0 +1,33 @@
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered{:style => ""} Registros
+  
+    .ui.three.column.grid{:style => "margin-top: 20px;"}
+      .column
+        .ui.centered.card
+          %h2.ui.header.blue.centered
+            = @doctors.count
+          %div#container1
+          .content
+            .header Doctores
+      .column        
+        .ui.centered.card
+          %h2.ui.header.blue.centered
+            = @centers.count
+          %div#container2
+          .content
+            .header Centros
+      .column
+        .ui.centered.card
+          %h2.ui.header.blue.centered
+            = @drugstores.count
+          %div#container3
+          .content
+            .header Farmacias
+      .column
+        .ui.centered.card
+          %h2.ui.header.blue.centered
+            = @plannings.count
+          %div#container4
+          .content
+            .header Cantidad de planeamiento total

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :cycles
   get 'metric/index'
   get 'metric/print_report'
+  get 'metric/registers'
 
   get 'report/index'
 
