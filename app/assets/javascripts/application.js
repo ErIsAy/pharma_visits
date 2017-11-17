@@ -94,7 +94,7 @@ $(document).ready(function() {
     svgStyle: {width: '100%', height: '100%'},
     from: {color: '#3498db'},
     to: {color: '#3498db'},
-    step: (state, bar) => {
+    step: function(state, bar) {
       bar.path.setAttribute('stroke', state.color);
     }
   });
@@ -109,7 +109,7 @@ $(document).ready(function() {
     svgStyle: {width: '100%', height: '100%'},
     from: {color: '#8e44ad'},
     to: {color: '#8e44ad'},
-    step: (state, bar) => {
+    step: function(state, bar) {
       bar.path.setAttribute('stroke', state.color);
     }
   });
@@ -124,7 +124,7 @@ $(document).ready(function() {
     svgStyle: {width: '100%', height: '100%'},
     from: {color: '#27ae60'},
     to: {color: '#27ae60'},
-    step: (state, bar) => {
+    step: function(state, bar) {
       bar.path.setAttribute('stroke', state.color);
     }
   });
@@ -139,7 +139,7 @@ $(document).ready(function() {
     svgStyle: {width: '100%', height: '100%'},
     from: {color: '#34495e'},
     to: {color: '#34495e'},
-    step: (state, bar) => {
+    step: function(state, bar) {
       bar.path.setAttribute('stroke', state.color);
     }
   });
