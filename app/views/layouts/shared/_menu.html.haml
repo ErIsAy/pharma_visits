@@ -20,10 +20,10 @@
   %a.item{:href => report_index_path}
     %i.file.pdf.outline.icon.icon-gradient
     Reportes
-  - if current_user.admin
-    %a.item{:href => metric_index_path}
-      %i.file.line.chart.icon.icon-gradient
-      Métricas
+  -# - if current_user.admin
+  %a.item{:href => metric_index_path}
+    %i.file.line.chart.icon.icon-gradient
+    Métricas
   %a.item{:href => metric_registers_path}
     %i.bar.chart.icon.icon-gradient
     Registros
