@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require lib/underscore-min
-//= require turbolinks
+
 //= require dist/semantic
 //= require lib/momentjs/moment
 //= require lib/fullcalendar/fullcalendar
@@ -26,7 +26,6 @@
 //= require lib/timepicki
 //= require tablesort
 //= require_tree .
-
 
 
 // var line = new ProgressBar.Line('#container');
@@ -81,74 +80,4 @@ $( document ).ready(function() {
 /****************************************/
 
 
-$(document).ready(function() {
 
-
-  var bar1 = new ProgressBar.Line(container1, {
-    strokeWidth: 4,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    svgStyle: {width: '100%', height: '100%'},
-    from: {color: '#3498db'},
-    to: {color: '#3498db'},
-    step: function(state, bar) {
-      bar.path.setAttribute('stroke', state.color);
-    }
-  });
-
-  var bar2 = new ProgressBar.Line(container2, {
-    strokeWidth: 4,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    svgStyle: {width: '100%', height: '100%'},
-    from: {color: '#8e44ad'},
-    to: {color: '#8e44ad'},
-    step: function(state, bar) {
-      bar.path.setAttribute('stroke', state.color);
-    }
-  });
-
-  var bar3 = new ProgressBar.Line(container3, {
-    strokeWidth: 4,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    svgStyle: {width: '100%', height: '100%'},
-    from: {color: '#27ae60'},
-    to: {color: '#27ae60'},
-    step: function(state, bar) {
-      bar.path.setAttribute('stroke', state.color);
-    }
-  });
-
-  var bar4 = new ProgressBar.Line(container4, {
-    strokeWidth: 4,
-    easing: 'easeInOut',
-    duration: 1400,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    svgStyle: {width: '100%', height: '100%'},
-    from: {color: '#34495e'},
-    to: {color: '#34495e'},
-    step: function(state, bar) {
-      bar.path.setAttribute('stroke', state.color);
-    }
-  });
-
-  // Number from 0.0 to 1.0, this act as a %
-  bar1.animate(1.0);  
-  bar2.animate(1.0);  
-  bar3.animate(1.0);  
-  bar4.animate(1.0);  
-
-
-});
