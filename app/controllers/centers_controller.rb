@@ -10,7 +10,7 @@ class CentersController < ApplicationController
     #   @centers = Center.paginate(:page => params[:page], :per_page => 20)
     # end
 
-    @q = Center.all.ransack(params[:q])
+    @q = current_user.centers.ransack(params[:q])
     @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
 
     # @centers = Center.all
@@ -31,7 +31,9 @@ class CentersController < ApplicationController
 
   # GET /centers/new
   def new
-    @center = Center.new
+    # @center = Center.new
+    @center = current_user.centers.build
+    
   end
 
   # GET /centers/1/edit
@@ -41,7 +43,8 @@ class CentersController < ApplicationController
   # POST /centers
   # POST /centers.json
   def create
-    @center = Center.new(center_params)
+    # @center = Center.new(center_params)
+    @center = current_user.centers.build(center_params)
 
     respond_to do |format|
       if @center.save

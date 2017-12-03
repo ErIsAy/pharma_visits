@@ -114,6 +114,14 @@ RailsAdmin.config do |config|
       label 'Región'
     end
 
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
+
+
   end
 
   config.model 'Doctor' do
@@ -169,6 +177,14 @@ RailsAdmin.config do |config|
     field :service_person do
       label "Personal"
     end
+
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
+    
   end
 
   config.model 'Planning' do

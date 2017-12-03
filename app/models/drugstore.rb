@@ -1,5 +1,7 @@
 class Drugstore < ActiveRecord::Base
 
+  belongs_to :user
+
   CITIES =
     [
       ['Todas', ''],

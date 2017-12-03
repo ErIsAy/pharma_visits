@@ -10,7 +10,7 @@ class DrugstoresController < ApplicationController
     # else
     #   @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
     # end
-    @q = Drugstore.all.ransack(params[:q])
+    @q = current_user.drugstores.ransack(params[:q])
     @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
 
     # @drugstores = Drugstore.all
@@ -31,7 +31,7 @@ class DrugstoresController < ApplicationController
 
   # GET /drugstores/new
   def new
-    @drugstore = Drugstore.new
+    @drugstore = current_user.drugstores.build
   end
 
   # GET /drugstores/1/edit
@@ -41,7 +41,7 @@ class DrugstoresController < ApplicationController
   # POST /drugstores
   # POST /drugstores.json
   def create
-    @drugstore = Drugstore.new(drugstore_params)
+    @drugstore = current_user.drugstores.build(drugstore_params)
 
     respond_to do |format|
       if @drugstore.save

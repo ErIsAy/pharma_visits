@@ -45,7 +45,7 @@ add metrics + ejes - kind of done
 add metrics report - Done
 
 [X] - Agregar los filtros a los doctores (categoria y specialidad)
-- Graficos en una nueva pantalla de estadisticas
+[X] Graficos en una nueva pantalla de estadisticas
 - que no se pueda modificar los planeamientos despues de 48 horas
 - que el ciclo sea automatico al dia 1 de cada mes
 - planeamiento se puedan hacer con farmacias (las mismas agregarle categoria)
@@ -68,4 +68,10 @@ _____
 [X] - planeamiento se puedan hacer con farmacias (las mismas agregarle categoria A,B,C..).
 [X] - modificar la columna "Visitados(Si/NO)" en los reportes ponerle solamente "Visitados".
 [X] - Rediseño de la pantalla log in y fondo con diseño mas elegante y simple.
+[X] - Agregar usuarios a Centros y Farmacias
 [ ] - Planeamientos via Calendario
+
+
+-----
+
+

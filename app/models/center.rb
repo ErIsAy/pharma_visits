@@ -4,6 +4,7 @@ class Center < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :doctors
+  belongs_to :user
 
   CITIES =
     [ ['Todas', ''],

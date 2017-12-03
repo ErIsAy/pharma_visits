@@ -10,7 +10,7 @@ class ReportController < ApplicationController
     # end
 
 
-    @q = Center.ransack(params[:q])
+    @q = current_user.centers.ransack(params[:q])
     @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
 
 
@@ -73,7 +73,7 @@ class ReportController < ApplicationController
 
     @q = current_user.doctors.ransack(params[:q])
     @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
-    @centers = Center.all
+    @centers = current_user.centers
 
     respond_to do |format|
       format.html
@@ -96,7 +96,7 @@ class ReportController < ApplicationController
     #   @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
     # end
 
-    @q = Drugstore.ransack(params[:q])
+    @q = current_user.drugstores.ransack(params[:q])
     @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
 
 
