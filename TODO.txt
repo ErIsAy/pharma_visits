@@ -44,5 +44,28 @@ add ejes - Done
 add metrics + ejes - kind of done
 add metrics report - Done
 
+[X] - Agregar los filtros a los doctores (categoria y specialidad)
+- Graficos en una nueva pantalla de estadisticas
+- que no se pueda modificar los planeamientos despues de 48 horas
+- que el ciclo sea automatico al dia 1 de cada mes
+- planeamiento se puedan hacer con farmacias (las mismas agregarle categoria)
+[X]- modificar la columna "Visitados(Si/NO)" en los reportes ponerle solamente "Visitados"
+[X]- las fotos nuevas en el background y en el login
+
+
+[-] calendario?
+
 bugs:
 multiple metrics for multiple plannings fix the grouping thing for pg
+
+
+_____
+
+[X] - Agregar los filtros a los Doctores (por categoria y specialidad).
+[X] - Graficos en una nueva pantalla de estadisticas(cantidad de Doctores, Centros, etc.).
+[X] - que no se pueda modificar los planeamientos despues de 48 horas.
+[X] - que el ciclo sea automatico al dia 1 de cada mes.
+[X] - planeamiento se puedan hacer con farmacias (las mismas agregarle categoria A,B,C..).
+[X] - modificar la columna "Visitados(Si/NO)" en los reportes ponerle solamente "Visitados".
+[X] - Rediseño de la pantalla log in y fondo con diseño mas elegante y simple.
+[ ] - Planeamientos via Calendario
