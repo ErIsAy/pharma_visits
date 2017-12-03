@@ -4,10 +4,19 @@
   %div.main.ui.container
     %h1.ui.header.blue Listado de Centros
 
-    .ui.icon.input
-      = form_tag centers_path, :method => 'get' do
-        = text_field_tag :search, params[:search], :placeholder => "Centro..."
-        = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+    -# .ui.icon.input
+    -#   = form_tag centers_path, :method => 'get' do
+    -#     = text_field_tag :search, params[:search], :placeholder => "Centro..."
+    -#     = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+    .ui.form.input.segment
+      = search_form_for @q do |f|
+        .one.field
+          .field
+            = f.label :name_cont, 'Centro'
+            = f.search_field :name_cont
+        = f.submit "Buscar", :class => "ui blue submit button"
+
+
 
 
     %table.ui.sortable.celled.table.striped

@@ -4,11 +4,15 @@ class CentersController < ApplicationController
   # GET /centers
   # GET /centers.json
   def index
-    if params[:search]
-      @centers = Center.where('name LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
-    else
-      @centers = Center.paginate(:page => params[:page], :per_page => 20)
-    end
+    # if params[:search]
+    #   @centers = Center.where('name LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
+    # else
+    #   @centers = Center.paginate(:page => params[:page], :per_page => 20)
+    # end
+
+    @q = Center.all.ransack(params[:q])
+    @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+
     # @centers = Center.all
     # @centers = Center.paginate(:page => params[:page], :per_page => 20)
     # respond_to do |format|
