@@ -3,8 +3,8 @@ class MetricController < ApplicationController
 
   def registers
     @doctors = current_user.doctors
-    @centers = Center.all
-    @drugstores = Drugstore.all
+    @centers = current_user.centers
+    @drugstores = current_user.drugstores
     @plannings = current_user.plannings
   end
 
