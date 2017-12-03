@@ -27,6 +27,7 @@ class CentersController < ApplicationController
   # GET /centers/1
   # GET /centers/1.json
   def show
+    @doctors = Doctor.joins(:center).where(center_id: @center)
   end
 
   # GET /centers/new

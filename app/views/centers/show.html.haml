@@ -37,11 +37,31 @@
   -# %p
   -#   lng:
   -#   =@center.lng
+
+  %h2 Doctores
+  %table.ui.sortable.celled.table.striped.definition
+    %thead
+      %tr
+        %th
+        %th Nombres
+        %th Apellidos
+        %th Categoría
+        -# %th Centro
+
+    %tbody
+      - @doctors.each do |doctor|
+        %tr
+          %td.collapsing
+            %div.ui.fitted
+              = doctor.speciality
+          %td= doctor.firstname
+          %td= doctor.lastname
+          %td= doctor.category
+          -# %td= doctor.center.name if doctor.center
   / map div
-  %label Mapa
+  -# %label Mapa
   #map{:style => "width: 100%; height: 350px;"}
-
-
+  
   %br
   = link_to centers_path, class: "ui blue basic submit button" do
     %i.big.icons
