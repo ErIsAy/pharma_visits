@@ -2,10 +2,19 @@ class MetricController < ApplicationController
 
 
   def registers
-    @doctors = current_user.doctors
-    @centers = current_user.centers
-    @drugstores = current_user.drugstores
-    @plannings = current_user.plannings
+
+    if current_user.admin
+      @doctors = Doctor.all
+      @centers = Center.all
+      @drugstores = Drugstore.all
+      @plannings = Planning.all
+    else
+      @doctors = current_user.doctors
+      @centers = current_user.centers
+      @drugstores = current_user.drugstores
+      @plannings = current_user.plannings
+    end
+
   end
 
   def print_report
@@ -62,13 +71,29 @@ class MetricController < ApplicationController
     #   # @plans_no = Planning.joins(:cycle).count
     #   # @plans_no = Planning.all
     # else
-      @q = Planning.ransack(params[:q])
-      @plannings = @q.result.includes(:cycle, :user)
-      @plannings = @plannings.group(:user_id, :id)
-      @cycles = Cycle.all
+      # @q = Planning.ransack(params[:q])
+      # @plannings = @q.result.includes(:cycle, :user)
+      # @plannings = @plannings.group(:user_id, :id)
+      # @cycles = Cycle.all
 
-      @ejes = Eje.all
+      # @ejes = Eje.all
 
+      if current_user.admin
+        @q = Planning.ransack(params[:q])
+        @plannings = @q.result.includes(:cycle, :user)
+        @plannings = @plannings.group(:user_id, :id)
+        @cycles = Cycle.all
+        @ejes = Eje.all
+
+      else
+        @q = current_user.plannings.ransack(params[:q])
+        @plannings = @q.result.includes(:cycle, :user)
+        @plannings = @plannings.group(:user_id, :id)
+        @cycles = Cycle.all
+        @ejes = Eje.all
+      end
+
+      
       # @plans_no = Planning.joins(:cycle).count
       # @plans_no = Planning.joins(:cycle).where(cycles: {name: params[:q]}).count
     # end

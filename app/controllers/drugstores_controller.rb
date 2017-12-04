@@ -10,8 +10,20 @@ class DrugstoresController < ApplicationController
     # else
     #   @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
     # end
-    @q = current_user.drugstores.ransack(params[:q])
-    @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+    
+    # @q = current_user.drugstores.ransack(params[:q])
+    # @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+
+
+
+    if current_user.admin
+      @q = Drugstore.ransack(params[:q])
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.drugstores.ransack(params[:q])
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+    end
+
 
     # @drugstores = Drugstore.all
     # @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)

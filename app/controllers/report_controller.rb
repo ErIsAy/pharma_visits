@@ -10,9 +10,17 @@ class ReportController < ApplicationController
     # end
 
 
-    @q = current_user.centers.ransack(params[:q])
-    @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+    # @q = current_user.centers.ransack(params[:q])
+    # @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
 
+
+    if current_user.admin
+      @q = Center.ransack(params[:q])
+      @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.centers.ransack(params[:q])
+      @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html
@@ -35,9 +43,16 @@ class ReportController < ApplicationController
     #   @doctors = Doctor.paginate(:page => params[:page], :per_page => 20)
     # end
 
-    @q = current_user.doctors.ransack(params[:q])
-    @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+    # @q = current_user.doctors.ransack(params[:q])
+    # @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
 
+    if current_user.admin
+      @q = Doctor.ransack(params[:q])
+      @doctors = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.doctors.ransack(params[:q])
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html
@@ -69,11 +84,18 @@ class ReportController < ApplicationController
     #   @doctors = Doctor.all
     # end
 
+    if current_user.admin
+      @q = Doctor.ransack(params[:q])
+      @doctors = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @centers = Center.all
+    else
+      @q = current_user.doctors.ransack(params[:q])
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+      @centers = current_user.centers
+    end
 
 
-    @q = current_user.doctors.ransack(params[:q])
-    @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
-    @centers = current_user.centers
+
 
     respond_to do |format|
       format.html
@@ -96,9 +118,15 @@ class ReportController < ApplicationController
     #   @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
     # end
 
-    @q = current_user.drugstores.ransack(params[:q])
-    @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
 
+
+    if current_user.admin
+      @q = Drugstore.ransack(params[:q])
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.drugstores.ransack(params[:q])
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+    end
 
     respond_to do |format|
       format.html
@@ -116,10 +144,15 @@ class ReportController < ApplicationController
   end
 
   def planning
-    @q = current_user.plannings.ransack(params[:q])
-    @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)
 
 
+    if current_user.admin
+      @q = Planning.ransack(params[:q])
+      @plannings = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.plannings.ransack(params[:q])
+      @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)  
+    end
 
 
     respond_to do |format|
