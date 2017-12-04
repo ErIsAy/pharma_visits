@@ -22,10 +22,16 @@ class ReportDoctors < Prawn::Document
   def body
     table([["Esp.","Nombre","Apellido","Cat.","Centro"]], :column_widths => [50,100,100,50,200], :row_colors => ["9FA8DA"])
 
-
-    @doctors.where(:user_id => @user).each do |doctor|
-      table([[doctor.speciality, doctor.firstname, doctor.lastname, doctor.category, doctor.center.name]], :column_widths => [50,100,100,50,200])
+    if @user.admin
+      @doctors.each do |doctor|
+        table([[doctor.speciality, doctor.firstname, doctor.lastname, doctor.category, doctor.center.name]], :column_widths => [50,100,100,50,200])
+      end
+    else
+      @doctors.where(:user_id => @user).each do |doctor|
+        table([[doctor.speciality, doctor.firstname, doctor.lastname, doctor.category, doctor.center.name]], :column_widths => [50,100,100,50,200])
+      end
     end
+
 
   end
 

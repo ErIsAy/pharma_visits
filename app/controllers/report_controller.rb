@@ -28,7 +28,7 @@ class ReportController < ApplicationController
         @q = Center.ransack(params[:q])
         @centers = @q.result
         @city = params[:q][:city_cont]
-        pdf = ReportCenters.new(@centers, @city)
+        pdf = ReportCenters.new(@centers, @city, current_user)
         send_data pdf.render, filename: 'Centros.pdf', type: 'application/pdf', disposition: "inline"
       end
     end
@@ -59,7 +59,7 @@ class ReportController < ApplicationController
       format.pdf do
         @q = Doctor.ransack(params[:q])
         @doctors = @q.result
-        pdf = ReportDoctors.new(@doctors, current_user.id)
+        pdf = ReportDoctors.new(@doctors, current_user)
         send_data pdf.render, filename:"Doctores_#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
@@ -103,7 +103,7 @@ class ReportController < ApplicationController
         @q = Doctor.ransack(params[:q])
         @doctors = @q.result.includes(:center)
         @center = params[:q][:center_name_cont]
-        pdf = ReportDbc.new(@doctors, @center, current_user.id)
+        pdf = ReportDbc.new(@doctors, @center, current_user)
         send_data pdf.render, filename: 'Doctores_por_centro_#{Date.parse(Time.now.to_s)}.pdf', type: 'application/pdf', disposition: "inline"
       end
     end
@@ -158,11 +158,11 @@ class ReportController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        @q = current_user.plannings.ransack(params[:q])
+        # @q = current_user.plannings.ransack(params[:q])
         @q.sorts = 'date_visit desc'
-        @plannings = @q.result.includes(:doctor, :user)
+        # @plannings = @q.result.includes(:doctor, :user)
         @user = params[:q][:user_username_cont]
-        pdf = ReportPlannings.new(@plannings, @user)
+        pdf = ReportPlannings.new(@plannings, current_user)
         send_data pdf.render, filename: "Plan_por_Usuario#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end

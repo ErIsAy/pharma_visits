@@ -7,10 +7,15 @@ class PlanningsController < ApplicationController
     # @plannings = Planning.all
     # @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
 
-    @q = current_user.plannings.ransack(params[:q])
-    @plannings = @q.result.includes(:doctor).paginate(:page => params[:page], :per_page => 20)
 
 
+    if current_user.admin
+      @q = Planning.ransack(params[:q])
+      @plannings = @q.result.paginate(:page => params[:page], :per_page => 20)
+    else
+      @q = current_user.plannings.ransack(params[:q])
+      @plannings = @q.result.includes(:doctor).paginate(:page => params[:page], :per_page => 20)
+    end
 
     # respond_to do |format|
     #   format.html
