@@ -10,10 +10,13 @@
       -#   = text_field_tag :search, params[:search], :placeholder => "Nombre..."
       -#   = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
       = search_form_for @q do |f|
-        .five.fields
+        .six.fields
           .field
-            = f.label :firstname_or_lastname_cont, 'Nombre'
-            = f.search_field :firstname_or_lastname_cont
+            = f.label :firstname_cont, 'Nombre'
+            = f.search_field :firstname_cont
+          .field
+            = f.label :lastname_cont, 'Apellido'
+            = f.search_field :lastname_cont
           .field
             = f.label :center_name_cont, 'Centro'
             = f.search_field :center_name_cont
