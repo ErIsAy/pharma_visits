@@ -33,14 +33,345 @@
             .header Cantidad de planeamiento total
 
     
-    -# = content_tag :div, "", id: 'specialities', data: {doctors: @doctorx}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 20px;"}
+      %h2
+        CIR
+      = content_tag :div, "", id: 'cir', data: {doctors: @cir_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR MAX
+      = content_tag :div, "", id: 'cir_max', data: {doctors: @cir_max_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR ONCO
+      = content_tag :div, "", id: 'cir_onco', data: {doctors: @cir_onco_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR PED
+      = content_tag :div, "", id: 'cir_ped', data: {doctors: @cir_ped_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR PLAST
+      = content_tag :div, "", id: 'cir_plast', data: {doctors: @cir_plast_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR PROC
+      = content_tag :div, "", id: 'cir_proc', data: {doctors: @cir_proc_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        CIR VAS
+      = content_tag :div, "", id: 'cir_vas', data: {doctors: @cir_vas_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        DERM
+      = content_tag :div, "", id: 'derm', data: {doctors: @derm_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        DIABE
+      = content_tag :div, "", id: 'diabe', data: {doctors: @diabe_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        ENDO
+      = content_tag :div, "", id: 'endo', data: {doctors: @endo_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        FIS
+      = content_tag :div, "", id: 'fis', data: {doctors: @fis_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        GASTRO
+      = content_tag :div, "", id: 'gastro', data: {doctors: @gastro_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        GERIA
+      = content_tag :div, "", id: 'geria', data: {doctors: @geria_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        INTENSI
+      = content_tag :div, "", id: 'intensi', data: {doctors: @intensi_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        GIN
+      = content_tag :div, "", id: 'gin', data: {doctors: @gin_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        HEMA
+      = content_tag :div, "", id: 'hema', data: {doctors: @hema_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        MF
+      = content_tag :div, "", id: 'mf', data: {doctors: @mf_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        MG
+      = content_tag :div, "", id: 'mg', data: {doctors: @mg_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        MI
+      = content_tag :div, "", id: 'mi', data: {doctors: @mi_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        NEFRO
+      = content_tag :div, "", id: 'nefro', data: {doctors: @nefro_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        NEURO
+      = content_tag :div, "", id: 'neuro', data: {doctors: @neuro_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        NEURO CIR
+      = content_tag :div, "", id: 'neuro_cir', data: {doctors: @neuro_cir_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        ORTO
+      = content_tag :div, "", id: 'orto', data: {doctors: @orto_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        URO
+      = content_tag :div, "", id: 'reuma', data: {doctors: @reuma_obj}, :style => "height: 250px;"
+      .ui{:style => "margin-top: 40px;"}
+      %h2
+        URO
+      = content_tag :div, "", id: 'uro', data: {doctors: @uro_obj}, :style => "height: 250px;"
 
 
 
 - content_for :registers do
   :javascript
+    var data= $('#cir').data()['doctors'];
+    new Morris.Bar({
+      // ID of the element in which to draw the chart.
+      element: 'cir',
+      // Chart data records -- each entry in this array corresponds to a point on
+      // the chart.
+      data: data,
+      // The name of the data record attribute that contains x-values.
+      xkey: 'username',
+      // A list of names of data record attributes that contain y-values.
+      ykeys: ['value'],
+      // Labels for the ykeys -- will be displayed when you hover over the
+      // chart.
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    
+    var data= $('#cir_max').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_max',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#cir_onco').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_onco',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#cir_ped').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_ped',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#cir_plast').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_plast',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#cir_proc').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_proc',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#cir_vas').data()['doctors'];
+    new Morris.Bar({
+      element: 'cir_vas',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#derm').data()['doctors'];
+    new Morris.Bar({
+      element: 'derm',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#diabe').data()['doctors'];
+    new Morris.Bar({
+      element: 'diabe',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#endo').data()['doctors'];
+    new Morris.Bar({
+      element: 'endo',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#fis').data()['doctors'];
+    new Morris.Bar({
+      element: 'fis',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#gastro').data()['doctors'];
+    new Morris.Bar({
+      element: 'gastro',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#geria').data()['doctors'];
+    new Morris.Bar({
+      element: 'geria',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#intensi').data()['doctors'];
+    new Morris.Bar({
+      element: 'intensi',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#gin').data()['doctors'];
+    new Morris.Bar({
+      element: 'gin',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#hema').data()['doctors'];
+    new Morris.Bar({
+      element: 'hema',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#mf').data()['doctors'];
+    new Morris.Bar({
+      element: 'mf',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#mg').data()['doctors'];
+    new Morris.Bar({
+      element: 'mg',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#mi').data()['doctors'];
+    new Morris.Bar({
+      element: 'mi',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#nefro').data()['doctors'];
+    new Morris.Bar({
+      element: 'nefro',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#neuro').data()['doctors'];
+    new Morris.Bar({
+      element: 'neuro',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#neuro_cir').data()['doctors'];
+    new Morris.Bar({
+      element: 'neuro_cir',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#orto').data()['doctors'];
+    new Morris.Bar({
+      element: 'orto',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#reuma').data()['doctors'];
+    new Morris.Bar({
+      element: 'reuma',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
+    var data= $('#uro').data()['doctors'];
+    new Morris.Bar({
+      element: 'uro',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de CIR'],
+      resize: true
+    });
     $(document).ready(function() {
-      
       var bar1 = new ProgressBar.Line(container1, {
         strokeWidth: 4,
         easing: 'easeInOut',

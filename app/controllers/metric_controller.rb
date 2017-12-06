@@ -15,9 +15,95 @@ class MetricController < ApplicationController
       @drugstores = current_user.drugstores
       @plannings = current_user.plannings
     end
+  
+    @users = User.all
+    @cir = {}
+    @cir_max = {}
+    @cir_onco = {}
+    @cir_ped = {}
+    @cir_plast = {}
+    @cir_proc = {}
+    @cir_vas = {}
+    @derm = {}
+    @diabe = {}
+    @endo = {}
+    @fis = {}
+    @gastro = {}
+    @geria = {}
+    @intensi = {}
+    @gin = {}
+    @hema = {}
+    @mf = {}
+    @mg = {}
+    @mi = {}
+    @nefro = {}
+    @neuro = {}
+    @neuro_cir = {}
+    @orto = {}
+    @reuma = {}
+    @uro = {}
 
 
+    @users.each do |u|
+      u.calc_speciality
+      @cir[u.username] = u.cir
+      @cir_max[u.username] = u.cir_max
+      @cir_onco[u.username] = u.cir_onco
+      @cir_ped[u.username] = u.cir_ped
+      @cir_plast[u.username] = u.cir_plast
+      @cir_proc[u.username] = u.cir_proc
+      @cir_vas[u.username] = u.cir_vas
+      @derm[u.username] = u.derm
+      @diabe[u.username] = u.diabe
+      @endo[u.username] = u.endo
+      @fis[u.username] = u.fis
+      @gastro[u.username] = u.gastro
+      @geria[u.username] = u.geria
+      @intensi[u.username] = u.intensi
+      @gin[u.username] = u.gin
+      @hema[u.username] = u.hema
+      @mf[u.username] = u.mf
+      @mg[u.username] = u.mg
+      @mi[u.username] = u.mi
+      @nefro[u.username] = u.nefro
+      @neuro[u.username] = u.neuro
+      @neuro_cir[u.username] = u.neuro_cir
+      @orto[u.username] = u.orto
+      @reuma[u.username] = u.reuma
+      @uro[u.username] = u.uro
+    end
 
+     @cir_obj = @cir.map{|e| {username: e[0], value: e[1]}}
+     @cir_max_obj = @cir_max.map{|e| {username: e[0], value: e[1]}}
+     @cir_onco_obj = @cir_onco.map{|e| {username: e[0], value: e[1]}}
+     @cir_ped_obj = @cir_ped.map{|e| {username: e[0], value: e[1]}}
+     @cir_plast_obj = @cir_plast.map{|e| {username: e[0], value: e[1]}}
+     @cir_proc_obj = @cir_proc.map{|e| {username: e[0], value: e[1]}}
+     @cir_vas_obj = @cir_vas.map{|e| {username: e[0], value: e[1]}}
+     @derm_obj = @derm.map{|e| {username: e[0], value: e[1]}}
+     @diabe_obj = @diabe.map{|e| {username: e[0], value: e[1]}}
+     @endo_obj = @endo.map{|e| {username: e[0], value: e[1]}}
+     @fis_obj = @fis.map{|e| {username: e[0], value: e[1]}}
+     @gastro_obj = @gastro.map{|e| {username: e[0], value: e[1]}}
+     @geria_obj = @geria.map{|e| {username: e[0], value: e[1]}}
+     @intensi_obj = @intensi.map{|e| {username: e[0], value: e[1]}}
+     @gin_obj = @gin.map{|e| {username: e[0], value: e[1]}}
+     @hema_obj = @hema.map{|e| {username: e[0], value: e[1]}}
+     @mf_obj = @mf.map{|e| {username: e[0], value: e[1]}}
+     @mg_obj = @mg.map{|e| {username: e[0], value: e[1]}}
+     @mi_obj = @mi.map{|e| {username: e[0], value: e[1]}}
+     @nefro_obj = @nefro.map{|e| {username: e[0], value: e[1]}}
+     @neuro_obj = @neuro.map{|e| {username: e[0], value: e[1]}}
+     @neuro_cir_obj = @neuro_cir.map{|e| {username: e[0], value: e[1]}}
+     @orto_obj = @orto.map{|e| {username: e[0], value: e[1]}}
+     @reuma_obj = @reuma.map{|e| {username: e[0], value: e[1]}}
+     @uro_obj = @uro.map{|e| {username: e[0], value: e[1]}}
+
+     
+ 
+    
+
+ 
   end
 
   def print_report

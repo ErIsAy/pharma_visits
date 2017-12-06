@@ -50,6 +50,7 @@ $( "#sidebar-toggle" ).click(function() {
 
 /************ Initializers **************/
 $( document ).ready(function() {
+  $('.ui.accordion').accordion();
   // gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
   // gmap_show(center);    // init show map for center card (only print marker)
   $('.menu .item').tab();

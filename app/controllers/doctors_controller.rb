@@ -40,7 +40,11 @@ class DoctorsController < ApplicationController
   # GET /doctors/new
   def new
     # @doctor = Doctor.new
-    @centers = Center.all
+    if current_user.admin
+      @centers = Center.all
+    else 
+      @centers = current_user.centers
+    end
     @doctor = current_user.doctors.build
   end
 
