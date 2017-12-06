@@ -16,9 +16,7 @@ class MetricController < ApplicationController
       @plannings = current_user.plannings
     end
 
-  
 
-   
 
   end
 
@@ -46,109 +44,49 @@ class MetricController < ApplicationController
 
 
   def index
-    # @users = User.joins(:plannings)
-    # @users = User.where(id: Planning.pluck(:user_id))
-    # @plannings = Planning.all
-
-
-    # #
-    # if params[:q]
-    #   @q = User.where(id: Planning.pluck(:user_id)).ransack(params[:q])
-    #   @users = @q.result.includes(:plannings).where(id: Planning.pluck(:user_id))
-    #   # @q = User.includes(:plannings).where.not(plannings: { id: nil }).where(id: Planning.pluck(:user_id)).ransack(params[:q])
-    #   # @users = @q.result.includes(:plannings)
-    # else
-    #   @q = User.where(id: Planning.pluck(:user_id)).ransack(params[:q])
-    #   @users = @q.result.includes(:plannings).where(id: Planning.pluck(:user_id))
-    # end
-
-
-    # @q = User.ransack(params[:q])
-    # @users = @q.result.includes(:plannings).where.not(plannings: { id: nil })
-    #
-
-    #
-    #
-    # if params[:q] == ''
-    #   @q = Planning.ransack(params[:q])
-    #   @plannings = @q.result.includes(:cycle)
-    #   @plannings = @plannings.group(:user_id)
-    #   # @plans_no = Planning.joins(:cycle).count
-    #   # @plans_no = Planning.all
-    # else
-      # @q = Planning.ransack(params[:q])
-      # @plannings = @q.result.includes(:cycle, :user)
-      # @plannings = @plannings.group(:user_id, :id)
-      # @cycles = Cycle.all
-
-      # @ejes = Eje.all
-
-      if current_user.admin
-        @q = Planning.ransack(params[:q])
-        @plannings = @q.result.includes(:cycle, :user)
-        @plannings = @plannings.group(:user_id, :id)
-        @cycles = Cycle.all
-        @ejes = Eje.all
-
-      else
-        @q = current_user.plannings.ransack(params[:q])
-        @plannings = @q.result.includes(:cycle, :user)
-        @plannings = @plannings.group(:user_id, :id)
-        @cycles = Cycle.all
-        @ejes = Eje.all
-      end
-
-
-      # number_to_percentage((planning.user.plannings.where(:visited => true).count.to_f / planning.user.plannings.count.to_f)*100, precision: 0)
       
-      @users = User.all
       @plannings = Planning.all
 
+      if current_user.admin
+        @users = User.all
+        @q = Planning.ransack(params[:q])
+        @plannings = @q.result.includes(:cycle, :user)
+        # @plannings = @plannings.group(:user_id, :id)
+        # @cycles = Cycle.all
+        # @ejes = Eje.all
 
-      
-      @users.each do |u|
-        if !u.admin
-          u.planned_visit = Planning.where(:user_id => u.id).count
+        @users.each do |u|
+          if !u.admin
+            u.planned_visit = Planning.where(:user_id => u.id).count
 
-          u.visit_done = Planning.where(:user_id => u.id).
-                                    where(:visited => true).count
+            u.visit_done = Planning.where(:user_id => u.id).
+                                      where(:visited => true).count
 
-          u.metric = Planning.where(:user_id => u.id).
-                              where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+            u.metric = Planning.where(:user_id => u.id).
+                                where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+          end
         end
+
+      else
+        @users = User.all
+        @q = current_user.plannings.ransack(params[:q])
+        @plannings = @q.result.includes(:cycle, :user)
+        # @plannings = @plannings.group(:user_id, :id)
+        # @cycles = Cycle.all
+        # @ejes = Eje.all
+
+        @users.each do |u|
+          if !u.admin
+            u.planned_visit = Planning.where(:user_id => u.id).count
+
+            u.visit_done = Planning.where(:user_id => u.id).
+                                      where(:visited => true).count
+
+            u.metric = Planning.where(:user_id => u.id).
+                                where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+          end
         end
-
-
-
-      
-      # @plans_no = Planning.joins(:cycle).count
-      # @plans_no = Planning.joins(:cycle).where(cycles: {name: params[:q]}).count
-    # end
-
-
-    # @q = User.ransack(params[:q])
-    # @users = @q.result.includes(:plannings)
-
-
-    # @q = Planning.ransack(params[:q])
-    # @plannings = @q.result.includes(:user)
-    # @plannings = @plannings.distinct.pluck(:user_id).uniq
-    # debugger
-
-
-    # if params[:search]
-    #   @users = User.where(id: Planning.pluck(:user_id))
-    #
-    #   # debugger
-    #   # @users = User.joins(:plannings).where(:plannings => {:created_at => params[:search]})
-    #   # @users = User.joins('LEFT JOIN plannings on plannings.user_id = user.id')
-    #   #               .group('user.id')
-    #   #               .having("created_at > #{params[:search]}")
-    #   # @doctors = Doctor.where(:firstname => params[:search]).paginate(:page => params[:page], :per_page => 20)
-    # else
-    #
-    #   @users = User.where(id: Planning.pluck(:user_id))
-    # end
+      end
 
 
   end

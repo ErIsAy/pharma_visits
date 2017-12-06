@@ -54,21 +54,39 @@
           %th % de Métrica Cumplida
 
       %tbody
-        - @users.each do |user|
-          - if !user.admin
-            %tr
-              %td= user.username
-              %td= user.division.name
-              %td= user.division.name
-              %td= user.planned_visit
-              %td= user.visit_done
-              -# - if  params[:q]
-              -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
-              -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
-              -# - else
-              -#   %td= Planning.where(:user_id => planning.user.id).count
-              -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
-              %td= number_to_percentage((user.metric)*100, precision: 0)
+        - if current_user.admin
+          - @users.each do |user|
+            - if !user.admin
+              %tr
+                %td= user.username
+                %td= user.division.name
+                %td= user.division.name
+                %td= user.planned_visit
+                %td= user.visit_done
+                -# - if  params[:q]
+                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+                -# - else
+                -#   %td= Planning.where(:user_id => planning.user.id).count
+                -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+                %td= number_to_percentage((user.metric)*100, precision: 0)
+        - else
+          - @users.each do |user|
+            - if !user.admin
+              %tr
+                %td= user.username if user.id == current_user.id
+                %td= user.division.name if user.id == current_user.id  
+                %td= user.division.name if user.id == current_user.id
+                %td= user.planned_visit if user.id == current_user.id
+                %td= user.visit_done if user.id == current_user.id
+                -# - if  params[:q]
+                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+                -# - else
+                -#   %td= Planning.where(:user_id => planning.user.id).count
+                -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+                %td= number_to_percentage((user.metric)*100, precision: 0) if user.id == current_user.id
+
 
 
 
