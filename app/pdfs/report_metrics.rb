@@ -33,15 +33,13 @@ class ReportMetrics < Prawn::Document
 
       
     @users.each do |u|
-
- 
-      table([[u.username,
-      u.planned_visit = Planning.where(:user_id => u.id).count,
-      u.visit_done = Planning.where(:user_id => u.id).where(:visited => true).count,
-      number_to_percentage((u.metric = Planning.where(:user_id => u.id).where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f)*100, precision: 0)
-
-      ]], :column_widths => [100,150,150,100])
-
+      if !u.admin
+        table([[u.username,
+        u.planned_visit = Planning.where(:user_id => u.id).count,
+        u.visit_done = Planning.where(:user_id => u.id).where(:visited => true).count,
+        number_to_percentage((u.metric = Planning.where(:user_id => u.id).where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f)*100, precision: 0)
+        ]], :column_widths => [100,150,150,100])
+      end
     end
 
     # @plannings.each do |planning|

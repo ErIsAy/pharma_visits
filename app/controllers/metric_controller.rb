@@ -1,3 +1,4 @@
+
 class MetricController < ApplicationController
 
 
@@ -14,6 +15,10 @@ class MetricController < ApplicationController
       @drugstores = current_user.drugstores
       @plannings = current_user.plannings
     end
+
+  
+
+   
 
   end
 
@@ -102,14 +107,16 @@ class MetricController < ApplicationController
 
       
       @users.each do |u|
-        u.planned_visit = Planning.where(:user_id => u.id).count
+        if !u.admin
+          u.planned_visit = Planning.where(:user_id => u.id).count
 
-        u.visit_done = Planning.where(:user_id => u.id).
-                                   where(:visited => true).count
+          u.visit_done = Planning.where(:user_id => u.id).
+                                    where(:visited => true).count
 
-        u.metric = Planning.where(:user_id => u.id).
-                            where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
-      end
+          u.metric = Planning.where(:user_id => u.id).
+                              where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+        end
+        end
 
 
 

@@ -25,6 +25,8 @@
 //= require lib/masked-input
 //= require lib/timepicki
 //= require tablesort
+//= require lib/raphaeljs/raphael
+//= require lib/morrisjs/morris
 //= require_tree .
 
 
