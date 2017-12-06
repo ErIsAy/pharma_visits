@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     self.mi = Doctor.where(:user_id => self.id, :speciality => "MI").count
     self.nefro = Doctor.where(:user_id => self.id, :speciality => "NEFRO").count
     self.neuro = Doctor.where(:user_id => self.id, :speciality => "NEURO").count
-    self.neuro_cir = Doctor.where(:user_id => self.id, :speciality => "NEURO CIR").count
+    self.neuro_cir = Doctor.where(:user_id => self.id, :speciality => "NEURO-CIR").count
     self.orto = Doctor.where(:user_id => self.id, :speciality => "ORTO").count
     self.reuma = Doctor.where(:user_id => self.id, :speciality => "REUMA").count
     self.uro = Doctor.where(:user_id => self.id, :speciality => "URO").count
