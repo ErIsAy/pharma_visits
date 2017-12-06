@@ -46,8 +46,11 @@
               = link_to 'Eliminar', drugstore, :method => :delete,
                                               class: "ui red basic submit button",
                                               :data => { :confirm => '¿Está seguro…?' }
-            - if current_user.admin
+            - if current_user.admin && drugstore.user != nil
               %td= drugstore.user.username
+            - else 
+              %td -  
+
           -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
       = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 

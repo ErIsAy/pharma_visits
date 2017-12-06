@@ -36,8 +36,10 @@
             %td= drugstore.phone
             %td= drugstore.address
             %td= drugstore.city
-            - if current_user.admin
+            - if current_user.admin && drugstore.user != nil
               %td= drugstore.user.username 
+            - else
+              %td -
             %td.collapsing.positive
               = link_to 'Ver', drugstore, class: "ui brown basic submit button"
 

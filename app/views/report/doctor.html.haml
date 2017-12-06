@@ -42,8 +42,10 @@
             %td= doctor.lastname
             %td= doctor.category
             %td= doctor.center.name if doctor.center
-            - if current_user.admin
+            - if current_user.admin && doctor.user != nil
               %td= doctor.user.username 
+            - else 
+              %td -
             %td.collapsing.positive
               = link_to 'Ver', doctor, class: "ui brown basic submit button"
 

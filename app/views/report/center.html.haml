@@ -40,8 +40,10 @@
             %td= center.region
             %td= center.address
             %td= center.city
-            - if current_user.admin
+            - if current_user.admin && center.user != nil
               %td= center.user.username  
+            - else 
+              %td -
             %td.collapsing.positive
               = link_to 'Ver', center, class: "ui brown basic submit button"
 
