@@ -30,6 +30,8 @@
           %th Apellidos
           %th Categoría
           %th Centro
+          - if current_user.admin
+            %th Usuario 
           %th Acciones
 
       %tbody
@@ -42,6 +44,8 @@
             %td= doctor.lastname
             %td= doctor.category
             %td= doctor.center.name if doctor.center
+            - if current_user.admin
+              %td= doctor.user.username  
             %td.collapsing.positive
               = link_to 'Ver', doctor, class: "ui brown basic submit button"
 

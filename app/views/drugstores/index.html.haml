@@ -9,11 +9,14 @@
 
     .ui.form.input.segment
       = search_form_for @q do |f|
-        .one.field
+        .two.fields
           .field
             = f.label :name_cont, 'Farmacia...'
             = f.search_field :name_cont
-        = f.submit "Buscar", :class => "ui blue submit button"
+          .field
+            = f.label :user_username_cont, 'Usuario'
+            = f.search_field :user_username_cont 
+        = f.submit "Filtrar", :class => "ui blue submit button"
 
     %table.ui.sortable.celled.table.striped
       %thead
@@ -23,6 +26,8 @@
           %th Dirección
           %th Ciudad
           %th Acciones
+          - if current_user.admin            
+            %th Usuario  
 
       %tbody
         - @drugstores.each do |drugstore|
@@ -41,6 +46,8 @@
               = link_to 'Eliminar', drugstore, :method => :delete,
                                               class: "ui red basic submit button",
                                               :data => { :confirm => '¿Está seguro…?' }
+            - if current_user.admin
+              %td= drugstore.user.username
           -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
       = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 

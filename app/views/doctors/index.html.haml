@@ -10,7 +10,7 @@
       -#   = text_field_tag :search, params[:search], :placeholder => "Nombre..."
       -#   = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
       = search_form_for @q do |f|
-        .four.fields
+        .five.fields
           .field
             = f.label :firstname_or_lastname_cont, 'Nombre'
             = f.search_field :firstname_or_lastname_cont
@@ -23,8 +23,12 @@
           .field
             = f.label :speciality_cont, 'Especialidad'
             = f.search_field :speciality_cont 
+          .field
+            = f.label :user_username_cont, 'Usuario'
+            = f.search_field :user_username_cont 
 
-        = f.submit "Buscar", :class => "ui blue submit button"
+
+        = f.submit "Filtrar", :class => "ui blue submit button"
 
     %table.ui.sortable.celled.table.striped.definition
       %thead
@@ -35,6 +39,8 @@
           %th Categoría
           %th Centro
           %th Acciones
+          - if current_user.admin
+            %th Usuario
 
       %tbody
         - @doctors.each do |doctor|
@@ -52,7 +58,8 @@
               = link_to 'Eliminar', doctor, :method => :delete,
                                             class: "ui red basic submit button",
                                             :data => { :confirm => '¿Está seguro…?' }
-
+            - if current_user.admin
+              %td= doctor.user.username
               -# .ui.fitted
               -#   %a{:href => doctor_path(doctor)}
               -#     Show

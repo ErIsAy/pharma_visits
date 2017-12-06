@@ -33,12 +33,13 @@
     -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
     -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
 
-    %table.ui.sortable.celled.table.striped.definition
+    %table.ui.sortable.celled.table.striped
       %thead
         %tr
-          %th
+          -# %th
           %th Usuario
           %th Doctor
+          %th Especialidad
           %th Fecha de Visita
           %th Visitado?
           %th Acciones
@@ -46,11 +47,12 @@
       %tbody
         - @plannings.each do |planning|
           %tr
-            %td.collapsing
-              %div.ui.fitted
-                = planning.shift
+            -# %td.collapsing
+            -#   %div.ui.fitted
+            -#     = planning.shift
             %td= planning.user.username
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
+            %td= planning.doctor.speciality  
             %td= planning.date_visit
             %td
               - if planning.visited

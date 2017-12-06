@@ -26,16 +26,16 @@ class ReportPlannings < Prawn::Document
 
 
   def body
-    table([["Usuario","Doctor","Fecha","Tanda","Visitado"]], :column_widths => [100,100,100,100,100], :row_colors => ["9FA8DA"])
+    table([["Usuario","Doctor","Especialidad","Fecha","Visitado"]], :column_widths => [100,100,100,100,100], :row_colors => ["9FA8DA"])
 
 
     if @user.admin
       @plannings.each do |planning|
-        table([[planning.user.username, planning.doctor.firstname, planning.date_visit ,planning.shift, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
+        table([[planning.user.username, planning.doctor.firstname, planning.doctor.speciality, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
       end
     else
       @plannings.where(:user_id => @user).each do |planning|
-        table([[planning.user.username, planning.doctor.firstname, planning.date_visit ,planning.shift, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
+        table([[planning.user.username, planning.doctor.firstname, planning.doctor.speciality, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
       end
     end
 

@@ -86,7 +86,7 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Doctor.ransack(params[:q])
-      @doctors = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
       @centers = Center.all
     else
       @q = current_user.doctors.ransack(params[:q])

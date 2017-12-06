@@ -28,7 +28,9 @@
           %th Región
           %th Dirección
           %th Ciudad
+          %th Usuario
           %th Acciones
+            
 
 
       %tbody
@@ -38,6 +40,8 @@
             %td= center.region
             %td= center.address
             %td= center.city
+            - if current_user.admin
+              %td= center.user.username  
             %td.collapsing.positive
               = link_to 'Ver', center, class: "ui brown basic submit button"
 

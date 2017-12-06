@@ -25,6 +25,8 @@
           %th Tel.
           %th Dirección
           %th Ciudad
+          - if current_user.admin
+            %th Usuario 
           %th Acciones
 
       %tbody
@@ -34,6 +36,8 @@
             %td= drugstore.phone
             %td= drugstore.address
             %td= drugstore.city
+            - if current_user.admin
+              %td= drugstore.user.username 
             %td.collapsing.positive
               = link_to 'Ver', drugstore, class: "ui brown basic submit button"
 
