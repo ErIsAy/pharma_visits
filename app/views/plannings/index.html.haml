@@ -27,6 +27,7 @@
           %th Categoría
           %th Fecha de Visita
           %th Visitado?
+          %th Usuario  
           %th Acciones
 
       %tbody
@@ -44,7 +45,7 @@
                 %i.checkmark.icon.green.huge
               - else
                 %i.minus.icon.brown.huge
-
+            %td= planning.user.username
             %td.collapsing.positive
               = link_to 'Ver |', planning
               = link_to 'Editar |', edit_planning_path(planning)

@@ -12,19 +12,19 @@
     -#         = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
     -#
     -#     = f.submit "Buscar", :class => "ui blue submit button"
-    .ui.segment.form.input{:style => "margin-top: 0;"}
-      = search_form_for @q, :url => metric_index_path do |f|
-        .three.fields
-          .field
-            = f.label :user_username_cont, 'Usuario'
-            = f.search_field :user_username_cont
-          .field
-            = f.label :user_division_name_cont, 'Divición'
-            = f.search_field :user_division_name_cont
-          .field
-            = f.label :user_division_name_cont, 'Eje'
-            -# = f.search_field :user_division_eje_name_cont
-            = f.select(:user_division_name_cont, @ejes.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Eje'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+    -# .ui.segment.form.input{:style => "margin-top: 0;"}
+    -#   = search_form_for @q, :url => metric_index_path do |f|
+    -#     .three.fields
+    -#       .field
+    -#         = f.label :user_username_cont, 'Usuario'
+    -#         = f.search_field :user_username_cont
+    -#       .field
+    -#         = f.label :user_division_name_cont, 'Divición'
+    -#         = f.search_field :user_division_name_cont
+    -#       .field
+    -#         = f.label :user_division_name_cont, 'Eje'
+    -#         -# = f.search_field :user_division_eje_name_cont
+    -#         = f.select(:user_division_name_cont, @ejes.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Eje'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
 
 
@@ -32,7 +32,7 @@
 
         = f.submit "Buscar", :class => "ui blue submit button"
 
-    .ui.segment.form.input.right.floated{:style => "margin-top: 0;"}
+    .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: metric_print_report_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
         .fields
           .field
@@ -42,30 +42,6 @@
 
         = f.submit "Imprimir", :class => "ui blue submit button"
 
-
-
-
-    -#
-    -# .ui.segment.form.input{:style => "margin-top: 0;"}
-    -#   %h1 Gráficos
-
-      -# = @chart.draw
-
-
-    -#
-    -# .ui.large.action.input
-    -#   = form_tag metric_index_path, :method => 'get' do
-    -#     .field#planning_date_visit
-    -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
-    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
-    -# %button.ui.large.olive.icon.button.right.floated
-    -#   %i.print.icon
-
-    -# .ui.large.action.input
-    -#   = form_tag report_planning_path, :method => 'get' do
-    -#     .field.required#planning_date_visit
-    -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
-    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
 
     %table.ui.sortable.celled.table.striped
       %thead
@@ -78,49 +54,22 @@
           %th % de Métrica Cumplida
 
       %tbody
-        - @plannings.each do |planning|
+        - @users.each do |user|
           %tr
-            -# -debugger
-            %td= planning.user.username
-            %td= planning.user.division.name
-            %td= planning.user.division.name
-
-            - if  params[:q]
-              %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
-              %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
-            - else
-              %td= Planning.where(:user_id => planning.user.id).count
-              %td= Planning.where(:user_id => planning.user.id, :visited => true).count
-              -# %td= planning.user.plannings.where(:visited => true).count
-
-            -# %td= planning.user.plannings.where(:visited => true).count
-            %td= number_to_percentage((planning.user.plannings.where(:visited => true).count.to_f / planning.user.plannings.count.to_f)*100, precision: 0)
-
-      -#
-      -# %tbody
-      -#   - @users.each do |user|
-      -#     %tr
-      -#       %td= user.username
-      -#       %td= user.plannings.count
-      -#       %td= user.plannings.where(:visited => true).count
-      -#       %td= number_to_percentage((user.plannings.where(:visited => true).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+            %td= user.username
+            %td= user.division.name
+            %td= user.division.name
+            %td= user.planned_visit
+            %td= user.visit_done
+            -# - if  params[:q]
+            -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+            -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+            -# - else
+            -#   %td= Planning.where(:user_id => planning.user.id).count
+            -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+            %td= number_to_percentage((user.metric)*100, precision: 0)
 
 
 
-            -# %td.collapsing.positive
-            -#   = link_to 'Ver', planning, class: "ui brown basic submit button"
 
-      -# = will_paginate @plannings, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
-
-
-    -# %br
-    -# - if params[:q]
-    -#   = link_to report_planning_path, class: "ui blue basic submit button" do
-    -#     %i.big.icons
-    -#       %i.reply.icon
-    -#     = 'Volver'
-    -# - else
-    -#   = link_to report_index_path, class: "ui blue basic submit button" do
-    -#     %i.big.icons
-    -#       %i.reply.icon
-    -#     = 'Volver'
+   

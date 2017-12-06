@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
-
+  attr_accessor :metric, :visit_done, :planned_visit
   devise :database_authenticatable,
          :rememberable, :trackable, :validatable, :timeoutable
   has_many :plannings

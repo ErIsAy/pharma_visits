@@ -23,7 +23,7 @@ class MetricController < ApplicationController
     @plannings = @q.result.includes(:cycle)
     @plannings = @plannings.group(:user_id, :id)
     @cycles = Cycle.all
-
+    @users = User.all
 
     respond_to do |format|
       # format.html
@@ -32,7 +32,7 @@ class MetricController < ApplicationController
         # @q.sorts = 'date_visit desc'
         @plannings = @q.result.includes(:doctor, :user)
         # @user = params[:q][:user_username_cont]
-        pdf = ReportMetrics.new(@plannings, params[:q][:cycle_id_eq])
+        pdf = ReportMetrics.new(@plannings, params[:q][:cycle_id_eq], @users)
         send_data pdf.render, filename: "Metricas_#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
@@ -92,6 +92,26 @@ class MetricController < ApplicationController
         @cycles = Cycle.all
         @ejes = Eje.all
       end
+
+
+      # number_to_percentage((planning.user.plannings.where(:visited => true).count.to_f / planning.user.plannings.count.to_f)*100, precision: 0)
+      
+      @users = User.all
+      @plannings = Planning.all
+
+
+      
+      @users.each do |u|
+        u.planned_visit = Planning.where(:user_id => u.id).count
+
+        u.visit_done = Planning.where(:user_id => u.id).
+                                   where(:visited => true).count
+
+        u.metric = Planning.where(:user_id => u.id).
+                            where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+      end
+
+
 
       
       # @plans_no = Planning.joins(:cycle).count
