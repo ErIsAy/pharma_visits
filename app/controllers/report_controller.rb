@@ -16,17 +16,17 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Center.ransack(params[:q])
-      @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @centers = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     else
       @q = current_user.centers.ransack(params[:q])
-      @centers = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @centers = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
 
     respond_to do |format|
       format.html
       format.pdf do
         @q = Center.ransack(params[:q])
-        @centers = @q.result
+        @centers = @q.result.order('name ASC')
         @city = params[:q][:city_cont]
         pdf = ReportCenters.new(@centers, @city, current_user)
         send_data pdf.render, filename: 'Centros.pdf', type: 'application/pdf', disposition: "inline"
@@ -48,10 +48,10 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Doctor.ransack(params[:q])
-      @doctors = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @doctors = @q.result.paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     else
       @q = current_user.doctors.ransack(params[:q])
-      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     end
 
     respond_to do |format|
@@ -86,11 +86,11 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Doctor.ransack(params[:q])
-      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
       @centers = Center.all
     else
       @q = current_user.doctors.ransack(params[:q])
-      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
+      @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
       @centers = current_user.centers
     end
 
@@ -122,10 +122,10 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Drugstore.ransack(params[:q])
-      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     else
       @q = current_user.drugstores.ransack(params[:q])
-      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
 
     respond_to do |format|

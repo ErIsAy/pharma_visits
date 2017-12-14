@@ -10,7 +10,7 @@
       -#   = text_field_tag :search, params[:search], :placeholder => "Nombre..."
       -#   = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
       = search_form_for @q do |f|
-        .six.fields
+        .seven.fields
           .field
             = f.label :firstname_cont, 'Nombre'
             = f.search_field :firstname_cont
@@ -20,6 +20,9 @@
           .field
             = f.label :center_name_cont, 'Centro'
             = f.search_field :center_name_cont
+          .field
+            = f.label :center_city_cont, 'Ciudad'
+            = f.search_field :center_city_cont           
           .field
             = f.label :category_cont, 'Categoría'
             = f.search_field :category_cont
@@ -33,10 +36,11 @@
 
         = f.submit "Filtrar", :class => "ui blue submit button"
 
-    %table.ui.sortable.celled.table.striped.definition
+    %table.ui.sortable.celled.table.striped.definition.olive
       %thead
         %tr
           %th
+            %i.doctor.icon.large
           %th Nombres
           %th Apellidos
           %th Categoría
@@ -48,7 +52,7 @@
       %tbody
         - @doctors.each do |doctor|
           %tr
-            %td.collapsing
+            %td.smaller_f_speciality.collapsing
               %div.ui.fitted
                 = doctor.speciality
             %td= doctor.firstname

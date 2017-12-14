@@ -7,10 +7,13 @@
       -# = I18n.l(Time.now, format: "%B").capitalize
     .ui.segment.form.input
       = search_form_for @q do |f|
-        .two.fields
+        .three.fields
           .field#planning_date_visit
-            = f.label :date_visit, 'Fecha'
+            = f.label :date_visit, 'Desde'
             = f.search_field :date_visit_gteq
+          .field#planning_date_visit_lteq
+            = f.label :date_visit, 'Hasta'
+            = f.search_field :date_visit_lteq
           .field
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
@@ -47,9 +50,14 @@
                 %i.minus.icon.brown.huge
             %td= planning.user.username
             %td.collapsing.positive
-              = link_to 'Ver |', planning
-              = link_to 'Editar |', edit_planning_path(planning)
-              = link_to 'Eliminar', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
+              -# = link_to 'Ver |', planning
+              -# = link_to 'Ver |', edit_planning_path(planning)
+              
+              = link_to 'Ver', edit_planning_path(planning), class: "ui blue basic submit button"
+              = link_to 'Eliminar', planning, :method => :delete,
+                class: "ui red basic submit button",
+                :data => { :confirm => '¿Está seguro…?' }
+              -# = link_to 'Eliminar', planning, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
       = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
