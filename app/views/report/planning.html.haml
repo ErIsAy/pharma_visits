@@ -5,10 +5,16 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, :url => report_planning_path(:format => "pdf"), :html => {:target=>'_blank'}  do |f|
-        .three.fields
+        .four.fields
+          -# .field#planning_date_visit
+          -#   = f.label :date_visit, 'Fecha'
+          -#   = f.search_field :date_visit_gteq
           .field#planning_date_visit
-            = f.label :date_visit, 'Fecha'
+            = f.label :date_visit, 'Desde'
             = f.search_field :date_visit_gteq
+          .field#planning_date_visit_lteq
+            = f.label :date_visit, 'Hasta'
+            = f.search_field :date_visit_lteq
           .field
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
@@ -53,7 +59,7 @@
             %td= planning.user.username
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
             %td= planning.doctor.speciality  
-            %td= planning.date_visit
+            %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
             %td
               - if planning.visited
                 %i.checkmark.icon.green.huge

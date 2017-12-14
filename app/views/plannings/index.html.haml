@@ -7,7 +7,7 @@
       -# = I18n.l(Time.now, format: "%B").capitalize
     .ui.segment.form.input
       = search_form_for @q do |f|
-        .three.fields
+        .four.fields
           .field#planning_date_visit
             = f.label :date_visit, 'Desde'
             = f.search_field :date_visit_gteq
@@ -17,8 +17,10 @@
           .field
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
-
-        = f.submit "Buscar", :class => "ui blue submit button"
+          .field
+            = f.label :user_username_cont, 'Usuario'
+            = f.search_field :user_username_cont 
+        = f.submit "Filtrar", :class => "ui blue submit button"
 
 
     %table.ui.sortable.celled.table.striped.definition
@@ -42,7 +44,7 @@
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
             %td= planning.doctor.center.name
             %td= planning.doctor.category
-            %td= planning.date_visit
+            %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
             %td
               - if planning.visited
                 %i.checkmark.icon.green.huge
