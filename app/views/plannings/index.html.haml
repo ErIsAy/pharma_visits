@@ -23,10 +23,10 @@
         = f.submit "Filtrar", :class => "ui blue submit button"
 
 
-    %table.ui.sortable.celled.table.striped.definition
+    %table.ui.sortable.celled.table.striped 
       %thead
         %tr
-          %th
+          -# %th
           %th Doctor
           %th Centro
           %th Categoría
@@ -38,18 +38,18 @@
       %tbody
         - @plannings.each do |planning|
           %tr
-            %td.collapsing
-              %div.ui.fitted
-                = planning.shift
+            -# %td.collapsing
+            -#   %div.ui.fitted
+            -#     = planning.shift
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
             %td= planning.doctor.center.name
             %td= planning.doctor.category
             %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
             %td
               - if planning.visited
-                %i.checkmark.icon.green.huge
+                %i.checkmark.icon.green.large
               - else
-                %i.minus.icon.brown.huge
+                %i.minus.icon.brown.large
             %td= planning.user.username
             %td.collapsing.positive
               -# = link_to 'Ver |', planning
