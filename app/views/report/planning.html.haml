@@ -62,9 +62,9 @@
             %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
             %td
               - if planning.visited
-                %i.checkmark.icon.green.huge
+                %i.checkmark.icon.green.large
               - else
-                %i.minus.icon.brown.huge
+                %i.minus.icon.brown.large
 
             %td.collapsing.positive
               = link_to 'Ver', planning, class: "ui brown basic submit button"
