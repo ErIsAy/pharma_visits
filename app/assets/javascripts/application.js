@@ -62,6 +62,18 @@ $( document ).ready(function() {
   // $.datetimepicker.setLocale('es');
   $('#planning_date_visit').calendar( {
     type: 'date',
+    formatter: {
+      date: function (date, settings) {
+          if (!date) return '';
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          // var hour = date.getHours();
+          // var minu = date.getMinutes();
+          return day + '/' + month + '/' + year;
+      }
+    },
+    type: 'date',
     text: {
       days: ['Do', 'L', 'M', 'Mi', 'J', 'V', 'S'],
       months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],

@@ -19,8 +19,7 @@
   .two.fields
     .field.required#planning_date_visit
       = f.label "Fecha de Visita"
-      = f.input :date_visit, label: false, as: :string
-
+      = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
     .field.required
       = f.label "Horario"
       -# = f.input :shift, label: false
@@ -54,3 +53,4 @@
       $(".time_element").timepicki();
       $("#planning_shift").timepicki();
     });
+  
