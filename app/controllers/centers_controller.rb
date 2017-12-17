@@ -97,6 +97,6 @@ class CentersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def center_params
-      params.require(:center).permit(:name, :address, :city, :region,:phone, :lat, :lng)
+      params.require(:center).permit(:name, :address, :city, :region, :phone, :lat, :lng)
     end
 end

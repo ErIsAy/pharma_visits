@@ -18,6 +18,9 @@
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
           .field
+            = f.label :doctor_speciality_cont, 'Especialidad'
+            = f.search_field :doctor_speciality_cont
+          .field
             = f.label :user_username_cont, 'Usuario'
             = f.search_field :user_username_cont 
         = f.submit "Filtrar", :class => "ui blue submit button"
@@ -41,7 +44,7 @@
             -# %td.collapsing
             -#   %div.ui.fitted
             -#     = planning.shift
-            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname
+            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname + " (#{planning.doctor.speciality})"
             %td= planning.doctor.center.name
             %td= planning.doctor.category
             %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil

@@ -3,48 +3,75 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered Reportes
 
-    .ui
-      .ui.three.column.grid
-        .column
-          .ui.link.card
-            %a.image{:href => report_center_path}
-              = image_tag "investigations.png"
-              -# %img{:src => "https://www.ipcc.gov.uk/sites/all/themes/ipcc_omega_theme/images/icons/investigations.png"}
-            .content
-              Centros Médicos
-              -# .meta
-              -#   %a Last Seen 2 days ago
-        .column
-          .ui.link.card
-            %a.image{:href => report_doctor_path}
-              = image_tag "investigations.png"
-            .content
-              Listado de Doctores
-              -# .meta
-              -#   %a Last Seen 2 days ago
-        -# - if current_user.admin
-        .column
-          .ui.link.card
-            %a.image{:href => report_doctor_center_path}
-              = image_tag "investigations.png"
-            .content
-              Doctores por Centro
-              -# .meta
-              -#   %a Last Seen 2 days ago
-        .column
-          .ui.link.card
-            %a.image{:href => report_drugstore_path}
-              = image_tag "investigations.png"
-            .content
-              Listado de Farmacias
-              -# .meta
-              -#   %a Last Seen 2 days ago
-        -# - if current_user.admin
-        .column
-          .ui.link.card
-            %a.image{:href => report_planning_path}
-              = image_tag "investigations.png"
-            .content
-              Reporte de Plan Mensual
-              -# .meta
-              -#   %a Last Seen 2 days ago
+    -# .ui
+    -#   .ui.three.column.grid
+    -#     .column
+    -#       .ui.link.card
+    -#         %a.image{:href => report_center_path}
+    -#           = image_tag "investigations.png"
+    -#           -# %img{:src => "https://www.ipcc.gov.uk/sites/all/themes/ipcc_omega_theme/images/icons/investigations.png"}
+    -#         .content
+    -#           Centros Médicos
+    -#           -# .meta
+    -#           -#   %a Last Seen 2 days ago
+    -#     .column
+    -#       .ui.link.card
+    -#         %a.image{:href => report_doctor_path}
+    -#           = image_tag "investigations.png"
+    -#         .content
+    -#           Listado de Doctores
+    -#           -# .meta
+    -#           -#   %a Last Seen 2 days ago
+    -#     -# - if current_user.admin
+    -#     .column
+    -#       .ui.link.card
+    -#         %a.image{:href => report_doctor_center_path}
+    -#           = image_tag "investigations.png"
+    -#         .content
+    -#           Doctores por Centro
+    -#           -# .meta
+    -#           -#   %a Last Seen 2 days ago
+    -#     .column
+    -#       .ui.link.card
+    -#         %a.image{:href => report_drugstore_path}
+    -#           = image_tag "investigations.png"
+    -#         .content
+    -#           Listado de Farmacias
+    -#           -# .meta
+    -#           -#   %a Last Seen 2 days ago
+    -#     -# - if current_user.admin
+    -#     .column
+    -#       .ui.link.card
+    -#         %a.image{:href => report_planning_path}
+    -#           = image_tag "investigations.png"
+    -#         .content
+    -#           Reporte de Plan Mensual
+    -#           -# .meta
+    -#           -#   %a Last Seen 2 days ago
+
+    .ui.massive.relaxed.divided.list{:style => 'margin-top: 50px; '}
+      .item
+        %i.large.hospital.icon-gradient.middle.aligned.icon
+        .content
+          %a.header{:href => report_center_path} Centros Médicos
+          -# .description Updated 10 mins ago
+      .item
+        %i.large.doctor.icon-gradient.middle.aligned.icon
+        .content
+          %a.header{:href => report_doctor_path} Listado de Doctores
+          -# .description Updated 10 mins ago
+      .item
+        %i.large.building.outline.icon-gradient.middle.aligned.icon
+        .content
+          %a.header{:href => report_doctor_center_path} Doctores por Centro
+          -# .description Updated 10 mins ago
+      .item
+        %i.large.first.aid.icon-gradient.middle.aligned.icon
+        .content
+          %a.header{:href => report_drugstore_path} Listado de Farmacias
+          -# .description Updated 10 mins ago
+      .item
+        %i.large.file.pdf.outline.icon-gradient.middle.aligned.icon
+        .content
+          %a.header{:href => report_planning_path} Reporte de Visita
+          -# .description Updated 10 mins ago
