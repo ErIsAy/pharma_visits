@@ -44,7 +44,7 @@
             -# %td.collapsing
             -#   %div.ui.fitted
             -#     = planning.shift
-            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname + " (#{planning.doctor.speciality})"
+            %td= planning.doctor.firstname + ' ' + planning.doctor.lastname + " (#{planning.doctor.speciality})" if planning.doctor.firstname != nil
             %td= planning.doctor.center.name
             %td= planning.doctor.category
             %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil

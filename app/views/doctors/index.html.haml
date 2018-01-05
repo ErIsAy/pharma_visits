@@ -55,8 +55,8 @@
             %td.smaller_f_speciality.collapsing
               %div.ui.fitted
                 = doctor.speciality
-            %td= doctor.firstname
-            %td= doctor.lastname
+            %td= doctor.firstname if doctor.firstname != nil
+            %td= doctor.lastname if doctor.lastname != nil
             %td= doctor.category
             %td= doctor.center.name if doctor.center
             %td.collapsing.positive
