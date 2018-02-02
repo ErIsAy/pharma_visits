@@ -42,6 +42,7 @@ class MetricController < ApplicationController
     @orto = {}
     @reuma = {}
     @uro = {}
+    @oto = {}
 
 
     @users.each do |u|
@@ -71,6 +72,7 @@ class MetricController < ApplicationController
       @orto[u.username] = u.orto
       @reuma[u.username] = u.reuma
       @uro[u.username] = u.uro
+      @oto[u.username] = u.oto
     end
 
      @cir_obj = @cir.map{|e| {username: e[0], value: e[1]}}
@@ -98,6 +100,7 @@ class MetricController < ApplicationController
      @orto_obj = @orto.map{|e| {username: e[0], value: e[1]}}
      @reuma_obj = @reuma.map{|e| {username: e[0], value: e[1]}}
      @uro_obj = @uro.map{|e| {username: e[0], value: e[1]}}
+     @oto_obj = @oto.map{|e| {username: e[0], value: e[1]}}
 
      
  

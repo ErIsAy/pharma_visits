@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :cir, :cir_max, :cir_onco, :cir_ped, :cir_plast, :cir_proc, :cir_vas,
                 :derm, :diabe, :endo, :fis, :gastro, :geria, :intensi, :gin, :hema, :mf, :mg, :mi,
-                :nefro, :neuro, :neuro_cir, :orto, :reuma, :uro
+                :nefro, :neuro, :neuro_cir, :orto, :reuma, :uro, :oto
 
 
 
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     self.endo = Doctor.where(:user_id => self.id, :speciality => "ENDO").count
     self.fis = Doctor.where(:user_id => self.id, :speciality => "FIS").count
     self.gastro = Doctor.where(:user_id => self.id, :speciality => "GASTRO").count
-    self.geria = Doctor.where(:user_id => self.id, :speciality => "GERIA").count
+    self.geria = Doctor.where(:user_id => self.id, :speciality => "GER").count + Doctor.where(:user_id => self.id, :speciality => "GERIA").count
     self.intensi  = Doctor.where(:user_id => self.id, :speciality => "INTENSI").count
     self.gin = Doctor.where(:user_id => self.id, :speciality => "GIN").count
     self.hema =  Doctor.where(:user_id => self.id, :speciality => "HEMA").count
@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
     self.orto = Doctor.where(:user_id => self.id, :speciality => "ORTO").count
     self.reuma = Doctor.where(:user_id => self.id, :speciality => "REUMA").count
     self.uro = Doctor.where(:user_id => self.id, :speciality => "URO").count
+    self.uro = Doctor.where(:user_id => self.id, :speciality => "OTO").count
   end
 
 

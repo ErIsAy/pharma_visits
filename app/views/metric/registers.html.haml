@@ -83,7 +83,7 @@
       = content_tag :div, "", id: 'gastro', data: {doctors: @gastro_obj}, :style => "height: 250px;"
     .ui{:style => "margin-top: 40px;"}
       %h2
-        GERIA
+        GER
       = content_tag :div, "", id: 'geria', data: {doctors: @geria_obj}, :style => "height: 250px;"
     .ui{:style => "margin-top: 40px;"}
       %h2
@@ -129,10 +129,14 @@
       %h2
         URO
       = content_tag :div, "", id: 'reuma', data: {doctors: @reuma_obj}, :style => "height: 250px;"
-      .ui{:style => "margin-top: 40px;"}
+    .ui{:style => "margin-top: 40px;"}
       %h2
         URO
       = content_tag :div, "", id: 'uro', data: {doctors: @uro_obj}, :style => "height: 250px;"
+    .ui{:style => "margin-top: 40px;"}
+      %h2
+        OTO
+      = content_tag :div, "", id: 'oto', data: {doctors: @oto_obj}, :style => "height: 250px;"
 
 
 
@@ -260,7 +264,7 @@
       data: data,
       xkey: 'username',
       ykeys: ['value'],
-      labels: ['Cantidad de GERIA'],
+      labels: ['Cantidad de GER'],
       resize: true
     });
     var data= $('#intensi').data()['doctors'];
@@ -369,6 +373,15 @@
       xkey: 'username',
       ykeys: ['value'],
       labels: ['Cantidad de URO'],
+      resize: true
+    });
+    var data= $('#oto').data()['doctors'];
+    new Morris.Bar({
+      element: 'oto',
+      data: data,
+      xkey: 'username',
+      ykeys: ['value'],
+      labels: ['Cantidad de OTORRINOS'],
       resize: true
     });
     $(document).ready(function() {

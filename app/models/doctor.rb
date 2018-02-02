@@ -31,7 +31,7 @@ class Doctor < ActiveRecord::Base
       ['ENDO', 'ENDO'],
       ['FIS', 'FIS'],
       ['GASTRO', 'GASTRO'],
-      ['GERIA', 'GERIA'],
+      ['GER', 'GER'],
       ['INTENSI', 'INTENSI'],
       ['GIN', 'GIN'],
       ['HEMA', 'HEMA'],
@@ -43,7 +43,8 @@ class Doctor < ActiveRecord::Base
       ['NEURO-CIR', 'NEURO-CIR'],
       ['ORTO', 'ORTO'],
       ['REUMA', 'REUMA'],
-      ['URO', 'URO']
+      ['URO', 'URO'],
+      ['OTO', 'OTO']
     ]
 
 end
