@@ -21,17 +21,19 @@
             = f.label :center_name_cont, 'Centro'
             = f.search_field :center_name_cont
           .field
-            = f.label :center_city_cont, 'Ciudad'
-            = f.search_field :center_city_cont           
+            = f.label :center_city_eq, 'Ciudad'
+            = f.select :center_city_eq, collection: Center::CITIES      
           .field
             = f.label :category_cont, 'Categoría'
             = f.search_field :category_cont
           .field
-            = f.label :speciality_cont, 'Especialidad'
-            = f.search_field :speciality_cont 
-          .field
-            = f.label :user_username_cont, 'Usuario'
-            = f.search_field :user_username_cont 
+            = f.label :speciality_eq, 'Especialidad'
+            = f.select :speciality_eq, collection: Doctor::SPECIALTIES
+          - if current_user.admin
+            .field
+              = f.label :user_username_eq, 'Usuario'
+              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+              include_blank: 'Todos'
 
 
         = f.submit "Filtrar", :class => "ui blue submit button"

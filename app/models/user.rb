@@ -70,4 +70,23 @@ class User < ActiveRecord::Base
       where(conditions.to_h).first
     end
   end
+
+  DIVISION =
+    [
+      ['General/Todas', ''],
+      ['DISTRITO', 'DISTRITO'],
+      ['ZONA ESTE', 'ZONA ESTE'],
+      ['ZONA NORTE', 'ZONA NORTE'],
+      ['ZONA SUR', 'ZONA SUR']
+    ]
+
+    EJE =
+    [
+      ['General/Todos', ''],
+      ['DISTRITO', 'DISTRITO'],
+      ['ESTE', 'ESTE'],
+      ['NORTE', 'NORTE'],
+      ['SUR', 'SUR']
+    ]
+
 end

@@ -5,10 +5,18 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_doctor_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .field
-          = f.label :firstname_or_lastname_cont, 'Nombre'
-          = f.search_field :firstname_or_lastname_cont
-
+        .two.fields
+          .field
+            = f.label :firstname_or_lastname_cont, 'Nombre'
+            = f.search_field :firstname_or_lastname_cont
+          .field
+            = f.label :speciality_eq, 'Especialidad'
+            = f.select :speciality_eq, collection: Doctor::SPECIALTIES
+          - if current_user.admin  
+            .field
+              = f.label :user_username_eq, 'Usuario'
+              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+              include_blank: 'Todos' 
         = f.submit "Imprimir Reporte", :class => "ui blue button"
 
 

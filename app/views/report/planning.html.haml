@@ -5,7 +5,7 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, :url => report_planning_path(:format => "pdf"), :html => {:target=>'_blank'}  do |f|
-        .four.fields
+        .five.fields
           -# .field#planning_date_visit
           -#   = f.label :date_visit, 'Fecha'
           -#   = f.search_field :date_visit_gteq
@@ -19,8 +19,13 @@
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
           .field
-            = f.label :user_username_cont, 'Usuario'
-            = f.search_field :user_username_cont
+            = f.label :doctor_speciality_eq, 'Especialidad'
+            = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES 
+          - if current_user.admin
+            .field
+              = f.label :user_username_eq, 'Usuario'
+              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+              include_blank: 'Todos'
 
         = f.submit "Imprimir Reporte", :class => "ui blue submit button"
 

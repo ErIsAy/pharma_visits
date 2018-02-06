@@ -21,6 +21,7 @@ class DoctorsController < ApplicationController
     #   end
     # end
     # @q = Doctor.ransack(params[:q])
+    
 
     if current_user.admin
       @q = Doctor.ransack(params[:q])

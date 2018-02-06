@@ -17,7 +17,11 @@
         .field
           = f.label :region_cont, 'Región'
           = f.search_field :region_cont
-
+        - if current_user.admin  
+          .field
+            = f.label :user_username_eq, 'Usuario'
+            = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+            include_blank: 'Todos' 
         = f.submit "Imprimir Reporte", :class => "ui blue button"
 
 

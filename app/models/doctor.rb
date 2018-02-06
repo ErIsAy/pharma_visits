@@ -19,6 +19,7 @@ class Doctor < ActiveRecord::Base
 
   SPECIALTIES =
     [
+      ['General/Todas', ''],
       ['CIR', 'CIR'],
       ['CIR MAX', 'CIR MAX'],
       ['CIR ONCO', 'CIR ONCO'],
