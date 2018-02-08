@@ -5,10 +5,15 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_drugstore_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .field
-          = f.label :city_cont, 'Ciudad'
-          = f.select(:city_cont, collection: Drugstore::CITIES)
-
+        .two.fields
+          .field
+            = f.label :city_cont, 'Ciudad'
+            = f.select(:city_cont, collection: Drugstore::CITIES)
+          - if current_user.admin  
+            .field
+              = f.label :user_username_eq, 'Usuario'
+              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+              include_blank: 'Todos' 
         = f.submit "Imprimir Reporte", :class => "ui blue button"
 
       -# = form_tag report_drugstore_path, :method => 'get' do

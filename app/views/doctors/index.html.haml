@@ -62,8 +62,8 @@
             %td= doctor.category
             %td= doctor.center.name if doctor.center
             %td.collapsing.positive
-              = link_to 'Ver', doctor, class: "ui brown basic submit button"
-              = link_to 'Editar', edit_doctor_path(doctor), class: "ui blue basic submit button"
+              -# = link_to 'Ver', doctor, class: "ui brown basic submit button"
+              = link_to 'Ver', edit_doctor_path(doctor), class: "ui blue basic submit button"
               = link_to 'Eliminar', doctor, :method => :delete,
                                             class: "ui red basic submit button",
                                             :data => { :confirm => '¿Está seguro…?' }

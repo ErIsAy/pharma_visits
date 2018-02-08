@@ -26,9 +26,24 @@ class CyclesController < ApplicationController
   def create
     @cycle = Cycle.new(cycle_params)
 
+
     respond_to do |format|
       if @cycle.save
-        format.html { redirect_to @cycle, notice: 'Cycle was successfully created.' }
+        
+      # duplicate plannings logic here.
+      # @plannings = Planning.all
+      # @new_planning = [:title, :doctor_id, :note, user_id, :date_visit, :visited]
+      # for each @plannings do |old_planning|
+      #   @new_planning.title = old_planning.title
+      #   @new_planning.doctor_id = old_planning.doctor_id
+      #   @new_planning.note = old_planning.note
+      #   @new_planning.date_visit = old_planning.date_visit + 1 month
+      #   @new_planning.visited = false
+      #   @new_planning.cycle_id = Cycle.last.id
+      #   Planning.create(:title, :doctor_id, :note, user_id, :date_visit, :visited)  
+      # end
+    
+        format.html { redirect_to @cycle, notice: 'Nuevo Ciclo ha sido creado.' }
         format.json { render :show, status: :created, location: @cycle }
       else
         format.html { render :new }
