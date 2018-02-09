@@ -72,7 +72,8 @@
                 %i.minus.icon.brown.large
 
             %td.collapsing.positive
-              = link_to 'Ver', planning, class: "ui brown basic submit button"
+              -# = link_to 'Ver', planning, class: "ui brown basic submit button"
+              = link_to 'Ver', edit_planning_path(planning), class: "ui blue basic submit button"
 
       = will_paginate @plannings, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 

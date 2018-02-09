@@ -46,7 +46,8 @@
             - else
               %td -
             %td.collapsing.positive
-              = link_to 'Ver', drugstore, class: "ui brown basic submit button"
+              -# = link_to 'Ver', drugstore, class: "ui brown basic submit button"
+              = link_to 'Ver', edit_drugstore_path(drugstore), class: "ui brown basic submit button"
 
       = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 
