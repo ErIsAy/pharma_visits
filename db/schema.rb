@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712181515) do
+ActiveRecord::Schema.define(version: 20180322211435) do
 
   create_table "centers", force: :cascade do |t|
     t.string   "name"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 20170712181515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "region"
+    t.integer  "user_id"
   end
+
+  add_index "centers", ["user_id"], name: "index_centers_on_user_id"
 
   create_table "cycles", force: :cascade do |t|
     t.string   "name"
@@ -53,9 +56,11 @@ ActiveRecord::Schema.define(version: 20170712181515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "category"
+    t.integer  "user_id"
   end
 
   add_index "doctors", ["center_id"], name: "index_doctors_on_center_id"
+  add_index "doctors", ["user_id"], name: "index_doctors_on_user_id"
 
   create_table "drugstores", force: :cascade do |t|
     t.string   "name"
@@ -65,7 +70,10 @@ ActiveRecord::Schema.define(version: 20170712181515) do
     t.string   "service_person"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
+
+  add_index "drugstores", ["user_id"], name: "index_drugstores_on_user_id"
 
   create_table "ejes", force: :cascade do |t|
     t.string   "name"
@@ -114,13 +122,26 @@ ActiveRecord::Schema.define(version: 20170712181515) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "division_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "division_id"
   end
 
   add_index "users", ["division_id"], name: "index_users_on_division_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "visits", force: :cascade do |t|
+    t.string   "note"
+    t.date     "date_visit"
+    t.integer  "planning_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "cycle"
+  end
+
+  add_index "visits", ["planning_id"], name: "index_visits_on_planning_id"
+  add_index "visits", ["user_id"], name: "index_visits_on_user_id"
 
 end

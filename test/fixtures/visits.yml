@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note: MyString
+  date_visit: 2018-03-22
+  planning_id: 
+  user_id: 
+
+two:
+  note: MyString
+  date_visit: 2018-03-22
+  planning_id: 
+  user_id: 

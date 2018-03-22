@@ -1,0 +1,29 @@
+.ui.attached.message
+  .header
+    Registro de Visita
+
+
+  %p Por favor llenar los siguientes datos
+
+= simple_form_for(@visit, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+  -# = f.error_notification
+
+  .form-inputs
+    -# = f.input :planning, value: @planning
+    -# = f.hidden_field :planning, value: params[:planning]
+    .field
+      = f.label "Doctor: #{Planning.find(params[:planning]).doctor.firstname} #{Planning.find(params[:planning]).doctor.lastname}"
+    .field.required#planning_date_visit
+      = f.label "Fecha de Visita"
+      = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+    
+    .field
+      = f.label "Nota"
+      = f.input :note, label: false
+
+    = f.hidden_field :user
+    = f.hidden_field :planning_id, value: params[:planning]
+    = f.hidden_field :cycle, value: Cycle.last.name
+
+    .form-actions
+      = f.button :submit, :value => "Registrar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }

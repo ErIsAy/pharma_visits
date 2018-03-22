@@ -6,7 +6,7 @@ class PlanningsController < ApplicationController
   def index
     # @plannings = Planning.all
     # @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
-
+    @visits = current_user.visits
 
 
     if current_user.admin
@@ -42,6 +42,7 @@ class PlanningsController < ApplicationController
   # GET /plannings/1/edit
   def edit
     # @doctors = Doctor.all
+    @visits = current_user.visits
     @doctors = current_user.doctors
   end
 

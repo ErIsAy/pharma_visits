@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Note:
+  = @visit.note
+%p
+  %b Date visit:
+  = @visit.date_visit
+%p
+  %b Planning:
+  = @visit.planning
+%p
+  %b User:
+  = @visit.user.username
+
+= link_to 'Edit', edit_visit_path(@visit)
+\|
+= link_to 'Back', visits_path

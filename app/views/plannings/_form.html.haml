@@ -40,12 +40,99 @@
 
   .ui.divider
 
-  .field
-    = f.label "Nota"
-    = f.input :note, label: false
+  -# .field
+  -#   = f.label "Nota"
+  -#   = f.input :note, label: false
 
-  .form-actions
-    = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+  -# .form-actions
+  -#   = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+
+
+  .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+    .column
+      .field
+        = f.label "Nota"
+        = f.input :note, label: false
+    .center.aligned.column
+      -# .ui.big.green.labeled.icon.button
+      -#   %i.signup.icon
+        
+      .form-actions
+        = f.button :submit, :value => "Salvar Datos del Planeamiento", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+
+  %br
+  -# .ui.big.green.labeled.icon.button
+  -#   %i.signup.icon
+  -#     Generar Visita
+  -# = link_to(:controller => "visits", :action => "new", :planning => @planning.id), class: "ui big green labeled icon button" do
+  -#   %i.big.icons
+  -#     %i.signup.icon
+  -#   = 'Generar Visita'
+  -# = link_to(:controller => "visits", :action => "new", :planning => @planning.id)
+  %button.ui.big.green.labeled.icon.button{:type => "button", "data-position" => "right"}
+    = link_to(:controller => "visits", :action => "new", :planning => @planning.id) do
+      = "<span style='color:white; font-size: 25px;'>Registrar Visita</span>".html_safe
+      -# = "<button class='ui big green labeled icon button'>Crear Visita</button>".html_safe
+    %i.signup.icon
+  %br  
+  %table.ui.table.olive.celled{:style => "font-size: 15px;"}
+    -# %thead
+    -#   %tr
+    -#     %th{:colspan => "3"}
+    -#       Visitas
+    %thead
+      %tr
+        %th Visitador
+        %th Notas
+        %th Ciclo
+        %th Fecha de Visita
+        %th Fecha de Entrada al Sistema
+    %tbody
+      - @visits.each do |visit|
+        %tr
+          %td
+            %i.check.blue.icon
+            = visit.user.username
+          %td
+            = visit.note
+          %td  
+            - if visit.cycle != nil  
+              = visit.cycle
+          %td.center.aligned
+            - if visit.date_visit != nil
+              = visit.date_visit.strftime("%d/%m/%Y")
+          %td.center.aligned
+            = visit.created_at.strftime("%d/%m/%Y")            
+        -# %tr
+        -#   %td
+        -#     %i.folder.icon
+        -#     test
+        -#   %td Initial commit
+        -#   %td.right.aligned 10 hours ago
+        -# %tr
+        -#   %td
+        -#     %i.folder.icon
+        -#     build
+        -#   %td Initial commit
+        -#   %td.right.aligned 10 hours ago
+        -# %tr
+        -#   %td
+        -#     %i.file.outline.icon
+        -#     package.json
+        -#   %td Initial commit
+        -#   %td.right.aligned 10 hours ago
+        -# %tr
+        -#   %td
+        -#     %i.file.outline.icon
+        -#     Gruntfile.js
+        -#   %td Initial commit
+        -#   %td.right.aligned 10 hours ago
+
+
+      
+
+
+
 
 - content_for :plannings_new do
   :javascript
