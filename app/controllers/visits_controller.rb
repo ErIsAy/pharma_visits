@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  before_action :find_planning
   before_action :set_visit, only: [:show, :edit, :update, :destroy]
 
   # GET /visits
@@ -14,12 +15,12 @@ class VisitsController < ApplicationController
 
   # GET /visits/new
   def new
-    # @visit = Visit.new
-    @visit = current_user.visits.build
+    @visit = Visit.new
+    # @visit = planning.visits.build
 
-    if params[:planning]
-      @planning = Planning.find(params[:planning])
-    end
+    # if params[:planning]
+    #   @planning = Planning.find(params[:planning])
+    # end
   end
 
   # GET /visits/1/edit
@@ -29,8 +30,9 @@ class VisitsController < ApplicationController
   # POST /visits
   # POST /visits.json
   def create
-    # @visit = Visit.new(visit_params)
-    @visit = current_user.visits.build(visit_params)
+    @visit = Visit.new(visit_params)
+    @visit.user_id = current_user.id
+    # @visit = planning.visits.build(visit_params)
     # @visit.planning = @planning
     
 
@@ -72,6 +74,11 @@ class VisitsController < ApplicationController
   end
 
   private
+
+    def find_planning
+      @planning = Planning.find(params[:planning_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_visit
       @visit = Visit.find(params[:id])

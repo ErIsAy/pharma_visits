@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     get 'scheduler', on: :collection
   end
 
+  resources :plannings do
+    resources :visits
+
+  end
 
   resources :centers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

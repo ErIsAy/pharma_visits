@@ -42,7 +42,7 @@ class PlanningsController < ApplicationController
   # GET /plannings/1/edit
   def edit
     # @doctors = Doctor.all
-    @visits = current_user.visits
+    @visits = @planning.visits
     @doctors = current_user.doctors
   end
 

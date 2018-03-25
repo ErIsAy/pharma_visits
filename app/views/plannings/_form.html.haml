@@ -70,7 +70,7 @@
   -#   = 'Generar Visita'
   -# = link_to(:controller => "visits", :action => "new", :planning => @planning.id)
   %button.ui.big.green.labeled.icon.button{:type => "button", "data-position" => "right"}
-    = link_to(:controller => "visits", :action => "new", :planning => @planning.id) do
+    = link_to(:controller => "visits", :action => "new", :planning_id => @planning.id) do
       = "<span style='color:white; font-size: 25px;'>Registrar Visita</span>".html_safe
       -# = "<button class='ui big green labeled icon button'>Crear Visita</button>".html_safe
     %i.signup.icon
