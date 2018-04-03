@@ -20,6 +20,7 @@
         = yield
         - unless request.path.start_with?('/users/sign_in')
           = image_tag("background.png", :style => 'no-repeat center center fixed; opacity: 0.3; width: 100%')
+
         #remote_container
 
       = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
@@ -31,3 +32,4 @@
       = yield :center_new
       = yield :plannings_new
       = yield :registers
+

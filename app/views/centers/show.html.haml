@@ -16,27 +16,49 @@
     = @center.name
 
 %div.main.ui.container.ui.center.aligned.segment
-  %p
-    %b Nombre del Centro:
-    = @center.name
-  %p
-    %b Dirección:
-    = @center.address
-  %p
-    %b Region:
-    = @center.region
-  %p
-    %b Ciudad:
-    = @center.city
-  %p
-    %b Tel.:
-    = @center.phone
-  -# %p
-  -#   lat:
-  -#   =@center.lat
-  -# %p
-  -#   lng:
-  -#   =@center.lng
+  %div.center_details
+    -# %p
+    -#   %b Nombre del Centro:
+    -#   = @center.name
+    -# %p
+    -#   %b Dirección:
+    -#   = @center.address
+    -# %p
+    -#   %b Region:
+    -#   = @center.region
+    -# %p
+    -#   %b Ciudad:
+    -#   = @center.city
+    -# %p
+    -#   %b Tel.:
+    -#   = @center.phone
+    -# %p
+    -#   lat:
+    -#   =@center.lat
+    -# %p
+    -#   lng:
+    -#   =@center.lng
+    .ui.form
+      .two.fields
+        .field
+          %label Nombre del Centro
+          %input{:placeholder => @center.name, :readonly => "readonly", :type => "text"}
+        .field
+          %label Dirección
+          %input{:placeholder => @center.address, :readonly => "readonly", :type => "text"}
+      .field
+        %label Region
+        %input{:placeholder => @center.region, :readonly => "readonly", :type => "text"}
+      .two.fields
+        .field
+          %label Ciudad
+          %input{:placeholder => @center.city, :readonly => "readonly", :type => "text"}
+        .field
+          %label Tel.
+          %input{:placeholder => @center.phone, :readonly => "readonly", :type => "text"}
+
+
+
 
   %h2 Doctores
   %table.ui.sortable.celled.table.striped.definition
@@ -60,7 +82,13 @@
           -# %td= doctor.center.name if doctor.center
   / map div
   -# %label Mapa
-  #map{:style => "width: 100%; height: 350px;"}
+  - if @center.lat != nil || @center.lat != nil
+    #map{:style => "width: 100%; height: 350px;"}
+  - else
+    %p{:style => "color: gray;"}
+      Ubicación no encontrada
+    = image_tag("globe-grey-md.png", :style => 'width: 500px; margin-top: 15px;')
+  
   
   %br
   = link_to centers_path, class: "ui blue basic submit button" do
@@ -74,3 +102,19 @@
       var center = #{@center.to_json}    // pass ruby variable to javascript
       gmap_show(center);    // init show map for center card (only print marker)
     });
+
+:css
+  .center_details {
+    text-align: left;
+    }
+  ::placeholder {
+    color: black !important;
+    opacity: 1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black !important;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: black !important;
+  }
