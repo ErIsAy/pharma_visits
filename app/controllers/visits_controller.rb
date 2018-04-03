@@ -34,11 +34,13 @@ class VisitsController < ApplicationController
     @visit.user_id = current_user.id
     # @visit = planning.visits.build(visit_params)
     # @visit.planning = @planning
-    
+    @planning = Planning.find(@visit.planning_id)
 
     respond_to do |format|
       if @visit.save
-        
+        @planning.visited = true
+        @planning.save
+
         # format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
         format.html { redirect_to edit_planning_path(@visit.planning.id), notice: 'Visita Registrada' }
         format.json { render :show, status: :created, location: @visit }
