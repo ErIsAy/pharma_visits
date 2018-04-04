@@ -6,6 +6,46 @@
     = render 'form'
     
 
+
+    %br
+    %button.ui.big.green.labeled.icon.button{:type => "button", "data-position" => "right"}
+      = link_to(:controller => "visits", :action => "new", :planning_id => @planning.id) do
+        = "<span style='color:white; font-size: 25px;'>Registrar Visita</span>".html_safe
+        -# = "<button class='ui big green labeled icon button'>Crear Visita</button>".html_safe
+      %i.signup.icon
+    
+    %br  
+    %table.ui.table.olive.celled{:style => "font-size: 15px;"}
+      -# %thead
+      -#   %tr
+      -#     %th{:colspan => "3"}
+      -#       Visitas
+      %thead
+        %tr
+          %th Visitador
+          %th Notas
+          %th Ciclo
+          %th Fecha de Visita
+          %th Fecha de Entrada al Sistema
+      %tbody
+        - @visits.each do |visit|
+          %tr
+            %td
+              %i.check.blue.icon
+              = visit.user.username
+            %td
+              = visit.note
+            %td  
+              - if visit.cycle != nil  
+                = visit.cycle
+            %td.center.aligned
+              - if visit.date_visit != nil
+                = visit.date_visit.strftime("%d/%m/%Y")
+            %td.center.aligned
+              = visit.created_at.strftime("%d/%m/%Y")  
+
+
+
 -# %h1 Editing planning
 -#
 -# = render 'form'
