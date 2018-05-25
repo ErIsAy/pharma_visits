@@ -185,7 +185,7 @@ class ReportController < ApplicationController
     #   @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)  
     # end
     # byebug
-    @visits = Visit.where(cycle: Cycle.last.name).order('username ASC')
+    @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
     @users = User.all
     # byebug
     respond_to do |format|
