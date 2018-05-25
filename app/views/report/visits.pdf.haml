@@ -45,6 +45,15 @@
       color: white;
       background-color: #2980b9;
   }
+  thead { 
+    display: table-header-group; 
+  }
+  tfoot { 
+    display: table-row-group; 
+  }
+  tr { 
+    page-break-inside: avoid !important;
+  }
 
 = wicked_pdf_image_tag("logo-icon.png", class:'icon main-logo')
 %h2 Reporte de Visitas
