@@ -1,7 +1,7 @@
 
 .pusher
   %div.main.ui.container
-    %h1.ui.header.blue.centered Reporte de Planes
+    %h1.ui.header.blue.centered Reporte de Visita
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, :url => report_planning_path(:format => "pdf"), :html => {:target=>'_blank'}  do |f|

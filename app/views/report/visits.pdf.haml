@@ -1,0 +1,36 @@
+= wicked_pdf_image_tag("logo-icon.png", class:'icon main-logo')
+%h2 Reporte de Visitas
+%h3
+  Ciclo -
+  = Cycle.last.name
+%h5{:style => "text-align: right;"} 
+  Fecha: 
+  = Time.now.to_date.strftime('%d-%m-%Y')
+
+%table.ui.sortable.celled.table.striped.blue.gridtable
+  %thead
+    %tr
+      %th Usuario
+      %th Cantidad de Visitas Realizadas
+  %tbody
+    - @users.each do |user|
+      - next if user.id == 1
+      %tr
+        %td= user.username
+        %td= user.visits.where(cycle: Cycle.last.name).count
+%br 
+
+%table.ui.sortable.celled.table.striped.blue.gridtable
+  %thead
+    %tr
+      %th Usuario
+      %th Doctor
+      %th Centro
+      %th Fecha de Visita  
+  %tbody
+    - @visits.each do |visit|
+      %tr
+        %td= visit.user.username
+        %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
+        %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
+        %td= visit.date_visit.strftime("%d/%m/%Y")  

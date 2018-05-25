@@ -71,7 +71,13 @@
           %a.header{:href => report_drugstore_path} Listado de Farmacias
           -# .description Updated 10 mins ago
       .item
-        %i.large.file.pdf.outline.icon-gradient.middle.aligned.icon
+        %i.large.calendar.outline.icon-gradient.middle.aligned.icon
         .content
-          %a.header{:href => report_planning_path} Reporte de Visita
+          %a.header{:href => report_planning_path} Reporte de Planes
           -# .description Updated 10 mins ago
+      - if current_user.admin 
+        .item
+          %i.large.file.pdf.outline.icon-gradient.middle.aligned.icon
+          .content
+            %a.header{:href => report_visits_path(:format => 'pdf') } Reporte de Visitas - Ciclo Actual
+            -# .description 

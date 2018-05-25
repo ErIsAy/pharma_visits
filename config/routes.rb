@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   get 'report/planning'
 
+  get 'report/visits'
+
+
   resources :divisions
   get 'products/index'
 

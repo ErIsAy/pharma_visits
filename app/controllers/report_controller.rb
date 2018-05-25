@@ -175,4 +175,31 @@ class ReportController < ApplicationController
     # end
     # @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
   end
+
+  def visits
+    # if current_user.admin
+    #   @q = Planning.ransack(params[:q])
+    #   @plannings = @q.result.paginate(:page => params[:page], :per_page => 20)
+    # else
+    #   @q = current_user.plannings.ransack(params[:q])
+    #   @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)  
+    # end
+    # byebug
+    @visits = Visit.where(cycle: Cycle.last.name)
+    @users = User.all
+    # byebug
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render template: 'report/visits',
+        pdf: 'Visitas',
+        layout: 'pdf.html'
+      }
+    end
+
+  end 
+
+
+
+
 end

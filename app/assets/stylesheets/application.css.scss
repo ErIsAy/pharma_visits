@@ -17,7 +17,9 @@
  *= require lib/calendar
  *= require lib/timepicki
  *= require custom_style/sizing
- *= require_tree .
+ *= require welcome
+ *= require scaffolds
+ *= require doctors
  *= require_self
  */
 
