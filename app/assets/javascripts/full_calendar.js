@@ -25,7 +25,7 @@ initialize_calendar = function() {
       },
       selectable: false,
       selectHelper: true,
-      editable: false,
+      editable: true,
       eventLimit: false,
       displayEventTime: false,
       timeFormat: 'hh:mm a',
@@ -62,7 +62,11 @@ initialize_calendar = function() {
          },
 //"MM/DD/YYYY h:mm A"
       eventClick: function(event, jsEvent, view) {
+        console.log(event);
+        window.location.href = event.update_url
         $.getScript(event.edit_url, function() {
+          // $('#edit_event').modal('show');
+          // $('#remote_container').html('<%= j render "edit" %>');
           $('.date-range-picker').val(moment(event.start).format("MM/DD/YYYY hh:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY hh:mm"))
           date_range_picker();
           $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD hh:mm'));

@@ -25,8 +25,8 @@ json.array! @events do |event|
   # json.note event.note
   # json.color event.color unless event.color.blank?
   # json.allDay event.all_day_event? ? true : false
-  # json.update_url event_path(event, method: :patch)
-  # json.edit_url edit_event_path(event)
+  json.update_url edit_planning_path(event, method: :patch)
+  json.edit_url edit_planning_path(event)
 end
 
 # json.array! @plannings do |planning|

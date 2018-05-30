@@ -66,6 +66,9 @@ RailsAdmin.config do |config|
       label "Administrador"
     end
 
+    field :is_active do
+      label "Activo?"
+    end
     # field :created_at do
     #   label "Creado"
     # end
