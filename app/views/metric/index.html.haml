@@ -2,6 +2,44 @@
 .pusher
   %div.main.ui.container
     %h1.ui.header.blue.centered Métricas
+    .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
+      = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf'), 
+        target: :_blank,
+        class: "ui blue basic submit button"
+    %table.ui.sortable.celled.table.striped.blue.gridtable
+      %thead
+        %tr
+          %th Usuario
+          %th Cantidad de Visitas Realizadas
+      %tbody
+        - @users.each do |user|
+          - next if user.id == 1
+          %tr
+            %td= user.username
+            %td= user.visits.where(cycle: Cycle.last.name).count
+    %br 
+    
+    %table.ui.sortable.celled.table.striped.blue.gridtable
+      %thead
+        %tr
+          %th Usuario
+          %th Doctor
+          %th Centro
+          %th Fecha de Visita  
+      %tbody
+        - @visits.each do |visit|
+          - next if visit.user.id == 1
+          %tr
+            %td= visit.user.username
+            %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
+            %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
+            %td= visit.date_visit.strftime("%d/%m/%Y")  
+    
+
+
+
+
+
 
     -# .ui.segment.form.input{:style => "margin-top: 0;"}
     -#   = search_form_for @q, :url => metric_index_path do |f|
@@ -30,62 +68,62 @@
 
 
 
-        = f.submit "Buscar", :class => "ui blue submit button"
+    -#     = f.submit "Buscar", :class => "ui blue submit button"
 
-    .ui.segment.form.input{:style => "margin-top: 0;"}
-      = search_form_for @q, url: metric_print_report_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .fields
-          .field
-            = f.label :cycle_id_eq, 'Período'
-            -# = f.search_field :cycle_name_cont
-            = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
+    -# .ui.segment.form.input{:style => "margin-top: 0;"}
+    -#   = search_form_for @q, url: metric_print_report_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+    -#     .fields
+    -#       .field
+    -#         = f.label :cycle_id_eq, 'Período'
+    -#         -# = f.search_field :cycle_name_cont
+    -#         = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
 
-        = f.submit "Imprimir", :class => "ui blue submit button"
+    -#     = f.submit "Imprimir", :class => "ui blue submit button"
 
 
-    %table.ui.sortable.celled.table.striped
-      %thead
-        %tr
-          %th Usuario
-          %th Division
-          %th Eje
-          %th No. de Visitas Planeadas
-          %th No. de Visitas Realizadas
-          %th % de Métrica Cumplida
+    -# %table.ui.sortable.celled.table.striped
+    -#   %thead
+    -#     %tr
+    -#       %th Usuario
+    -#       %th Division
+    -#       %th Eje
+    -#       %th No. de Visitas Planeadas
+    -#       %th No. de Visitas Realizadas
+    -#       %th % de Métrica Cumplida
 
-      %tbody
-        - if current_user.admin
-          - @users.each do |user|
-            - if !user.admin
-              %tr
-                %td= user.username
-                %td= user.division.name
-                %td= user.division.name
-                %td= user.planned_visit
-                %td= user.visit_done
-                -# - if  params[:q]
-                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
-                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
-                -# - else
-                -#   %td= Planning.where(:user_id => planning.user.id).count
-                -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
-                %td= number_to_percentage((user.metric)*100, precision: 0)
-        - else
-          - @users.each do |user|
-            - if !user.admin
-              %tr
-                %td= user.username if user.id == current_user.id
-                %td= user.division.name if user.id == current_user.id  
-                %td= user.division.name if user.id == current_user.id
-                %td= user.planned_visit if user.id == current_user.id
-                %td= user.visit_done if user.id == current_user.id
-                -# - if  params[:q]
-                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
-                -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
-                -# - else
-                -#   %td= Planning.where(:user_id => planning.user.id).count
-                -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
-                %td= number_to_percentage((user.metric)*100, precision: 0) if user.id == current_user.id
+    -#   %tbody
+    -#     - if current_user.admin
+    -#       - @users.each do |user|
+    -#         - if !user.admin
+    -#           %tr
+    -#             %td= user.username
+    -#             %td= user.division.name
+    -#             %td= user.division.name
+    -#             %td= user.planned_visit
+    -#             %td= user.visit_done
+    -#             -# - if  params[:q]
+    -#             -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+    -#             -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+    -#             -# - else
+    -#             -#   %td= Planning.where(:user_id => planning.user.id).count
+    -#             -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+    -#             %td= number_to_percentage((user.metric)*100, precision: 0)
+    -#     - else
+    -#       - @users.each do |user|
+    -#         - if !user.admin
+    -#           %tr
+    -#             %td= user.username if user.id == current_user.id
+    -#             %td= user.division.name if user.id == current_user.id  
+    -#             %td= user.division.name if user.id == current_user.id
+    -#             %td= user.planned_visit if user.id == current_user.id
+    -#             %td= user.visit_done if user.id == current_user.id
+    -#             -# - if  params[:q]
+    -#             -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,cycles: {id: params[:q][:cycle_id_eq]}).count
+    -#             -#   %td= Planning.joins(:cycle).where(:user_id => planning.user.id,:visited => true, cycles: {id: params[:q][:cycle_id_eq]}).count
+    -#             -# - else
+    -#             -#   %td= Planning.where(:user_id => planning.user.id).count
+    -#             -#   %td= Planning.where(:user_id => planning.user.id, :visited => true).count
+    -#             %td= number_to_percentage((user.metric)*100, precision: 0) if user.id == current_user.id
 
 
 

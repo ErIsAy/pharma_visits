@@ -1,9 +1,15 @@
 class ReportDoctors < Prawn::Document
-  def initialize(doctors, user)
+  def initialize(doctors, user, params)
     super()
     image "public/logo_big.png", :scale => 0.4
+    @params = params
     @doctors = doctors
     @user = user
+    if @params["center_city_eq"] == ""
+      @city = 'Todas'
+    else 
+      @city = @params["center_city_eq"]
+    end
     move_down 20
     header
     move_down 10
@@ -14,6 +20,12 @@ class ReportDoctors < Prawn::Document
   def header
     text "Listado de Doctores", style: :italic
     text "Fecha de Reporte: #{Time.now.strftime("%F")}", :align => :right
+
+    text "Especialidad: #{@params["speciality_eq"]}"
+    text "Centro: #{@params["center_name_cont"]}"
+    text "Ciudad: #{@city}"
+    text "Categoria: #{@params["category_eq"]}"
+    text "Usuario: #{@params["user_username_eq"]}"
 
 
   end

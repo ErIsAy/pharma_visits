@@ -18,6 +18,7 @@
           .field
             = f.label :region_cont, 'Región'
             = f.search_field :region_cont
+            -# = f.select(:region_cont, collection: Center::REGION)
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'

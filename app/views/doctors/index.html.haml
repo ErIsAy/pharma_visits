@@ -37,6 +37,9 @@
 
 
         = f.submit "Filtrar", :class => "ui blue submit button"
+        = link_to 'Exportar a Excel', doctors_path(:format => 'xlsx'),
+          class: "ui blue basic submit button"
+
 
     %table.ui.sortable.celled.table.striped.definition.olive
       %thead

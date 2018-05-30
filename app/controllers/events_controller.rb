@@ -2,11 +2,23 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def scheduler
-    @events = Event.where(start: params[:start]..params[:end])
+    # @events = Event.all
+    @events = current_user.plannings
+    @now = DateTime.now
+    @period = Cycle.last.period
+
+
+    # @visits = Visit.all
+    # @plannings = Planning.all
   end
 
   def index
-    @events = Event.where(start: params[:start]..params[:end])
+    # @events = Event.all
+    @events = current_user.plannings
+    @now = DateTime.now
+    @period = Cycle.last.period
+    # @visits = Visit.all
+    # @plannings = Planning.all
   end
 
   def show

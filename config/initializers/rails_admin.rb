@@ -196,6 +196,9 @@ RailsAdmin.config do |config|
     end
     field :date_visit do
       label 'Fecha de Visita'
+      strftime_format do
+        '%d-%m-%Y %H:%M:%S'
+      end
     end
     field :shift do
       label 'Hora'
@@ -213,6 +216,54 @@ RailsAdmin.config do |config|
       end
     end
   end
+
+
+  config.model 'Cycle' do
+    label "Ciclo"
+    label_plural "Ciclos"
+    include_fields :name, :period
+    field :name do
+      label 'Mes/Nombre de Ciclo'
+    end
+    field :period do
+      label 'Fecha Periodo'
+      strftime_format do
+        '%d-%m-%Y'
+      end
+    end
+
+  end
+
+  config.model 'Visit' do
+    label "Visit"
+    label_plural "Visits"
+    include_fields :note, :date_visit, :cycle, :planning_id, :user_id
+    field :note do
+      label 'Nota'
+    end
+    field :date_visit do
+      label 'Fecha de Visita'
+      strftime_format do
+        '%d-%m-%Y %H:%M:%S'
+      end
+    end
+    field :cycle do
+      label 'Ciclo'
+    end
+    field :planning_id, :enum do
+      label 'Planeamiento'
+      enum do 
+        Planning.all.collect {|p| [p.title, p.id]}
+      end 
+    end
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
+  end
+
 
   config.model 'Division' do
     label "División"

@@ -31,6 +31,12 @@ class DoctorsController < ApplicationController
       @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     end
 
+    @docs = @q.result.includes(:center)
+    respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Doctores.xlsx"'}
+    end
+
   end
 
   # GET /doctors/1

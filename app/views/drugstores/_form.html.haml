@@ -32,6 +32,9 @@
     .field
       = f.label 'Personal de Despacho'
       = f.input :service_person, label: false
+    .field
+      = f.label 'Encargado de Compras'
+      = f.input :sales_person, label: false
     .eight.wide.field
       = f.label 'Ciudad'
       = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }

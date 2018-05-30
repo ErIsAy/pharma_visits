@@ -1,0 +1,14 @@
+
+wb = xlsx_package.workbook
+
+
+wb.add_worksheet(name: "Centers") do |sheet|
+  style1 = sheet.styles.add_style(:bg_color => "3498db", :fg_color => "ecf0f1", :border => { :style => :thin, :color => "00" }, :alignment => {:wrap_text => true})
+  style2 = sheet.styles.add_style(:border => { :style => :thin, :color => "00" }, :alignment => {:wrap_text => true})
+
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(id nombre region direccion ciudad), :style => style1
+  @cents.each do |center|
+    sheet.add_row [center.id, center.name, center.region, center.address, center.city], :style => style2
+  end
+end

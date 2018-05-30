@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Doctores") do |sheet|
+  style1 = sheet.styles.add_style(:bg_color => "3498db", :fg_color => "ecf0f1", :border => { :style => :thin, :color => "00" }, :alignment => {:wrap_text => true})
+  style2 = sheet.styles.add_style(:border => { :style => :thin, :color => "00" }, :alignment => {:wrap_text => true})
+
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(id nombre apellido categoria centro), :style => style1
+  @docs.each do |doctor|
+    sheet.add_row [doctor.id, doctor.firstname, doctor.lastname, doctor.category, doctor.center.name], :style => style2
+  end
+end

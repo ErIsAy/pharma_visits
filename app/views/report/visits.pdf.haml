@@ -86,6 +86,7 @@
       %th Fecha de Visita  
   %tbody
     - @visits.each do |visit|
+      - next if visit.user.id == 1
       %tr
         %td= visit.user.username
         %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"

@@ -35,8 +35,8 @@
     -#   = f.input :end, label: false, as: :string,
     -#                                 start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
 
-  .ui.checkbox.toggle
-    = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline unless @planning.new_record?
+  -# .ui.checkbox.toggle
+  -#   = f.input :visited, label: "Visitado?", as: :boolean, boolean_style: :inline unless @planning.new_record?
 
   .ui.divider
 

@@ -18,6 +18,12 @@ class CentersController < ApplicationController
       @centers = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
 
+
+    @cents = @q.result
+    respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Centros.xlsx"'}
+    end
     # @centers = Center.all
     # @centers = Center.paginate(:page => params[:page], :per_page => 20)
     # respond_to do |format|

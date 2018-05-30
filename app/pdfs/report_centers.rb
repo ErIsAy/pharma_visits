@@ -1,7 +1,8 @@
 class ReportCenters < Prawn::Document
-  def initialize(centers, city, user)
+  def initialize(centers, city, user, params)
     super()
     image "public/logo_big.png", :scale => 0.4
+    @params = params
     @centers = centers
     @user = user
     if city == ""
@@ -18,8 +19,13 @@ class ReportCenters < Prawn::Document
 
   def header
     text "Listado de Centros", style: :italic
-    text "Ciudad: #{@city}"
+    # text "Ciudad: #{@city}"
     text "Fecha de Reporte: #{Time.now.strftime("%F")}", :align => :right
+    move_down 5
+
+    text "Ciudad: #{@params["city_cont"]}"
+    text "Región: #{@params["region_cont"]}"
+    text "Usuario: #{@params["user_username_eq"]}"
 
 
   end

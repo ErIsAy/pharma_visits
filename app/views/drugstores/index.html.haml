@@ -23,6 +23,8 @@
             = f.label :user_username_cont, 'Usuario'
             = f.search_field :user_username_cont 
         = f.submit "Filtrar", :class => "ui blue submit button"
+        = link_to 'Exportar a Excel', drugstores_path(:format => 'xlsx'),
+          class: "ui blue basic submit button"
 
     %table.ui.sortable.celled.table.striped
       %thead
@@ -32,6 +34,7 @@
           %th Dirección
           %th Ciudad
           %th Despacho 
+          %th Enc. de Compras  
           %th Acciones
           - if current_user.admin            
             %th Usuario  
@@ -47,6 +50,7 @@
             %td= drugstore.address
             %td= drugstore.city
             %td= drugstore.service_person
+            %td= drugstore.sales_person  
             -# %td= drugstore.center.name if drugstore.center
             %td.collapsing.positive
               -# = link_to 'Ver', drugstore, class: "ui brown basic submit button"

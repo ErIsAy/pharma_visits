@@ -32,6 +32,14 @@ gem 'prawn-table'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+
+# gem 'rubyzip'
+# gem 'zip'
+# gem 'axlsx'
+# gem 'axlsx_rails'
 # gem "chartkick"
 # gem 'quacky-charts'
 
@@ -56,6 +64,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'niceql'
   gem 'web-console', '~> 2.0'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   # AwesomePrint.irb!

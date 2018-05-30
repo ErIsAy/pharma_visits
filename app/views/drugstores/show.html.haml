@@ -27,9 +27,11 @@
     %b Tel.:
     = @drugstore.phone
   %p
-    %b Encargado/Despacho 
+    %b Despacho 
     = @drugstore.service_person
-
+  %p
+    %b Compras 
+    = @drugstore.sales_person
 
   = link_to drugstores_path, class: "ui blue basic submit button" do
     %i.big.icons

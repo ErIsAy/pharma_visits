@@ -1,7 +1,8 @@
 class ReportDbc < Prawn::Document
-  def initialize(doctors, center, user)
+  def initialize(doctors, center, user, params)
     super()
     image "public/logo_big.png", :scale => 0.4
+    @params = params
     @doctors = doctors
     @center = center
     @user = user
@@ -17,6 +18,10 @@ class ReportDbc < Prawn::Document
     text "Centro: #{@center}"
     text "Fecha de Reporte: #{Time.now.strftime("%F")}", :align => :right
 
+
+    text "Centro: #{@params["center_name_cont"]}"
+    text "Categoria: #{@params["category_eq"]}"
+    text "Usuario: #{@params["user_username_eq"]}"
 
   end
 

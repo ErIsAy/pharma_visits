@@ -1,7 +1,8 @@
 class ReportPlannings < Prawn::Document
-  def initialize(plannings, user)
+  def initialize(plannings, user, params)
     super()
     image "public/logo_big.png", :scale => 0.4
+    @params = params
     @plannings = plannings
     @user = user
     move_down 20
@@ -21,6 +22,11 @@ class ReportPlannings < Prawn::Document
     
     text "Fecha de Reporte: #{Time.now.strftime("%F")}", :align => :right
 
+    text "Desde: #{@params["date_visit_gteq"]}"
+    text "Hasta: #{@params["date_visit_lteq"]}"
+    text "Doctor: #{@params["doctor_firstname_or_doctor_lastname_cont"]}"
+    text "Especialidad: #{@params["doctor_speciality_eq"]}"
+    text "Usuario: #{@params["user_username_eq"]}"
 
   end
 

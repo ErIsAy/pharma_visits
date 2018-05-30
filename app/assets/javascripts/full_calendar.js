@@ -9,11 +9,11 @@ initialize_calendar = function() {
           center: 'title',
           right:  'month, agendaWeek, agendaDay'
       },
-      selectable: true,
+      selectable: false,
       selectHelper: true,
-      editable: true,
+      editable: false,
       eventLimit: false,
-      displayEventTime: true,
+      displayEventTime: false,
       timeFormat: 'hh:mm a',
       events: '/events.json',
 
@@ -31,6 +31,10 @@ initialize_calendar = function() {
       eventDrop: function(event, delta, revertFunc) {
            event_data = {
              event: {
+              //  id: planning.id,
+              //  start: planning.date_visit.format(),
+              //  end: planning.date_visit.format(),
+              //  date_visit: planning.date_visit.format()
                id: event.id,
                start: event.start.format(),
                end: event.end.format()

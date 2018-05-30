@@ -8,6 +8,12 @@
     -#   = form_tag centers_path, :method => 'get' do
     -#     = text_field_tag :search, params[:search], :placeholder => "Centro..."
     -#     = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+    -# = link_to "Export users as spreadsheet", centers_path(format: "xlsx") 
+    -# .ui.bottom.active.right{"data-tab" => "first"}
+    -#   = link_to 'Exportar a Excel', centers_path(:format => 'xlsx'), 
+    -#     target: :_blank,
+    -#     class: "ui blue basic submit button"
+
     .ui.form.input.segment
       = search_form_for @q do |f|
         .three.fields
@@ -27,7 +33,8 @@
               include_blank: 'Todos'
         = f.submit "Filtrar", :class => "ui blue submit button"
 
-
+        = link_to 'Exportar a Excel', centers_path(:format => 'xlsx'),
+          class: "ui blue basic submit button"
 
 
     %table.ui.sortable.celled.table.striped.olive

@@ -21,14 +21,14 @@ class ReportController < ApplicationController
       @q = current_user.centers.ransack(params[:q])
       @centers = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
-
+    
     respond_to do |format|
       format.html
       format.pdf do
         @q = Center.ransack(params[:q])
         @centers = @q.result.order('name ASC')
         @city = params[:q][:city_cont]
-        pdf = ReportCenters.new(@centers, @city, current_user)
+        pdf = ReportCenters.new(@centers, @city, current_user, params[:q])
         send_data pdf.render, filename: 'Centros.pdf', type: 'application/pdf', disposition: "inline"
       end
     end
@@ -59,7 +59,7 @@ class ReportController < ApplicationController
       format.pdf do
         @q = Doctor.ransack(params[:q])
         @doctors = @q.result
-        pdf = ReportDoctors.new(@doctors, current_user)
+        pdf = ReportDoctors.new(@doctors, current_user, params[:q])
         send_data pdf.render, filename:"Doctores_#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
@@ -103,7 +103,7 @@ class ReportController < ApplicationController
         @q = Doctor.ransack(params[:q])
         @doctors = @q.result.includes(:center)
         @center = params[:q][:center_name_cont]
-        pdf = ReportDbc.new(@doctors, @center, current_user)
+        pdf = ReportDbc.new(@doctors, @center, current_user, params[:q])
         send_data pdf.render, filename: 'Doctores_por_centro_#{Date.parse(Time.now.to_s)}.pdf', type: 'application/pdf', disposition: "inline"
       end
     end
@@ -134,7 +134,7 @@ class ReportController < ApplicationController
         @q = Drugstore.ransack(params[:q])
         @drugstores = @q.result
         @city = params[:q][:city_cont]
-        pdf = ReportDrugstores.new(@drugstores, @city)
+        pdf = ReportDrugstores.new(@drugstores, @city, params[:q])
         send_data pdf.render, filename: "Farmacias_#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
@@ -162,7 +162,7 @@ class ReportController < ApplicationController
         @q.sorts = 'date_visit desc'
         # @plannings = @q.result.includes(:doctor, :user)
         @user = params[:q][:user_username_cont]
-        pdf = ReportPlannings.new(@plannings, current_user)
+        pdf = ReportPlannings.new(@plannings, current_user, params[:q])
         send_data pdf.render, filename: "Plan_por_Usuario#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end

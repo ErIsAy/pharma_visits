@@ -133,6 +133,8 @@ class MetricController < ApplicationController
 
 
   def index
+      @visits = Visit.all
+      @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
       
       @plannings = Planning.all
 

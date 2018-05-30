@@ -24,7 +24,7 @@ class DrugstoresController < ApplicationController
       @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
     end
 
-
+    @drugs = @q.result
     # @drugstores = Drugstore.all
     # @drugstores = Drugstore.paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
@@ -33,6 +33,7 @@ class DrugstoresController < ApplicationController
         pdf = ReportDrugstores.new(@drugstores)
         send_data pdf.render, filename: 'Farmacias.pdf', type: 'application/pdf'
       end
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Farmacias.xlsx"'}
     end
   end
 
@@ -98,6 +99,6 @@ class DrugstoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drugstore_params
-      params.require(:drugstore).permit(:name, :phone, :address, :city, :service_person)
+      params.require(:drugstore).permit(:name, :phone, :address, :city, :service_person, :sales_person)
     end
 end

@@ -88,6 +88,14 @@ $( document ).ready(function() {
       monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
     }
   });
+  $('#planning_date_visit_gteq').calendar( {
+    type: 'date',
+    text: {
+      days: ['Do', 'L', 'M', 'Mi', 'J', 'V', 'S'],
+      months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    }
+  });
   $('#birthday_cal').calendar( {
     type: 'date',
     text: {
