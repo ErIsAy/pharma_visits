@@ -5,7 +5,8 @@ json.array! @events do |event|
   if event.title == nil 
     json.title "Plan sin Titulo"
   else
-    json.title "#{event.doctor.center.name} - #{event.doctor.firstname} #{event.doctor.firstname}"
+    # json.title "#{event.doctor.center.name} - #{event.doctor.firstname} #{event.doctor.firstname}"
+    json.title "#{event.doctor.firstname} #{event.doctor.lastname}"
   end
   json.cycle Cycle.last.period.strftime(date_format)
   # byebug
