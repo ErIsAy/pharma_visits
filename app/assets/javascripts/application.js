@@ -48,6 +48,11 @@ $( "#sidebar-toggle" ).click(function() {
 });
 /****************************************/
 
+$('#edit_nota').click(function () {
+  $('.modal').modal('show');
+});
+
+
 /************ Initializers **************/
 $( document ).ready(function() {
   $('.ui.accordion').accordion();

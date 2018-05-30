@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :events do
     get 'scheduler', on: :collection
   end
+  post '/events/scheduler', :to => 'events#create'
 
   resources :plannings do
     resources :visits
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
   resources :centers
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+ 
   resources :doctors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
