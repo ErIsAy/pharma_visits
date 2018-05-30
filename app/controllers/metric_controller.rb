@@ -16,7 +16,8 @@ class MetricController < ApplicationController
       @plannings = current_user.plannings
     end
   
-    @users = User.all
+    # @users = User.all
+    @users = User.where(id: current_user.id)
     @cir = {}
     @cir_max = {}
     @cir_onco = {}
