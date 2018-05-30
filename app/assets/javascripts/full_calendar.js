@@ -3,11 +3,25 @@ initialize_calendar = function() {
   $('.calendar-main').each(function(){
     var calendar = $(this)
     calendar.fullCalendar({
-      lang: 'es',
+      locale: 'es',
       header: {
           left:   'today prev,next',
           center: 'title',
-          right:  'month, agendaWeek, agendaDay'
+          right:  'month, listWeek, listDay'
+      },
+      views: {
+        listDay: {
+          buttonText: 'Día'
+        },
+        listWeek: {
+          buttonText: 'Semana'
+        },
+        listMonth: {
+          buttonText: 'list month'
+        },
+        listYear: {
+          buttonText: 'list year'
+        }
       },
       selectable: false,
       selectHelper: true,

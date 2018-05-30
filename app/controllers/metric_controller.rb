@@ -133,51 +133,57 @@ class MetricController < ApplicationController
 
 
   def index
-      @visits = Visit.all
-      @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
-      
+      if current_user.admin?
+        # @visits = Visit.all
+        @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
+        @users = User.all
+      else 
+        @visits = current_user.visits.where(cycle: Cycle.last.name).order('user_id ASC')
+        @users = User.where(id: current_user.id)
+        # @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
+      end
       @plannings = Planning.all
 
-      if current_user.admin
-        @users = User.all
-        @q = Planning.ransack(params[:q])
-        @plannings = @q.result.includes(:cycle, :user)
-        # @plannings = @plannings.group(:user_id, :id)
-        # @cycles = Cycle.all
-        # @ejes = Eje.all
+      # if current_user.admin
+      #   @users = User.all
+      #   @q = Planning.ransack(params[:q])
+      #   @plannings = @q.result.includes(:cycle, :user)
+      #   # @plannings = @plannings.group(:user_id, :id)
+      #   # @cycles = Cycle.all
+      #   # @ejes = Eje.all
 
-        @users.each do |u|
-          if !u.admin
-            u.planned_visit = Planning.where(:user_id => u.id).count
+      #   @users.each do |u|
+      #     if !u.admin
+      #       u.planned_visit = Planning.where(:user_id => u.id).count
 
-            u.visit_done = Planning.where(:user_id => u.id).
-                                      where(:visited => true).count
+      #       u.visit_done = Planning.where(:user_id => u.id).
+      #                                 where(:visited => true).count
 
-            u.metric = Planning.where(:user_id => u.id).
-                                where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
-          end
-        end
+      #       u.metric = Planning.where(:user_id => u.id).
+      #                           where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+      #     end
+      #   end
 
-      else
-        @users = User.all
-        @q = current_user.plannings.ransack(params[:q])
-        @plannings = @q.result.includes(:cycle, :user)
-        # @plannings = @plannings.group(:user_id, :id)
-        # @cycles = Cycle.all
-        # @ejes = Eje.all
+      # else
+      #   @users = User.all
+      #   @q = current_user.plannings.ransack(params[:q])
+      #   @plannings = @q.result.includes(:cycle, :user)
+      #   # @plannings = @plannings.group(:user_id, :id)
+      #   # @cycles = Cycle.all
+      #   # @ejes = Eje.all
 
-        @users.each do |u|
-          if !u.admin
-            u.planned_visit = Planning.where(:user_id => u.id).count
+      #   @users.each do |u|
+      #     if !u.admin
+      #       u.planned_visit = Planning.where(:user_id => u.id).count
 
-            u.visit_done = Planning.where(:user_id => u.id).
-                                      where(:visited => true).count
+      #       u.visit_done = Planning.where(:user_id => u.id).
+      #                                 where(:visited => true).count
 
-            u.metric = Planning.where(:user_id => u.id).
-                                where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
-          end
-        end
-      end
+      #       u.metric = Planning.where(:user_id => u.id).
+      #                           where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+      #     end
+      #   end
+      # end
 
 
   end

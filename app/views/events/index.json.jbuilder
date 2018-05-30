@@ -13,11 +13,11 @@ json.array! @events do |event|
   # json.end event.date_visit + 1.hours if event.date_visit != nil
   
   # fix date, find if next month is available, ie: if 31 exist in next month, move to least one.  
-  valid = DateTime.new(@now.year, @period.month, event.date_visit.day, 0, 0, 0, @now.zone)
-  after = valid.next_month.to_date
+  valid = DateTime.new(@now.year, @period.month, event.date_visit.next_month.day, 0, 0, 0, @now.zone)
+  # after = valid.next_month.to_date
 
-  json.start DateTime.new(@now.year, @period.month, after.day, 0, 0, 0, @now.zone)
-  json.end DateTime.new(@now.year, @period.month, after.day, 0, 0, 0, @now.zone)
+  json.start DateTime.new(@now.year, @period.month, valid.day, 0, 0, 0, @now.zone)
+  json.end DateTime.new(@now.year, @period.month, valid.day, 0, 0, 0, @now.zone)
   json.color event.visited? ? 'Green' : 'Orange'
   # json.start event.start.strftime(date_format)
   # json.end event.end.strftime(date_format)
