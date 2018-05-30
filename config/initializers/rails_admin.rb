@@ -66,6 +66,10 @@ RailsAdmin.config do |config|
       label "Administrador"
     end
 
+    field :note do
+      label "Notas de Ruta"
+    end
+
     field :is_active do
       label "Activo?"
     end
