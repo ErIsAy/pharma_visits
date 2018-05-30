@@ -57,6 +57,7 @@ gem 'axlsx_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'niceql'
 
 group :development, :test do
   gem 'byebug'
@@ -64,7 +65,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'niceql'
+  
   gem 'web-console', '~> 2.0'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   # AwesomePrint.irb!
