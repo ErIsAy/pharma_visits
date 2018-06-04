@@ -93,4 +93,4 @@
         %td= visit.user.username
         %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
         %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
-        %td= visit.date_visit.strftime("%d/%m/%Y")  
+        %td= visit.created_at.strftime("%d/%m/%Y")  
