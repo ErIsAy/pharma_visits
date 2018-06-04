@@ -9,15 +9,17 @@ class MetricController < ApplicationController
       @centers = Center.all
       @drugstores = Drugstore.all
       @plannings = Planning.all
+      @users = User.all
     else
       @doctors = current_user.doctors
       @centers = current_user.centers
       @drugstores = current_user.drugstores
       @plannings = current_user.plannings
+      @users = User.where(id: current_user.id)
     end
   
     # @users = User.all
-    @users = User.where(id: current_user.id)
+    # @users = User.where(id: current_user.id)
     @cir = {}
     @cir_max = {}
     @cir_onco = {}
@@ -134,16 +136,49 @@ class MetricController < ApplicationController
 
 
   def index
-      if current_user.admin?
-        # @visits = Visit.all
-        @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
-        @users = User.all
-      else 
-        @visits = current_user.visits.where(cycle: Cycle.last.name).order('user_id ASC')
-        @users = User.where(id: current_user.id)
-        # @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
-      end
-      @plannings = Planning.all
+
+    @q = Cycle.ransack(params[:q])
+    @cycle = @q.result.first
+    # byebug
+
+
+    if params[:q] == nil 
+      @cycle = Cycle.last
+    end
+    # byebug
+
+    if @cycle == nil
+      @cycle = Cycle.last
+    end
+
+    # if Cycle.find_by(id: @cycle.id) == nil
+    #   @cycle = Cycle.last
+    # end
+
+
+    if current_user.admin?
+      @visits = Visit.where(cycle: Cycle.find(@cycle.id).name).order('user_id ASC')
+      @users = User.all
+      # byebug
+    else 
+      @visits = current_user.visits.where(cycle: Cycle.find(@cycle.id).name).order('user_id ASC')
+      @users = User.where(id: current_user.id)
+      # @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
+    end
+    @plannings = Planning.all
+
+    # @users.each do |u|
+    #   if !u.admin
+    #     u.planned_visit = Planning.where(:user_id => u.id).count
+
+    #     u.visit_done = Planning.where(:user_id => u.id).
+    #                               where(:visited => true).count
+
+    #     u.metric = Planning.where(:user_id => u.id).
+    #                         where(:visited => true).count.to_f / Planning.where(:user_id => u.id).count.to_f
+    #   end
+    # end
+
 
       # if current_user.admin
       #   @users = User.all

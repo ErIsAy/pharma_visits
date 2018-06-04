@@ -2,8 +2,17 @@
 .pusher
   %div.main.ui.container
     %h1.ui.header.blue.centered Métricas
+
+    .ui.segment.form.input
+      = search_form_for @q, url: metric_index_path do |f|
+        .field
+          = f.label :id, 'Ciclo'
+          = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name")
+        = f.submit "Filtrar", :class => "ui blue submit button"
+
+
     .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
-      = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf'), 
+      = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf', :cycle_id => @cycle.id), 
         target: :_blank,
         class: "ui blue basic submit button"
     %table.ui.sortable.celled.table.striped.blue.gridtable
@@ -11,12 +20,16 @@
         %tr
           %th Usuario
           %th Cantidad de Visitas Realizadas
+          %th % de Métrica Cumplida  
       %tbody
         - @users.each do |user|
           - next if user.id == 1
           %tr
             %td= user.username
-            %td= user.visits.where(cycle: Cycle.last.name).count
+            -# - byebug
+            %td= user.visits.where(cycle: Cycle.find(@cycle.id).name).count
+            -# -byebug  
+            %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
     %br 
     
     %table.ui.sortable.celled.table.striped.blue.gridtable

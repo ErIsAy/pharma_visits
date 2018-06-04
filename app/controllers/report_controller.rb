@@ -190,14 +190,15 @@ class ReportController < ApplicationController
 
     if current_user.admin?
       # @visits = Visit.all
-      @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
+      @visits = Visit.where(cycle: Cycle.find(params[:cycle_id]).name).order('user_id ASC')
+      # byebug
       @users = User.all
     else 
-      @visits = current_user.visits.where(cycle: Cycle.last.name).order('user_id ASC')
+      @visits = current_user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).order('user_id ASC')
       @users = User.where(id: current_user.id)
       # @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
     end
-
+    
     # byebug
     respond_to do |format|
       format.html

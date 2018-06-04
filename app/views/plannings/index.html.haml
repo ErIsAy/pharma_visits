@@ -54,7 +54,10 @@
             %td= planning.doctor.firstname + ' ' + planning.doctor.lastname + " (#{planning.doctor.speciality})" if planning.doctor.firstname != nil
             %td= planning.doctor.center.name
             %td= planning.doctor.category
-            %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
+            - valid = DateTime.new(DateTime.now.year, @period.month, planning.date_visit.next_month.day, 0, 0, 0, DateTime.now.zone)
+              
+            -# %td= planning.date_visit.strftime("%d/%m/%Y") if planning.date_visit != nil
+            %td= DateTime.new(DateTime.now.year, @period.month, valid.day, 0, 0, 0, DateTime.now.zone).strftime("%d/%m/%Y")
             %td
               - if planning.visited
                 %i.checkmark.icon.green.large

@@ -7,7 +7,7 @@ class PlanningsController < ApplicationController
     # @plannings = Planning.all
     # @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
     @visits = current_user.visits
-
+    @period = Cycle.last.period
 
     if current_user.admin
       @q = Planning.ransack(params[:q])
