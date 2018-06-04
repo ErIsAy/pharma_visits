@@ -1,11 +1,13 @@
-.ui.attached.message
-  .header
-    Registro
+-# .ui.attached.message
+-#   .header
+-#     Registro
+%h2.ui.center.aligned.icon.header
+  %i.circular.doctor.icon.blue
+  = @doctor.firstname + " " + @doctor.lastname
 
+  -# %p Por favor llenar los siguientes datos
 
-  %p Por favor llenar los siguientes datos
-
-= simple_form_for(@doctor, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+= simple_form_for(@doctor, :html => {:class => 'ui form attached fluid segment'}) do |f|
   -# = f.error_notification
   .two.fields
     .field.required

@@ -11,16 +11,18 @@
 -#     = f.button :submit
 -#
 
-
+%h2.ui.center.aligned.icon.header
+  %i.circular.first.aid.icon.blue
+  = @drugstore.name 
 
 .ui.attached.message
   .header
-    Registro
+    Farmacia
 
 
-  %p Por favor llenar los siguientes datos
+  -# %p Por favor llenar los siguientes datos
 
-= simple_form_for(@drugstore, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+= simple_form_for(@drugstore, :html => {:class => 'ui form attached fluid segment'}) do |f|
   -# = f.error_notification
   .field
     .field.required

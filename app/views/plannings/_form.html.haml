@@ -1,11 +1,11 @@
 .ui.attached.message
   .header
-    Registro de Evento
+    Registro de Plan
 
 
-  %p Por favor llenar los siguientes datos
+  -# %p Por favor llenar los siguientes datos
 
-= simple_form_for(@planning, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+= simple_form_for(@planning, :html => {:class => 'ui form attached fluid segment'}) do |f|
   -# = f.error_notification
 
   .field.required
