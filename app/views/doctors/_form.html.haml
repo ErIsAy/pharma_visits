@@ -3,7 +3,8 @@
 -#     Registro
 %h2.ui.center.aligned.icon.header
   %i.circular.doctor.icon.blue
-  = @doctor.firstname if @doctor.firstname != nil + " " + @doctor.lastname if @doctor.lastname != nil
+  -# = @doctor.firstname if @doctor.firstname != nil + " " + @doctor.lastname if @doctor.lastname != nil
+  = "#{@doctor.firstname} #{@doctor.lastname}"
 
   -# %p Por favor llenar los siguientes datos
 
