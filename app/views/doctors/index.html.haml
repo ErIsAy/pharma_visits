@@ -72,8 +72,7 @@
                                             :data => { :confirm => '¿Está seguro…?' }
             - if current_user.admin && doctor.user != nil
               %td= doctor.user.username
-            - else 
-              %td -
+
               -# .ui.fitted
               -#   %a{:href => doctor_path(doctor)}
               -#     Show

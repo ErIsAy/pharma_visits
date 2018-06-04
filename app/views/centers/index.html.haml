@@ -64,8 +64,7 @@
                                             :data => { :confirm => '¿Está seguro…?' }
             - if current_user.admin && center.user != nil
               %td= center.user.username
-            - else
-              %td -
+
 
       = will_paginate @centers, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 

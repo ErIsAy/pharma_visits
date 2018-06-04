@@ -58,7 +58,7 @@ class DrugstoresController < ApplicationController
 
     respond_to do |format|
       if @drugstore.save
-        format.html { redirect_to @drugstore, notice: 'Farmacia creata exitosamente' }
+        format.html { redirect_to drugstores_url, notice: 'Farmacia creata exitosamente' }
         format.json { render :show, status: :created, location: @drugstore }
       else
         format.html { render :new }
@@ -72,7 +72,7 @@ class DrugstoresController < ApplicationController
   def update
     respond_to do |format|
       if @drugstore.update(drugstore_params)
-        format.html { redirect_to @drugstore, notice: 'Actualización existosa' }
+        format.html { redirect_to drugstores_url, notice: 'Actualización existosa' }
         format.json { render :show, status: :ok, location: @drugstore }
       else
         format.html { render :edit }
