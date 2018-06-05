@@ -69,6 +69,8 @@
     %tr
       %th Usuario
       %th Cantidad de Visitas Realizadas
+      %th Cantidad de Visitas Faltantes
+      %th Total de Visitas
       %th % de Métrica Cumplida   
   %tbody
     - @users.each do |user|
@@ -76,6 +78,8 @@
       %tr
         %td= user.username
         %td= user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count
+        %td= user.plannings.where(visited: false).count
+        %td= user.plannings.count 
         %td= number_to_percentage((user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count.to_f / user.plannings.count.to_f)*100, precision: 0)  
 %br 
 

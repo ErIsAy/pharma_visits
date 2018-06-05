@@ -20,7 +20,9 @@
         %tr
           %th Usuario
           %th Cantidad de Visitas Realizadas
-          %th % de Métrica Cumplida  
+          %th Cantidad de Visitas Faltantes
+          %th Total de Visitas
+          %th % de Métrica Cumplida
       %tbody
         - @users.each do |user|
           - next if user.id == 1
@@ -29,7 +31,10 @@
             -# - byebug
             %td= user.visits.where(cycle: Cycle.find(@cycle.id).name).count
             -# -byebug  
+            %td= user.plannings.where(visited: false).count 
+            %td= user.plannings.count 
             %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+
     %br 
     
     %table.ui.sortable.celled.table.striped.blue.gridtable
