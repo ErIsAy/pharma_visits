@@ -46,8 +46,8 @@ class EventsController < ApplicationController
     if request.env['HTTP_REFERER'] != nil 
       @params = request.env['HTTP_REFERER'].sub(request.base_url, '')
       @inc = @params.include?("user_id_eq")
-      @p = @params[47]
-
+      @p = @params[47..48].delete('&')
+      # byebug
       if @inc
         @user = User.find(@p)
       else

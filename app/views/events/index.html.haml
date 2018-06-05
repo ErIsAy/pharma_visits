@@ -6,12 +6,13 @@
 		%h1.ui.header.blue.centered
 			Ruta de #{current_user.username}
 
-		.ui.segment.form.input
-			= search_form_for @q, url: events_index_path do |f|
-				.field
-					= f.label :user_id_eq, 'Usuario'
-					= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username")
-				= f.submit "Filtrar", :class => "ui blue submit button"
+		- if current_user.admin	
+			.ui.segment.form.input
+				= search_form_for @q, url: events_index_path do |f|
+					.field
+						= f.label :user_id_eq, 'Usuario'
+						= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username")
+					= f.submit "Filtrar", :class => "ui blue submit button"
 
 
 		%br
