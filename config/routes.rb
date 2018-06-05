@@ -28,10 +28,12 @@ Rails.application.routes.draw do
 
   resources :drugstores
   resources :plannings
-  resources :events do
-    get 'scheduler', on: :collection
-  end
-  post '/events/scheduler', :to => 'events#create'
+  get 'events/scheduler'
+  get 'events/index'
+  # resources :events do
+  #   get 'scheduler', on: :collection
+  # end
+  # post '/events/scheduler', :to => 'events#create'
 
   resources :plannings do
     resources :visits

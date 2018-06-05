@@ -29,7 +29,7 @@ initialize_calendar = function() {
       eventLimit: false,
       displayEventTime: false,
       timeFormat: 'hh:mm a',
-      events: '/events.json',
+      events: '/events/index.json',
 
       select: function(start, end) {
         $.getScript('/events/new', function() {

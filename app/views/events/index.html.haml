@@ -1,0 +1,68 @@
+
+-# = render './layouts/shared/menu'
+
+.pusher
+	%div.main.ui.container
+		%h1.ui.header.blue.centered
+			Ruta de #{current_user.username}
+
+		.ui.segment.form.input
+			= search_form_for @q, url: events_index_path do |f|
+				.field
+					= f.label :user_id_eq, 'Usuario'
+					= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username")
+				= f.submit "Filtrar", :class => "ui blue submit button"
+
+
+		%br
+		%div.ui.container
+			-# Logo
+			-# = image_tag("logo_big.jpg", class:'logo_welcome')
+
+			-# Render Calendar
+			.calendar-main
+
+			.ui.card.yellow{:style => "width: 500px;"}
+				.content
+					%i.right.floated.edit.icon.blue.large#edit_nota
+					.header Notas
+					-# .meta hace 2 días
+					.description
+						%p
+							= simple_format(@user.note)
+						-# %p Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.
+						-# %p Many people also have their own barometers for what makes a cute dog.
+				.extra.content
+					%i.check.icon
+					= @user.visits.where(cycle: Cycle.last.name).count
+					Visitas Realizadas
+
+
+			.ui.modal.container.note_modal
+				%i.close.icon
+				.header
+					Edita tus notas
+				.content
+					-# .ui.medium.image
+					-#   %img{:src => "/images/avatar/large/chris.jpg"}/
+					.description
+						= simple_form_for(@event, :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+							-# = f.error_notification
+						
+							.field.required
+								= f.label "nota"
+								= f.input :note, as: :text, label: false, input_html: {value: @user.note}
+							.form-actions
+								= f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+					
+						-# .ui.header We've auto-chosen a profile image for you.
+						-# .ui.form
+						-#   .field
+						-#     %label Editar
+						-#     %textarea
+				.actions
+					.ui.black.deny.button
+						Cancelar
+					.ui.positive.right.labeled.icon.button
+						Guardar
+						%i.checkmark.icon
