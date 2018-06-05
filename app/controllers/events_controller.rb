@@ -43,7 +43,7 @@ class EventsController < ApplicationController
     # @plannings = Planning.all
 
     #find the user id in the request
-    if request.env['HTTP_REFERER'] != nil 
+    if request.env['HTTP_REFERER'].sub(request.base_url, '').include?("user_id_eq") 
       @params = request.env['HTTP_REFERER'].sub(request.base_url, '')
       @inc = @params.include?("user_id_eq")
       @p = @params[47..48].delete('&')
