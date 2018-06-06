@@ -61,7 +61,7 @@
     %br
     - if current_user.admin
       %div.specialty_div
-      .ui.statistics.segment
+      .ui.statistics.segment.ten
         - Doctor::SPECIALTIES.each do |x|
           - if x[0] != "General/Todas"
             .statistic{:class => "#{Doctor::COLORS.sample}"}
