@@ -38,7 +38,10 @@
               .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)}"}
                 .bar
                 .label 
-                  = number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+                  - if ((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100).nan?
+                    0 %
+                  - else  
+                    = number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
        
 
     %br 

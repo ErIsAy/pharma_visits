@@ -80,7 +80,10 @@
         %td= user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count
         %td= user.plannings.where(visited: false).count
         %td= user.plannings.count 
-        %td= number_to_percentage((user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count.to_f / user.plannings.count.to_f)*100, precision: 0)  
+        - if ((user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count.to_f / user.plannings.count.to_f)*100).nan?
+          %td 0 %
+        - else
+          %td= number_to_percentage((user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count.to_f / user.plannings.count.to_f)*100, precision: 0)  
 %br 
 
 %table.ui.sortable.celled.table.striped.blue.gridtable
