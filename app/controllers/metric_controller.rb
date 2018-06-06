@@ -49,6 +49,7 @@ class MetricController < ApplicationController
 
 
     @users.each do |u|
+      next if u.admin
       u.calc_speciality
       @cir[u.username] = u.cir
       @cir_max[u.username] = u.cir_max

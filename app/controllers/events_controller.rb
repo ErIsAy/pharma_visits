@@ -23,7 +23,6 @@ class EventsController < ApplicationController
       @now = DateTime.now
       @period = Cycle.last.period
       @event = (:note) 
-      # byebug
     else
       @events = current_user.plannings
       @now = DateTime.now
@@ -47,14 +46,17 @@ class EventsController < ApplicationController
       @params = request.env['HTTP_REFERER'].sub(request.base_url, '')
       @inc = @params.include?("user_id_eq")
       @p = @params[47..48].delete('&')
-      # byebug
       if @inc
         @user = User.find(@p)
+        if params[:q] != nil
+          @real_u = User.find(params[:q]["user_id_eq"])
+        end
       else
         @user = current_user
       end
     else
       @user = current_user
+      @real_u = current_user
     end
 
 
@@ -77,10 +79,11 @@ class EventsController < ApplicationController
     end
 
     # byebug
+    
     # respond_to do |format|
-    #   byebug
+
     #   format.json 
-    #   format.js { render :js => "console.log('wow')" }
+    #   format.html
     # end
 
   end
