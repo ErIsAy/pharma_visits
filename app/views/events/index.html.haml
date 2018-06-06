@@ -4,10 +4,10 @@
 .pusher
 	%div.main.ui.container
 		- if @real_u != nil
-			%h1.ui.header.blue.centered
+			%h1.ui.header.blue.block.centered
 				Ruta de #{@real_u.username}
 		- else 
-			%h1.ui.header.blue.centered
+			%h1.ui.header.blue.block.centered
 				Ruta de #{current_user.username}
 
 		- if current_user.admin	

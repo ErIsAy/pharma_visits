@@ -1,7 +1,7 @@
 
 .pusher
   %div.main.ui.container
-    %h1.ui.header.blue.centered Métricas
+    %h1.ui.header.blue.centered.block Métricas
 
     .ui.segment.form.input
       = search_form_for @q, url: metric_index_path do |f|
@@ -11,10 +11,10 @@
         = f.submit "Filtrar", :class => "ui blue submit button"
 
 
-    .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
-      = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf', :cycle_id => @cycle.id), 
-        target: :_blank,
-        class: "ui blue basic submit button"
+        -# .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
+        = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf', :cycle_id => @cycle.id), 
+          target: :_blank,
+          class: "ui blue basic submit button"
     %table.ui.sortable.celled.table.striped.blue.gridtable
       %thead
         %tr
