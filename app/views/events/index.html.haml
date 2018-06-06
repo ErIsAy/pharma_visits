@@ -33,14 +33,16 @@
 
 			.ui.card.yellow{:style => "width: 500px;"}
 				.content
-					%i.right.floated.edit.icon.blue.large#edit_nota
+					- unless current_user.admin
+						%i.right.floated.edit.icon.blue.large#edit_nota
 					.header Notas
 					-# .meta hace 2 días
 					.description
 						%p
-							= simple_format(@user.note)
-						-# %p Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.
-						-# %p Many people also have their own barometers for what makes a cute dog.
+							- if @real_u != nil
+								= simple_format(@real_u.note)
+							-# - else
+							-# 	= simple_format(@current_user.note)
 				.extra.content
 					%i.check.icon
 					= @user.visits.where(cycle: Cycle.last.name).count

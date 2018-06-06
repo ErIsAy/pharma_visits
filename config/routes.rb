@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # resources :events do
   #   get 'scheduler', on: :collection
   # end
-  # post '/events/scheduler', :to => 'events#create'
+  post '/events/index', :to => 'events#create'
 
   resources :plannings do
     resources :visits

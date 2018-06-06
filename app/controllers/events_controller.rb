@@ -50,15 +50,22 @@ class EventsController < ApplicationController
         @user = User.find(@p)
         if params[:q] != nil
           @real_u = User.find(params[:q]["user_id_eq"])
+        else
+          @real_u = @user
         end
       else
         @user = current_user
       end
     else
       @user = current_user
-      @real_u = current_user
+      if params[:q] != nil
+        @real_u = User.find(params[:q]["user_id_eq"])
+      else 
+        @real_u = @user
+      end
     end
 
+    # byebug
 
     
     
@@ -109,7 +116,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to scheduler_events_path, notice: 'Nota Actualizada' }
+        format.html { redirect_to events_index_path, notice: 'Nota Actualizada' }
         # format.json { render :show, status: :ok, location: @drugstore }
       else
         format.html { render :edit }
