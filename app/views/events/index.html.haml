@@ -44,8 +44,8 @@
 							-# - else
 							-# 	= simple_format(@current_user.note)
 				.extra.content
-					%i.check.icon
-					= @user.visits.where(cycle: Cycle.last.name).count
+					%i.check.icon	
+					= @real_u.visits.where(cycle: Cycle.last.name).count
 					Visitas Realizadas
 
 
