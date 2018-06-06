@@ -66,13 +66,14 @@ RailsAdmin.config do |config|
       label "Administrador"
     end
 
-    field :note do
-      label "Notas de Ruta"
-    end
-
     field :is_active do
       label "Activo?"
     end
+
+    field :note do
+      label "Notas de Ruta"
+    end
+ 
     # field :created_at do
     #   label "Creado"
     # end
@@ -128,6 +129,7 @@ RailsAdmin.config do |config|
       end
     end
 
+  
 
   end
 
@@ -302,7 +304,9 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
+    show_in_app do
+      except ['Cycle','Division', 'Eje', 'Visit']
+    end 
     # pdf
 
     ## With an audit adapter, you can add:

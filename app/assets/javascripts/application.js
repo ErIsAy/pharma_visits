@@ -29,6 +29,16 @@
 //= require lib/morrisjs/morris
 //= require_tree .
 
+// initialize all progress bar
+$('.progress-bar').each(function(){
+  $(this).progress();
+});
+
+// $('#example1').progress();
+
+// var progressBar = function(){
+
+// };
 
 // var line = new ProgressBar.Line('#container');
 /************fadeOut messages ***********/

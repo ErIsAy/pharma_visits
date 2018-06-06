@@ -48,4 +48,20 @@ class Doctor < ActiveRecord::Base
       ['OTO', 'OTO']
     ]
 
+  COLORS = 
+  [
+    "red",
+    "orange",
+    "yellow",
+    "teal",
+    "olive",
+    "green",
+    "blue",
+    "violet",
+    "purple",
+    "pink",
+    "brown",
+    "grey"
+  ]
+
 end

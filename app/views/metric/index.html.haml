@@ -33,7 +33,13 @@
             -# -byebug  
             %td= user.plannings.where(visited: false).count 
             %td= user.plannings.count 
-            %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+            -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+            %td     
+              .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)}"}
+                .bar
+                .label 
+                  = number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+       
 
     %br 
     
