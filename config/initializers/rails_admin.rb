@@ -100,70 +100,78 @@ RailsAdmin.config do |config|
     label "Centro"
     label_plural "Centros"
 
-    include_fields :name, :address, :city, :phone, :region
+    list do
+      include_fields :user, :name, :address, :city, :phone, :region
 
-    field :user_id, :enum do
-      label 'Usuario'
-      enum do
-        User.all.collect {|p| [p.username, p.id]}
+      field :user_id, :enum do
+        label 'Usuario'
+        enum do
+          User.all.collect {|p| [p.username, p.id]}
+        end
       end
-    end
 
-    field :name do
-      label 'Nombre'
-    end
+      field :name do
+        label 'Nombre'
+      end
 
-    field :address do
-      label 'Dirección'
-    end
+      field :address do
+        label 'Dirección'
+      end
 
-    field :city do
-      label 'Ciudad'
-    end
+      field :city do
+        label 'Ciudad'
+      end
 
-    field :phone do
-      label 'Teléfono'
-    end
+      field :phone do
+        label 'Teléfono'
+      end
 
-    field :region do
-      label 'Región'
+      field :region do
+        label 'Región'
+      end
     end
   
 
   end
 
+
+
   config.model 'Doctor' do
     label "Doctor"
     label_plural "Doctores"
 
-    include_fields :firstname, :lastname, :speciality, :suite, :center_id, :category
-    field :user_id, :enum do
-      label 'Usuario'
-      enum do
-        User.all.collect {|p| [p.username, p.id]}
+    list do 
+      include_fields  :user, :firstname, :lastname, :speciality, :center_id, :category, :suite
+      field :user_id, :enum do
+        label 'Usuario'
+        enum do
+          User.all.collect {|p| [p.username, p.id]}
+        end
       end
-    end
-    field :firstname do
-      label 'Nombre'
-    end
-    field :lastname do
-      label 'Apellido'
-    end
-    field :speciality do
-      label 'Especialidad'
-    end
-    field :center_id, :enum do
-      enum do
-        Center.all.collect {|p| [p.name, p.id]}
+      field :firstname do
+        label 'Nombre'
       end
-    end
-    field :category do
-      label 'Categoría'
-    end
-    field :suite do
-      label 'Suite'
+      field :lastname do
+        label 'Apellido'
+      end
+      field :speciality do
+        label 'Especialidad'
+      end
+      field :center_id, :enum do
+        label 'Centro'
+        enum do
+          Center.all.collect {|p| [p.name, p.id]}
+        end
+      end
+      field :category do
+        label 'Categoría'
+      end
+      field :suite do
+        label 'Suite'
+      end
     end
   end
+
 
   config.model 'Drugstore' do
     label "Farmacia"

@@ -84,7 +84,7 @@
               %tr
                 %td.collapsing= "#{x[0]}"
                 %td
-                  .progress-bar.ui.teal.progress{"data-total" => "#{Doctor.where(speciality: x[0]).count}", "data-percent" => "#{(((Doctor.where(speciality: x[0]).count.to_f)/@max)*100).to_i}" }
+                  .progress-bar.ui.indicating.progress.register{"data-total" => "#{Doctor.where(speciality: x[0]).count}", "data-percent" => "#{(((Doctor.where(speciality: x[0]).count.to_f)/@max)*100).to_i}" }
                     -# -byebug
                     .bar
                       .progress
