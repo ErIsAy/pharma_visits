@@ -86,18 +86,18 @@
           %td= number_to_percentage((user.visits.where(cycle: Cycle.find(params[:cycle_id]).name).count.to_f / user.plannings.count.to_f)*100, precision: 0)  
 %br 
 
-%table.ui.sortable.celled.table.striped.blue.gridtable
-  %thead
-    %tr
-      %th Usuario
-      %th Doctor
-      %th Centro
-      %th Fecha de Visita  
-  %tbody
-    - @visits.each do |visit|
-      - next if visit.user.id == 1
-      %tr
-        %td= visit.user.username
-        %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
-        %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
-        %td= visit.created_at.strftime("%d/%m/%Y")  
+-# %table.ui.sortable.celled.table.striped.blue.gridtable
+-#   %thead
+-#     %tr
+-#       %th Usuario
+-#       %th Doctor
+-#       %th Centro
+-#       %th Fecha de Visita  
+-#   %tbody
+-#     - @visits.each do |visit|
+-#       - next if visit.user.id == 1
+-#       %tr
+-#         %td= visit.user.username
+-#         %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
+-#         %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
+-#         %td= visit.created_at.strftime("%d/%m/%Y")  

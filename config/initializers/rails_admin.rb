@@ -102,6 +102,13 @@ RailsAdmin.config do |config|
 
     include_fields :name, :address, :city, :phone, :region
 
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
+
     field :name do
       label 'Nombre'
     end
@@ -121,14 +128,6 @@ RailsAdmin.config do |config|
     field :region do
       label 'Región'
     end
-
-    field :user_id, :enum do
-      label 'Usuario'
-      enum do
-        User.all.collect {|p| [p.username, p.id]}
-      end
-    end
-
   
 
   end
@@ -138,6 +137,12 @@ RailsAdmin.config do |config|
     label_plural "Doctores"
 
     include_fields :firstname, :lastname, :speciality, :suite, :center_id, :category
+    field :user_id, :enum do
+      label 'Usuario'
+      enum do
+        User.all.collect {|p| [p.username, p.id]}
+      end
+    end
     field :firstname do
       label 'Nombre'
     end
@@ -147,22 +152,16 @@ RailsAdmin.config do |config|
     field :speciality do
       label 'Especialidad'
     end
-    field :suite do
-      label 'Suite'
-    end
-    field :category do
-      label 'Categoría'
-    end
     field :center_id, :enum do
       enum do
         Center.all.collect {|p| [p.name, p.id]}
       end
     end
-    field :user_id, :enum do
-      label 'Usuario'
-      enum do
-        User.all.collect {|p| [p.username, p.id]}
-      end
+    field :category do
+      label 'Categoría'
+    end
+    field :suite do
+      label 'Suite'
     end
   end
 

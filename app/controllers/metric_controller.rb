@@ -106,11 +106,14 @@ class MetricController < ApplicationController
      @uro_obj = @uro.map{|e| {username: e[0], value: e[1]}}
      @oto_obj = @oto.map{|e| {username: e[0], value: e[1]}}
 
-     
+     @max = 0
+     Doctor::SPECIALTIES.each do |max|
+      if @max < Doctor.where(speciality: max[0]).count
+        @max = Doctor.where(speciality: max[0]).count
+      end
+     end
  
-    
 
- 
   end
 
   def print_report

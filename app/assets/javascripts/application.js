@@ -31,7 +31,12 @@
 
 // initialize all progress bar
 $('.progress-bar').each(function(){
-  $(this).progress();
+  $(this).progress({
+    label: 'ratio',
+    text: {
+      ratio: '{total}'
+    }
+  });
 });
 
 // $('#example1').progress();
