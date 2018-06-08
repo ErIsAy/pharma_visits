@@ -77,8 +77,8 @@ $('.ui.dropdown').dropdown();
 $("#register-users").dropdown({
   onChange: function(value, text, $selected) {
     $('.ui.tab').tab('change tab', text);
-  },
-  allowReselection: true
+    console.log(text);
+  }
 });
 
 /************ Initializers **************/

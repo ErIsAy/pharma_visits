@@ -120,14 +120,15 @@
         .default.text Selecciona un Usuario
         .menu
           - @users.each do |x|
-            - next if x.admin
+            - next if x.admin || x.doctors.empty?
             .item{"data-value" => "#{x.id}"}
               = x.username
 
       .ui.container
         %br
         - @users.each do |user|
-          - next if user.admin
+          - next if user.admin || user.doctors.empty?
+          
           .ui.tab{"data-tab" => "#{user.username}"}
             %table.ui.sortable.celled.table.striped.teal.compact
               %thead
