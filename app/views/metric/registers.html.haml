@@ -120,12 +120,14 @@
         .default.text Selecciona un Usuario
         .menu
           - @users.each do |x|
+            - next if x.admin
             .item{"data-value" => "#{x.id}"}
               = x.username
 
       .ui.container
         %br
         - @users.each do |user|
+          - next if user.admin
           .ui.tab{"data-tab" => "#{user.username}"}
             %table.ui.sortable.celled.table.striped.teal.compact
               %thead
@@ -140,7 +142,7 @@
                       %td.collapsing= "#{x[0]}"
                       %td
                         .progress-bar.ui.progress.register{"data-total" => "#{user.doctors.where(speciality: x[0]).count}", 
-                                                          "data-percent" => "#{(((user.doctors.where(speciality: x[0]).count.to_f)/@max)*100).to_i}", 
+                                                          "data-percent" => "#{(((user.doctors.where(speciality: x[0]).count.to_f)/user.max)*100).to_i}", 
                                                           class: "#{Doctor::COLORS.sample}"}
                           -# -byebug
                           .bar

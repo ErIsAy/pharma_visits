@@ -49,6 +49,7 @@ class MetricController < ApplicationController
 
 
     @users.each do |u|
+      u.max = 0
       next if u.admin
       u.calc_speciality
       @cir[u.username] = u.cir
@@ -107,11 +108,30 @@ class MetricController < ApplicationController
      @oto_obj = @oto.map{|e| {username: e[0], value: e[1]}}
 
      @max = 0
-     Doctor::SPECIALTIES.each do |max|
-      if @max < Doctor.where(speciality: max[0]).count
-        @max = Doctor.where(speciality: max[0]).count
+     
+     if current_user.admin
+      Doctor::SPECIALTIES.each do |max|
+        if @max < Doctor.where(speciality: max[0]).count
+          @max = Doctor.where(speciality: max[0]).count
+        end
       end
-     end
+      @users.each do |us|
+        next if us.admin
+        
+        Doctor::SPECIALTIES.each do |max|
+          if us.max < us.doctors.where(speciality: max[0]).count
+            us.max = us.doctors.where(speciality: max[0]).count
+          end
+        end
+        # byebug
+      end
+    else
+      Doctor::SPECIALTIES.each do |max|
+        if @max < current_user.doctors.where(speciality: max[0]).count
+          @max = current_user.doctors.where(speciality: max[0]).count
+        end
+      end
+    end
  
 
   end
