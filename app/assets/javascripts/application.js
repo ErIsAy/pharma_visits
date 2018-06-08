@@ -29,6 +29,11 @@
 //= require lib/morrisjs/morris
 //= require_tree .
 
+$('.menu .item').tab();
+
+
+
+
 // initialize all progress bar
 $('.progress-bar').each(function(){
   $(this).progress({
@@ -67,6 +72,14 @@ $('#edit_nota').click(function () {
   $('.modal').modal('show');
 });
 
+$('.ui.dropdown').dropdown();
+
+$("#register-users").dropdown({
+  onChange: function(value, text, $selected) {
+    $('.ui.tab').tab('change tab', text);
+  },
+  allowReselection: true
+});
 
 /************ Initializers **************/
 $( document ).ready(function() {
@@ -74,7 +87,7 @@ $( document ).ready(function() {
   // gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
   // gmap_show(center);    // init show map for center card (only print marker)
   $('.menu .item').tab();
-  $('.ui.dropdown').dropdown();
+  
   $('table').tablesort()
   $("#notice_center" ).fadeOut(5000);
   $('.datepicker').datepicker();
