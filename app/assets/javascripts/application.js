@@ -76,7 +76,13 @@ $('.ui.dropdown').dropdown();
 
 $("#register-users").dropdown({
   onChange: function(value, text, $selected) {
-    $('.ui.tab').tab('change tab', text);
+    // $('.ui.tab').tab('change tab', text);
+    var elems = document.querySelectorAll(".ui.tab");
+    [].forEach.call(elems, function(el) {
+      el.classList.remove("active");
+      console.log('tab_changed');
+    });
+    document.querySelectorAll(`[data-tab='${text}']`)[0].classList.add("active");
     console.log(text);
   }
 });
