@@ -35,7 +35,9 @@
 
         = link_to 'Exportar a Excel', centers_path(:format => 'xlsx'),
           class: "ui blue basic submit button"
-
+        .ui.bottom.right.attached.label 
+          %i.search.icon
+          = pluralize(@centers.count, 'Resultado', 'Rasultados')
 
     %table.ui.sortable.celled.table.striped.olive
       %thead

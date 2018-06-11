@@ -31,7 +31,9 @@
           -# .field
           -#   = f.select :visited_eq, [['Si', 1], [nil, nil], ['All', 2]] 
         = f.submit "Filtrar", :class => "ui blue submit button"
-
+      .ui.bottom.right.attached.label 
+        %i.search.icon
+        = pluralize(@plannings.count, 'Resultado', 'Rasultados')
 
     %table.ui.sortable.celled.table.striped 
       %thead
