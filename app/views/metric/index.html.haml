@@ -19,9 +19,10 @@
       %thead
         %tr
           %th Usuario
+          %th Total de Visitas
           %th Cantidad de Visitas Realizadas
           %th Cantidad de Visitas Faltantes
-          %th Total de Visitas
+          
           %th % de Métrica Cumplida
       %tbody
         - @users.each do |user|
@@ -29,10 +30,11 @@
           %tr
             %td= user.username
             -# - byebug
+            %td= user.plannings.count
             %td= user.visits.where(cycle: Cycle.find(@cycle.id).name).count
             -# -byebug  
             %td= user.plannings.where(visited: false).count 
-            %td= user.plannings.count 
+             
             -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
             %td     
               .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)}"}
