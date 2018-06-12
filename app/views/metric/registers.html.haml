@@ -90,8 +90,11 @@
                     -# -byebug
                     .bar
                       .progress
-                    -# .label
-                    -#   = Doctor.where(speciality: x[0]).count
+                    .label
+                      Se han visto 
+                      = Planning.includes(:doctor).where(cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                      de 
+                      = Doctor.where(speciality: x[0]).count
 
     -2.times do 
       %br
@@ -148,8 +151,12 @@
                           -# -byebug
                           .bar
                             .progress
-                          -# .label
-                          -#   = Doctor.where(speciality: x[0]).count
+                          .label
+                            Se han visto 
+                            = Planning.includes(:doctor).where(user_id: user.id, cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                            de
+                            = user.doctors.where(speciality: x[0]).count
+                            
     - else
       %table.ui.sortable.celled.table.striped.blue.compact
         %thead
@@ -169,8 +176,11 @@
                     -# -byebug
                     .bar
                       .progress
-                    -# .label
-                    -#   = Doctor.where(speciality: x[0]).count
+                    .label
+                      Se han visto 
+                      = Planning.includes(:doctor).where(user_id: current_user.id, cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                      de
+                      = current_user.doctors.where(speciality: x[0]).count
 
     -# .ui{:style => "margin-top: 20px;"}
     -#   %h2

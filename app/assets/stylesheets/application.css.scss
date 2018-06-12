@@ -29,9 +29,15 @@ h1 {
   font-weight: 100 !important;
 }
 
-.progress-bar.ui.progress.register {
-  margin: 0 !important;
+// .progress-bar.ui.progress.register {
+//   margin: 0 !important;
+// }
+
+.ui.progress > .label {
+  font-size: 13px;
+  font-weight: 100;
 }
+
 
 // body {
 //     background: image-url('background.png') no-repeat center center fixed;
