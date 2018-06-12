@@ -21,7 +21,11 @@
             = f.select :city_cont, collection: Center::CITIES   
           .field
             = f.label :user_username_cont, 'Usuario'
-            = f.search_field :user_username_cont 
+            -# = f.search_field :user_username_cont 
+            = f.select :user_username_cont, options_from_collection_for_select(User.where.not(id: 1), "username", "username",
+                                            {:selected => @user}),
+                                            include_blank: 'Todos'
+
         = f.submit "Filtrar", :class => "ui blue submit button"
         = link_to 'Exportar a Excel', drugstores_path(:format => 'xlsx'),
           class: "ui blue basic submit button"

@@ -14,6 +14,9 @@ class DrugstoresController < ApplicationController
     # @q = current_user.drugstores.ransack(params[:q])
     # @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20)
 
+    if params[:q]
+      @user = params[:q][:user_username_cont]
+    end
 
 
     if current_user.admin

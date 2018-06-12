@@ -9,6 +9,10 @@ class PlanningsController < ApplicationController
     @visits = current_user.visits
     @period = Cycle.last.period
 
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
+
     if current_user.admin
       @q = Planning.ransack(params[:q])
       @plannings = @q.result.paginate(:page => params[:page], :per_page => 20).order('date_visit ASC')

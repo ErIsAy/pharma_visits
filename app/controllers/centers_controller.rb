@@ -9,6 +9,9 @@ class CentersController < ApplicationController
     # else
     #   @centers = Center.paginate(:page => params[:page], :per_page => 20)
     # end
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
 
     if current_user.admin
       @q = Center.ransack(params[:q])
