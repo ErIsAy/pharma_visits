@@ -8,4 +8,12 @@ module ApplicationHelper
     end
   end
 
+
+
+  def pluralize_without_count_doctor(count, noun, text = nil)
+    if count != 0
+      count == 1 ? "Doctor #{text}" : "Doctores #{text}"
+    end
+  end
+
 end

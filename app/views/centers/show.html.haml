@@ -60,7 +60,12 @@
 
 
 
-  %h2 Doctores
+  %br
+  .ui.pointing.below.blue.basic.label.big
+    = @doctors.count
+    = pluralize_without_count_doctor(@doctors.count, 'Doctor')
+    
+        
   %table.ui.sortable.celled.table.striped.definition
     %thead
       %tr
