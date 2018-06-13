@@ -14,7 +14,7 @@
   .field.required
     = f.label "Doctor"
     -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
-    - if current_user.admin
+    - if current_user.admin && request.path != '/plannings/new'
       = "#{@planning.doctor.firstname} #{@planning.doctor.lastname}"
     - else
       = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
