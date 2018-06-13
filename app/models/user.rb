@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :cir, :cir_max, :cir_onco, :cir_ped, :cir_plast, :cir_proc, :cir_vas,
                 :derm, :diabe, :endo, :fis, :gastro, :geria, :intensi, :gin, :hema, :mf, :mg, :mi,
-                :nefro, :neuro, :neuro_cir, :orto, :reuma, :uro, :oto, :max
+                :nefro, :neuro, :neuro_cir, :orto, :reuma, :uro, :oto, :max, :neumo
 
 
 
@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
     self.reuma = Doctor.where(:user_id => self.id, :speciality => "REUMA").count
     self.uro = Doctor.where(:user_id => self.id, :speciality => "URO").count
     self.uro = Doctor.where(:user_id => self.id, :speciality => "OTO").count
+    self.neumo = Doctor.where(:user_id => self.id, :speciality => "NEUMO").count
   end
 
 
