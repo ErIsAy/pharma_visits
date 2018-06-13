@@ -1,4 +1,7 @@
-
+:css
+  a:hover { 
+    background-color: #F3F4F5;
+  }
 .pusher
   %div.main.ui.container
     %h1.ui.header.blue.centered.block Reportes
@@ -48,36 +51,75 @@
     -#           Reporte de Plan Mensual
     -#           -# .meta
     -#           -#   %a Last Seen 2 days ago
+    - 2.times do
+      %br
+    
+    .ui.statistics.three.column.grid.small{:style => "margin-top: 20px;"}
+      %a.statistic{:href => report_center_path}
+        .value.icon-gradient
+          %i.hospital.icon.icon-gradient
+        .label.icon-gradient
+          Centros Médicos
+      %a.statistic{:href => report_doctor_path}
+        .value.icon-gradient
+          %i.doctor.icon.icon-gradient
+        .label.icon-gradient
+          Listado de Doctores
+      %a.statistic{:href => report_doctor_center_path}
+        .value.icon-gradient
+          %i.building.outline.icon.icon-gradient
+        .label.icon-gradient
+          Doctores por Centro 
+      %a.statistic{:href => report_drugstore_path}
+        .value.icon-gradient
+          %i.first.aid.icon.icon-gradient
+        .label.icon-gradient
+          Listado de Farmacias
+      %a.statistic{:href => report_planning_path}
+        .value.icon-gradient
+          %i.calendar.outline.icon.icon-gradient
+        .label.icon-gradient
+          Reporte de Planes
+      -# - if current_user.admin 
+      -#   %a.statistic{:href => report_visits_path(:format => 'pdf'), target: :_blank }
+      -#     .value.icon-gradient
+      -#       %i.file.pdf.outline.icon.icon-gradient
+      -#     .label.icon-gradient
+      -#       Reporte de Visitas - Ciclo Actual
 
-    .ui.massive.relaxed.divided.list{:style => 'margin-top: 50px; '}
-      .item
-        %i.large.hospital.icon-gradient.middle.aligned.icon
-        .content
-          %a.header{:href => report_center_path} Centros Médicos
-          -# .description Updated 10 mins ago
-      .item
-        %i.large.doctor.icon-gradient.middle.aligned.icon
-        .content
-          %a.header{:href => report_doctor_path} Listado de Doctores
-          -# .description Updated 10 mins ago
-      .item
-        %i.large.building.outline.icon-gradient.middle.aligned.icon
-        .content
-          %a.header{:href => report_doctor_center_path} Doctores por Centro
-          -# .description Updated 10 mins ago
-      .item
-        %i.large.first.aid.icon-gradient.middle.aligned.icon
-        .content
-          %a.header{:href => report_drugstore_path} Listado de Farmacias
-          -# .description Updated 10 mins ago
-      .item
-        %i.large.calendar.outline.icon-gradient.middle.aligned.icon
-        .content
-          %a.header{:href => report_planning_path} Reporte de Planes
-          -# .description Updated 10 mins ago
-      - if current_user.admin 
-        .item
-          %i.large.file.pdf.outline.icon-gradient.middle.aligned.icon
-          .content
-            %a.header{:href => report_visits_path(:format => 'pdf'), target: :_blank } Reporte de Visitas - Ciclo Actual
-            -# .description 
+
+
+
+
+    -# .ui.massive.relaxed.divided.list{:style => 'margin-top: 50px; '}
+    -#   .item
+    -#     %i.large.hospital.icon-gradient.middle.aligned.icon
+    -#     .content
+    -#       %a.header{:href => report_center_path} Centros Médicos
+    -#       -# .description Updated 10 mins ago
+    -#   .item
+    -#     %i.large.doctor.icon-gradient.middle.aligned.icon
+    -#     .content
+    -#       %a.header{:href => report_doctor_path} Listado de Doctores
+    -#       -# .description Updated 10 mins ago
+    -#   .item
+    -#     %i.large.building.outline.icon-gradient.middle.aligned.icon
+    -#     .content
+    -#       %a.header{:href => report_doctor_center_path} Doctores por Centro
+    -#       -# .description Updated 10 mins ago
+    -#   .item
+    -#     %i.large.first.aid.icon-gradient.middle.aligned.icon
+    -#     .content
+    -#       %a.header{:href => report_drugstore_path} Listado de Farmacias
+    -#       -# .description Updated 10 mins ago
+    -#   .item
+    -#     %i.large.calendar.outline.icon-gradient.middle.aligned.icon
+    -#     .content
+    -#       %a.header{:href => report_planning_path} Reporte de Planes
+    -#       -# .description Updated 10 mins ago
+    -#   - if current_user.admin 
+    -#     .item
+    -#       %i.large.file.pdf.outline.icon-gradient.middle.aligned.icon
+    -#       .content
+    -#         %a.header{:href => report_visits_path(:format => 'pdf'), target: :_blank } Reporte de Visitas - Ciclo Actual
+    -#         -# .description 
