@@ -84,16 +84,18 @@
               %tr
                 %td.collapsing= "#{x[0]}"
                 %td
-                  .progress-bar.ui.progress.register{"data-total" => "#{Doctor.where(speciality: x[0]).count}", 
-                                                     "data-percent" => "#{(((Doctor.where(speciality: x[0]).count.to_f)/@max)*100).to_i}", 
+                  .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count}", 
+                                                     "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(:doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
                                                      class: "#{Doctor::COLORS.sample}"}
                     -# -byebug
                     .bar
                       .progress
                     .label
-                      = Planning.includes(:doctor).where(cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                      -# = Planning.includes(:doctor).where(cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                      = Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count
                       de
-                      = Doctor.where(speciality: x[0]).count
+                      = Planning.includes(:doctor).where(:doctors => {speciality: x[0]}).count
+                      -# = Doctor.where(speciality: x[0]).count
 
     -2.times do 
       %br
@@ -145,20 +147,21 @@
                   - if x[0] != "General/Todas"
                     %tr
                       %td= "#{x[0]}"
-                      %td= user.doctors.where(speciality: x[0]).count
+                      -# %td= user.doctors.where(speciality: x[0]).count
+                      %td= Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count
                       %td= Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count
                       -# - byebug
                       %td= Planning.includes(:doctor).where(visited: false, user_id: user.id, :doctors => {speciality: x[0]}).count
                       
                       -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
                       %td    
-                        .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / user.doctors.where(speciality: x[0]).count.to_f)*100, precision: 0).to_i}"}
+                        .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}"}
                           .bar
                           .label 
-                            - if ((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / user.doctors.where(speciality: x[0]).count.to_f)*100).nan?
+                            - if ((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100).nan?
                               0 %
                             - else  
-                              = number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / user.doctors.where(speciality: x[0]).count.to_f)*100, precision: 0)
+                              = number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0)
           
 
 
@@ -193,7 +196,7 @@
         %thead
           %tr
             %th Especialidad
-            %th Cant.
+            %th Doctores visitados
 
         %tbody
           - Doctor::SPECIALTIES.each do |x|
@@ -201,16 +204,17 @@
               %tr
                 %td.collapsing= "#{x[0]}"
                 %td
-                  .progress-bar.ui.progress.register{"data-total" => "#{current_user.doctors.where(speciality: x[0]).count}", 
-                                                    "data-percent" => "#{(((current_user.doctors.where(speciality: x[0]).count.to_f)/@max)*100).to_i}", 
+                  .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count}", 
+                                                    "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
                                                     class: "#{Doctor::COLORS.sample}"}
                     -# -byebug
                     .bar
                       .progress
                     .label
-                      = Planning.includes(:doctor).where(user_id: current_user.id, cycle_id: Cycle.last.id , :doctors => {speciality: x[0]}).count
+                      = Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count
                       de
-                      = current_user.doctors.where(speciality: x[0]).count
+                      -# = current_user.doctors.where(speciality: x[0]).count
+                      = Planning.includes(:doctor).where(user_id: current_user.id, :doctors => {speciality: x[0]}).count
 
     -# .ui{:style => "margin-top: 20px;"}
     -#   %h2

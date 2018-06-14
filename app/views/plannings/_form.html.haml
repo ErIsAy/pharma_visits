@@ -11,12 +11,21 @@
   .field.required
     = f.label "Titulo"
     = f.input :title, label: false
-  .field.required
-    = f.label "Doctor"
+  .two.field.required
     -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
     - if current_user.admin && request.path != '/plannings/new'
-      = "#{@planning.doctor.firstname} #{@planning.doctor.lastname}"
+      .three.fields
+        .field{:style => 'font-weight: bold;'}
+          .label Doctor:
+          = "#{@planning.doctor.firstname} #{@planning.doctor.lastname}"
+        .field{:style => 'font-weight: bold;'}
+          .label Especialidad:
+          = "#{@planning.doctor.speciality}"
+        .field{:style => 'font-weight: bold;'}
+          .label Centro:
+          = "#{@planning.doctor.center.name}"
     - else
+      = f.label "Doctor"
       = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
   .two.fields
