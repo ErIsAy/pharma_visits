@@ -2,6 +2,12 @@
   a:hover { 
     background-color: #F3F4F5;
   }
+  .label {
+    color: #0E6EB8 !important;
+  }
+  i {
+    color: #0E6EB8 !important;
+  }
 .pusher
   %div.main.ui.container
     %h1.ui.header.blue.centered.block Reportes
@@ -56,29 +62,29 @@
     
     .ui.statistics.three.column.grid.small{:style => "margin-top: 20px;"}
       %a.statistic{:href => report_center_path}
-        .value.icon-gradient
-          %i.hospital.icon.icon-gradient
-        .label.icon-gradient
+        .value
+          %i.hospital.icon
+        .label
           Centros Médicos
       %a.statistic{:href => report_doctor_path}
-        .value.icon-gradient
-          %i.doctor.icon.icon-gradient
-        .label.icon-gradient
+        .value
+          %i.doctor.icon
+        .label
           Listado de Doctores
       %a.statistic{:href => report_doctor_center_path}
-        .value.icon-gradient
-          %i.building.outline.icon.icon-gradient
-        .label.icon-gradient
+        .value
+          %i.building.outline.icon
+        .label
           Doctores por Centro 
       %a.statistic{:href => report_drugstore_path}
-        .value.icon-gradient
-          %i.first.aid.icon.icon-gradient
-        .label.icon-gradient
+        .value
+          %i.first.aid.icon
+        .label
           Listado de Farmacias
       %a.statistic{:href => report_planning_path}
-        .value.icon-gradient
-          %i.calendar.outline.icon.icon-gradient
-        .label.icon-gradient
+        .value
+          %i.calendar.outline.icon
+        .label
           Reporte de Planes
       -# - if current_user.admin 
       -#   %a.statistic{:href => report_visits_path(:format => 'pdf'), target: :_blank }

@@ -87,7 +87,7 @@
                 %td
                   .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count}", 
                                                      "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(:doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
-                                                     class: "teal"}
+                                                     class: "#{Doctor::COLORS.sample}"}
                     -# -byebug
                     .bar
                       .progress
@@ -207,7 +207,7 @@
                 %td
                   .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count}", 
                                                     "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
-                                                    class: "teal"}
+                                                    class: "#{Doctor::COLORS.sample}"}
                     -# -byebug
                     .bar
                       .progress
