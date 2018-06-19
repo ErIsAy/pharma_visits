@@ -22,27 +22,33 @@
 
   -# %p Por favor llenar los siguientes datos
 
-= simple_form_for(@drugstore, :html => {:class => 'ui form attached fluid segment'}) do |f|
+= simple_form_for(@drugstore, :html => {:class => 'ui form attached fluid segment', :autocomplete => "off"}) do |f|
   -# = f.error_notification
   .field
     .field.required
       = f.label 'Nombre de la Farmacia'
       = f.input :name, label: false
+    .three.fields
+      .field
+        = f.label 'Dirección'
+        = f.input :address, label: false
+      .field
+        = f.label 'Ciudad'
+        = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui dropdown' }
+      .field
+        = f.label "Tel."
+        = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
+    .two.fields
+      .field
+        = f.label 'Personal de Despacho'
+        = f.input :service_person, label: false
+      .field
+        = f.label 'Encargado de Compras'
+        = f.input :sales_person, label: false
     .field
-      = f.label 'Dirección'
-      = f.input :address, label: false
-    .field
-      = f.label 'Personal de Despacho'
-      = f.input :service_person, label: false
-    .field
-      = f.label 'Encargado de Compras'
-      = f.input :sales_person, label: false
-    .eight.wide.field
-      = f.label 'Ciudad'
-      = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }
-    .field
-      = f.label "Tel."
-      = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
+      = f.label 'Comentario'
+      = f.input :note, label: false
+
     / map div
     -# %label Mapa
     -# #map{:style => "width: 100%; height: 350px;"}

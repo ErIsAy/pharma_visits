@@ -69,6 +69,7 @@
     -#             = Doctor.where(speciality: x[0]).count
     -#           .label
     -#             = x[0]
+    -# class: "#{Doctor::COLORS.sample}"} to change colors randomly
 
     - if current_user.admin
 
@@ -86,7 +87,7 @@
                 %td
                   .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count}", 
                                                      "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(:doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
-                                                     class: "#{Doctor::COLORS.sample}"}
+                                                     class: "teal"}
                     -# -byebug
                     .bar
                       .progress
@@ -206,7 +207,7 @@
                 %td
                   .progress-bar.ui.progress.register{"data-total" => "#{Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count}", 
                                                     "data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: current_user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}", 
-                                                    class: "#{Doctor::COLORS.sample}"}
+                                                    class: "teal"}
                     -# -byebug
                     .bar
                       .progress

@@ -9,16 +9,18 @@
 
     .ui.form.input.segment
       = search_form_for @q do |f|
-        .three.fields
+        .two.fields
           .field
-            = f.label :name_cont, 'Farmacia...'
+            = f.label :name_cont, 'Farmacia'
             = f.search_field :name_cont
           -# .field
           -#   = f.label :city_cont, 'Ciudad'
           -#   = f.search_field :city_cont            
           .field
             = f.label :city_cont, 'Ciudad'
-            = f.select :city_cont, collection: Center::CITIES   
+            -# = f.select :city_cont, collection: Center::CITIES   
+            = f.select(:city_cont, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+        - if current_user.admin    
           .field
             = f.label :user_username_cont, 'Usuario'
             -# = f.search_field :user_username_cont 

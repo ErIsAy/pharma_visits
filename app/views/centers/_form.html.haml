@@ -5,7 +5,7 @@
 
   %p Por favor llenar los siguientes datos
 
-= simple_form_for(@center, :html => {:class => 'ui form attached fluid segment'}) do |f|
+= simple_form_for(@center, :html => {:class => 'ui form attached fluid segment', :autocomplete => "off"}) do |f|
   -# = f.error_notification
   .field
     .field.required
@@ -14,15 +14,20 @@
     .field
       = f.label 'Dirección'
       = f.input :address, label: false
-    .eight.wide.field
-      = f.label 'Ciudad'
-      = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui search dropdown' }
+    .three.fields
+      .field
+        = f.label 'Ciudad'
+        = f.input :city, label: false, collection: Center::CITIES, input_html: { class: 'ui dropdown' }
+      .field
+        = f.label 'Region'
+        = f.input :region, label: false
+      -# .field
+      .field
+        = f.label "Tel."
+        = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
     .field
-      = f.label 'Region'
-      = f.input :region, label: false
-    .field
-      = f.label "Tel."
-      = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
+      = f.label "Categoria"
+      = f.input :category, label: false, collection: Doctor::CATEGORIES, input_html: { class: 'ui dropdown' }
     / map div
     %label Mapa
     #map{:style => "width: 100%; height: 350px;"}

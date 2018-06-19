@@ -10,15 +10,19 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .four.fields
+        .three.fields
           .field
             = f.label :city_cont, 'Ciudad'
-            = f.select(:city_cont, collection: Center::CITIES)
+            -# = f.select(:city_cont, collection: Center::CITIES)
+            = f.select(:city_cont, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
 
           .field
             = f.label :region_cont, 'Región'
             = f.search_field :region_cont
             -# = f.select(:region_cont, collection: Center::REGION)
+          .field
+            = f.label :category_cont, 'Categoria'
+            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'
@@ -31,10 +35,12 @@
       %thead
         %tr
           %th Centro
+          %th Categoria
           %th Región
           %th Dirección
           %th Ciudad
-          %th Usuario
+          - if current_user.admin
+            %th Usuario
           %th Acciones
             
 
@@ -43,13 +49,12 @@
         - @centers.each do |center|
           %tr
             %td= center.name
+            %td= center.category  
             %td= center.region
             %td= center.address
             %td= center.city
             - if current_user.admin && center.user != nil
               %td= center.user.username  
-            - else 
-              %td -
             %td.collapsing.positive
               = link_to 'Ver', center, class: "ui brown basic submit button"
 

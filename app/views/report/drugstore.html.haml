@@ -5,10 +5,11 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_drugstore_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .two.fields
+        .fields
           .field
             = f.label :city_cont, 'Ciudad'
-            = f.select(:city_cont, collection: Drugstore::CITIES)
+            -# = f.select(:city_cont, collection: Drugstore::CITIES)
+            = f.select(:city_cont, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'

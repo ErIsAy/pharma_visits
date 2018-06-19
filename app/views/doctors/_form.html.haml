@@ -8,7 +8,7 @@
 
   -# %p Por favor llenar los siguientes datos
 
-= simple_form_for(@doctor, :html => {:class => 'ui form attached fluid segment'}) do |f|
+= simple_form_for(@doctor, :html => {:class => 'ui form attached fluid segment', :autocomplete => "off"}) do |f|
   -# = f.error_notification
   .two.fields
     .field.required
@@ -20,7 +20,7 @@
   .field.required
     = f.label "Especialidad"
     -# = f.input :speciality, placeholder: "Especialidad", label: false
-    = f.input :speciality, label: false, collection: Doctor::SPECIALTIES, input_html: { class: 'ui search dropdown' }
+    = f.input :speciality, label: false, collection: Doctor::SPECIALTIES, input_html: { class: 'ui dropdown' }
   .three.fields
     .field.required
       = f.label "Centro Médico/Consultorio"
@@ -46,7 +46,7 @@
       = f.input :birthday, label: false, as: :string
   .field
     = f.label "Categoria"
-    = f.input :category, label: false, collection: Doctor::CATEGORIES, input_html: { class: 'ui search dropdown' }
+    = f.input :category, label: false, collection: Doctor::CATEGORIES, input_html: { class: 'ui dropdown' }
 
 
   .form-actions

@@ -16,16 +16,21 @@
 
     .ui.form.input.segment
       = search_form_for @q do |f|
-        .three.fields
+        .four.fields
           .field
             = f.label :name_cont, 'Centro'
             = f.search_field :name_cont
           .field
             = f.label :city_eq, 'Ciudad'
-            = f.select :city_eq, collection: Center::CITIES
+            -# = f.select :city_eq, collection: Center::CITIES
+            = f.select(:city_eq, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
           .field
             = f.label :region_cont, 'Region'
             = f.search_field :region_cont 
+          .field
+            = f.label :category_cont, 'Categoria'
+            -# = f.search_field :category_cont 
+            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'
@@ -44,6 +49,7 @@
       %thead
         %tr
           %th Centro
+          %th Categoria
           %th Región
           %th Dirección
           %th Ciudad
@@ -56,6 +62,7 @@
         - @centers.each do |center|
           %tr
             %td= center.name
+            %td= center.category
             %td= center.region
             %td= center.address
             %td= center.city

@@ -46,7 +46,8 @@ class Doctor < ActiveRecord::Base
       ['REUMA', 'REUMA'],
       ['URO', 'URO'],
       ['OTO', 'OTO'],
-      ['NEUMO', 'NEUMO']
+      ['NEUMO', 'NEUMO'],
+      ['EMER', 'EMER']
     ]
 
   COLORS = 
