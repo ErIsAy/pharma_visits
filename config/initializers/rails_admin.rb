@@ -115,7 +115,7 @@ RailsAdmin.config do |config|
       end
 
       field :category do
-        label 'Nombre'
+        label 'Categoria'
       end
 
       field :address do
