@@ -101,7 +101,7 @@ RailsAdmin.config do |config|
     label_plural "Centros"
 
     list do
-      include_fields :user, :name, :address, :city, :phone, :region
+      include_fields :user, :name, :category, :address, :city, :phone, :region
 
       field :user_id, :enum do
         label 'Usuario'
@@ -111,6 +111,10 @@ RailsAdmin.config do |config|
       end
 
       field :name do
+        label 'Nombre'
+      end
+
+      field :category do
         label 'Nombre'
       end
 
