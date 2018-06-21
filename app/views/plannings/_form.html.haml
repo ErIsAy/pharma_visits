@@ -37,7 +37,7 @@
     .field
       = f.label "Días a calcular"
       -# = f.input :day, label: false
-      = f.select :day, ((0..(current_cycle.end_of_month.day-current_cycle.mday)).map {|i| [i,i] }), {}, :class => "ui dropdown"
+      = f.select :day, ((0..31).map {|i| [i,i] }), {}, :class => "ui dropdown"
       .ui.pointing.blue.basic.label
         = "Inicio del ciclo #{current_cycle.strftime("%d/%m/%Y")} + Canditad de días digitados en esta sección."
   = f.hidden_field :date_visit

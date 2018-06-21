@@ -22,6 +22,10 @@ json.array! @events do |event|
   json.start DateTime.new(@now.year, @period.month, valid.day, 0, 0, 0, @now.zone)
   json.end DateTime.new(@now.year, @period.month, valid.day, 0, 0, 0, @now.zone)
   json.color event.visited? ? 'Green' : 'Orange'
+  if event.day == nil 
+    json.color 'Red'
+  end
+  # byebug
   # json.start event.start.strftime(date_format)
   # json.end event.end.strftime(date_format)
   # json.visited event.visited
