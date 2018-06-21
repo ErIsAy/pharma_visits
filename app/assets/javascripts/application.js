@@ -69,8 +69,21 @@ $( "#sidebar-toggle" ).click(function() {
 /****************************************/
 
 $('#edit_nota').click(function () {
-  $('.modal').modal('show');
+  $('.note_modal').modal('show');
 });
+
+$('#red_info').click(function () {
+  $('.red_modal').modal('show');
+});
+
+$('#green_info').click(function () {
+  $('.green_modal').modal('show');
+});
+
+$('#orange_info').click(function () {
+  $('.orange_modal').modal('show');
+});
+
 
 $('.ui.dropdown').dropdown();
 

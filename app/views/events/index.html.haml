@@ -6,9 +6,51 @@
 		- if @real_u != nil
 			%h1.ui.header.blue.block.centered
 				Ruta de #{@real_u.username}
+				.ui.three.container
+					%a.ui.red.label.tiny#red_info Información Pendiente
+					%a.ui.green.label.tiny#green_info Visitas Completadas
+					%a.ui.orange.label.tiny#orange_info Visitas Pendientes
 		- else 
 			%h1.ui.header.blue.block.centered
 				Ruta de #{current_user.username}
+				.ui.three
+					%a.ui.red.label.tiny#red_info Información Pendiente
+					%a.ui.green.label.tiny#green_info Visitas Completadas
+					%a.ui.orange.label.tiny#orange_info Visitas Pendientes
+
+		.ui.modal.container.tiny.red_modal
+			.ui.icon.header.red
+				%i.exclamation.triangle.icon
+				Información Pendiente
+			.content
+				%p Favor revisar y/o actualizar información relevante del planeamiento como la fecha de la visita.
+			.actions
+				.ui.green.ok.inverted.button
+					%i.checkmark.icon
+					Ok
+
+		.ui.modal.container.tiny.green_modal
+			.ui.icon.header.green
+				%i.calendar.check.outline.icon
+				Visitas Completadas
+			.content
+				%p Visitas pautadas para el día correspondiente han sido completada.
+			.actions
+				.ui.green.ok.inverted.button
+					%i.checkmark.icon
+					Ok
+
+		.ui.modal.container.tiny.orange_modal
+			.ui.icon.header.orange
+				%i.calendar.alternate.outline.icon
+				Visitas Pendientes
+			.content
+				%p Visitas pautadas pendientes de realizar.
+			.actions
+				.ui.green.ok.inverted.button
+					%i.checkmark.icon
+					Ok
+
 
 		- if current_user.admin	
 			.ui.segment.form.input
