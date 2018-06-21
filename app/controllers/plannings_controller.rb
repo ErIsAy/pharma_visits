@@ -1,5 +1,7 @@
 class PlanningsController < ApplicationController
   before_action :set_planning, only: [:show, :edit, :update, :destroy]
+  after_action :set_date, only: [:create, :update]
+  include ApplicationHelper
 
   # GET /plannings
   # GET /plannings.json
@@ -58,6 +60,9 @@ class PlanningsController < ApplicationController
     @planning = current_user.plannings.build(planning_params)
     @planning.cycle_id = Cycle.last.id
 
+    @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    
+
     respond_to do |format|
       if @planning.save
         # format.html { redirect_to @planning, notice: 'Evento asignado a la Ruta correctamente' }
@@ -73,6 +78,8 @@ class PlanningsController < ApplicationController
   # PATCH/PUT /plannings/1
   # PATCH/PUT /plannings/1.json
   def update
+    # planning_params.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    # byebug
     respond_to do |format|
       if @planning.update(planning_params)
         format.html { redirect_to plannings_path, notice: 'Evento actualizado' }
@@ -94,6 +101,12 @@ class PlanningsController < ApplicationController
     end
   end
 
+  def set_date
+    @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    @planning.save
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_planning
@@ -103,6 +116,6 @@ class PlanningsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def planning_params
       params.require(:planning).permit(:title, :date_visit, :shift,
-                                        :visited, :note, :doctor_id)
+                                        :visited, :note, :doctor_id, :day)
     end
 end

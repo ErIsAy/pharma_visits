@@ -1,3 +1,8 @@
+
+- if @planning.date_visit != nil
+  .ui.message.blue
+    *Fecha Planificada (día/mes/año):
+    = @planning.date_visit.strftime("%d/%m/%Y")
 .ui.attached.message
   .header
     Registro de Plan
@@ -28,15 +33,24 @@
       = f.label "Doctor"
       = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
-  .two.fields
-    .field.required#planning_date_visit
-      = f.label "Fecha de Visita"
-      = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
-    .field.required
-      = f.label "Horario"
-      -# = f.input :shift, label: false
-      -# = f.input :shift, label: false, collection: Planning::SHIFTS, input_html: { class: 'ui search dropdown' }
-      = f.input :shift, label: false
+  .three.fields
+    .field
+      = f.label "Días a calcular"
+      -# = f.input :day, label: false
+      = f.select :day, ((0..(current_cycle.end_of_month.day-current_cycle.mday)).map {|i| [i,i] }), {}, :class => "ui dropdown"
+      .ui.pointing.blue.basic.label
+        = "Inicio del ciclo #{current_cycle.strftime("%d/%m/%Y")} + Canditad de días digitados en esta sección."
+  = f.hidden_field :date_visit
+  = f.hidden_field :shift
+  -# .two.fields
+  -#   .field.required#planning_date_visit
+  -#     = f.label "Fecha de Visita"
+  -#     = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+  -#   .field.required
+  -#     = f.label "Horario"
+  -#     -# = f.input :shift, label: false
+  -#     -# = f.input :shift, label: false, collection: Planning::SHIFTS, input_html: { class: 'ui search dropdown' }
+  -#     = f.input :shift, label: false
 
     -# .field
     -#   %input{class: 'time_element'}

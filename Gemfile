@@ -25,6 +25,7 @@ gem 'nokogiri'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate_semantic_ui', '~> 2.1.0'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'chronic', '~> 0.10.2'
 
 # pdf reports
 gem 'prawn'
