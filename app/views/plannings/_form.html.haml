@@ -35,11 +35,13 @@
 
   .three.fields
     .field
-      = f.label "Días a calcular"
+      = f.label "Día de visita"
       -# = f.input :day, label: false
-      = f.select :day, ((0..31).map {|i| [i,i] }), {}, :class => "ui dropdown"
+      -# = f.select :day, ((0..31).map {|i| [i,i] }), {}, :class => "ui dropdown"
+      = f.input :day, label: false, collection: Planning::DAYS, input_html: { class: 'ui dropdown' }
+      -# = f.select :day, grouped_options_for_select(Planning::DAYS, nil, divider: '__________')
       .ui.pointing.blue.basic.label
-        = "Inicio del ciclo #{current_cycle.strftime("%d/%m/%Y")} + Canditad de días digitados en esta sección."
+        = "Seleccionar día de la semana a partir del inicio del ciclo actual iniciado el #{current_cycle.strftime("%d/%m/%Y")}"
   = f.hidden_field :date_visit
   = f.hidden_field :shift
   -# .two.fields
