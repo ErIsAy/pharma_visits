@@ -3,6 +3,7 @@ initialize_calendar = function() {
   $('.calendar-main').each(function(){
     var calendar = $(this)
     calendar.fullCalendar({
+      themeSystem: 'jquery-ui',
       locale: 'es',
       header: {
           left:   'today prev,next',

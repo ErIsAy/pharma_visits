@@ -3,6 +3,20 @@
 
 .pusher
 	%div.main.ui.container
+
+		- if current_user.admin	
+			.ui.segment.form.input
+				= search_form_for @q, url: events_index_path do |f|
+					.field
+						= f.label :user_id_eq, 'Usuario'
+						- if @real_u != nil
+							= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username",  {:selected => @real_u.id}), {}, {class: 'ui dropdown'}
+						- else
+							= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username",  {:selected => current_user.id}), {}, {class: 'ui dropdown'}
+
+					= f.submit "Filtrar", :class => "ui blue submit button"
+
+
 		- if @real_u != nil
 			%h1.ui.header.blue.block.centered
 				Ruta de #{@real_u.username}
@@ -50,19 +64,6 @@
 				.ui.green.ok.inverted.button
 					%i.checkmark.icon
 					Ok
-
-
-		- if current_user.admin	
-			.ui.segment.form.input
-				= search_form_for @q, url: events_index_path do |f|
-					.field
-						= f.label :user_id_eq, 'Usuario'
-						- if @real_u != nil
-							= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username",  {:selected => @real_u.id})
-						- else
-							= f.select :user_id_eq, options_from_collection_for_select(User.all, "id", "username",  {:selected => current_user.id})
-
-					= f.submit "Filtrar", :class => "ui blue submit button"
 
 
 		%br

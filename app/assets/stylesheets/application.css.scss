@@ -12,6 +12,7 @@
  *
  *= require normalize-rails
  *= require jquery-ui
+ *= require jquery-ui.theme
  *= require lib/fullcalendar/fullcalendar
  *= require lib/daterangepicker
  *= require lib/calendar
@@ -24,6 +25,7 @@
  */
 
 @import "semantic-ui";
+
 
 h1 {
   font-weight: 100 !important;

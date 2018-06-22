@@ -107,7 +107,11 @@ $( document ).ready(function() {
   // gmap_show(center);    // init show map for center card (only print marker)
   $('.menu .item').tab();
   
-  $('table').tablesort()
+  if (window.location.pathname != '/events/index') {
+    console.log(window.location.pathname);
+    $('table').tablesort();
+  }
+  
   $("#notice_center" ).fadeOut(5000);
   $('.datepicker').datepicker();
   // $('.datetimepicker').datetimepicker();
