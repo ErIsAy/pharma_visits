@@ -25,7 +25,7 @@
           .field
             = f.label :center_name_cont, 'Centro'
             -# = f.search_field :center_name_cont
-            = f.select(:center_name_cont, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+            = f.select(:center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
 
           .field
             = f.label :center_city_eq, 'Ciudad'

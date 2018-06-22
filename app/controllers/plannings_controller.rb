@@ -14,9 +14,11 @@ class PlanningsController < ApplicationController
     end
 
     if current_user.admin
+      @centers = Center.all
       @q = Planning.ransack(params[:q])
       @plannings = @q.result.paginate(:page => params[:page], :per_page => 20).order('date_visit ASC')
     else
+      @centers = current_user.centers
       @q = current_user.plannings.ransack(params[:q])
       @plannings = @q.result.includes(:doctor).paginate(:page => params[:page], :per_page => 20).order('date_visit ASC')
     end
