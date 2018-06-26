@@ -23,14 +23,14 @@
           .field
             = f.label :city_eq, 'Ciudad'
             -# = f.select :city_eq, collection: Center::CITIES
-            = f.select(:city_eq, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:city_eq, Center::CITIES, {:include_blank => false}, { :class => '' })
           .field
             = f.label :region_cont, 'Region'
             = f.search_field :region_cont 
           .field
             = f.label :category_cont, 'Categoria'
             -# = f.search_field :category_cont 
-            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => '' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'

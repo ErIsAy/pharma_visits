@@ -17,7 +17,7 @@
           .field
             = f.label :doctor_center_name_cont, 'Centro'
             -# = f.search_field :doctor_center_name_cont
-            = f.select(:doctor_center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+            = f.select(:doctor_center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: false, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "", :style => "width: 100%;")
 
           .field
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
@@ -25,7 +25,7 @@
           .field
             = f.label :doctor_speciality_eq, 'Especialidad'
             -# = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES
-            = f.select(:doctor_speciality_eq, Doctor::SPECIALTIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:doctor_speciality_eq, Doctor::SPECIALTIES, {:include_blank => 'Todas'}, { :class => '' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'
