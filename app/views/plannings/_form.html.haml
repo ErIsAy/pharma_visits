@@ -30,8 +30,16 @@
           .label Centro:
           = "#{@planning.doctor.center.name}"
     - else
-      = f.label "Doctor"
-      = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+      .three.fields
+        .field
+          = f.label "Doctor"
+          = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+        .field{:style => 'font-weight: bold;'}
+          .label Especialidad:
+          = "#{@planning.doctor.speciality}"
+        .field{:style => 'font-weight: bold;'}
+          .label Centro:
+          = "#{@planning.doctor.center.name}"
 
   .three.fields
     .field
