@@ -97,6 +97,11 @@ $("#register-users").dropdown({
     });
     document.querySelectorAll(`[data-tab='${text}']`)[0].classList.add("active");
     console.log(text);
+
+    $('.scrollx').each(function(index, el) {
+      el.scrollTop = 50;
+    });
+
   }
 });
 
