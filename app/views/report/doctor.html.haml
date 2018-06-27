@@ -5,10 +5,16 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_doctor_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .six.fields
+        .seven.fields
+          -# .field
+          -#   = f.label :firstname_or_lastname_cont, 'Nombre'
+          -#   = f.search_field :firstname_or_lastname_cont
           .field
-            = f.label :firstname_or_lastname_cont, 'Nombre'
-            = f.search_field :firstname_or_lastname_cont
+            = f.label :firstname_cont, 'Nombre'
+            = f.search_field :firstname_cont
+          .field
+            = f.label :lastname_cont, 'Apellido'
+            = f.search_field :lastname_cont
           .field
             = f.label :speciality_eq, 'Especialidad'
             -# = f.select :speciality_eq, collection: Doctor::SPECIALTIES
