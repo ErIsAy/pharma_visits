@@ -1,13 +1,12 @@
 GIT
   remote: git://github.com/activerecord-hackery/ransack.git
-  revision: 1b9cbcdbbbd7f52ecacba55d9578db99c0fab820
+  revision: 85fc41b329ca2b316bab32c464dd8920fae74998
   specs:
     ransack (1.8.8)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       i18n
-      polyamorous (~> 1.3.2)
 
 GIT
   remote: https://github.com/doabit/semantic-ui-sass.git
@@ -67,9 +66,9 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.4)
     awesome_print (1.8.0)
-    axlsx_rails (0.1.5)
-      axlsx
-      rails (>= 3.1)
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.12)
     better_errors (2.4.0)
       coderay (>= 1.0.0)
@@ -100,7 +99,7 @@ GEM
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
-    ffi (1.9.23)
+    ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
@@ -155,15 +154,13 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     nested_form (0.3.2)
-    niceql (0.1.17)
-    nokogiri (1.8.2)
+    niceql (0.1.23)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     normalize-rails (4.1.1)
     orm_adapter (0.5.0)
     pdf-core (0.7.0)
     pg (0.21.0)
-    polyamorous (1.3.3)
-      activerecord (>= 3.0)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -226,7 +223,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rchardet (1.7.0)
+    rchardet (1.8.0)
     rdoc (4.3.0)
     remotipart (1.4.2)
     responders (2.4.0)
@@ -256,7 +253,7 @@ GEM
     simple_xlsx_reader (1.0.2)
       nokogiri
       rubyzip
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -273,7 +270,7 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.10)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
@@ -286,7 +283,7 @@ GEM
     will_paginate (3.1.6)
     will_paginate_semantic_ui (2.1.0)
       will_paginate (> 3.0.0)
-    wkhtmltopdf-binary (0.12.3.1)
+    wkhtmltopdf-binary (0.12.4)
 
 PLATFORMS
   ruby

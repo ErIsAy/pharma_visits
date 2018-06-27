@@ -16,13 +16,16 @@
             = f.search_field :date_visit_lteq
           .field
             = f.label :doctor_center_name_cont, 'Centro'
-            = f.search_field :doctor_center_name_cont
+            -# = f.search_field :doctor_center_name_cont
+            = f.select(:doctor_center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: false, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "", :style => "width: 100%;")
+
           .field
             = f.label :doctor_firstname_or_doctor_lastname, 'Doctor'
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
           .field
             = f.label :doctor_speciality_eq, 'Especialidad'
-            = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES
+            -# = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES
+            = f.select(:doctor_speciality_eq, Doctor::SPECIALTIES, {:include_blank => 'Todas'}, { :class => '' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'

@@ -5,26 +5,28 @@
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
       = search_form_for @q, url: report_doctor_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
-        .four.fields
+        .six.fields
           .field
             = f.label :firstname_or_lastname_cont, 'Nombre'
             = f.search_field :firstname_or_lastname_cont
           .field
             = f.label :speciality_eq, 'Especialidad'
             -# = f.select :speciality_eq, collection: Doctor::SPECIALTIES
-            = f.select(:speciality_eq, Doctor::SPECIALTIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:speciality_eq, Doctor::SPECIALTIES, {:include_blank => false}, { :class => '' })
           .field
             = f.label :center_name_cont, 'Centro'
             -# = f.search_field :center_name_cont
-            = f.select(:center_name_cont, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+            -# = f.select(:center_name_cont, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+            = f.select(:center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: false, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "", :style => "width: 100%;")
+
           .field
             = f.label :center_city_eq, 'Ciudad'
             -# = f.select :center_city_eq, collection: Center::CITIES    
-            = f.select(:center_city_eq, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:center_city_eq, Center::CITIES, {:include_blank => false}, { :class => '' })
           .field
             = f.label :category_eq, 'Categoria'
             -# = f.search_field :category_eq
-            = f.select(:category_eq, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:category_eq, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => '' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'

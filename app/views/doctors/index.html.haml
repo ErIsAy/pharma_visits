@@ -20,17 +20,17 @@
           .field
             = f.label :category_cont, 'Categoría'
             -# = f.search_field :category_cont
-            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:category_cont, Doctor::CATEGORIES, {:include_blank => 'Todas'}, { :class => '' })
 
           .field
             = f.label :center_name_cont, 'Centro'
             -# = f.search_field :center_name_cont
-            = f.select(:center_name_cont, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+            = f.select(:center_name_cont, @centers.collect {|p| [ p.name] }, {include_blank: false, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "", :style => "width: 100%;")
 
           .field
             = f.label :center_city_eq, 'Ciudad'
             -# = f.select :center_city_eq, collection: Center::CITIES      
-            = f.select(:center_city_eq, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+            = f.select(:center_city_eq, Center::CITIES, {:include_blank => 'Todas'}, { :class => '' })
         .two.fields    
           .field
             = f.label :speciality_eq, 'Especialidad'

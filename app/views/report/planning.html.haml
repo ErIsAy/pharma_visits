@@ -20,7 +20,8 @@
             = f.search_field :doctor_firstname_or_doctor_lastname_cont
           .field
             = f.label :doctor_speciality_eq, 'Especialidad'
-            = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES 
+            -# = f.select :doctor_speciality_eq, collection: Doctor::SPECIALTIES 
+            = f.select(:doctor_speciality_eq, Doctor::SPECIALTIES, {:include_blank => false}, { :class => '' })
           - if current_user.admin
             .field
               = f.label :user_username_eq, 'Usuario'
