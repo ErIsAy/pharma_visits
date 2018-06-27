@@ -36,7 +36,7 @@ class ReportPlannings < Prawn::Document
 
 
     if @user.admin
-      @plannings.each do |planning|
+      @plannings.find_each do |planning|
         table([[planning.user.username, planning.doctor.firstname, planning.doctor.speciality, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
       end
     else
