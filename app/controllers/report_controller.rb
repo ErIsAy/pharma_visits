@@ -164,7 +164,7 @@ class ReportController < ApplicationController
         @q.sorts = 'date_visit desc'
         # @plannings = @q.result.includes(:doctor, :user)
         @user = params[:q][:user_username_cont]
-        pdf = ReportPlannings.new(@q.result, current_user, params[:q])
+        pdf = ReportPlannings.new(@q.result.includes(:doctor), current_user, params[:q])
         send_data pdf.render, filename: "Plan_por_Usuario#{Date.parse(Time.now.to_s)}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
