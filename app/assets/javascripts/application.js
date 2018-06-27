@@ -69,8 +69,21 @@ $( "#sidebar-toggle" ).click(function() {
 /****************************************/
 
 $('#edit_nota').click(function () {
-  $('.modal').modal('show');
+  $('.note_modal').modal('show');
 });
+
+$('#red_info').click(function () {
+  $('.red_modal').modal('show');
+});
+
+$('#green_info').click(function () {
+  $('.green_modal').modal('show');
+});
+
+$('#orange_info').click(function () {
+  $('.orange_modal').modal('show');
+});
+
 
 $('.ui.dropdown').dropdown();
 
@@ -84,6 +97,11 @@ $("#register-users").dropdown({
     });
     document.querySelectorAll(`[data-tab='${text}']`)[0].classList.add("active");
     console.log(text);
+
+    $('.scrollx').each(function(index, el) {
+      el.scrollTop = 50;
+    });
+
   }
 });
 
@@ -94,7 +112,11 @@ $( document ).ready(function() {
   // gmap_show(center);    // init show map for center card (only print marker)
   $('.menu .item').tab();
   
-  $('table').tablesort()
+  if (window.location.pathname != '/events/index') {
+    console.log(window.location.pathname);
+    $('table').tablesort();
+  }
+  
   $("#notice_center" ).fadeOut(5000);
   $('.datepicker').datepicker();
   // $('.datetimepicker').datetimepicker();

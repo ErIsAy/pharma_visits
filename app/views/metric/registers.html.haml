@@ -135,35 +135,44 @@
           - next if user.admin || user.doctors.empty?
           
           .ui.tab{"data-tab" => "#{user.username}"}
-            %table.ui.sortable.celled.table.striped.blue.gridtable
+            %table.ui.sortable.celled.table.striped.blue.gridtable{:style => "margin-bottom: 0px;"}
               %thead
                 %tr
                   %th Especialidad
                   %th Cant. de Doctores
                   %th Vistos
                   %th Por Visitar
-                  %th.six.wide % Cumplido
-              %tbody
-                - Doctor::SPECIALTIES.each do |x|
-                  - if x[0] != "General/Todas"
-                    %tr
-                      %td= "#{x[0]}"
-                      -# %td= user.doctors.where(speciality: x[0]).count
-                      %td= Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count
-                      %td= Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count
-                      -# - byebug
-                      %td= Planning.includes(:doctor).where(visited: false, user_id: user.id, :doctors => {speciality: x[0]}).count
-                      
-                      -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
-                      %td    
-                        .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}"}
-                          .bar
-                          .label 
-                            - if ((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100).nan?
-                              0 %
-                            - else  
-                              = number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0)
-          
+                  %th.six.wide % Cumplido                    
+            %div.scrollx{:style => "overflow-y:scroll; height: 600px; width: 101%;"}        
+              %table.ui.sortable.celled.table.striped.blue.gridtable{:style => "border-top: none;"}
+                %thead{:style => "visibility: hidden"}
+                  %tr
+                    %th Especialidad
+                    %th Cant. de Doctores
+                    %th Vistos
+                    %th Por Visitar
+                    %th.six.wide % Cumplido
+                %tbody
+                  - Doctor::SPECIALTIES.each do |x|
+                    - if x[0] != "General/Todas"
+                      %tr
+                        %td= "#{x[0]}"
+                        -# %td= user.doctors.where(speciality: x[0]).count
+                        %td= Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count
+                        %td= Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count
+                        -# - byebug
+                        %td= Planning.includes(:doctor).where(visited: false, user_id: user.id, :doctors => {speciality: x[0]}).count
+                        
+                        -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
+                        %td    
+                          .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0).to_i}"}
+                            .bar
+                            .label 
+                              - if ((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100).nan?
+                                0 %
+                              - else  
+                                = number_to_percentage((Planning.includes(:doctor).where(visited: true, user_id: user.id, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, :doctors => {speciality: x[0]}).count.to_f)*100, precision: 0)
+                
 
 
 

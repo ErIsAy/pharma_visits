@@ -8,6 +8,9 @@ module ApplicationHelper
     end
   end
 
+  def current_cycle
+    Cycle.last.period
+  end 
 
 
   def pluralize_without_count_doctor(count, noun, text = nil)

@@ -5,7 +5,7 @@
 
   %p Por favor llenar los siguientes datos
 
-= simple_form_for([@planning, @planning.visits.build], :html => {:class => 'ui form huge attached fluid segment'}) do |f|
+= simple_form_for([@planning, @planning.visits.build], :html => {:class => 'ui form huge attached fluid segment', :autocomplete => "off"}) do |f|
   -# = f.error_notification
 
   .form-inputs

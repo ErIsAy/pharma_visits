@@ -793,7 +793,9 @@ NOTE: use percentage font sizes or else old IE chokes
 /* Toolbar
 --------------------------------------------------------------------------------------------------*/
 .fc-toolbar {
-  text-align: center; }
+  text-align: center; 
+  text-transform: capitalize;
+}
 
 .fc-toolbar.fc-header-toolbar {
   margin-bottom: 1em; }
@@ -853,6 +855,10 @@ NOTE: use percentage font sizes or else old IE chokes
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box; }
+
+.fc-day-header {
+  text-transform: capitalize;
+}
 
 .fc-view,
 .fc-view > table {

@@ -210,7 +210,7 @@ RailsAdmin.config do |config|
   config.model 'Planning' do
     label "Plan"
     label_plural "Planes"
-    include_fields :title, :date_visit, :shift, :visited, :note, :user_id
+    include_fields :title, :date_visit, :shift, :visited, :note, :user_id, :doctor_id, :day
     field :title do
       label 'Título'
     end
@@ -234,6 +234,15 @@ RailsAdmin.config do |config|
       enum do
         User.all.collect {|p| [p.username, p.id]}
       end
+    end
+    field :doctor_id, :enum do
+      label 'Doctor'
+      enum do
+        Doctor.all.collect {|p| ["#{p.firstname} #{p.lastname}", p.id]}
+      end
+    end
+    field :day do
+      label 'Días a calcular'
     end
   end
 

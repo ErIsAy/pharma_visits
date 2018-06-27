@@ -6,10 +6,14 @@ class Cycle < ActiveRecord::Base
 
 
 def clean_plannings_visit
-  Planning.all.each do |x|
-    x.visited = false
-    # byebug
-    x.save
+  Planning.all.each do |planning|
+    # restart the visited flag.
+    planning.visited = false
+    # calculate next day for next cycle.
+    if planning.day != nil
+      planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[Cycle.last.period.month]}") + planning.day.days
+    end
+    planning.save
   end
 end
 
