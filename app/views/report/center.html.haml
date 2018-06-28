@@ -9,7 +9,8 @@
     -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
-      = search_form_for @q, url: report_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+      -# = search_form_for @q, url: report_center_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+      = search_form_for @q, url: report_center_path(:format => "html") do |f|
         .three.fields
           .field
             = f.label :city_cont, 'Ciudad'
@@ -28,8 +29,11 @@
               = f.label :user_username_eq, 'Usuario'
               = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
               include_blank: 'Todos' 
-        = f.submit "Imprimir Reporte", :class => "ui blue button"
-
+        = f.submit "Filtrar", :class => "ui blue button"
+        - if params[:q]
+          = link_to('Imprimir', report_center_path(:format => "pdf", :q => params[:q]), 
+                                                      :class => "ui blue submit button", 
+                                                      :target => "_blank") 
 
     %table.ui.sortable.celled.table.striped.olive
       %thead

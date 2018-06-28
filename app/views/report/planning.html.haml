@@ -4,7 +4,8 @@
     %h1.ui.header.blue.centered Reporte de Planes
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
-      = search_form_for @q, :url => report_planning_path(:format => "pdf"), :html => {:target=>'_blank'}  do |f|
+      -# = search_form_for @q, :url => report_planning_path(:format => "pdf"), :html => {:target=>'_blank'}  do |f|
+      = search_form_for @q, :url => report_planning_path(:format => "html")  do |f|
         .five.fields
           -# .field#planning_date_visit
           -#   = f.label :date_visit, 'Fecha'
@@ -28,7 +29,13 @@
               = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
               include_blank: 'Todos'
 
-        = f.submit "Imprimir Reporte", :class => "ui blue submit button"
+        = f.submit "Filtrar", :class => "ui blue submit button"
+        
+        - if params[:q]
+          = link_to('Imprimir', report_planning_path(:format => "pdf", :q => params[:q]), 
+                                                      :class => "ui blue submit button", 
+                                                      :target => "_blank") 
+        -# -byebug
 
 
 

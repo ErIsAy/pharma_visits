@@ -4,7 +4,7 @@
     %h1.ui.header.blue.centered Doctores
 
     .ui.segment.form.input{:style => "margin-top: 0;"}
-      = search_form_for @q, url: report_doctor_path(:format => "pdf"), :html => {:target=>'_blank'} do |f|
+      = search_form_for @q, url: report_doctor_path(:format => "html") do |f|
         .seven.fields
           -# .field
           -#   = f.label :firstname_or_lastname_cont, 'Nombre'
@@ -38,8 +38,11 @@
               = f.label :user_username_eq, 'Usuario'
               = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
               include_blank: 'Todos' 
-        = f.submit "Imprimir Reporte", :class => "ui blue button"
-
+        = f.submit "Filtrar", :class => "ui blue button"
+        - if params[:q]
+          = link_to('Imprimir', report_doctor_path(:format => "pdf", :q => params[:q]), 
+                                                      :class => "ui blue submit button", 
+                                                      :target => "_blank") 
 
       -# = form_tag report_doctor_path, :method => 'get' do
       -#   = text_field_tag :search, params[:search], :placeholder => "Doctor..."
