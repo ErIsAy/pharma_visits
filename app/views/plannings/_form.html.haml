@@ -29,7 +29,7 @@
         .field{:style => 'font-weight: bold;'}
           .label Centro:
           = "#{@planning.doctor.center.name}"
-    - else
+    - elsif request.path == "/plannings/#{@planning.id}/edit"
       .three.fields
         .field
           = f.label "Doctor"
@@ -40,6 +40,12 @@
         .field{:style => 'font-weight: bold;'}
           .label Centro:
           = "#{@planning.doctor.center.name}"
+    - else
+      .three.fields
+        .field
+          = f.label "Doctor"
+          = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+
 
   .three.fields
     .field
