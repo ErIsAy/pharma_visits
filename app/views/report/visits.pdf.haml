@@ -88,13 +88,13 @@
 
         -# %td= number_to_percentage((user.visits.where(cycle: @cycle.name).count.to_f / user.plannings.count.to_f)*100, precision: 0)
         %td     
-          .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, cycle: Cycle.find(@cycle_id)).count.to_f)*100, precision: 0)}"}
+          .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor).where(user_id: user.id).count.to_f)*100, precision: 0)}"}
             .bar
             .label 
-              - if ((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor, :visits).where(visited: false, user_id: user.id, cycle: Cycle.find(@cycle_id)).count.to_f)*100).nan?
+              - if ((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor, :visits).where(visited: false, user_id: user.id).count.to_f)*100).nan?
                 0 %
               - else  
-                = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor).where(user_id: user.id, cycle: Cycle.find(@cycle_id)).count.to_f)*100, precision: 0)
+                = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle_id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil, user_id: user.id).count.to_f)*100, precision: 0)
     
 
 
