@@ -151,9 +151,14 @@ class ReportController < ApplicationController
     if current_user.admin
       @q = Planning.ransack(params[:q])
       @plannings = @q.result.paginate(:page => params[:page], :per_page => 20)
+      
     else
       @q = current_user.plannings.ransack(params[:q])
       @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)  
+    end
+
+    if params[:q]
+      @user = params[:q][:user_username_eq]
     end
 
 
@@ -201,6 +206,12 @@ class ReportController < ApplicationController
       # @visits = Visit.where(cycle: Cycle.last.name).order('user_id ASC')
     end
     
+
+    @cycle_id = params[:cycle_id]
+      
+  
+
+
     # byebug
     respond_to do |format|
       format.html

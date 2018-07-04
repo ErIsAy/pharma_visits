@@ -168,6 +168,9 @@ class MetricController < ApplicationController
 
     if params[:q] == nil 
       @cycle = Cycle.last
+    else
+      @cycle_id = params[:q][:id_eq]
+      
     end
     # byebug
 
