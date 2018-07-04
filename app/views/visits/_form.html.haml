@@ -12,10 +12,14 @@
     -# = f.input :planning, value: @planning
     -# = f.hidden_field :planning, value: params[:planning]
     .field
-      = f.label "Doctor: #{Planning.find(params[:planning_id]).doctor.firstname} #{Planning.find(params[:planning_id]).doctor.lastname}"
+      - if @planning.drugstore.present?
+        = f.label "Farmacia: #{Planning.find(params[:planning_id]).drugstore.name}"
+      - else
+        = f.label "Doctor: #{Planning.find(params[:planning_id]).doctor.firstname} #{Planning.find(params[:planning_id]).doctor.lastname}"
     .field.required#planning_date_visit
       = f.label "Fecha de Visita"
-      = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year]
+      = f.input :date_visit, label: false, as: :string, start_year: Time.now.year - 90, end_year: Time.now.year - 8, order: [:day, :month, :year], 
+                              input_html: {value: Time.now.strftime("%d/%m/%Y")}
     
     .field
       = f.label "Nota"

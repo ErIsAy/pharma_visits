@@ -10,6 +10,10 @@
             = f.label :city_cont, 'Ciudad'
             -# = f.select(:city_cont, collection: Drugstore::CITIES)
             = f.select(:city_cont, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+          .field
+            = f.label :category_cont, 'Categoria'
+            -# = f.search_field :category_cont 
+            = f.select(:category_cont, Drugstore::CATEGORIES, {:include_blank => 'Todas'}, { :class => '' })
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'
@@ -31,6 +35,7 @@
       %thead
         %tr
           %th Farmacia
+          %th Categoría
           %th Tel.
           %th Dirección
           %th Ciudad
@@ -42,6 +47,7 @@
         - @drugstores.each do |drugstore|
           %tr
             %td= drugstore.name
+            %td= drugstore.category
             %td= drugstore.phone
             %td= drugstore.address
             %td= drugstore.city
@@ -49,9 +55,9 @@
               %td= drugstore.user.username 
             - else
               %td -
-            %td.collapsing.positive
+            -# %td.collapsing.positive
               -# = link_to 'Ver', drugstore, class: "ui brown basic submit button"
-              = link_to 'Ver', edit_drugstore_path(drugstore), class: "ui brown basic submit button"
+              -# = link_to 'Ver', edit_drugstore_path(drugstore), class: "ui brown basic submit button"
 
       = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
 

@@ -39,6 +39,7 @@
       %thead
         %tr
           %th Farmacia
+          %th Categoría
           %th Tel.
           %th Dirección
           %th Ciudad
@@ -55,11 +56,12 @@
             -#   %div.ui.fitted
             -#     = drugstore.speciality
             %td= drugstore.name
+            %td= drugstore.category
             %td= drugstore.phone
             %td= drugstore.address
             %td= drugstore.city
             %td= drugstore.service_person
-            %td= drugstore.sales_person  
+            %td= drugstore.sales_person
             -# %td= drugstore.center.name if drugstore.center
             %td.collapsing.positive
               -# = link_to 'Ver', drugstore, class: "ui brown basic submit button"

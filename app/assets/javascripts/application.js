@@ -83,7 +83,9 @@ $('#green_info').click(function () {
 $('#orange_info').click(function () {
   $('.orange_modal').modal('show');
 });
-
+$('#blue_info').click(function () {
+  $('.blue_modal').modal('show');
+});
 
 $('.ui.dropdown').dropdown();
 
@@ -107,6 +109,26 @@ $("#register-users").dropdown({
 
 /************ Initializers **************/
 $( document ).ready(function() {
+  $('.ui.radio.checkbox').checkbox({
+    onChange: function () {
+      
+      if(this.id === 'ce1') {
+        console.log('doctor');
+        $('.e1').removeClass("disabled");
+        $('.e2').dropdown('clear');
+        $('.e2').addClass("disabled");
+        
+      }
+      else {
+        console.log('farmacia');
+        $('.e1').addClass("disabled");
+        $('.e1').dropdown('clear');
+        $('.e2').removeClass("disabled");
+      }
+
+    }
+  });
+
   $('.ui.accordion').accordion();
   // gmap_form(null);    // form map for new view (print nothing with possibility of put marker)
   // gmap_show(center);    // init show map for center card (only print marker)

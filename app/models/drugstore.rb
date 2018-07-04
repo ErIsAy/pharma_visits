@@ -1,6 +1,15 @@
 class Drugstore < ActiveRecord::Base
 
   belongs_to :user
+  has_many :plannings, :dependent => :destroy
+
+
+  CATEGORIES = [
+    ['A','A'],
+    ['B','B'],
+    ['C','C'],
+    ['Otra','Otra']
+  ]
 
   CITIES =
     [

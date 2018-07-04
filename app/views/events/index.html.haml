@@ -24,6 +24,7 @@
 					%a.ui.red.label.tiny#red_info Información Pendiente
 					%a.ui.green.label.tiny#green_info Visitas Completadas
 					%a.ui.orange.label.tiny#orange_info Visitas Pendientes
+					%a.ui.blue.label.tiny#blue_info Farmacias
 		- else 
 			%h1.ui.header.blue.block.centered
 				Ruta de #{current_user.username}
@@ -31,6 +32,7 @@
 					%a.ui.red.label.tiny#red_info Información Pendiente
 					%a.ui.green.label.tiny#green_info Visitas Completadas
 					%a.ui.orange.label.tiny#orange_info Visitas Pendientes
+					%a.ui.blue.label.tiny#blue_info Farmacias
 
 		.ui.modal.container.tiny.red_modal
 			.ui.icon.header.red
@@ -60,6 +62,17 @@
 				Visitas Pendientes
 			.content
 				%p Visitas pautadas pendientes de realizar.
+			.actions
+				.ui.green.ok.inverted.button
+					%i.checkmark.icon
+					Ok
+
+		.ui.modal.container.tiny.blue_modal
+			.ui.icon.header.blue
+				%i.first.aid.icon
+				Farmacias
+			.content
+				%p Visitas pautadas para Farmacias.
 			.actions
 				.ui.green.ok.inverted.button
 					%i.checkmark.icon

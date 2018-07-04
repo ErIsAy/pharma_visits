@@ -45,6 +45,7 @@ class PlanningsController < ApplicationController
     # @doctors = Doctor.all
     @doctors = current_user.doctors
     @planning = current_user.plannings.build
+    @drugstores = current_user.drugstores
   end
 
   # GET /plannings/1/edit
@@ -52,6 +53,7 @@ class PlanningsController < ApplicationController
     # @doctors = Doctor.all
     @visits = @planning.visits
     @doctors = current_user.doctors
+    @drugstores = current_user.drugstores
   end
 
   # POST /plannings
@@ -59,11 +61,13 @@ class PlanningsController < ApplicationController
   def create
     # @doctors = Doctor.all
     @doctors = current_user.doctors
+    @drugstores = current_user.drugstores
     @planning = current_user.plannings.build(planning_params)
     @planning.cycle_id = Cycle.last.id
 
-    @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
-    
+    unless !@planning.day.present?
+     @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    end
 
     respond_to do |format|
       if @planning.save
@@ -104,7 +108,9 @@ class PlanningsController < ApplicationController
   end
 
   def set_date
-    @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    unless !@planning.day.present?
+      @planning.date_visit = Chronic.parse("first monday of this #{Date::MONTHNAMES[current_cycle.month]}") + @planning.day.days
+    end
     @planning.save
   end
 
@@ -118,6 +124,6 @@ class PlanningsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def planning_params
       params.require(:planning).permit(:title, :date_visit, :shift,
-                                        :visited, :note, :doctor_id, :day)
+                                        :visited, :note, :doctor_id, :drugstore_id , :day)
     end
 end

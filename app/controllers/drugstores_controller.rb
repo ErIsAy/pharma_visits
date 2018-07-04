@@ -102,6 +102,6 @@ class DrugstoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drugstore_params
-      params.require(:drugstore).permit(:name, :phone, :address, :city, :service_person, :sales_person, :note)
+      params.require(:drugstore).permit(:name, :phone, :address, :city, :service_person, :sales_person, :note, :category)
     end
 end

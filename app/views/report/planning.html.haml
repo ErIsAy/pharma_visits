@@ -65,6 +65,7 @@
 
       %tbody
         - @plannings.each do |planning|
+          - next if planning.drugstore.present?
           %tr
             -# %td.collapsing
             -#   %div.ui.fitted

@@ -181,30 +181,34 @@ RailsAdmin.config do |config|
     label "Farmacia"
     label_plural "Farmacias"
 
-    include_fields :name, :phone, :address, :city, :service_person
-    field :name do
-      label "Farmacia"
-    end
-    field :phone do
-      label "Teléfono"
-    end
-    field :address do
-      label "Dirección"
-    end
-    field :city do
-      label "Ciudad"
-    end
-    field :service_person do
-      label "Personal"
-    end
+    list do
+      include_fields :name, :phone, :address, :city, :service_person, :category
+      field :name do
+        label "Farmacia"
+      end
+      field :category do
+        label "Categoría"
+      end
+      field :phone do
+        label "Teléfono"
+      end
+      field :address do
+        label "Dirección"
+      end
+      field :city do
+        label "Ciudad"
+      end
+      field :service_person do
+        label "Personal"
+      end
 
-    field :user_id, :enum do
-      label 'Usuario'
-      enum do
-        User.all.collect {|p| [p.username, p.id]}
+      field :user_id, :enum do
+        label 'Usuario'
+        enum do
+          User.all.collect {|p| [p.username, p.id]}
+        end
       end
     end
-    
   end
 
   config.model 'Planning' do

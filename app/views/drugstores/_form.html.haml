@@ -38,13 +38,16 @@
       .field
         = f.label "Tel."
         = f.input :phone, label: false, id: 'center_phone', :placeholder => "(000)000-0000"
-    .two.fields
+    .three.fields
       .field
         = f.label 'Personal de Despacho'
         = f.input :service_person, label: false
       .field
         = f.label 'Encargado de Compras'
         = f.input :sales_person, label: false
+      .field
+        = f.label 'Categoría'
+        = f.input :category, label: false, collection: Drugstore::CATEGORIES, input_html: { class: '' }
     .field
       = f.label 'Comentario'
       = f.input :note, label: false

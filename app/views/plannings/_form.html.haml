@@ -19,32 +19,59 @@
   .two.field.required
     -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
     - if current_user.admin && request.path != '/plannings/new'
-      .three.fields
-        .field{:style => 'font-weight: bold;'}
-          .label Doctor:
-          = "#{@planning.doctor.firstname} #{@planning.doctor.lastname}"
-        .field{:style => 'font-weight: bold;'}
-          .label Especialidad:
-          = "#{@planning.doctor.speciality}"
-        .field{:style => 'font-weight: bold;'}
-          .label Centro:
-          = "#{@planning.doctor.center.name}"
+      - if @planning.drugstore.present?
+        .three.fields
+          .field{:style => 'font-weight: bold;'}
+            .label Farmacia:
+            = "#{@planning.drugstore.name}"
+      - else
+        .three.fields
+          .field{:style => 'font-weight: bold;'}
+            .label Doctor:
+            = "#{@planning.doctor.firstname} #{@planning.doctor.lastname}"
+          .field{:style => 'font-weight: bold;'}
+            .label Especialidad:
+            = "#{@planning.doctor.speciality}"
+          .field{:style => 'font-weight: bold;'}
+            .label Centro:
+            = "#{@planning.doctor.center.name}"
     - elsif request.path == "/plannings/#{@planning.id}/edit"
-      .three.fields
-        .field
-          = f.label "Doctor"
-          = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
-        .field{:style => 'font-weight: bold;'}
-          .label Especialidad:
-          = "#{@planning.doctor.speciality}"
-        .field{:style => 'font-weight: bold;'}
-          .label Centro:
-          = "#{@planning.doctor.center.name}"
+      - if @planning.drugstore.present?
+        .three.fields
+          .field
+            = f.label "Farmacia"
+            = f.select(:drugstore_id, @drugstores.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Farmacia'}, :class => "ui search dropdown")
+
+      - else
+        .three.fields
+          .field
+            = f.label "Doctor"
+            = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+          .field{:style => 'font-weight: bold;'}
+            .label Especialidad:
+            = "#{@planning.doctor.speciality}"
+          .field{:style => 'font-weight: bold;'}
+            .label Centro:
+            = "#{@planning.doctor.center.name}"
     - else
-      .three.fields
+      .inline.fields
+        %label{:for => "fruit"} Selecciona tipo de Planeamiento:
+        .field
+          .ui.radio.checkbox
+            %input.hidden{:checked => "checked", :name => "fruit", :tabindex => "0", :type => "radio", :id => 'ce1'}/
+            %label Doctor
+        .field
+          .ui.radio.checkbox
+            %input.hidden{:name => "fruit", :tabindex => "0", :type => "radio", :id => 'ce2'}/
+            %label Farmacia
+
+      .two.fields
         .field
           = f.label "Doctor"
-          = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+          = f.select(:doctor_id, @doctors.collect {|p| [ p.firstname + ' '+ p.lastname, p.id ] }, {include_blank: true, prompt: 'Seleccionar Doctor'}, :id => "e1", :class => "ui e1 search dropdown", :style => "width: 100%;" )
+        .field
+          = f.label "Farmacia"
+          = f.select(:drugstore_id, @drugstores.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Farmacia'}, :id => "e2", :class => "ui e2 search dropdown disabled")
 
 
   .three.fields
