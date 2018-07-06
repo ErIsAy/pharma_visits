@@ -125,6 +125,8 @@ class DoctorsController < ApplicationController
                                      :email,
                                      :category,
                                      :birthday,
-                                     :center_id)
+                                     :center_id,
+                                     :sec_name,
+                                     :sec_phone)
     end
 end

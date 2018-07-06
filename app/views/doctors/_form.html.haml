@@ -27,13 +27,20 @@
       -# = f.input :center, placeholder: "Centro Médico/Consultorio", label: false
       = f.select(:center_id, @centers.collect {|p| [ p.name, p.id ] }, {include_blank: true, prompt: 'Seleccionar Centro'}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
     .field
-      %label Tel.
+      %label Tel. del Centro
       %input{:name => "phone", :placeholder => "(000) 000 0000", :type => "text", :disabled => true, :id => "center_phone"}
       -# = .label "Tel."
       -# = .input :phone, label: false, disabled: true
     .field
-      = f.label "Ext."
+      %label Ext.
       = f.input :phone_ext, label: false, as: :integer
+  .two.fields
+    .field
+      = f.label 'Secretaria'
+      = f.input :sec_name, label: false, :placeholder => "Nombre"
+    .field
+      %label Tel.
+      = f.input :sec_phone, :placeholder => "(000)000-0000", :type => "text", :id => "sec_phone", label: false
   .field
     = f.label "Suite"
     = f.input :suite, label: false
@@ -51,3 +58,7 @@
 
   .form-actions
     = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+
+- content_for :doctor_new do
+  :javascript
+    $("#sec_phone").mask("(999)999-9999");
