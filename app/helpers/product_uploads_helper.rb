@@ -1,0 +1,2 @@
+module ProductUploadsHelper
+end

@@ -1,0 +1,86 @@
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered.block Listado de Productos
+
+    -# -# .ui.icon.input
+    -# -#   = form_tag drugstores_path, :method => 'get' do
+    -# -#     = text_field_tag :search, params[:search], :placeholder => "Farmacia..."
+    -# -#     = submit_tag "Buscar", :name => nil, :class => "ui primary basic button"
+
+    -# .ui.form.input.segment
+    -#   = search_form_for @q do |f|
+    -#     .two.fields
+    -#       .field
+    -#         = f.label :name_cont, 'Farmacia'
+    -#         = f.search_field :name_cont
+    -#       -# .field
+    -#       -#   = f.label :city_cont, 'Ciudad'
+    -#       -#   = f.search_field :city_cont            
+    -#       .field
+    -#         = f.label :city_cont, 'Ciudad'
+    -#         -# = f.select :city_cont, collection: Center::CITIES   
+    -#         = f.select(:city_cont, Center::CITIES, {:include_blank => 'Todas'}, { :class => 'ui dropdown' })
+    -#     - if current_user.admin    
+    -#       .field
+    -#         = f.label :user_username_cont, 'Usuario'
+    -#         -# = f.search_field :user_username_cont 
+    -#         = f.select :user_username_cont, options_from_collection_for_select(User.where.not(id: 1), "username", "username",
+    -#                                         {:selected => @user}),
+    -#                                         include_blank: 'Todos'
+
+    -#     = f.submit "Filtrar", :class => "ui blue submit button"
+    -#     = link_to 'Exportar a Excel', drugstores_path(:format => 'xlsx'),
+    -#       class: "ui blue basic submit button"
+    -#   .ui.bottom.right.attached.label 
+    -#     %i.search.icon
+    -#     = pluralize(@drugstores.count, 'Resultado', 'Resultados')
+    -# = link_to "Nuevo Producto", new_product_upload_path    
+    - if current_user.admin?
+      = link_to new_product_upload_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.dropbox.icon
+          %i.corner.add.icon.green
+        = 'Nuevo Producto'
+
+    %table.ui.sortable.celled.table.striped
+      %thead
+        %tr
+          %th Producto
+          %th Detalles
+          - if current_user.admin?
+            %th Acciones  
+
+
+      %tbody
+        - @product_uploads.each do |p|
+          %tr
+            -# %td.collapsing
+            -#   %div.ui.fitted
+            -#     = drugstore.speciality
+            %td= p.name
+            %td= link_to "Ver Información", p.attachment_url, :target => "_blank"
+
+            -# %td= drugstore.center.name if drugstore.center
+            %td.collapsing.positive
+              - if current_user.admin?
+                = link_to 'Eliminar', p, :method => :delete,
+                                          class: "ui red basic submit button",
+                                          :data => { :confirm => '¿Está seguro…?' }
+
+
+          -#  %td= link_to 'Eliminar', drugstore, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      -# = will_paginate @drugstores, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+    %br
+
+    -# = link_to 'New Drugstore', new_drugstore_path
+    -# - if params[:search]
+    -#   = link_to drugstores_path, class: "ui blue basic submit button" do
+    -#     %i.big.icons
+    -#       %i.reply.icon
+    -#     = 'Volver'
+    -# = link_to new_drugstore_path, class: "ui blue basic submit button" do
+    -#   %i.big.icons
+    -#     %i.hospital.icon
+    -#     %i.corner.add.icon
+    -#   = 'Agregar Farmacia'

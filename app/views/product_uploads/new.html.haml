@@ -1,0 +1,26 @@
+.pusher
+  %div.main.ui.container
+    = simple_form_for(@product_upload, :html => { multipart: true, :class => 'ui form attached fluid segment', :autocomplete => "off"}) do |f|
+      -# = f.error_notification
+      .field
+        .field.required
+          = f.label 'Nombre del producto'
+          = f.input :name, label: false
+        .field
+          = f.label 'PDF'
+          = f.file_field :attachment, label: false
+
+        / map div
+        -# %label Mapa
+        -# #map{:style => "width: 100%; height: 350px;"}
+        -# = f.hidden_field :lat, id: 'map_lat'
+        -# = f.hidden_field :lng, id: 'map_lng'
+
+      .form-actions
+        = f.button :submit, :value => "Salvar", :class => "ui blue fluid huge submit button", :data => { :disable_with => "Procesando" }
+
+    -# %br
+    -# = link_to drugstores_path, class: "ui blue basic submit button" do
+    -#   %i.big.icons
+    -#     %i.reply.icon
+    -#   = 'Volver'

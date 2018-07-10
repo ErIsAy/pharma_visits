@@ -59,6 +59,9 @@ gem 'axlsx_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'niceql'
+gem 'carrierwave', '~> 1.0'
+# gem "fog"
+gem "fog-aws"
 
 group :development, :test do
   gem 'byebug'
