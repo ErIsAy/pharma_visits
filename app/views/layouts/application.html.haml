@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Gupharma
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = stylesheet_link_tag "print", media: 'print' 
     = render :partial => 'layouts/shared/gmap'
     = csrf_meta_tags
   %body

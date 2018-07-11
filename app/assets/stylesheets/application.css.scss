@@ -21,10 +21,12 @@
  *= require welcome
  *= require scaffolds
  *= require doctors
+ *= require print
  *= require_self
  */
 
 @import "semantic-ui";
+
 
 
 h1 {

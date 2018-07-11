@@ -1,0 +1,30 @@
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  body>div>div>div.pusher>div>div.ui.segment.form.input,
+  body>div>div>div.ui.top.fixed.menu.white.hude.borderless.labeled.icon,
+  body>div>div>div.pusher>div>div:nth-child(8)>div.ui.card.yellow,
+  body>div>div>img,
+  body>div>div>div.pusher>div>div:nth-child(8)>div.calendar-main.fc.ui-widget.fc-ltr>div.fc-toolbar.fc-header-toolbar>div.fc-left,
+  body>div>div>div.pusher>div>div:nth-child(8)>div.calendar-main.fc.ui-widget.fc-ltr>div.fc-toolbar.fc-header-toolbar>div.fc-right,
+  .ui.three.container,
+  body>div>div>div.pusher>div>div:nth-child(7)>div.calendar-main.fc.ui-widget.fc-ltr>div.fc-toolbar.fc-header-toolbar>div.fc-right,
+  body>div>div>div.pusher>div>div:nth-child(7)>div.calendar-main.fc.ui-widget.fc-ltr>div.fc-toolbar.fc-header-toolbar>div.fc-left,
+  .ui.card.yellow {
+    display: none;
+  }
+  .pusher {
+    margin-top: -55px;
+  }
+  .calendar-main{
+    transform: scale(0.9);
+    margin-top: -40px;
+  }
+  .ui.header.blue.block.centered {
+    border: 1px solid white;
+    border-right-width: 50px;
+    border-left-width: 50px;
+  }
+}
