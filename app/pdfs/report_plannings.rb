@@ -32,16 +32,24 @@ class ReportPlannings < Prawn::Document
 
 
   def body
-    table([["Usuario","Doctor","Especialidad","Fecha","Visitado"]], :column_widths => [100,100,100,100,100], :row_colors => ["9FA8DA"])
+    table([["Usuario","Doctor","Fecha","Visitado"]], :column_widths => [125,175,100,100], :row_colors => ["9FA8DA"])
 
 
     if @user.admin
       @plannings.each do |planning|
-        table([[planning.user.username, planning.doctor.firstname, planning.doctor.speciality, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
+        if planning.drugstore.present?
+          table([[planning.user.username, planning.drugstore.name, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [125,175,100,100])
+        else
+          table([[planning.user.username,"#{planning.doctor.firstname} #{planning.doctor.lastname} (#{planning.doctor.speciality})", planning.date_visit, visited_val(planning.visited) ]], :column_widths => [125,175,100,100])
+        end
       end
     else
       @plannings.where(:user_id => @user).each do |planning|
-        table([[planning.user.username, planning.doctor.firstname, planning.doctor.speciality, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [100,100,100,100,100])
+        if planning.drugstore.present?
+          table([[planning.user.username, planning.drugstore.name, planning.date_visit, visited_val(planning.visited) ]], :column_widths => [125,175,100,100])
+        else
+        table([[planning.user.username,"#{planning.doctor.firstname} #{planning.doctor.lastname} (#{planning.doctor.speciality})", planning.date_visit, visited_val(planning.visited) ]], :column_widths => [125,175,100,100])
+        end
       end
     end
 
