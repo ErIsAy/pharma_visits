@@ -24,9 +24,9 @@ initialize_calendar = function() {
           buttonText: 'list year'
         }
       },
-      selectable: false,
+      selectable: true,
       selectHelper: true,
-      editable: true,
+      editable: false,
       eventLimit: false,
       displayEventTime: false,
       timeFormat: 'hh:mm a',

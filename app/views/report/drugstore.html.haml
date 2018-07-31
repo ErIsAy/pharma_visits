@@ -17,7 +17,8 @@
           - if current_user.admin  
             .field
               = f.label :user_username_eq, 'Usuario'
-              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username"),
+              = f.select :user_username_eq, options_from_collection_for_select(User.where.not(id: 1), "username", "username", 
+              {:selected => @user}),
               include_blank: 'Todos' 
         = f.submit "Filtrar", :class => "ui blue button"
         - if params[:q]

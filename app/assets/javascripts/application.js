@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require lib/underscore-min
-
+//= require datetimepicker
 //= require dist/semantic
 //= require lib/momentjs/moment
 //= require lib/fullcalendar/fullcalendar
@@ -140,8 +140,30 @@ $( document ).ready(function() {
   }
   
   $("#notice_center" ).fadeOut(5000);
-  $('.datepicker').datepicker();
-  // $('.datetimepicker').datetimepicker();
+  // $('.datepicker').datepicker();
+  $('#datetimepicker').datetimepicker({
+    format: 'd/m/Y h:i a',
+    locale: 'es'
+    // hours12: true
+  });
+  // $('#datetimepicker').datetimepicker({
+  //   i18n: {
+  //     de: {
+  //       months: [
+  //         'Januar', 'Februar', 'März', 'April',
+  //         'Mai', 'Juni', 'Juli', 'August',
+  //         'September', 'Oktober', 'November', 'Dezember',
+  //       ],
+  //       dayOfWeek: [
+  //         "So.", "Mo", "Di", "Mi",
+  //         "Do", "Fr", "Sa.",
+  //       ]
+  //     }
+  //   },
+  //   timepicker: true,
+  //   format: 'd/m/Y H:i'
+  // });
+
   // $.datetimepicker.setLocale('es');
   $('#planning_date_visit').calendar( {
     type: 'date',

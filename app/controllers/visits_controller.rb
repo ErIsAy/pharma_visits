@@ -39,6 +39,7 @@ class VisitsController < ApplicationController
     respond_to do |format|
       if @visit.save
         @planning.visited = true
+        @planning.date_visit = @visit.date_visit
         @planning.save
 
         # format.html { redirect_to @visit, notice: 'Visit was successfully created.' }

@@ -21,6 +21,11 @@ class ReportController < ApplicationController
       @q = current_user.centers.ransack(params[:q])
       @centers = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
+
+
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
     
     respond_to do |format|
       format.html
@@ -55,6 +60,12 @@ class ReportController < ApplicationController
       @q = current_user.doctors.ransack(params[:q])
       @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     end
+
+
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
+
 
     respond_to do |format|
       format.html
@@ -129,7 +140,11 @@ class ReportController < ApplicationController
       @q = current_user.drugstores.ransack(params[:q])
       @drugstores = @q.result.paginate(:page => params[:page], :per_page => 20).order('name ASC')
     end
-
+    
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
+    
     respond_to do |format|
       format.html
       format.pdf do
@@ -150,11 +165,11 @@ class ReportController < ApplicationController
 
     if current_user.admin
       @q = Planning.ransack(params[:q])
-      @plannings = @q.result.paginate(:page => params[:page], :per_page => 20)
+      @plannings = @q.result.paginate(:page => params[:page], :per_page => 20).order('date_visit DESC')
       
     else
       @q = current_user.plannings.ransack(params[:q])
-      @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20)  
+      @plannings = @q.result.includes(:doctor, :user).paginate(:page => params[:page], :per_page => 20).order('date_visit DESC')
     end
 
     if params[:q]

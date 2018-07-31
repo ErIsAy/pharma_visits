@@ -29,6 +29,7 @@
       %tbody
         - @users.each do |user|
           - next if user.id == 1
+          - next if !user.is_active
           %tr
             %td= user.username
             -# - byebug

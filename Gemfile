@@ -48,7 +48,9 @@ gem 'axlsx_rails'
 # gem "query_report", "~> 1.0.4"
 
 # gem "rails_admin_pdf", :git => "git://github.com/stephskardal/rails_admin_pdf.git"
-# gem 'rails-assets-datetimepicker'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
