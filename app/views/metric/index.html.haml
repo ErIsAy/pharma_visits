@@ -57,19 +57,19 @@
               -# = @users.where(is_active: true, admin: false).count
               Totales
             %td
-              = Planning.includes(:doctor).where(drugstore: nil).count 
+              = Planning.includes(:doctor, :user).where(drugstore: nil, :users => {is_active: true}).count 
             %td
               = Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count
             %td
-              = Planning.includes(:doctor, :visits).where(drugstore: nil, visited: false).count
+              = Planning.includes(:doctor, :visits, :user).where(drugstore: nil, visited: false, :users => {is_active: true}).count
             %td
-              .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil).count.to_f)*100, precision: 0)}"}
+              .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor, :user).where(drugstore: nil, :users => {is_active: true}).count.to_f)*100, precision: 0)}"}
                 .bar
                 .label 
-                  - if ((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor, :visits).where(visited: false).count.to_f)*100).nan?
+                  - if ((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor, :visits, :user).where(visited: false, :users => {is_active: true}).count.to_f)*100).nan?
                     0 %
                   - else  
-                    = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil).count.to_f)*100, precision: 0)
+                    = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor, :user).where(drugstore: nil, :users => {is_active: true}).count.to_f)*100, precision: 0)
 
     -# %br 
     -# Remover a peticion de Dario
