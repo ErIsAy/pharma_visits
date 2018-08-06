@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require lib/underscore-min
-//= require datetimepicker
+//= require lib/jquery.datetimepicker.full.min
 //= require dist/semantic
 //= require lib/momentjs/moment
 //= require lib/fullcalendar/fullcalendar

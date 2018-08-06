@@ -1,0 +1,18 @@
+es:
+  admin:
+    js:
+      true: True
+      false: False
+      is_present: Presente
+      is_blank: En Blanco
+      date: Fecha ...
+      between_and_: Entry ... Y ...
+      today: Hoy
+      yesterday: Ayer
+      this_week: Esta Semana
+      last_week: Semana Pasada
+      number: Numero ...
+      contains: Contiene
+      is_exactly: Es Exacto
+      starts_with: Empieza con
+      ends_with: Termina en
