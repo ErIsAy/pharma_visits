@@ -50,7 +50,26 @@
                     0 %
                   - else  
                     = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, user_id: user.id, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil, user_id: user.id).count.to_f)*100, precision: 0)
-       
+      - if current_user.admin
+        %tfoot
+          %tr.warning
+            %td
+              -# = @users.where(is_active: true, admin: false).count
+              Totales
+            %td
+              = Planning.includes(:doctor).where(drugstore: nil).count 
+            %td
+              = Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count
+            %td
+              = Planning.includes(:doctor, :visits).where(drugstore: nil, visited: false).count
+            %td
+              .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil).count.to_f)*100, precision: 0)}"}
+                .bar
+                .label 
+                  - if ((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor, :visits).where(visited: false).count.to_f)*100).nan?
+                    0 %
+                  - else  
+                    = number_to_percentage((Planning.includes(:doctor, :visits).where(drugstore: nil, visited: true, visits: {cycle: Cycle.find(@cycle.id).name}).count.to_f / Planning.includes(:doctor).where(drugstore: nil).count.to_f)*100, precision: 0)
 
     -# %br 
     -# Remover a peticion de Dario

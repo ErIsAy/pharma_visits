@@ -74,7 +74,24 @@
                           0 %
                         - else  
                           = number_to_percentage((Planning.includes(:doctor).where(visited: true, :doctors => {speciality: x[0]}).count.to_f / Planning.includes(:doctor).where(:doctors => {speciality: x[0]}).count.to_f)*100, precision: 0)
-            
+          %tfoot
+            %tr.warning
+              %td Totales
+              %td 
+                = Planning.includes(:doctor).where.not(doctor: nil).count
+              %td
+                = Planning.includes(:doctor).where(visited: true).where.not(doctor: nil).count
+              %td
+                = Planning.includes(:doctor).where(visited: false).where.not(doctor: nil).count
+              %td
+                .progress-bar.ui.teal.progress.small{"data-percent" => "#{number_to_percentage((Planning.includes(:doctor).where(visited: true).where.not(doctor: nil).count.to_f / Planning.includes(:doctor).where.not(doctor: nil).count.to_f)*100, precision: 0).to_i}"}
+                  .bar
+                  .label 
+                    - if ((Planning.includes(:doctor).where(visited: true).where.not(doctor: nil).count.to_f / Planning.includes(:doctor).where.not(doctor: nil).count.to_f)*100).nan?
+                      0 %
+                    - else  
+                      = number_to_percentage((Planning.includes(:doctor).where(visited: true).where.not(doctor: nil).count.to_f / Planning.includes(:doctor).where.not(doctor: nil).count.to_f)*100, precision: 0)
+
 
       -# old table --------------
 

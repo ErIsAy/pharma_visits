@@ -6,8 +6,15 @@ wb.add_worksheet(name: "Centers") do |sheet|
   style2 = sheet.styles.add_style(:border => { :style => :thin, :color => "00" }, :alignment => {:wrap_text => true})
 
   # this is the head row of your spreadsheet
-  sheet.add_row %w(id nombre tel direccion ciudad despacho compras), :style => style1
-  @drugs.each do |drug|
-    sheet.add_row [drug.id, drug.name, drug.phone, drug.address, drug.city, drug.service_person, drug.sales_person], :style => style2
+  if params['user'] == ""
+    sheet.add_row %w(nombre tel direccion ciudad despacho compras usuario), :style => style1
+    @drugs.each do |drug|
+      sheet.add_row [drug.name, drug.phone, drug.address, drug.city, drug.service_person, drug.sales_person, drug.user.username], :style => style2
+    end
+  else
+    sheet.add_row %w(nombre tel direccion ciudad despacho compras), :style => style1
+    @drugs.where(user: params['user']).each do |drug|
+      sheet.add_row [drug.name, drug.phone, drug.address, drug.city, drug.service_person, drug.sales_person], :style => style2
+    end
   end
 end

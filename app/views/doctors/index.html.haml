@@ -45,8 +45,9 @@
 
 
         = f.submit "Filtrar", :class => "ui blue submit button"
-        = link_to 'Exportar a Excel', doctors_path(:format => 'xlsx'),
-          class: "ui blue basic submit button"
+        - if params[:q]
+          = link_to 'Exportar a Excel', doctors_path(:format => 'xlsx', :user => User.find_by_username(@user) || @user),
+            class: "ui blue basic submit button"
       .ui.bottom.right.attached.label 
         %i.search.icon
         = pluralize(@doctors.count, 'Resultado', 'Resultados')
