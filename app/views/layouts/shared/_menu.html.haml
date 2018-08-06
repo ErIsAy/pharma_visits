@@ -44,8 +44,8 @@
       - if current_user.admin
         -# %a.item{:href => '/admin'}
         -#   Administración
-        = link_to 'Administración', rails_admin_path,
-          class: "ui blue basic submit button"
+        = link_to 'Administración', rails_admin_path, 
+          class: "ui blue basic submit button", target: '_self' 
     .item.top-menu-label.asphalt-gradient
       -# = current_user.username
       = link_to destroy_user_session_path, method: :delete do
