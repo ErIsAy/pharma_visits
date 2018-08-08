@@ -31,8 +31,8 @@
 
 $('.menu .item').tab();
 
-
-
+// var d = new Date();
+// console.log(d);
 
 // initialize all progress bar
 $('.progress-bar').each(function(){
@@ -142,7 +142,7 @@ $( document ).ready(function() {
   $("#notice_center" ).fadeOut(5000);
   // $('.datepicker').datepicker();
   $('#datetimepicker').datetimepicker({
-    format: 'd/m/Y h:i a',
+    format: 'd/m/Y h:i',
     locale: 'es'
     // hours12: true
   });
