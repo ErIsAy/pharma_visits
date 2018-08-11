@@ -142,10 +142,15 @@ $( document ).ready(function() {
   $("#notice_center" ).fadeOut(5000);
   // $('.datepicker').datepicker();
   $('#datetimepicker').datetimepicker({
-    format: 'd/m/Y h:i',
-    locale: 'es'
+    ampm: true,
+    format: 'd/m/Y h:i A',
+    formatTime: 'g:i A',
+    validateOnBlur: false,
+    step: 15,
+    lang: 'es'
     // hours12: true
   });
+
   // $('#datetimepicker').datetimepicker({
   //   i18n: {
   //     de: {

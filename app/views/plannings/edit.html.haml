@@ -40,9 +40,9 @@
                 = visit.cycle
             %td.center.aligned
               - if visit.date_visit != nil
-                = visit.date_visit.strftime("%d/%m/%Y")
+                = visit.date_visit.strftime("%d/%m/%Y %I:%M%p")
             %td.center.aligned
-              = visit.created_at.strftime("%d/%m/%Y")  
+              = visit.created_at.strftime("%d/%m/%Y %I:%M%p")
 
 
 

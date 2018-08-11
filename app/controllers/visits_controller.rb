@@ -43,7 +43,8 @@ class VisitsController < ApplicationController
         @planning.save
 
         # format.html { redirect_to @visit, notice: 'Visit was successfully created.' }
-        format.html { redirect_to edit_planning_path(@visit.planning.id), notice: 'Visita Registrada' }
+        # format.html { redirect_to edit_planning_path(@visit.planning.id), notice: 'Visita Registrada' }
+        format.html { redirect_to events_index_path, notice: 'Visita Registrada' }
         format.json { render :show, status: :created, location: @visit }
       else
         format.html { render :new }
