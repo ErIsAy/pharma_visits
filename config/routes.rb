@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'report/planning'
 
   get 'report/visits'
+  get 'report/visits_report'
 
 
   resources :divisions

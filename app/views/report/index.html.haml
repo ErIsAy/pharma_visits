@@ -86,6 +86,16 @@
           %i.calendar.outline.icon
         .label
           Reporte de Planes
+      %a.statistic{:href => report_visits_report_path}
+        .value
+          %i.edit.outline.icon
+        .label
+          Reporte de Visitas
+      -# %a.statistic{:href => report_planning_path}
+      -#   .value
+      -#     %i.file.line.chart.icon
+      -#   .label
+      -#     Métricas
       -# - if current_user.admin 
       -#   %a.statistic{:href => report_visits_path(:format => 'pdf'), target: :_blank }
       -#     .value.icon-gradient

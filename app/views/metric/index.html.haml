@@ -83,6 +83,7 @@
     -#   %tbody
     -#     - @visits.each do |visit|
     -#       - next if visit.user.id == 1
+    -#       - next if visit.planning.drugstore_id
     -#       %tr
     -#         %td= visit.user.username
     -#         %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
@@ -98,7 +99,7 @@
     -#         = f.label :cycle_id_eq, 'Período'
     -#         -# = f.search_field :cycle_name_cont
     -#         = f.select :cycle_id_eq, options_from_collection_for_select(Cycle.all, "id", "name", @q.cycle_name_cont), include_blank: false, :class=>'ui search dropdown'
-    -#
+    
     -#     = f.submit "Buscar", :class => "ui blue submit button"
     -# .ui.segment.form.input{:style => "margin-top: 0;"}
     -#   = search_form_for @q, :url => metric_index_path do |f|

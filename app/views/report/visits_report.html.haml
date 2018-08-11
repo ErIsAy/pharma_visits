@@ -1,0 +1,77 @@
+
+.pusher
+  %div.main.ui.container
+    %h1.ui.header.blue.centered Reporte de Visita
+
+    .ui.segment.form.input{:style => "margin-top: 0;"}
+      = search_form_for @q, :url => report_visits_report_path do |f|
+        .three.fields
+          .field
+            = f.label :cycle_eq, 'Ciclo'
+            = f.select :cycle_eq, options_from_collection_for_select(Cycle.all, "name", "name", {:selected => @cycle}), {}, {class: 'ui dropdown'}
+          .field#planning_date_visit
+            = f.label :date_visit_gteq, 'Desde'
+            = f.search_field :date_visit_gteq
+          .field#planning_date_visit_v
+            = f.label :date_visit, 'Hasta'
+            = f.search_field :date_visit_lteq
+          - if current_user.admin
+            .field
+              = f.label :user_username_eq, 'Usuario'
+              = f.select :user_username_eq, options_from_collection_for_select(User.all, "username", "username", {:selected => @user}),
+              include_blank: 'Todos'
+
+        = f.submit "Filtrar", :class => "ui blue submit button"
+        -# - if params[:q]
+        -#   = link_to 'Imprimir Reporte', report_visits_report_path(:format => 'pdf'), 
+        -#     target: :_blank,
+        -#     class: "ui blue basic submit button"
+
+
+    -# .ui.large.action.input
+    -#   = form_tag report_planning_path, :method => 'get' do
+    -#     = text_field_tag :search, params[:search], :placeholder => "Doctor..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
+    -# %button.ui.large.olive.icon.button.right.floated
+    -#   %i.print.icon
+
+    -# .ui.large.action.input
+    -#   = form_tag report_planning_path, :method => 'get' do
+    -#     .field.required#planning_date_visit
+    -#       = text_field_tag :search, params[:search], :placeholder => "Fecha..."
+    -#     = button_tag "Buscar", :name => nil, :class => "button large ui button"
+
+    %table.ui.sortable.celled.table.striped.blue.gridtable
+      %thead
+        %tr
+          %th Usuario
+          %th Doctor
+          %th Centro
+          %th Entrada al Sistema 
+          %th Fecha de Visita
+      %tbody
+        - @visits.each do |visit|
+          -# - next if visit.user.id == 1
+          - next if visit.planning.drugstore_id
+          %tr
+            %td= visit.user.username
+            %td= "#{visit.planning.doctor.firstname} #{visit.planning.doctor.lastname}"
+            %td= visit.planning.doctor.center.name if visit.planning.doctor.center != nil
+            %td= visit.created_at.strftime("%d/%m/%Y %I:%M%p") 
+            %td= visit.date_visit.strftime("%d/%m/%Y %I:%M%p")
+   
+
+      = will_paginate @visits, renderer: WillPaginateSemanticUi::ActionView::Renderer, class: "right floated", inner_window: 3
+
+
+    %br
+    - if params[:q]
+      = link_to report_visits_report_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'
+    - else
+      = link_to report_index_path, class: "ui blue basic submit button" do
+        %i.big.icons
+          %i.reply.icon
+        = 'Volver'

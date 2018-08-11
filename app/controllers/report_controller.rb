@@ -198,6 +198,37 @@ class ReportController < ApplicationController
     # @plannings = current_user.plannings.paginate(:page => params[:page], :per_page => 15)
   end
 
+  def visits_report
+
+    if params[:q]
+      @user = params[:q][:user_username_eq]
+    end
+
+    if current_user.admin?
+      @q = Visit.ransack(params[:q])
+      @visits = @q.result.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
+    else
+      @q = current_user.visits.ransack(params[:q])
+      @visits = @q.result.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
+    end
+
+    if params[:q]
+      @cycle = params[:q][:cycle_eq]
+    else
+      @cycle = Cycle.last.name
+    end
+
+    respond_to do |format|
+      format.html
+      format.pdf {
+        render template: 'report/visits_report',
+        pdf: 'Visitas',
+        layout: 'pdf.html'
+      }
+    end
+
+  end
+
   def visits
     # if current_user.admin
     #   @q = Planning.ransack(params[:q])
@@ -232,7 +263,7 @@ class ReportController < ApplicationController
       format.html
       format.pdf {
         render template: 'report/visits',
-        pdf: 'Visitas',
+        pdf: 'Metricas',
         layout: 'pdf.html'
       }
     end
