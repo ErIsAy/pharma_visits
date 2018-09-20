@@ -52,11 +52,11 @@ class ReportController < ApplicationController
     # @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20)
 
     if current_user.admin
-      @centers = Center.all
+      @centers = Center.all.order('name ASC')
       @q = Doctor.ransack(params[:q])
       @doctors = @q.result.paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     else
-      @centers = current_user.centers
+      @centers = current_user.centers.order('name ASC')
       @q = current_user.doctors.ransack(params[:q])
       @doctors = @q.result.includes(:center).paginate(:page => params[:page], :per_page => 20).order('firstname ASC')
     end
