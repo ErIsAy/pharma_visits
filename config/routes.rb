@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   # get 'product_uploads/index'
   resources :product_uploads, only: [:index, :new, :create, :destroy]
+  resources :metric_uploads, only: [:index, :new, :create, :destroy]
 
   get 'product_uploads/new'
-
   get 'product_uploads/create'
-
   get 'product_uploads/destroy'
+
+  get 'metric_uploads/new'
+  get 'metric_uploads/create'
+  get 'metric_uploads/destroy'
 
   resources :visits
   resources :ejes

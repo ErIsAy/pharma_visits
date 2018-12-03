@@ -6,17 +6,23 @@
     .ui.segment.form.input
       = search_form_for @q, url: metric_index_path do |f|
         .field
-          = f.label :id, 'Ciclo'
+          = f.label :id, 'Ciclos Anteriores'
           -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => @cycle_id})
           -# last cycle only temporarily until logic to maintain cycle for planning every time a new cycle is generated.
-          = f.select :id_eq, options_from_collection_for_select(Cycle.where(id: Cycle.last.id), "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
-        -# = f.submit "Filtrar", :class => "ui blue submit button"
+          -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
+
+          -# = f.select :id_eq, options_from_collection_for_select(Cycle.where(id: Cycle.last.id), "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
+          -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.where.not(:id => nil) << Cycle.where(id: Cycle.last.id), "id", "name", {:selected => MetricUpload.last.id}), {}, {class: 'ui dropdown'}
+          -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.all << Cycle.all)
+          = f.select(:id_eq, MetricUpload.all.collect {|p| [ p.name, p.id ] }, {include_blank: false, :selected => MetricUpload.last.id}, :id => "e1", :class => "", :style => "width: 100%;")
+        = f.submit "Imprimir", :class => "ui blue submit button", :formtarget => "_blank"
 
 
         -# .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
-        = link_to 'Imprimir Reporte', report_visits_path(:format => 'pdf', :cycle_id => @cycle.id), 
-          target: :_blank,
-          class: "ui blue basic submit button"
+    %div
+      = link_to 'Imprimir Reporte Actual', report_visits_path(:format => 'pdf', :cycle_id => Cycle.last.id), 
+        target: :_blank,
+        class: "ui blue basic submit button"
     %table.ui.sortable.celled.table.striped.blue.gridtable
       %thead
         %tr

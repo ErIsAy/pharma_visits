@@ -170,7 +170,7 @@ class MetricController < ApplicationController
       @cycle = Cycle.last
     else
       @cycle_id = params[:q][:id_eq]
-      
+      redirect_to MetricUpload.find(@cycle_id).attachment_url
     end
     # byebug
 
