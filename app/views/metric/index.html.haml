@@ -3,18 +3,19 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered.block Métricas
 
-    .ui.segment.form.input
-      = search_form_for @q, url: metric_index_path do |f|
-        .field
-          = f.label :id, 'Ciclos Anteriores'
-          -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => @cycle_id})
-          -# last cycle only temporarily until logic to maintain cycle for planning every time a new cycle is generated.
-          -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
+    - if !MetricUpload.all.empty? 
+      .ui.segment.form.input
+        = search_form_for @q, url: metric_index_path do |f|
+          .field
+            = f.label :id, 'Ciclos Anteriores'
+            -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => @cycle_id})
+            -# last cycle only temporarily until logic to maintain cycle for planning every time a new cycle is generated.
+            -# = f.select :id_eq, options_from_collection_for_select(Cycle.all, "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
 
-          -# = f.select :id_eq, options_from_collection_for_select(Cycle.where(id: Cycle.last.id), "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
-          -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.where.not(:id => nil) << Cycle.where(id: Cycle.last.id), "id", "name", {:selected => MetricUpload.last.id}), {}, {class: 'ui dropdown'}
-          -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.all << Cycle.all)
-          = f.select(:id_eq, MetricUpload.all.collect {|p| [ p.name, p.id ] }, {include_blank: false, :selected => MetricUpload.last.id}, :id => "e1", :class => "", :style => "width: 100%;")
+            -# = f.select :id_eq, options_from_collection_for_select(Cycle.where(id: Cycle.last.id), "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
+            -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.where.not(:id => nil) << Cycle.where(id: Cycle.last.id), "id", "name", {:selected => MetricUpload.last.id}), {}, {class: 'ui dropdown'}
+            -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.all << Cycle.all)
+            = f.select(:id_eq, MetricUpload.all.collect {|p| [ p.name, p.id ] }, {include_blank: false, :selected => MetricUpload.last.id}, :id => "e1", :class => "", :style => "width: 100%;")
         = f.submit "Imprimir", :class => "ui blue submit button", :formtarget => "_blank"
 
 

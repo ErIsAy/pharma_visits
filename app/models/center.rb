@@ -4,6 +4,18 @@ class Center < ActiveRecord::Base
   validates :name, presence: true
   has_many :doctors, :dependent => :destroy
   belongs_to :user
+  after_save :update_user
+
+  def update_user
+    if user_id_changed?
+      
+      self.doctors.each do |doctor|
+        # byebug
+        doctor.user_id = user_id
+        doctor.save
+      end
+    end
+  end
 
   CITIES =
     [ ['Todas', ''],
