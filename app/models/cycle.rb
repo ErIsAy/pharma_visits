@@ -1,7 +1,7 @@
 class Cycle < ActiveRecord::Base
   require 'open-uri'
   has_many :plannings
-  before_create :save_metrics
+  # before_create :save_metrics
   # before_destroy :delete_report
   after_create :clean_plannings_visit
 
@@ -12,14 +12,13 @@ class Cycle < ActiveRecord::Base
 #   MetricUpload.find(@report_id).destroy!
 # end
 
+# disable until AWS is enabled.
+# def save_metrics
 
-def save_metrics
-
-  MetricUpload.create(name: "#{Cycle.last.name}", 
-                      attachment: FileIO.new(open("https://gupharma.herokuapp.com/report/visits.pdf?cycle_id=#{Cycle.last.id}", {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}).read, "#{Cycle.last.name}_#{Cycle.last.id}.pdf"))
-  # byebug
+#   MetricUpload.create(name: "#{Cycle.last.name}",
+#                       attachment: FileIO.new(open("https://gupharma.herokuapp.com/report/visits.pdf?cycle_id=#{Cycle.last.id}", {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}).read, "#{Cycle.last.name}_#{Cycle.last.id}.pdf"))
   
-end
+# end
 
 def clean_plannings_visit
   Planning.all.each do |planning|
