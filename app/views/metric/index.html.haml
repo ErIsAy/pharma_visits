@@ -3,7 +3,7 @@
   %div.main.ui.container
     %h1.ui.header.blue.centered.block Métricas
 
-    - if !MetricUpload.all.empty? 
+    - if !MetricUpload.all.empty? && current_user.admin?
       .ui.segment.form.input
         = search_form_for @q, url: metric_index_path do |f|
           .field
