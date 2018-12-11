@@ -15,8 +15,8 @@
             -# = f.select :id_eq, options_from_collection_for_select(Cycle.where(id: Cycle.last.id), "id", "name", {:selected => Cycle.last.id}), {}, {class: 'ui dropdown'}
             -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.where.not(:id => nil) << Cycle.where(id: Cycle.last.id), "id", "name", {:selected => MetricUpload.last.id}), {}, {class: 'ui dropdown'}
             -# = f.select :id_eq, options_from_collection_for_select(MetricUpload.all << Cycle.all)
-            = f.select(:id_eq, MetricUpload.all.collect {|p| [ p.name, p.id ] }, {include_blank: false, :selected => MetricUpload.last.id}, :id => "e1", :class => "", :style => "width: 100%;")
-        = f.submit "Imprimir", :class => "ui blue submit button", :formtarget => "_blank"
+            = f.select(:id_eq, MetricUpload.all.collect {|p| [ p.name, p.id ] }, {include_blank: false, :selected => MetricUpload.last.id}, :id => "e1", :class => "ui search dropdown", :style => "width: 100%;")
+          = f.submit "Imprimir", :class => "ui blue submit button", :formtarget => "_blank"
 
 
         -# .ui.bottom.attached.tab.segment.active{"data-tab" => "first"}
