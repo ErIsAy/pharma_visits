@@ -1,7 +1,7 @@
 class Cycle < ActiveRecord::Base
   require 'open-uri'
   has_many :plannings
-  before_create :save_metrics
+  # before_create :save_metrics
   # before_destroy :delete_report
   after_create :clean_plannings_visit
 
